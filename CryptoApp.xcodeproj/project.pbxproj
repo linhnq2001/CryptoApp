@@ -16,6 +16,7 @@
 		13607BF32ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */; };
 		137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C04E62ACEBC4D009E0317 /* Validation.swift */; };
 		137C04E92ACF3D4E009E0317 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137C04E82ACF3D4E009E0317 /* GoogleService-Info.plist */; };
+		139A39CA2AD13FA000FE27EE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A39C92AD13FA000FE27EE /* User.swift */; };
 		13B30F732AD0816F004FDEE0 /* FirebaseAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B30F722AD0816F004FDEE0 /* FirebaseAuthHelper.swift */; };
 		13B30F752AD08710004FDEE0 /* FirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B30F742AD08710004FDEE0 /* FirestoreHelper.swift */; };
 		13FE0FCF2ACD6F6D00D519CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FE0FCD2ACD6F6D00D519CA /* MainViewController.swift */; };
@@ -64,6 +65,7 @@
 		13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		137C04E62ACEBC4D009E0317 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		137C04E82ACF3D4E009E0317 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		139A39C92AD13FA000FE27EE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		13B30F722AD0816F004FDEE0 /* FirebaseAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthHelper.swift; sourceTree = "<group>"; };
 		13B30F742AD08710004FDEE0 /* FirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHelper.swift; sourceTree = "<group>"; };
 		13FE0FCD2ACD6F6D00D519CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 		13607BCE2ACD6969008529D2 /* CryptoApp */ = {
 			isa = PBXGroup;
 			children = (
+				139A39C82AD13F9500FE27EE /* Model */,
 				13B30F712AD08155004FDEE0 /* Firebase */,
 				13FE0FF62ACD77E600D519CA /* Util */,
 				13FE0FD32ACD724C00D519CA /* AuthView */,
@@ -172,6 +175,14 @@
 				13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */,
 			);
 			path = CryptoAppUITests;
+			sourceTree = "<group>";
+		};
+		139A39C82AD13F9500FE27EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				139A39C92AD13FA000FE27EE /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		13B30F712AD08155004FDEE0 /* Firebase */ = {
@@ -505,6 +516,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139A39CA2AD13FA000FE27EE /* User.swift in Sources */,
 				13FE0FDF2ACD72BA00D519CA /* LoginViewController.swift in Sources */,
 				13FE0FE52ACD72E500D519CA /* RegisterViewController.swift in Sources */,
 				13FE0FF82ACD780100D519CA /* UIView+Extension.swift in Sources */,

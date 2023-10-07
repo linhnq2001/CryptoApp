@@ -11,6 +11,7 @@ import RxSwift
 
 final class FirebaseAuthHelper: NSObject {
     public static let shared = FirebaseAuthHelper()
+    private let disposeBag = DisposeBag()
     
     func loginWithEmail(_ email: String, _ password: String) -> Observable<(Bool,String)>{
         return Observable.create { observable in
@@ -25,14 +26,21 @@ final class FirebaseAuthHelper: NSObject {
         }
     }
     
-    func createAccountWithEmail(_ email: String, _ password: String) -> Observable<(Bool,String)>{
+    func createAccountWithEmail(_ username: String,_ email: String, _ password: String) -> Observable<(Bool,String)>{
         return Observable.create { observable in
-            Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                guard let error = error else {
-                    observable.onNext((true,""))
+            Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+                guard let self = self else {
+                    observable.onNext((false,"Something wrong"))
                     return
                 }
-                observable.onNext((false,error.localizedDescription))
+                if let error = error {
+                    observable.onNext((false,error.localizedDescription))
+                } else {
+                    let user = User(id: result!.user.uid, username: username, email: email, password: password, loginType: .email)
+                    FirestoreHelper.shared.addUser(user).subscribe(onNext: {(result,error) in
+                        observable.onNext((result,error))
+                    }).disposed(by: self.disposeBag)
+                }
             }
             return Disposables.create()
         }

@@ -55,5 +55,12 @@ class LoginViewController: UIViewController {
     private func bindingData(){
         
     }
-
+    
+    
+    @IBAction func didTapCreateAccount(_ sender: Any) {
+        let viewModel = RegisterViewModel()
+        let vc = RegisterViewController(viewModel: viewModel)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
