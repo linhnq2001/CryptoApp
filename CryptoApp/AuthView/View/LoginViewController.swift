@@ -31,12 +31,24 @@ class LoginViewController: UIViewController {
 //            filled.imagePadding = 5
 
 //            signinGGBtn.configuration = filled
-            
+        }
+    }
+    @IBOutlet weak var emailInputTF: InputTextField!{
+        didSet {
+            emailInputTF.contentType = .emailAddress
         }
     }
     
-    private(set) var viewModel: LoginViewModel!
+    @IBOutlet weak var passwordInputTF: InputTextField!{
+        didSet {
+            passwordInputTF.contentType = .password
+        }
+    }
+    @IBOutlet weak var loginBtn: UIButton!
     
+    @IBOutlet weak var resetPassBtn: UIButton!
+    
+    private(set) var viewModel: LoginViewModel!
     init(viewModel: LoginViewModel!) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: LoginViewController.self), bundle: Bundle(for: LoginViewController.self))
@@ -48,14 +60,26 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        bindingData()
         // Do any additional setup after loading the view.
     }
     
     private func bindingData(){
+        let input = LoginViewModel.Input(loginAction: loginBtn.rx.tap.asDriver(), resetPasswordAction: resetPassBtn.rx.tap.asDriver(), loginWithGoogleAction: signinGGBtn.rx.tap.asDriver(), email: emailInputTF.inputTextField.rx.text.orEmpty.asDriver(), password: passwordInputTF.inputTextField.rx.text.orEmpty.asDriver())
+        
+        
+        let output = viewModel.tranform(input)
+        handleLoginResult(input,output)
+        handleLoading(input,output)
+    }
+    
+    private func handleLoginResult(_ input: LoginViewModel.Input, _ output: LoginViewModel.Output){
         
     }
     
+    private func handleLoading(_ input: LoginViewModel.Input, _ output: LoginViewModel.Output){
+        
+    }
     
     @IBAction func didTapCreateAccount(_ sender: Any) {
         let viewModel = RegisterViewModel()

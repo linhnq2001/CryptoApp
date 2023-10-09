@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		069256070567886C2D003ADD /* Pods_CryptoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0D79AC9E713F4BEF91CB44 /* Pods_CryptoApp.framework */; };
+		133F2F2C2AD2B46700676947 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F2F2B2AD2B46700676947 /* UIButton+Extension.swift */; };
+		133F2F2E2AD2B48B00676947 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F2F2D2AD2B48B00676947 /* UIViewController+Extension.swift */; };
 		13607BD02ACD6969008529D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BCF2ACD6969008529D2 /* AppDelegate.swift */; };
 		13607BD92ACD696A008529D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13607BD82ACD696A008529D2 /* Assets.xcassets */; };
 		13607BDC2ACD696A008529D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13607BDA2ACD696A008529D2 /* LaunchScreen.storyboard */; };
@@ -53,6 +55,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		133F2F2B2AD2B46700676947 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		133F2F2D2AD2B48B00676947 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		13607BCC2ACD6969008529D2 /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13607BCF2ACD6969008529D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13607BD82ACD696A008529D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 				13FE0FF92ACDCC0B00D519CA /* InputTextField */,
 				13FE0FF72ACD780100D519CA /* UIView+Extension.swift */,
 				137C04E62ACEBC4D009E0317 /* Validation.swift */,
+				133F2F2B2AD2B46700676947 /* UIButton+Extension.swift */,
+				133F2F2D2AD2B48B00676947 /* UIViewController+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 				139A39CA2AD13FA000FE27EE /* User.swift in Sources */,
 				13FE0FDF2ACD72BA00D519CA /* LoginViewController.swift in Sources */,
 				13FE0FE52ACD72E500D519CA /* RegisterViewController.swift in Sources */,
+				133F2F2E2AD2B48B00676947 /* UIViewController+Extension.swift in Sources */,
 				13FE0FF82ACD780100D519CA /* UIView+Extension.swift in Sources */,
 				13FE0FEA2ACD730100D519CA /* RegisterViewModel.swift in Sources */,
 				13FE0FE82ACD72F100D519CA /* LoginViewModel.swift in Sources */,
@@ -529,6 +536,7 @@
 				137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */,
 				13B30F732AD0816F004FDEE0 /* FirebaseAuthHelper.swift in Sources */,
 				13FE0FD22ACD705A00D519CA /* SceneDelegate.swift in Sources */,
+				133F2F2C2AD2B46700676947 /* UIButton+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -38,15 +38,16 @@ public class RegisterViewModel: NSObject {
         
         let output = Output(validationUsername: validationUsername, validationEmail: validationEmail, validationPassword: validationPassword, showLoading: showLoading, registerResult: registerResult)
         handleRegisterAction(input,output)
-        
         return output
     }
     
     private func  handleRegisterAction(_ input: RegisterViewModel.Input,_ output: RegisterViewModel.Output) {
         let registerInfo = Observable.combineLatest(input.username.asObservable(), input.email.asObservable(), input.password.asObservable())
         input.registerAction.asObservable().withLatestFrom(registerInfo).flatMap { (username, email ,password) -> Observable<(Bool,String)> in
+            output.showLoading.onNext(true)
             return FirebaseAuthHelper.shared.createAccountWithEmail(username, email, password)
         }.subscribe(onNext: { (result,error) in
+            output.showLoading.onNext(false)
             output.registerResult.accept((result,error))
         }).disposed(by: disposeBag)
     }

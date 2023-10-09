@@ -24,12 +24,13 @@ final class InputTextField: UIView {
         }
     }
     
-    var keyboardType: UIKeyboardType? {
+    var contentType: UITextContentType? {
         set {
-            self.inputTextField.keyboardType = newValue ?? .default
+            self.inputTextField.textContentType = newValue ?? .none
+            self.inputTextField.isSecureTextEntry = contentType == .password
         }
         get {
-            return self.inputTextField.keyboardType
+            return self.inputTextField.textContentType
         }
     }
     

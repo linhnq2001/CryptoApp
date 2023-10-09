@@ -13,11 +13,10 @@ class LoginViewModel: NSObject{
     
     private var disposeBag = DisposeBag()
     
-    
     public struct Input {
-        let loginAction: PublishSubject<Void>
-        let resetPasswordAction: PublishSubject<Void>
-        let loginWithGoogleAction: PublishSubject<Void>
+        let loginAction: Driver<Void>
+        let resetPasswordAction: Driver<Void>
+        let loginWithGoogleAction: Driver<Void>
         let email: Driver<String>
         let password: Driver<String>
     }
@@ -42,19 +41,12 @@ class LoginViewModel: NSObject{
     }
     
     private func handleLoginAction(_ input: LoginViewModel.Input,_ output: LoginViewModel.Output) {
-         input.loginAction.withLatestFrom(input.email).flatMap { email -> Observable<(Bool,String)> in
-            return Observable.create { observable in
-                if email.isEmpty {
-                    observable.onNext((false,"Email is empty"))
-                }
-                if isValidEmail(email){
-                    observable.onNext((true,""))
-                } else {
-                    observable.onNext((false,"Email isn't valid"))
-                }
-                return Disposables.create()
-            }
+        let loginInfo = Observable.combineLatest(input.email.asObservable(), input.password.asObservable())
+        input.loginAction.asObservable().withLatestFrom(loginInfo).flatMap { (email,password) -> Observable<(Bool,String)> in
+            output.showLoading.onNext(true)
+            return FirebaseAuthHelper.shared.loginWithEmail(email, password)
         }.subscribe(onNext: { (result, error) in
+            output.showLoading.onNext(false)
             output.validationEmail.accept((result, error))
         }).disposed(by: disposeBag)
     }

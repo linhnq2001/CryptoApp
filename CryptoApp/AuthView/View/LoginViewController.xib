@@ -10,6 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="CryptoApp" customModuleProvider="target">
             <connections>
+                <outlet property="emailInputTF" destination="sRY-pT-pbc" id="bjK-0q-F3F"/>
+                <outlet property="loginBtn" destination="21Y-Py-a1X" id="ETI-ci-xJy"/>
+                <outlet property="passwordInputTF" destination="Fcg-JR-rGl" id="mMC-iP-qg5"/>
+                <outlet property="resetPassBtn" destination="4Jz-VK-Z19" id="cHp-DW-uKY"/>
                 <outlet property="signinGGBtn" destination="DxZ-xt-DCH" id="8hE-Fc-gIB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

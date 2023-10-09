@@ -11,10 +11,17 @@ import RxCocoa
 
 class RegisterViewController: UIViewController {
     
-    
     @IBOutlet weak var usernameInputTF: InputTextField!
-    @IBOutlet weak var emailInputTF: InputTextField!
-    @IBOutlet weak var passwordInputTF: InputTextField!
+    @IBOutlet weak var emailInputTF: InputTextField! {
+        didSet {
+            emailInputTF.contentType = .emailAddress
+        }
+    }
+    @IBOutlet weak var passwordInputTF: InputTextField! {
+        didSet {
+            passwordInputTF.contentType = .password
+        }
+    }
     @IBOutlet weak var registerBtn: UIButton!
     
     private var disposeBag = DisposeBag()
@@ -36,17 +43,36 @@ class RegisterViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    private func bindingData(){
+    private func bindingData() {
         let input = RegisterViewModel.Input(username: self.usernameInputTF.inputTextField.rx.text.orEmpty.asDriver(), email: self.emailInputTF.inputTextField.rx.text.orEmpty.asDriver(), password: self.passwordInputTF.inputTextField.rx.text.orEmpty.asDriver(), registerAction: self.registerBtn.rx.tap.asDriver())
         
         let output = viewModel.tranform(input)
-        
-        
+        handleShowLoading(input, output)
+        handleShowResultRegister(input, output)
+    }
+    
+    private func handleShowLoading(_ input: RegisterViewModel.Input,_ output: RegisterViewModel.Output) {
+        output.showLoading.subscribe(onNext: {[weak self] isLoading in
+            guard let self = self else { return }
+            self.registerBtn.loadingIndicator(isLoading)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func handleShowResultRegister(_ input: RegisterViewModel.Input,_ output: RegisterViewModel.Output) {
+        output.registerResult.subscribe(onNext: { [weak self] (result,error) in
+            guard let self = self else { return }
+            if result {
+                self.showToast(message: "Register successful", font: UIFont.systemFont(ofSize: 14)) { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }
+            } else {
+                self.showToast(message: error, font: UIFont.systemFont(ofSize: 14)) { _ in }
+            }
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func didTapLogin(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-
 }
