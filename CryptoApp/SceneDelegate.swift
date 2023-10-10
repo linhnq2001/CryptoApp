@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ESTabBarController_swift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -18,7 +19,22 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let nav = UINavigationController(rootViewController: MainViewController())
+        let tabBarController = ESTabBarController()
+        let v1 = HomeViewController()
+        let v2 = WatchListViewController()
+        let v3 = PortfolioViewController()
+        let v4 = SettingViewController()
+        let v5 = SettingViewController()
+        v1.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        v2.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        v3.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        v4.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        v5.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        
+        tabBarController.viewControllers = [v1, v2, v3, v4, v5]
+        let nav = UINavigationController(rootViewController: tabBarController)
+        tabBarController.title = "Example"
+        
         nav.setNavigationBarHidden(true, animated: false)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()

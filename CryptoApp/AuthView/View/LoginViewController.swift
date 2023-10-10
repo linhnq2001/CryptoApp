@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class LoginViewController: UIViewController {
     
@@ -49,6 +50,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var resetPassBtn: UIButton!
     
     private(set) var viewModel: LoginViewModel!
+    private var disposeBag = DisposeBag()
     init(viewModel: LoginViewModel!) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: LoginViewController.self), bundle: Bundle(for: LoginViewController.self))
@@ -74,11 +76,21 @@ class LoginViewController: UIViewController {
     }
     
     private func handleLoginResult(_ input: LoginViewModel.Input, _ output: LoginViewModel.Output){
-        
+        output.loginResult.subscribe(onNext: { [weak self] (result,error) in
+            guard let self = self else { return }
+            if !result {
+                self.showToast(message: error, font: UIFont.systemFont(ofSize: 12), completion: {_ in })
+            } else {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func handleLoading(_ input: LoginViewModel.Input, _ output: LoginViewModel.Output){
-        
+        output.showLoading.subscribe(onNext: {[weak self] isLoading in
+            guard let self = self else {return}
+            self.loginBtn.loadingIndicator(isLoading)
+        }).disposed(by: disposeBag)
     }
     
     @IBAction func didTapCreateAccount(_ sender: Any) {

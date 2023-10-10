@@ -47,7 +47,7 @@ class LoginViewModel: NSObject{
             return FirebaseAuthHelper.shared.loginWithEmail(email, password)
         }.subscribe(onNext: { (result, error) in
             output.showLoading.onNext(false)
-            output.validationEmail.accept((result, error))
+            output.loginResult.accept((result, error))
         }).disposed(by: disposeBag)
     }
     
