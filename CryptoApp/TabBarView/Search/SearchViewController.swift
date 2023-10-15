@@ -1,13 +1,13 @@
 //
-//  HomeViewController.swift
+//  SearchViewController.swift
 //  CryptoApp
 //
-//  Created by Linh Nguyễn on 11/10/2023.
+//  Created by Linh Nguyễn on 16/10/2023.
 //
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -24,14 +24,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let v2 = WatchListViewController()
         let v3 = PortfolioViewController()
         let v4 = SettingViewController()
-        let v5 = SettingViewController()
-        v1.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
-        v2.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
-        v3.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
-        v4.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
-        v5.tabBarItem = ESTabBarItem.init(title: "Home", image: UIImage(systemName: "house"), selectedImage: UIImage(systemName: "house"))
+        v1.tabBarItem = ESTabBarItem.init(title: "", image: UIImage(named: "ic_chart"), selectedImage: UIImage(named: "ic_chart_fill"))
+        v2.tabBarItem = ESTabBarItem.init(title: "", image: UIImage(named: "ic_star"), selectedImage: UIImage(named: "ic_star_fill"))
+        v3.tabBarItem = ESTabBarItem.init(title: "", image: UIImage(named: "ic_briefcase"), selectedImage: UIImage(named: "ic_briefcase_fill"))
+        v4.tabBarItem = ESTabBarItem.init(title: "", image: UIImage(named: "ic_user"), selectedImage: UIImage(named: "ic_user_fill"))
         
-        tabBarController.viewControllers = [v1, v2, v3, v4, v5]
+        tabBarController.viewControllers = [v1, v2, v3, v4]
         let nav = UINavigationController(rootViewController: tabBarController)
         tabBarController.title = "Example"
         
