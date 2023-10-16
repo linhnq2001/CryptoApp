@@ -23,15 +23,11 @@ public struct ApiHelper<T:Decodable> {
                            otherHeaders: [String : String]? = nil,
                            params: [String: Any]) -> Observable<T> {
         return Observable.create { observer in
-            AF.request(baseOtherUrl + url.rawValue,method: .get,parameters: params).responseDecodable(of:T.self) { response in
+            AF.request(baseOtherUrl + url.endpoint,method: .get,parameters: params).responseDecodable(of:T.self) { response in
                 switch response.result {
                 case .success(let data):
-                    if let jsonData = try? JSONSerialization.data(withJSONObject: data, options: []), let decodedData = try? JSONDecoder().decode(T.self,from: jsonData) {
-                        observer.onNext(decodedData)
-                        observer.onCompleted()
-                    } else {
-                        observer.onError(APIError.other(message: "Can't cover JSON"))
-                    }
+                    observer.onNext(data)
+                    observer.onCompleted()
                 case .failure(let error as Error): 
                     observer.onError(error)
                 }
@@ -44,15 +40,11 @@ public struct ApiHelper<T:Decodable> {
                            url: ApiEndPoint,
                            params: [String: Any]) -> Observable<T> {
         return Observable.create { observer in
-            AF.request(baseOtherUrl + url.rawValue,method: .post,parameters: params).responseDecodable(of:T.self) { response in
+            AF.request(baseOtherUrl + url.endpoint,method: .post,parameters: params).responseDecodable(of:T.self) { response in
                 switch response.result {
                 case .success(let data):
-                    if let jsonData = try? JSONSerialization.data(withJSONObject: data, options: []), let decodedData = try? JSONDecoder().decode(T.self,from: jsonData) {
-                        observer.onNext(decodedData)
-                        observer.onCompleted()
-                    } else {
-                        observer.onError(APIError.other(message: "Can't cover JSON"))
-                    }
+                    observer.onNext(data)
+                    observer.onCompleted()
                 case .failure(let error as Error):
                     observer.onError(error)
                 }
@@ -63,6 +55,19 @@ public struct ApiHelper<T:Decodable> {
     
 }
 
-public enum ApiEndPoint: String{
-    case markets = "coins/markets"
+public enum ApiEndPoint{
+    case markets
+    case getAllCoin
+    case getCoinDetail(id: String)
+    
+    public var endpoint: String{
+        switch self {
+        case .markets:
+            return "coins/markets"
+        case .getCoinDetail(let id):
+            return  "coins/\(id)"
+        case .getAllCoin:
+            return "coins/list"
+        }
+    }
 }

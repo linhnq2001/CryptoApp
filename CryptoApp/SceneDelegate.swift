@@ -20,7 +20,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         let tabBarController = ESTabBarController()
-        let v1 = HomeViewController()
+        let v1 = HomeViewController(viewModel: HomeViewModel())
         let v2 = WatchListViewController()
         let v3 = PortfolioViewController()
         let v4 = SettingViewController()

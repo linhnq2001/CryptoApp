@@ -13,6 +13,11 @@
 		131EB55E2ADC7C0600BAD22D /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131EB55D2ADC7C0600BAD22D /* ApiHelper.swift */; };
 		133F2F2C2AD2B46700676947 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F2F2B2AD2B46700676947 /* UIButton+Extension.swift */; };
 		133F2F2E2AD2B48B00676947 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133F2F2D2AD2B48B00676947 /* UIViewController+Extension.swift */; };
+		13468F062ADD79B5006915F6 /* MarketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F052ADD79B5006915F6 /* MarketResponse.swift */; };
+		13468F082ADD7CED006915F6 /* ServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F072ADD7CED006915F6 /* ServiceUrl.swift */; };
+		13468F0B2ADD7EE2006915F6 /* MarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F0A2ADD7EE2006915F6 /* MarketRepository.swift */; };
+		13468F0F2ADDA062006915F6 /* CoinInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F0D2ADDA062006915F6 /* CoinInfoTableViewCell.swift */; };
+		13468F102ADDA062006915F6 /* CoinInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13468F0E2ADDA062006915F6 /* CoinInfoTableViewCell.xib */; };
 		13607BD02ACD6969008529D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BCF2ACD6969008529D2 /* AppDelegate.swift */; };
 		13607BD92ACD696A008529D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13607BD82ACD696A008529D2 /* Assets.xcassets */; };
 		13607BDC2ACD696A008529D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13607BDA2ACD696A008529D2 /* LaunchScreen.storyboard */; };
@@ -72,6 +77,11 @@
 		131EB55D2ADC7C0600BAD22D /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
 		133F2F2B2AD2B46700676947 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		133F2F2D2AD2B48B00676947 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		13468F052ADD79B5006915F6 /* MarketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketResponse.swift; sourceTree = "<group>"; };
+		13468F072ADD7CED006915F6 /* ServiceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrl.swift; sourceTree = "<group>"; };
+		13468F0A2ADD7EE2006915F6 /* MarketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketRepository.swift; sourceTree = "<group>"; };
+		13468F0D2ADDA062006915F6 /* CoinInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoTableViewCell.swift; sourceTree = "<group>"; };
+		13468F0E2ADDA062006915F6 /* CoinInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinInfoTableViewCell.xib; sourceTree = "<group>"; };
 		13607BCC2ACD6969008529D2 /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13607BCF2ACD6969008529D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13607BD82ACD696A008529D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -159,6 +169,7 @@
 		131EB55B2ADC7BDA00BAD22D /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				13468F092ADD7EC6006915F6 /* Repository */,
 				131EB55C2ADC7BE500BAD22D /* API */,
 				13B30F712AD08155004FDEE0 /* Firebase */,
 			);
@@ -169,8 +180,26 @@
 			isa = PBXGroup;
 			children = (
 				131EB55D2ADC7C0600BAD22D /* ApiHelper.swift */,
+				13468F072ADD7CED006915F6 /* ServiceUrl.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		13468F092ADD7EC6006915F6 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				13468F0A2ADD7EE2006915F6 /* MarketRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		13468F0C2ADDA03E006915F6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				13468F0D2ADDA062006915F6 /* CoinInfoTableViewCell.swift */,
+				13468F0E2ADDA062006915F6 /* CoinInfoTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		13607BC32ACD6969008529D2 = {
@@ -284,6 +313,7 @@
 			isa = PBXGroup;
 			children = (
 				139A39C92AD13FA000FE27EE /* User.swift */,
+				13468F052ADD79B5006915F6 /* MarketResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -299,6 +329,7 @@
 		139DA4302ADC5E4100908D25 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				13468F0C2ADDA03E006915F6 /* Cell */,
 				1397D0132AD5C46E006325BE /* HomeViewController.swift */,
 				1397D0142AD5C46E006325BE /* HomeViewController.xib */,
 			);
@@ -508,6 +539,7 @@
 				13FE0FE62ACD72E500D519CA /* RegisterViewController.xib in Resources */,
 				131EB5422ADC6BAE00BAD22D /* SearchViewController.xib in Resources */,
 				13FE0FFD2ACDCC3300D519CA /* InputTextField.xib in Resources */,
+				13468F102ADDA062006915F6 /* CoinInfoTableViewCell.xib in Resources */,
 				1397D01A2AD5C482006325BE /* WatchListViewController.xib in Resources */,
 				13607BDC2ACD696A008529D2 /* LaunchScreen.storyboard in Resources */,
 				13FE0FD02ACD6F6D00D519CA /* MainViewController.xib in Resources */,
@@ -647,16 +679,20 @@
 				1397D01D2AD5C5E8006325BE /* PortfolioViewController.swift in Sources */,
 				13FE0FDF2ACD72BA00D519CA /* LoginViewController.swift in Sources */,
 				139DA42F2ADC5E2A00908D25 /* HomeViewModel.swift in Sources */,
+				13468F0F2ADDA062006915F6 /* CoinInfoTableViewCell.swift in Sources */,
 				131EB55E2ADC7C0600BAD22D /* ApiHelper.swift in Sources */,
 				13FE0FE52ACD72E500D519CA /* RegisterViewController.swift in Sources */,
 				133F2F2E2AD2B48B00676947 /* UIViewController+Extension.swift in Sources */,
 				13FE0FF82ACD780100D519CA /* UIView+Extension.swift in Sources */,
 				13FE0FEA2ACD730100D519CA /* RegisterViewModel.swift in Sources */,
 				13FE0FE82ACD72F100D519CA /* LoginViewModel.swift in Sources */,
+				13468F062ADD79B5006915F6 /* MarketResponse.swift in Sources */,
 				13607BD02ACD6969008529D2 /* AppDelegate.swift in Sources */,
 				13FE0FCF2ACD6F6D00D519CA /* MainViewController.swift in Sources */,
 				13B30F752AD08710004FDEE0 /* FirestoreHelper.swift in Sources */,
 				1397D0192AD5C482006325BE /* WatchListViewController.swift in Sources */,
+				13468F0B2ADD7EE2006915F6 /* MarketRepository.swift in Sources */,
+				13468F082ADD7CED006915F6 /* ServiceUrl.swift in Sources */,
 				13FE0FFC2ACDCC3300D519CA /* InputTextField.swift in Sources */,
 				1397D0152AD5C46E006325BE /* HomeViewController.swift in Sources */,
 				131EB5412ADC6BAE00BAD22D /* SearchViewController.swift in Sources */,
