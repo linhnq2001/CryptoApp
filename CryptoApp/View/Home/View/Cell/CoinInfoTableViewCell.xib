@@ -31,7 +31,7 @@
                             <constraint firstAttribute="height" constant="30" id="FyM-Qo-pFs"/>
                         </constraints>
                     </imageView>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-CU-iP4">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="HBx-CU-iP4">
                         <rect key="frame" x="56.666666666666657" y="47" width="49" height="42.333333333333343"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="acs-Qx-L2B">
@@ -53,7 +53,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bitcoin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kwc-Oq-gkj">
-                                <rect key="frame" x="0.0" y="25.333333333333329" width="49" height="17"/>
+                                <rect key="frame" x="0.0" y="25.333333333333329" width="44.333333333333336" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" systemColor="scrollViewTexturedBackgroundColor"/>
                                 <nil key="highlightedColor"/>
@@ -61,7 +61,7 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="MxQ-ew-aXF">
-                        <rect key="frame" x="193.33333333333334" y="46.333333333333329" width="93.333333333333343" height="43.333333333333329"/>
+                        <rect key="frame" x="178.33333333333334" y="46.333333333333329" width="93.333333333333343" height="43.333333333333329"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$28 123.08" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oC0-sp-0MF">
                                 <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="20.333333333333332"/>
@@ -78,7 +78,7 @@
                         </subviews>
                     </stackView>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ZPA-m8-NdU">
-                        <rect key="frame" x="301.66666666666669" y="46.333333333333329" width="86.333333333333314" height="43.333333333333329"/>
+                        <rect key="frame" x="291.66666666666669" y="46.333333333333329" width="86.333333333333314" height="43.333333333333329"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$548.34 B" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywe-cE-C86">
                                 <rect key="frame" x="0.0" y="0.0" width="86.333333333333329" height="20.333333333333332"/>
@@ -113,9 +113,9 @@
                     <constraint firstItem="HBx-CU-iP4" firstAttribute="leading" secondItem="TZ6-io-WSe" secondAttribute="trailing" constant="5" id="eX5-ou-z5M"/>
                     <constraint firstItem="TZ6-io-WSe" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="jQQ-Mv-uZo"/>
                     <constraint firstItem="MxQ-ew-aXF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kQN-r1-QYC"/>
-                    <constraint firstItem="ZPA-m8-NdU" firstAttribute="leading" secondItem="MxQ-ew-aXF" secondAttribute="trailing" constant="15" id="leH-27-dsM"/>
+                    <constraint firstItem="ZPA-m8-NdU" firstAttribute="leading" secondItem="MxQ-ew-aXF" secondAttribute="trailing" constant="20" id="leH-27-dsM"/>
                     <constraint firstItem="TZ6-io-WSe" firstAttribute="leading" secondItem="gb4-z7-gsX" secondAttribute="trailing" constant="5" id="tk3-B4-Phd"/>
-                    <constraint firstAttribute="trailing" secondItem="ZPA-m8-NdU" secondAttribute="trailing" constant="10" id="xOW-lE-piP"/>
+                    <constraint firstAttribute="trailing" secondItem="ZPA-m8-NdU" secondAttribute="trailing" constant="20" id="xOW-lE-piP"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

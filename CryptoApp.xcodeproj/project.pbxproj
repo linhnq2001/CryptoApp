@@ -36,6 +36,8 @@
 		1397D0222AD5C5F6006325BE /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1397D0202AD5C5F6006325BE /* SettingViewController.xib */; };
 		139A39CA2AD13FA000FE27EE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A39C92AD13FA000FE27EE /* User.swift */; };
 		139DA42F2ADC5E2A00908D25 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DA42E2ADC5E2A00908D25 /* HomeViewModel.swift */; };
+		13B2E1E02ADEFF1D007ED6CD /* CoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B2E1DE2ADEFF1D007ED6CD /* CoinDetailViewController.swift */; };
+		13B2E1E12ADEFF1D007ED6CD /* CoinDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B2E1DF2ADEFF1D007ED6CD /* CoinDetailViewController.xib */; };
 		13B30F732AD0816F004FDEE0 /* FirebaseAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B30F722AD0816F004FDEE0 /* FirebaseAuthHelper.swift */; };
 		13B30F752AD08710004FDEE0 /* FirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B30F742AD08710004FDEE0 /* FirestoreHelper.swift */; };
 		13FE0FCF2ACD6F6D00D519CA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13FE0FCD2ACD6F6D00D519CA /* MainViewController.swift */; };
@@ -104,6 +106,8 @@
 		1397D0202AD5C5F6006325BE /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		139A39C92AD13FA000FE27EE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		139DA42E2ADC5E2A00908D25 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		13B2E1DE2ADEFF1D007ED6CD /* CoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailViewController.swift; sourceTree = "<group>"; };
+		13B2E1DF2ADEFF1D007ED6CD /* CoinDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinDetailViewController.xib; sourceTree = "<group>"; };
 		13B30F722AD0816F004FDEE0 /* FirebaseAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthHelper.swift; sourceTree = "<group>"; };
 		13B30F742AD08710004FDEE0 /* FirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHelper.swift; sourceTree = "<group>"; };
 		13FE0FCD2ACD6F6D00D519CA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -160,8 +164,7 @@
 		131EB53E2ADC6B9D00BAD22D /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				131EB53F2ADC6BAE00BAD22D /* SearchViewController.swift */,
-				131EB5402ADC6BAE00BAD22D /* SearchViewController.xib */,
+				13B2E1DA2ADEFED3007ED6CD /* View */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -228,10 +231,9 @@
 			isa = PBXGroup;
 			children = (
 				131EB55B2ADC7BDA00BAD22D /* Service */,
-				1397D00E2AD5C342006325BE /* TabBarView */,
+				1397D00E2AD5C342006325BE /* View */,
 				139A39C82AD13F9500FE27EE /* Model */,
 				13FE0FF62ACD77E600D519CA /* Util */,
-				13FE0FD32ACD724C00D519CA /* AuthView */,
 				13FE0FD12ACD705A00D519CA /* SceneDelegate.swift */,
 				13607BCF2ACD6969008529D2 /* AppDelegate.swift */,
 				13607BD82ACD696A008529D2 /* Assets.xcassets */,
@@ -261,16 +263,18 @@
 			path = CryptoAppUITests;
 			sourceTree = "<group>";
 		};
-		1397D00E2AD5C342006325BE /* TabBarView */ = {
+		1397D00E2AD5C342006325BE /* View */ = {
 			isa = PBXGroup;
 			children = (
+				13B2E1DC2ADEFEF9007ED6CD /* CoinDetail */,
+				13FE0FD32ACD724C00D519CA /* Auth */,
 				131EB53E2ADC6B9D00BAD22D /* Search */,
 				1397D0122AD5C370006325BE /* Setting */,
 				1397D0112AD5C362006325BE /* Portfolio */,
 				1397D0102AD5C358006325BE /* WatchList */,
 				1397D00F2AD5C350006325BE /* Home */,
 			);
-			path = TabBarView;
+			path = View;
 			sourceTree = "<group>";
 		};
 		1397D00F2AD5C350006325BE /* Home */ = {
@@ -303,8 +307,7 @@
 		1397D0122AD5C370006325BE /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				1397D01F2AD5C5F6006325BE /* SettingViewController.swift */,
-				1397D0202AD5C5F6006325BE /* SettingViewController.xib */,
+				13B2E1DB2ADEFEE9007ED6CD /* View */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -336,6 +339,41 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		13B2E1DA2ADEFED3007ED6CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				131EB53F2ADC6BAE00BAD22D /* SearchViewController.swift */,
+				131EB5402ADC6BAE00BAD22D /* SearchViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		13B2E1DB2ADEFEE9007ED6CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1397D01F2AD5C5F6006325BE /* SettingViewController.swift */,
+				1397D0202AD5C5F6006325BE /* SettingViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		13B2E1DC2ADEFEF9007ED6CD /* CoinDetail */ = {
+			isa = PBXGroup;
+			children = (
+				13B2E1DD2ADEFF01007ED6CD /* View */,
+			);
+			path = CoinDetail;
+			sourceTree = "<group>";
+		};
+		13B2E1DD2ADEFF01007ED6CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				13B2E1DE2ADEFF1D007ED6CD /* CoinDetailViewController.swift */,
+				13B2E1DF2ADEFF1D007ED6CD /* CoinDetailViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		13B30F712AD08155004FDEE0 /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
@@ -345,14 +383,14 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
-		13FE0FD32ACD724C00D519CA /* AuthView */ = {
+		13FE0FD32ACD724C00D519CA /* Auth */ = {
 			isa = PBXGroup;
 			children = (
 				13FE0FDC2ACD72AA00D519CA /* View */,
 				13FE0FDB2ACD72A300D519CA /* ViewModel */,
 				13FE0FDA2ACD729D00D519CA /* Model */,
 			);
-			path = AuthView;
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		13FE0FDA2ACD729D00D519CA /* Model */ = {
@@ -545,6 +583,7 @@
 				13FE0FD02ACD6F6D00D519CA /* MainViewController.xib in Resources */,
 				13607BD92ACD696A008529D2 /* Assets.xcassets in Resources */,
 				1397D0222AD5C5F6006325BE /* SettingViewController.xib in Resources */,
+				13B2E1E12ADEFF1D007ED6CD /* CoinDetailViewController.xib in Resources */,
 				137C04E92ACF3D4E009E0317 /* GoogleService-Info.plist in Resources */,
 				1397D0162AD5C46E006325BE /* HomeViewController.xib in Resources */,
 				1397D01E2AD5C5E8006325BE /* PortfolioViewController.xib in Resources */,
@@ -697,6 +736,7 @@
 				1397D0152AD5C46E006325BE /* HomeViewController.swift in Sources */,
 				131EB5412ADC6BAE00BAD22D /* SearchViewController.swift in Sources */,
 				137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */,
+				13B2E1E02ADEFF1D007ED6CD /* CoinDetailViewController.swift in Sources */,
 				13B30F732AD0816F004FDEE0 /* FirebaseAuthHelper.swift in Sources */,
 				1397D0212AD5C5F6006325BE /* SettingViewController.swift in Sources */,
 				13FE0FD22ACD705A00D519CA /* SceneDelegate.swift in Sources */,

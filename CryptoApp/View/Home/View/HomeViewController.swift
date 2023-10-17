@@ -39,10 +39,15 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindingData()
-        tableview.register(UINib(nibName: "CoinInfoTableViewCell", bundle: .main), forCellReuseIdentifier: "CoinInfoTableViewCell")
+        setupTableView()
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    private func setupTableView(){
+        tableview.register(UINib(nibName: "CoinInfoTableViewCell", bundle: .main), forCellReuseIdentifier: "CoinInfoTableViewCell")
+        tableview.rowHeight = 60
     }
     
     private func bindingData() {
