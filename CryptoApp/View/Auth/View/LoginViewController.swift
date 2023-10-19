@@ -99,4 +99,9 @@ class LoginViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    @IBAction func didTapBack(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }

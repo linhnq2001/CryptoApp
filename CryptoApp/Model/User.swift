@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum LoginType: String {
+enum LoginType: String, Codable{
     case email = "email"
     case google = "google"
     case anonymous = "anonymous"
 }
 
-class User: NSObject {
+class User: NSObject, Codable {
     var id: String
     var username: String
     var email: String?

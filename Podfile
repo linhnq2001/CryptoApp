@@ -16,6 +16,7 @@ target 'CryptoApp' do
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'Kingfisher'
+  pod 'FirebaseFirestoreSwift'
   
 
   target 'CryptoAppTests' do

@@ -18,6 +18,8 @@
 		13468F0B2ADD7EE2006915F6 /* MarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F0A2ADD7EE2006915F6 /* MarketRepository.swift */; };
 		13468F0F2ADDA062006915F6 /* CoinInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F0D2ADDA062006915F6 /* CoinInfoTableViewCell.swift */; };
 		13468F102ADDA062006915F6 /* CoinInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13468F0E2ADDA062006915F6 /* CoinInfoTableViewCell.xib */; };
+		135E25092AE19E19000BD183 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E25072AE19E19000BD183 /* HeaderTableViewCell.swift */; };
+		135E250A2AE19E19000BD183 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 135E25082AE19E19000BD183 /* HeaderTableViewCell.xib */; };
 		13607BD02ACD6969008529D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BCF2ACD6969008529D2 /* AppDelegate.swift */; };
 		13607BD92ACD696A008529D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13607BD82ACD696A008529D2 /* Assets.xcassets */; };
 		13607BDC2ACD696A008529D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13607BDA2ACD696A008529D2 /* LaunchScreen.storyboard */; };
@@ -36,6 +38,9 @@
 		1397D0222AD5C5F6006325BE /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1397D0202AD5C5F6006325BE /* SettingViewController.xib */; };
 		139A39CA2AD13FA000FE27EE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139A39C92AD13FA000FE27EE /* User.swift */; };
 		139DA42F2ADC5E2A00908D25 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139DA42E2ADC5E2A00908D25 /* HomeViewModel.swift */; };
+		13A4D53E2ADFDE930087561C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A4D53C2ADFDE930087561C /* EditProfileViewController.swift */; };
+		13A4D53F2ADFDE930087561C /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A4D53D2ADFDE930087561C /* EditProfileViewController.xib */; };
+		13A4D5422AE050F90087561C /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A4D5412AE050F90087561C /* SettingViewModel.swift */; };
 		13B2E1E02ADEFF1D007ED6CD /* CoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B2E1DE2ADEFF1D007ED6CD /* CoinDetailViewController.swift */; };
 		13B2E1E12ADEFF1D007ED6CD /* CoinDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B2E1DF2ADEFF1D007ED6CD /* CoinDetailViewController.xib */; };
 		13B30F732AD0816F004FDEE0 /* FirebaseAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B30F722AD0816F004FDEE0 /* FirebaseAuthHelper.swift */; };
@@ -84,6 +89,8 @@
 		13468F0A2ADD7EE2006915F6 /* MarketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketRepository.swift; sourceTree = "<group>"; };
 		13468F0D2ADDA062006915F6 /* CoinInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoTableViewCell.swift; sourceTree = "<group>"; };
 		13468F0E2ADDA062006915F6 /* CoinInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinInfoTableViewCell.xib; sourceTree = "<group>"; };
+		135E25072AE19E19000BD183 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		135E25082AE19E19000BD183 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		13607BCC2ACD6969008529D2 /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13607BCF2ACD6969008529D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13607BD82ACD696A008529D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -106,6 +113,9 @@
 		1397D0202AD5C5F6006325BE /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		139A39C92AD13FA000FE27EE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		139DA42E2ADC5E2A00908D25 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		13A4D53C2ADFDE930087561C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		13A4D53D2ADFDE930087561C /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
+		13A4D5412AE050F90087561C /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
 		13B2E1DE2ADEFF1D007ED6CD /* CoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailViewController.swift; sourceTree = "<group>"; };
 		13B2E1DF2ADEFF1D007ED6CD /* CoinDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinDetailViewController.xib; sourceTree = "<group>"; };
 		13B30F722AD0816F004FDEE0 /* FirebaseAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthHelper.swift; sourceTree = "<group>"; };
@@ -199,10 +209,28 @@
 		13468F0C2ADDA03E006915F6 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				135E25062AE19DF3000BD183 /* Header */,
+				135E25052AE19DE6000BD183 /* CoinInfo */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		135E25052AE19DE6000BD183 /* CoinInfo */ = {
+			isa = PBXGroup;
+			children = (
 				13468F0D2ADDA062006915F6 /* CoinInfoTableViewCell.swift */,
 				13468F0E2ADDA062006915F6 /* CoinInfoTableViewCell.xib */,
 			);
-			path = Cell;
+			path = CoinInfo;
+			sourceTree = "<group>";
+		};
+		135E25062AE19DF3000BD183 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				135E25072AE19E19000BD183 /* HeaderTableViewCell.swift */,
+				135E25082AE19E19000BD183 /* HeaderTableViewCell.xib */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		13607BC32ACD6969008529D2 = {
@@ -307,6 +335,7 @@
 		1397D0122AD5C370006325BE /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				13A4D5402AE050E70087561C /* ViewModel */,
 				13B2E1DB2ADEFEE9007ED6CD /* View */,
 			);
 			path = Setting;
@@ -339,6 +368,23 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		13A4D53B2ADFDE790087561C /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				13A4D53C2ADFDE930087561C /* EditProfileViewController.swift */,
+				13A4D53D2ADFDE930087561C /* EditProfileViewController.xib */,
+			);
+			path = EditProfile;
+			sourceTree = "<group>";
+		};
+		13A4D5402AE050E70087561C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				13A4D5412AE050F90087561C /* SettingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		13B2E1DA2ADEFED3007ED6CD /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,6 +397,7 @@
 		13B2E1DB2ADEFEE9007ED6CD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				13A4D53B2ADFDE790087561C /* EditProfile */,
 				1397D01F2AD5C5F6006325BE /* SettingViewController.swift */,
 				1397D0202AD5C5F6006325BE /* SettingViewController.xib */,
 			);
@@ -575,7 +622,9 @@
 			files = (
 				13FE0FE02ACD72BA00D519CA /* LoginViewController.xib in Resources */,
 				13FE0FE62ACD72E500D519CA /* RegisterViewController.xib in Resources */,
+				13A4D53F2ADFDE930087561C /* EditProfileViewController.xib in Resources */,
 				131EB5422ADC6BAE00BAD22D /* SearchViewController.xib in Resources */,
+				135E250A2AE19E19000BD183 /* HeaderTableViewCell.xib in Resources */,
 				13FE0FFD2ACDCC3300D519CA /* InputTextField.xib in Resources */,
 				13468F102ADDA062006915F6 /* CoinInfoTableViewCell.xib in Resources */,
 				1397D01A2AD5C482006325BE /* WatchListViewController.xib in Resources */,
@@ -726,14 +775,17 @@
 				13FE0FEA2ACD730100D519CA /* RegisterViewModel.swift in Sources */,
 				13FE0FE82ACD72F100D519CA /* LoginViewModel.swift in Sources */,
 				13468F062ADD79B5006915F6 /* MarketResponse.swift in Sources */,
+				13A4D5422AE050F90087561C /* SettingViewModel.swift in Sources */,
 				13607BD02ACD6969008529D2 /* AppDelegate.swift in Sources */,
 				13FE0FCF2ACD6F6D00D519CA /* MainViewController.swift in Sources */,
 				13B30F752AD08710004FDEE0 /* FirestoreHelper.swift in Sources */,
+				135E25092AE19E19000BD183 /* HeaderTableViewCell.swift in Sources */,
 				1397D0192AD5C482006325BE /* WatchListViewController.swift in Sources */,
 				13468F0B2ADD7EE2006915F6 /* MarketRepository.swift in Sources */,
 				13468F082ADD7CED006915F6 /* ServiceUrl.swift in Sources */,
 				13FE0FFC2ACDCC3300D519CA /* InputTextField.swift in Sources */,
 				1397D0152AD5C46E006325BE /* HomeViewController.swift in Sources */,
+				13A4D53E2ADFDE930087561C /* EditProfileViewController.swift in Sources */,
 				131EB5412ADC6BAE00BAD22D /* SearchViewController.swift in Sources */,
 				137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */,
 				13B2E1E02ADEFF1D007ED6CD /* CoinDetailViewController.swift in Sources */,
