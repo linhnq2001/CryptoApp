@@ -18,9 +18,10 @@ class User: NSObject, Codable {
     var username: String
     var email: String?
     private var password: String?
+    var avt: String?
     var loginType: LoginType
     
-    init(id: String, username: String, email: String?, password: String?, loginType: LoginType) {
+    init(id: String, username: String, email: String?, password: String?, avt: String? = nil, loginType: LoginType) {
         self.id = id
         self.username = username
         self.email = email
@@ -29,7 +30,12 @@ class User: NSObject, Codable {
     }
     
     func convertToDictionary() -> [String: String] {
-        return ["id":id,"username":username,"email":email ?? "","password":password ?? "", "loginType": loginType.rawValue]
+        return ["id":id,
+                "username":username,
+                "email":email ?? "",
+                "password":password ?? "",
+                "avt": avt ?? "",
+                "loginType": loginType.rawValue]
     }
 
 }

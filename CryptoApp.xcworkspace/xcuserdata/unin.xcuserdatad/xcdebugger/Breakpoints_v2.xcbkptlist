@@ -7,49 +7,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4F265033-706B-45C4-A586-21F6511C3A77"
+            uuid = "B7691D7C-BBAD-4A92-A81F-DD63FB93A694"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CryptoApp/Service/API/ApiHelper.swift"
+            filePath = "CryptoApp/View/Setting/View/SettingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "get(baseOtherUrl:url:otherHeaders:params:)"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "handleUserData(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D4260C06-2F9E-4288-A811-6A89B78B81D9"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CryptoApp/Service/API/ApiHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "get(baseOtherUrl:url:otherHeaders:params:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C4CA5128-C2F5-4C00-8A6A-6CCBA01E933E"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CryptoApp/Service/API/ApiHelper.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "get(baseOtherUrl:url:otherHeaders:params:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B7691D7C-BBAD-4A92-A81F-DD63FB93A694 - 8f61d816f4ffcaa1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;CryptoApp.User&gt;) -&gt; () in CryptoApp.SettingViewController.handleUserData(CryptoApp.SettingViewModel.Output) -&gt; ()"
+                  moduleName = "CryptoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/View/Setting/View/SettingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "440">
+               </Location>
+               <Location
+                  uuid = "B7691D7C-BBAD-4A92-A81F-DD63FB93A694 - 8f61d816f4ffcaa1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Bool, Swift.Optional&lt;CryptoApp.User&gt;) -&gt; () in CryptoApp.SettingViewController.handleUserData(CryptoApp.SettingViewModel.Output) -&gt; ()"
+                  moduleName = "CryptoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/View/Setting/View/SettingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "268">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

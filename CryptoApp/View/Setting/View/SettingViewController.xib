@@ -11,11 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController" customModule="CryptoApp" customModuleProvider="target">
             <connections>
+                <outlet property="emailLb" destination="mYG-i0-s0V" id="s7e-ca-VaR"/>
                 <outlet property="languageView" destination="GsW-zO-hfe" id="L4f-my-AB9"/>
                 <outlet property="policyView" destination="K2O-LI-1SD" id="A4N-fG-Cnk"/>
+                <outlet property="signInView" destination="BWe-Zl-gmS" id="HUj-XW-U5T"/>
                 <outlet property="signOutView" destination="Va9-tH-0X0" id="I7P-SC-hnq"/>
                 <outlet property="startScreenView" destination="qdf-BH-Gm7" id="eQP-g6-UQq"/>
                 <outlet property="themeView" destination="Gda-mH-9Qt" id="mO5-ce-hji"/>
+                <outlet property="userAvt" destination="SET-op-DMp" id="Rrd-hW-sEb"/>
+                <outlet property="userView" destination="Yg7-nx-rGR" id="eoK-sf-F0i"/>
+                <outlet property="usernameLb" destination="DZI-oO-jAf" id="BJc-DR-yFb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

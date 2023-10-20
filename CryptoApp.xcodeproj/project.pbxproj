@@ -18,14 +18,14 @@
 		13468F0B2ADD7EE2006915F6 /* MarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F0A2ADD7EE2006915F6 /* MarketRepository.swift */; };
 		13468F0F2ADDA062006915F6 /* CoinInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F0D2ADDA062006915F6 /* CoinInfoTableViewCell.swift */; };
 		13468F102ADDA062006915F6 /* CoinInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13468F0E2ADDA062006915F6 /* CoinInfoTableViewCell.xib */; };
-		135E25092AE19E19000BD183 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135E25072AE19E19000BD183 /* HeaderTableViewCell.swift */; };
-		135E250A2AE19E19000BD183 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 135E25082AE19E19000BD183 /* HeaderTableViewCell.xib */; };
 		13607BD02ACD6969008529D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BCF2ACD6969008529D2 /* AppDelegate.swift */; };
 		13607BD92ACD696A008529D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13607BD82ACD696A008529D2 /* Assets.xcassets */; };
 		13607BDC2ACD696A008529D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13607BDA2ACD696A008529D2 /* LaunchScreen.storyboard */; };
 		13607BE72ACD696A008529D2 /* CryptoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BE62ACD696A008529D2 /* CryptoAppTests.swift */; };
 		13607BF12ACD696A008529D2 /* CryptoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BF02ACD696A008529D2 /* CryptoAppUITests.swift */; };
 		13607BF32ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */; };
+		137078282AE2860600438377 /* HeaderMarketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137078272AE2860600438377 /* HeaderMarketView.xib */; };
+		1370782A2AE2864400438377 /* HeaderMarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137078292AE2864400438377 /* HeaderMarketView.swift */; };
 		137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C04E62ACEBC4D009E0317 /* Validation.swift */; };
 		137C04E92ACF3D4E009E0317 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 137C04E82ACF3D4E009E0317 /* GoogleService-Info.plist */; };
 		1397D0152AD5C46E006325BE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1397D0132AD5C46E006325BE /* HomeViewController.swift */; };
@@ -89,8 +89,6 @@
 		13468F0A2ADD7EE2006915F6 /* MarketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketRepository.swift; sourceTree = "<group>"; };
 		13468F0D2ADDA062006915F6 /* CoinInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinInfoTableViewCell.swift; sourceTree = "<group>"; };
 		13468F0E2ADDA062006915F6 /* CoinInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinInfoTableViewCell.xib; sourceTree = "<group>"; };
-		135E25072AE19E19000BD183 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
-		135E25082AE19E19000BD183 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		13607BCC2ACD6969008529D2 /* CryptoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13607BCF2ACD6969008529D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13607BD82ACD696A008529D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -101,6 +99,8 @@
 		13607BEC2ACD696A008529D2 /* CryptoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13607BF02ACD696A008529D2 /* CryptoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAppUITests.swift; sourceTree = "<group>"; };
 		13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		137078272AE2860600438377 /* HeaderMarketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderMarketView.xib; sourceTree = "<group>"; };
+		137078292AE2864400438377 /* HeaderMarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMarketView.swift; sourceTree = "<group>"; };
 		137C04E62ACEBC4D009E0317 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
 		137C04E82ACF3D4E009E0317 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1397D0132AD5C46E006325BE /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -209,7 +209,6 @@
 		13468F0C2ADDA03E006915F6 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				135E25062AE19DF3000BD183 /* Header */,
 				135E25052AE19DE6000BD183 /* CoinInfo */,
 			);
 			path = Cell;
@@ -222,15 +221,6 @@
 				13468F0E2ADDA062006915F6 /* CoinInfoTableViewCell.xib */,
 			);
 			path = CoinInfo;
-			sourceTree = "<group>";
-		};
-		135E25062AE19DF3000BD183 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				135E25072AE19E19000BD183 /* HeaderTableViewCell.swift */,
-				135E25082AE19E19000BD183 /* HeaderTableViewCell.xib */,
-			);
-			path = Header;
 			sourceTree = "<group>";
 		};
 		13607BC32ACD6969008529D2 = {
@@ -289,6 +279,15 @@
 				13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */,
 			);
 			path = CryptoAppUITests;
+			sourceTree = "<group>";
+		};
+		1370782B2AE289A000438377 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				137078272AE2860600438377 /* HeaderMarketView.xib */,
+				137078292AE2864400438377 /* HeaderMarketView.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		1397D00E2AD5C342006325BE /* View */ = {
@@ -361,6 +360,7 @@
 		139DA4302ADC5E4100908D25 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1370782B2AE289A000438377 /* Header */,
 				13468F0C2ADDA03E006915F6 /* Cell */,
 				1397D0132AD5C46E006325BE /* HomeViewController.swift */,
 				1397D0142AD5C46E006325BE /* HomeViewController.xib */,
@@ -624,7 +624,6 @@
 				13FE0FE62ACD72E500D519CA /* RegisterViewController.xib in Resources */,
 				13A4D53F2ADFDE930087561C /* EditProfileViewController.xib in Resources */,
 				131EB5422ADC6BAE00BAD22D /* SearchViewController.xib in Resources */,
-				135E250A2AE19E19000BD183 /* HeaderTableViewCell.xib in Resources */,
 				13FE0FFD2ACDCC3300D519CA /* InputTextField.xib in Resources */,
 				13468F102ADDA062006915F6 /* CoinInfoTableViewCell.xib in Resources */,
 				1397D01A2AD5C482006325BE /* WatchListViewController.xib in Resources */,
@@ -636,6 +635,7 @@
 				137C04E92ACF3D4E009E0317 /* GoogleService-Info.plist in Resources */,
 				1397D0162AD5C46E006325BE /* HomeViewController.xib in Resources */,
 				1397D01E2AD5C5E8006325BE /* PortfolioViewController.xib in Resources */,
+				137078282AE2860600438377 /* HeaderMarketView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,10 +776,10 @@
 				13FE0FE82ACD72F100D519CA /* LoginViewModel.swift in Sources */,
 				13468F062ADD79B5006915F6 /* MarketResponse.swift in Sources */,
 				13A4D5422AE050F90087561C /* SettingViewModel.swift in Sources */,
+				1370782A2AE2864400438377 /* HeaderMarketView.swift in Sources */,
 				13607BD02ACD6969008529D2 /* AppDelegate.swift in Sources */,
 				13FE0FCF2ACD6F6D00D519CA /* MainViewController.swift in Sources */,
 				13B30F752AD08710004FDEE0 /* FirestoreHelper.swift in Sources */,
-				135E25092AE19E19000BD183 /* HeaderTableViewCell.swift in Sources */,
 				1397D0192AD5C482006325BE /* WatchListViewController.swift in Sources */,
 				13468F0B2ADD7EE2006915F6 /* MarketRepository.swift in Sources */,
 				13468F082ADD7CED006915F6 /* ServiceUrl.swift in Sources */,

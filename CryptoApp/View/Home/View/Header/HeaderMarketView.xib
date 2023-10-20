@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HeaderMarketView" customModule="CryptoApp" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="aXp-55-aA8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="582" height="187"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hp3-l4-EYS">
+                    <rect key="frame" x="10" y="85" width="9" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.6549019814" green="0.67058825489999996" blue="0.69803923369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Asset" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K8b-cc-xpi">
+                    <rect key="frame" x="24.000000000000004" y="85" width="36.333333333333343" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.6549019814" green="0.67058825489999996" blue="0.69803923369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price/Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOq-Kk-8uW">
+                    <rect key="frame" x="379.66666666666669" y="85" width="86.666666666666686" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.72549019609999998" green="0.74117647060000003" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M.Cap/Vol" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acc-Nm-ILN">
+                    <rect key="frame" x="506.33333333333331" y="85" width="65.666666666666686" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.72549019609999998" green="0.74117647060000003" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="adobeRGB1998"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vOq-Kk-8uW" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="6kX-Np-XFG"/>
+                <constraint firstItem="Hp3-l4-EYS" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="GOW-Rk-omw"/>
+                <constraint firstAttribute="trailing" secondItem="acc-Nm-ILN" secondAttribute="trailing" constant="10" id="Gxk-ft-uNJ"/>
+                <constraint firstItem="K8b-cc-xpi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Qtu-DU-b8R"/>
+                <constraint firstItem="acc-Nm-ILN" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Sny-2C-bHn"/>
+                <constraint firstItem="acc-Nm-ILN" firstAttribute="leading" secondItem="vOq-Kk-8uW" secondAttribute="trailing" constant="40" id="iCg-cM-nHw"/>
+                <constraint firstItem="K8b-cc-xpi" firstAttribute="leading" secondItem="Hp3-l4-EYS" secondAttribute="trailing" constant="5" id="w8K-CM-IrT"/>
+                <constraint firstItem="Hp3-l4-EYS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="xWK-et-IQn"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="119.08396946564885" y="-214.43661971830986"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

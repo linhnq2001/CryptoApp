@@ -11,7 +11,6 @@ import RxSwift
 
 class HomeViewController: UIViewController {
     
-    
     @IBOutlet weak var searchView: UIView!
     @IBOutlet weak var tableview: UITableView!
     
@@ -40,21 +39,28 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         bindingData()
         setupTableView()
-        
-
-        // Do any additional setup after loading the view.
+        let searchTapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapSearch))
+        searchView.addGestureRecognizer(searchTapGesture)
+    }
+    
+    @objc private func didTapSearch(){
+        let vc = SearchViewController()
+        self.navigationController?.pushViewController(vc, animated: false)
     }
     
     private func setupTableView(){
+        tableview.rx.setDelegate(self).disposed(by: disposeBag)
         tableview.register(UINib(nibName: "CoinInfoTableViewCell", bundle: .main), forCellReuseIdentifier: "CoinInfoTableViewCell")
         tableview.rowHeight = 60
+        tableview.rx.modelSelected(CoinInMarketResponse.self).subscribe(onNext: {model in
+            
+        }).disposed(by: disposeBag)
     }
     
     private func bindingData() {
         let input = HomeViewModel.Input(trigger: trigger)
         
         let output = viewModel.transform(input)
-        
         handleLoading(output)
         handleBindingTableView(output)
         trigger.onNext(())
@@ -73,4 +79,15 @@ class HomeViewController: UIViewController {
         }).disposed(by: disposeBag)
     }
 
+}
+
+extension HomeViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = HeaderMarketView()
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
 }

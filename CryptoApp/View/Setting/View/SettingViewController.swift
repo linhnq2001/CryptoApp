@@ -7,8 +7,17 @@
 
 import UIKit
 import RxSwift
+import Kingfisher
 
 class SettingViewController: UIViewController {
+    
+    @IBOutlet weak var signInView: UIView!
+    
+    @IBOutlet weak var userView: UIView!
+    
+    @IBOutlet weak var userAvt: UIImageView!
+    @IBOutlet weak var usernameLb: UILabel!
+    @IBOutlet weak var emailLb: UILabel!
     
     @IBOutlet weak var startScreenView: UIView!
     @IBOutlet weak var themeView: UIView!
@@ -16,6 +25,7 @@ class SettingViewController: UIViewController {
     @IBOutlet weak var policyView: UIView!
     @IBOutlet weak var signOutView: UIView!
     
+    private let trigger = PublishSubject<Void>()
     private let disposeBag = DisposeBag()
     private(set) var viewModel: SettingViewModel!
     
@@ -30,7 +40,33 @@ class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        bindingData()
+    }
+    
+    private func bindingData() {
+        let input = SettingViewModel.Input(trigger: trigger)
         
+        let output = viewModel.transform(input)
+        handleShowLoading(output)
+        handleUserData(output)
+        trigger.onNext(())
+    }
+    
+    private func handleShowLoading(_ output: SettingViewModel.Output){
+        output.showLoading.subscribe(onNext: {isLoading in
+            
+        }).disposed(by: disposeBag)
+    }
+    
+    private func handleUserData(_ output: SettingViewModel.Output){
+        output.isLogin.subscribe(onNext: {[weak self] (isLogin, user) in
+            guard let self = self else { return }
+            self.signInView.isHidden = isLogin
+            self.userView.isHidden = !isLogin
+            self.usernameLb.text = user?.username
+            self.emailLb.text = user?.email
+            self.userAvt.image = UIImage(named: "ic_user")
+        }).disposed(by: disposeBag)
     }
 
     @IBAction func didtapLoginWithEmail(_ sender: Any) {

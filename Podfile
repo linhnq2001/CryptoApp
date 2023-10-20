@@ -17,7 +17,7 @@ target 'CryptoApp' do
   pod 'FirebaseFirestore'
   pod 'Kingfisher'
   pod 'FirebaseFirestoreSwift'
-  
+  pod 'SkeletonView'
 
   target 'CryptoAppTests' do
     inherit! :search_paths
