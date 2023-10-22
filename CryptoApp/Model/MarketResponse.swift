@@ -8,7 +8,8 @@
 import Foundation
 
 public class CoinInMarketResponse: Codable {
-    var id, symbol, name: String?
+    var id: String
+    var symbol, name: String?
     var image: String?
     var currentPrice: Double?
     var marketCap, marketCapRank: Int?
@@ -63,7 +64,7 @@ public class CoinInMarketResponse: Codable {
         case priceChangePercentage1YInCurrency = "price_change_percentage_1y_in_currency"
     }
 
-    init(id: String?, symbol: String?, name: String?, image: String?, currentPrice: Double?, marketCap: Int?, marketCapRank: Int?, fullyDilutedValuation: Int?, totalVolume: Double?, high24H: Double?, low24H: Double?, priceChange24H: Double?, priceChangePercentage24H: Double?, marketCapChange24H: Double?, marketCapChangePercentage24H: Double?, circulatingSupply: Double?, totalSupply: Double?, maxSupply: Double?, ath: Double?, athChangePercentage: Double?, athDate: String?, atl: Double?, atlChangePercentage: Double?, atlDate: String?, roi: Roi?, lastUpdated: String?, priceChangePercentage24HInCurrency: Double?, priceChangePercentage1HInCurrency: Double?, priceChangePercentage7DInCurrency: Double?, priceChangePercentage14DInCurrency: Double?, priceChangePercentage30DInCurrency: Double?, priceChangePercentage200DInCurrency: Double?, priceChangePercentage1YInCurrency: Double?) {
+    init(id: String, symbol: String?, name: String?, image: String?, currentPrice: Double?, marketCap: Int?, marketCapRank: Int?, fullyDilutedValuation: Int?, totalVolume: Double?, high24H: Double?, low24H: Double?, priceChange24H: Double?, priceChangePercentage24H: Double?, marketCapChange24H: Double?, marketCapChangePercentage24H: Double?, circulatingSupply: Double?, totalSupply: Double?, maxSupply: Double?, ath: Double?, athChangePercentage: Double?, athDate: String?, atl: Double?, atlChangePercentage: Double?, atlDate: String?, roi: Roi?, lastUpdated: String?, priceChangePercentage24HInCurrency: Double?, priceChangePercentage1HInCurrency: Double?, priceChangePercentage7DInCurrency: Double?, priceChangePercentage14DInCurrency: Double?, priceChangePercentage30DInCurrency: Double?, priceChangePercentage200DInCurrency: Double?, priceChangePercentage1YInCurrency: Double?) {
         self.id = id
         self.symbol = symbol
         self.name = name

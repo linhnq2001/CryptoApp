@@ -16,22 +16,34 @@ final public class HomeViewModel: NSObject {
     
     public struct Input {
         let trigger: PublishSubject<Void>
+        let tapToWatchList: PublishRelay<CoinInMarketResponse>
     }
     
     public struct Output {
         let marketResponse: PublishSubject<[CoinInMarketResponse]>
+        let didTapToWatchList: PublishRelay<(Bool,String)>
         let showLoading: PublishRelay<Bool>
     }
     
     public func transform(_ input: HomeViewModel.Input) -> HomeViewModel.Output {
         let marketResponse = PublishSubject<[CoinInMarketResponse]>()
         let showLoading = PublishRelay<Bool>()
+        let didTapToWatch = PublishRelay<(Bool,String)>()
         
-        let output = Output(marketResponse: marketResponse, showLoading: showLoading)
+        let output = Output(marketResponse: marketResponse, didTapToWatchList: didTapToWatch, showLoading: showLoading)
         
         handleTrigger(input,output)
+        handleWatchListAction(input,output)
         
         return output
+    }
+    
+    private func handleWatchListAction(_ input: HomeViewModel.Input, _ output: HomeViewModel.Output) {
+        input.tapToWatchList.flatMap { coin -> Observable<(Bool,String)> in
+            return FirestoreHelper.shared.addOrRemoveWatchList(coin)
+        }.subscribe { (isSuccess, context) in
+            output.didTapToWatchList.accept((isSuccess , context))
+        }.disposed(by: disposeBag)
     }
     
     private func handleTrigger(_ input: HomeViewModel.Input, _ output: HomeViewModel.Output){

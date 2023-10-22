@@ -34,7 +34,7 @@ public class SettingViewModel: NSObject {
 
     private func handleInitData(_ input: SettingViewModel.Input, _ output: SettingViewModel.Output){
         input.trigger.flatMap { _ -> Observable<User?> in
-            return FirebaseAuthHelper.shared.isLogin()
+            return FirebaseAuthHelper.shared.getCurrentUser()
         }.subscribe(onNext: { user in
             output.isLogin.accept((user != nil, user))
         }).disposed(by: disposeBag)

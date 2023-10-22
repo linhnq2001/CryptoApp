@@ -14,6 +14,7 @@ final public class FirestoreHelper: NSObject{
     public static let shared = FirestoreHelper()
     
     private let db = Firestore.firestore()
+    private let disposeBag = DisposeBag()
     
     func addUser(_ user: User) -> Observable<(Bool,String)> {
         return Observable.create { [weak self] observable in
@@ -73,6 +74,38 @@ final public class FirestoreHelper: NSObject{
                     observable.onNext(nil)
                     observable.onCompleted()
                 }
+            }
+            return Disposables.create()
+        }
+    }
+    
+    func addOrRemoveWatchList(_ coin: CoinInMarketResponse) -> Observable<(Bool,String)> {
+        return Observable.create { [weak self] observable in
+            guard let self = self else {
+                observable.onNext((false,"Somethings wrong"))
+                observable.onCompleted()
+                return Disposables.create()
+            }
+            if FirebaseAuthHelper.shared.isLogin() {
+                FirebaseAuthHelper.shared.getCurrentUser().subscribe(onNext: { user in
+                    guard let user = user else {
+                        return
+                    }
+                    let watchList = user.watchList
+                    if let index = watchList.firstIndex(where: {$0 == coin.id}) {
+                        user.watchList.remove(at: index)
+                        self.updateUser(user).subscribe(onNext: { (result, error) in
+                            observable.onNext((result, result ? "Success Remove token from watch list" : "Somethings wrong"))
+                        }).disposed(by: self.disposeBag)
+                    } else {
+                        user.watchList.append(coin.id)
+                        self.updateUser(user).subscribe(onNext: { (result, error) in
+                            observable.onNext((result, result ? "Success add token to watch list" : "Somethings wrong"))
+                        }).disposed(by: self.disposeBag)
+                    }
+                }).disposed(by: self.disposeBag)
+            } else {
+                
             }
             return Disposables.create()
         }

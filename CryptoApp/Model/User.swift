@@ -20,6 +20,7 @@ class User: NSObject, Codable {
     private var password: String?
     var avt: String?
     var loginType: LoginType
+    var watchList: [String] = []
     
     init(id: String, username: String, email: String?, password: String?, avt: String? = nil, loginType: LoginType) {
         self.id = id
@@ -29,13 +30,14 @@ class User: NSObject, Codable {
         self.loginType = loginType
     }
     
-    func convertToDictionary() -> [String: String] {
+    func convertToDictionary() -> [String: Any] {
         return ["id":id,
                 "username":username,
                 "email":email ?? "",
                 "password":password ?? "",
                 "avt": avt ?? "",
-                "loginType": loginType.rawValue]
+                "loginType": loginType.rawValue,
+                "watchList": watchList]
     }
 
 }

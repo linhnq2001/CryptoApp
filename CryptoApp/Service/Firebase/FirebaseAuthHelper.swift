@@ -55,12 +55,17 @@ final class FirebaseAuthHelper: NSObject {
         }
     }
     
-    func isLogin() -> Observable<User?> {
+    func getCurrentUser() -> Observable<User?> {
         if let userId = Auth.auth().currentUser?.uid {
             return FirestoreHelper.shared.getUser(userId)
         } else {
             return Observable.just(nil)
         }
+    }
+    
+    func isLogin() -> Bool {
+        print("linhdebug \(Auth.auth().currentUser)")
+        return Auth.auth().currentUser != nil
     }
     
 }

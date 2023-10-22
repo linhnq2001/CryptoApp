@@ -182,6 +182,7 @@
 		131EB55B2ADC7BDA00BAD22D /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				13CDCE432AE42F9800B200EA /* Database */,
 				13468F092ADD7EC6006915F6 /* Repository */,
 				131EB55C2ADC7BE500BAD22D /* API */,
 				13B30F712AD08155004FDEE0 /* Firebase */,
@@ -428,6 +429,13 @@
 				13B30F742AD08710004FDEE0 /* FirestoreHelper.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		13CDCE432AE42F9800B200EA /* Database */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 		13FE0FD32ACD724C00D519CA /* Auth */ = {
