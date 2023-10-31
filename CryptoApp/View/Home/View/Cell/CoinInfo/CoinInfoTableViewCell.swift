@@ -47,6 +47,23 @@ class CoinInfoTableViewCell: UITableViewCell {
         self.volLb.text = "$ \(formatNumber(number: data.totalVolume!))"
     }
     
+    public func configData(data: CoinInfoResponse) {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.maximumFractionDigits = 2
+        numberFormatter.minimumFractionDigits = 2
+        self.ordinalLb.text = "\(data.marketCapRank!)"
+        self.symbolLb.text = data.symbol!.uppercased()
+        self.nameLb.text = data.name!
+        if let url = data.image?.thumb {
+            self.coinImage.kf.setImage(with: URL(string: url))
+        }
+        self.priceLb.text = "$ \(data.getCurrentPrice())"
+        self.priceChangeLb.text = numberFormatter.string(for: data.marketData?.priceChange24H)! + " %"
+        self.priceChangeLb.textColor = data.marketData?.priceChange24H ?? 0 >= 0 ? UIColor.systemGreen : UIColor.red
+        self.marketCapLb.text = "$ \(formatNumber(number: Double(data.marketData?.marketCap?["usd"] ?? 0)))"
+        self.volLb.text = "$ \(formatNumber(number: data.marketData?.totalVolume?["usd"] ?? 0))"
+    }
+    
     private func formatNumber(number: Double) -> String{
         let knumber = round(number/1000.0 * 100) / 100.0
         let mnumber = round(number/1000000.0 * 100) / 100.0

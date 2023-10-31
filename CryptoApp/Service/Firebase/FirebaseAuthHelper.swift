@@ -46,6 +46,16 @@ final class FirebaseAuthHelper: NSObject {
         }
     }
     
+    func signInAnonymously() -> Observable<(Bool,String?)> {
+        return Observable.create { observable in
+            Auth.auth().signInAnonymously { result, error in
+                observable.onNext((error != nil, error.debugDescription))
+                observable.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+    
     func logout() -> Observable<(Bool,String)> {
         do {
            try Auth.auth().signOut()
@@ -56,16 +66,19 @@ final class FirebaseAuthHelper: NSObject {
     }
     
     func getCurrentUser() -> Observable<User?> {
-        if let userId = Auth.auth().currentUser?.uid {
-            return FirestoreHelper.shared.getUser(userId)
+        if let user = Auth.auth().currentUser, !user.isAnonymous {
+            return FirestoreHelper.shared.getUser(user.uid)
         } else {
             return Observable.just(nil)
         }
     }
     
     func isLogin() -> Bool {
-        print("linhdebug \(Auth.auth().currentUser)")
-        return Auth.auth().currentUser != nil
+        if let user = Auth.auth().currentUser {
+            return !user.isAnonymous
+        } else {
+            return false
+        }
     }
     
 }

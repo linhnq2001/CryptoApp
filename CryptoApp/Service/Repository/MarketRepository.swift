@@ -10,9 +10,32 @@ import RxSwift
 
 protocol MarketRepository {
     func getListCoinMarket<T:Decodable>(currency: String?, orderBy: OrderMarketBy?, priceChangeByTime: Interval, page: Int?, coinPerPage: Int?, sparkline: Bool?) -> Observable<T>
+    func getDetailCoin<T:Decodable>(id: String) -> Observable<T>
+    func getSimplePrice<T:Decodable>(id: String, currency: String?) -> Observable<T>
 }
 
 public final class DefaultMarketRepository: MarketRepository{
+    func getDetailCoin<T>(id: String) -> RxSwift.Observable<T> where T : Decodable {
+        let params = ["localization": false,
+                      "tickers": true,
+                      "market_data": true,
+                      "community_data": true,
+                      "developer_data": true,
+                      "sparkline": true]
+        return ApiHelper<T>.get(baseOtherUrl: ServiceUrl.baseUrl, url: ApiEndPoint.getCoinDetail(id: id), params: params)
+    }
+    
+    func getSimplePrice<T>(id: String, currency: String?) -> RxSwift.Observable<T> where T : Decodable {
+        let params = ["ids": id,
+                      "vs_currencies": currency ?? "usd",
+                      "include_market_cap": true,
+                      "include_24hr_vol": true,
+                      "include_24hr_change": true,
+                      "include_last_updated_at": true,
+                      "precision": "2"] as [String : Any]
+        return ApiHelper<T>.get(baseOtherUrl: ServiceUrl.baseUrl,url: ApiEndPoint.simplePrice, params: params)
+    }
+    
     public init(){}
 
     func getListCoinMarket<T>(currency: String?,orderBy: OrderMarketBy?, priceChangeByTime: Interval,page: Int? = 1, coinPerPage: Int? = 100, sparkline: Bool? = false) -> RxSwift.Observable<T> where T : Decodable {

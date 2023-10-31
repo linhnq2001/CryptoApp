@@ -101,16 +101,3 @@ public class CoinInMarketResponse: Codable {
         
     }
 }
-
-// MARK: - Roi
-class Roi: Codable {
-    var times: Double?
-    var currency: String?
-    var percentage: Double?
-
-    init(times: Double?, currency: String?, percentage: Double?) {
-        self.times = times
-        self.currency = currency
-        self.percentage = percentage
-    }
-}

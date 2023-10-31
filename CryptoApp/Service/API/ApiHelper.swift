@@ -24,6 +24,7 @@ public struct ApiHelper<T:Decodable> {
                            params: [String: Any]) -> Observable<T> {
         return Observable.create { observer in
             AF.request(baseOtherUrl + url.endpoint,method: .get,parameters: params).responseDecodable(of:T.self) { response in
+                print(response.data.map { String(decoding: $0, as: UTF8.self) } ?? "No data.")
                 switch response.result {
                 case .success(let data):
                     observer.onNext(data)
@@ -53,12 +54,23 @@ public struct ApiHelper<T:Decodable> {
         }
     }
     
+    private static func printRequestLog(dataResponse: DataResponse<Data, Error>, params: [String: Any]) {
+        let requestURL = dataResponse.request?.url?.absoluteString ?? ""
+        
+        print("\n===> Request GET URL : \(requestURL)")
+        print("Request params = ", params)
+        print("Request Header = ", dataResponse.request?.allHTTPHeaderFields ?? [:])
+        print("Response Header x-request-id", dataResponse.response?.allHeaderFields["x-request-id"] ?? "")
+        print("Response statusCode", dataResponse.response?.statusCode ?? 0)
+    }
+    
 }
 
 public enum ApiEndPoint{
     case markets
     case getAllCoin
     case getCoinDetail(id: String)
+    case simplePrice
     
     public var endpoint: String{
         switch self {
@@ -68,6 +80,8 @@ public enum ApiEndPoint{
             return  "coins/\(id)"
         case .getAllCoin:
             return "coins/list"
+        case .simplePrice:
+            return "simple/price"
         }
     }
 }

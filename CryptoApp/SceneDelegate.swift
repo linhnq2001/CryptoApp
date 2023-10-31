@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         let tabBarController = ESTabBarController()
         let v1 = HomeViewController(viewModel: HomeViewModel())
-        let v2 = WatchListViewController()
+        let v2 = WatchListViewController(viewModel: WatchListViewModel())
         let v3 = PortfolioViewController()
         let v4 = SettingViewController(viewModel: SettingViewModel())
         v1.tabBarItem = ESTabBarItem.init(title: "", image: UIImage(named: "ic_chart"), selectedImage: UIImage(named: "ic_chart_fill"))

@@ -43,6 +43,11 @@ class SettingViewController: UIViewController {
         bindingData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        trigger.onNext(())
+    }
+    
     private func bindingData() {
         let input = SettingViewModel.Input(trigger: trigger)
         
