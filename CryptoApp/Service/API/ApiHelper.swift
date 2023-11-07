@@ -18,7 +18,7 @@ public enum APIError: Error, LocalizedError {
 
 public struct ApiHelper<T:Decodable> {
     
-    public static func get(baseOtherUrl: String = "",
+    public static func get(baseOtherUrl: String,
                            url: ApiEndPoint,
                            otherHeaders: [String : String]? = nil,
                            params: [String: Any]) -> Observable<T> {
@@ -37,7 +37,7 @@ public struct ApiHelper<T:Decodable> {
         }
     }
     
-    public static func post(baseOtherUrl: String = "",
+    public static func post(baseOtherUrl: String,
                            url: ApiEndPoint,
                            params: [String: Any]) -> Observable<T> {
         return Observable.create { observer in
@@ -71,6 +71,9 @@ public enum ApiEndPoint{
     case getAllCoin
     case getCoinDetail(id: String)
     case simplePrice
+    case getExchangeInfo(id: String)
+    case search
+    case searchTrending
     
     public var endpoint: String{
         switch self {
@@ -82,6 +85,12 @@ public enum ApiEndPoint{
             return "coins/list"
         case .simplePrice:
             return "simple/price"
+        case .getExchangeInfo(let id):
+            return "exchanges/\(id)"
+        case .search:
+            return "search"
+        case .searchTrending:
+            return "search/trending"
         }
     }
 }

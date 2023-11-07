@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -60,10 +60,10 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8yQ-Zz-PfR">
-                    <rect key="frame" x="20" y="182" width="373" height="30"/>
+                    <rect key="frame" x="20" y="182" width="373" height="24"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rD4-09-Yml">
-                            <rect key="frame" x="5" y="5" width="20" height="20"/>
+                            <rect key="frame" x="5" y="2" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="0Qw-9k-dra"/>
                                 <constraint firstAttribute="width" constant="20" id="Rnb-Ml-3a0"/>
@@ -72,16 +72,24 @@
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="slider.horizontal.3" catalog="system"/>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXg-TF-6Be" customClass="TimeFrameView" customModule="CryptoApp" customModuleProvider="target">
+                            <rect key="frame" x="30" y="0.0" width="343" height="24"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="DJc-jY-Y7A"/>
+                        <constraint firstItem="gXg-TF-6Be" firstAttribute="top" secondItem="8yQ-Zz-PfR" secondAttribute="top" id="2AV-5W-5lk"/>
+                        <constraint firstAttribute="trailing" secondItem="gXg-TF-6Be" secondAttribute="trailing" id="9dg-R2-690"/>
+                        <constraint firstAttribute="height" constant="24" id="DJc-jY-Y7A"/>
                         <constraint firstItem="rD4-09-Yml" firstAttribute="leading" secondItem="8yQ-Zz-PfR" secondAttribute="leading" constant="5" id="KST-bq-CfP"/>
+                        <constraint firstAttribute="bottom" secondItem="gXg-TF-6Be" secondAttribute="bottom" id="Mj0-lP-FJ4"/>
                         <constraint firstItem="rD4-09-Yml" firstAttribute="centerY" secondItem="8yQ-Zz-PfR" secondAttribute="centerY" id="UYo-dD-tLW"/>
+                        <constraint firstItem="gXg-TF-6Be" firstAttribute="leading" secondItem="rD4-09-Yml" secondAttribute="trailing" constant="5" id="dWq-vf-FCS"/>
                     </constraints>
                 </view>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="01Q-We-YfS">
-                    <rect key="frame" x="0.0" y="212" width="393" height="606"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="01Q-We-YfS">
+                    <rect key="frame" x="0.0" y="206" width="393" height="612"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>

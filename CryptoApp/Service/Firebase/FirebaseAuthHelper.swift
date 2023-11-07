@@ -38,6 +38,7 @@ final class FirebaseAuthHelper: NSObject {
                 } else {
                     let user = User(id: result!.user.uid, username: username, email: email, password: password, loginType: .email)
                     FirestoreHelper.shared.addUser(user).subscribe(onNext: {(result,error) in
+                        FirebaseAuthHelper.shared.logout()
                         observable.onNext((result,error))
                     }).disposed(by: self.disposeBag)
                 }

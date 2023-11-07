@@ -26,12 +26,11 @@ class RegisterViewController: UIViewController {
     
     private var disposeBag = DisposeBag()
     private(set) var viewModel: RegisterViewModel!
-    
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     init(viewModel: RegisterViewModel!) {
         self.viewModel = viewModel
         super.init(nibName: String(describing: RegisterViewController.self), bundle: Bundle(for: RegisterViewController.self))
@@ -42,7 +41,7 @@ class RegisterViewController: UIViewController {
         self.bindingData()
         // Do any additional setup after loading the view.
     }
-    
+
     private func bindingData() {
         let input = RegisterViewModel.Input(username: self.usernameInputTF.inputTextField.rx.text.orEmpty.asDriver(), email: self.emailInputTF.inputTextField.rx.text.orEmpty.asDriver(), password: self.passwordInputTF.inputTextField.rx.text.orEmpty.asDriver(), registerAction: self.registerBtn.rx.tap.asDriver())
         
@@ -50,7 +49,7 @@ class RegisterViewController: UIViewController {
         handleShowLoading(input, output)
         handleShowResultRegister(input, output)
     }
-    
+
     private func handleShowLoading(_ input: RegisterViewModel.Input,_ output: RegisterViewModel.Output) {
         output.showLoading.subscribe(onNext: {[weak self] isLoading in
             guard let self = self else { return }
@@ -70,9 +69,9 @@ class RegisterViewController: UIViewController {
             }
         }).disposed(by: disposeBag)
     }
-    
+
     @IBAction func didTapLogin(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
 }

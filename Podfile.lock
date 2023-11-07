@@ -821,6 +821,7 @@ PODS:
     - RxSwift (= 6.6.0)
   - RxSwift (6.6.0)
   - SkeletonView (1.30.4)
+  - XLPagerTabStrip (9.1.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -835,6 +836,7 @@ DEPENDENCIES:
   - RxDataSources
   - RxSwift
   - SkeletonView
+  - XLPagerTabStrip (~> 9.0)
 
 SPEC REPOS:
   trunk:
@@ -870,6 +872,7 @@ SPEC REPOS:
     - RxRelay
     - RxSwift
     - SkeletonView
+    - XLPagerTabStrip
 
 SPEC CHECKSUMS:
   abseil: 926fb7a82dc6d2b8e1f2ed7f3a718bce691d1e46
@@ -904,7 +907,8 @@ SPEC CHECKSUMS:
   RxRelay: 45eaa5db8ee4fb50e5ebd57deec0159e97fa51e6
   RxSwift: a4b44f7d24599f674deebd1818eab82e58410632
   SkeletonView: 5a050f6411e697abd4cda0a8d767013399dccd69
+  XLPagerTabStrip: 27f3bfe23c53b4251c6481b06b1c289458a3fc1d
 
-PODFILE CHECKSUM: c417027fab0996134bb311d706edda4a511ebd6f
+PODFILE CHECKSUM: 5dee75e1579df07c0866127c3e744cf146f46e2c
 
 COCOAPODS: 1.13.0

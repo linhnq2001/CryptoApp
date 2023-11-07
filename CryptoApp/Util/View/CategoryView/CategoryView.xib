@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CategoryView" customModule="CryptoApp" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="Jfp-NX-0cY" id="kR8-Yw-UBN"/>
+                <outlet property="titleLb" destination="uCl-sC-1N6" id="k2j-wf-VT9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="273" height="154"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jfp-NX-0cY">
+                    <rect key="frame" x="0.0" y="0.0" width="273" height="154"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCl-sC-1N6">
+                            <rect key="frame" x="115.66666666666669" y="66.666666666666671" width="42" height="21"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                    <constraints>
+                        <constraint firstItem="uCl-sC-1N6" firstAttribute="centerX" secondItem="Jfp-NX-0cY" secondAttribute="centerX" id="3L1-7O-qQa"/>
+                        <constraint firstItem="uCl-sC-1N6" firstAttribute="centerY" secondItem="Jfp-NX-0cY" secondAttribute="centerY" id="Yyw-dW-v8N"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="Jfp-NX-0cY" secondAttribute="bottom" id="17g-zt-vpy"/>
+                <constraint firstAttribute="trailing" secondItem="Jfp-NX-0cY" secondAttribute="trailing" id="BAj-vk-WgY"/>
+                <constraint firstItem="Jfp-NX-0cY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EqW-lJ-1zE"/>
+                <constraint firstItem="Jfp-NX-0cY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="bb6-eH-8Ka"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-295.41984732824426" y="-23.943661971830988"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

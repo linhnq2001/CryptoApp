@@ -343,17 +343,6 @@ class CodeAdditionsDeletions4_Weeks: Codable {
     }
 }
 
-// MARK: - Image
-class ImageData: Codable {
-    var thumb, small, large: String?
-
-    init(thumb: String?, small: String?, large: String?) {
-        self.thumb = thumb
-        self.small = small
-        self.large = large
-    }
-}
-
 // MARK: - Links
 class Links: Codable {
     var homepage: [String]?
@@ -423,12 +412,12 @@ class MarketData: Codable {
     var totalVolume, high24H, low24H: [String: Double]?
     var priceChange24H, priceChangePercentage24H, priceChangePercentage7D, priceChangePercentage14D: Double?
     var priceChangePercentage30D, priceChangePercentage60D, priceChangePercentage200D, priceChangePercentage1Y: Double?
-    var marketCapChange24H: Int?
+    var marketCapChange24H: Double?
     var marketCapChangePercentage24H: Double?
     var priceChange24HInCurrency, priceChangePercentage1HInCurrency, priceChangePercentage24HInCurrency, priceChangePercentage7DInCurrency: [String: Double]?
     var priceChangePercentage14DInCurrency, priceChangePercentage30DInCurrency, priceChangePercentage60DInCurrency, priceChangePercentage200DInCurrency: [String: Double]?
     var priceChangePercentage1YInCurrency, marketCapChange24HInCurrency, marketCapChangePercentage24HInCurrency: [String: Double]?
-    var totalSupply, maxSupply, circulatingSupply: Int?
+    var totalSupply, maxSupply, circulatingSupply: Double?
     var lastUpdated: String?
 
     enum CodingKeys: String, CodingKey {
@@ -476,7 +465,7 @@ class MarketData: Codable {
         case lastUpdated = "last_updated"
     }
 
-    init(currentPrice: [String: Double]?, totalValueLocked: [String: Int]?, mcapToTvlRatio: Double?, fdvToTvlRatio: Double?, roi: Roi?, ath: [String: Double]?, athChangePercentage: [String: Double]?, athDate: [String: String]?, atl: [String: Double]?, atlChangePercentage: [String: Double]?, atlDate: [String: String]?, marketCap: [String: Double]?, marketCapRank: Int?, fullyDilutedValuation: [String: Double]?, marketCapFdvRatio: Double?, totalVolume: [String: Double]?, high24H: [String: Double]?, low24H: [String: Double]?, priceChange24H: Double?, priceChangePercentage24H: Double?, priceChangePercentage7D: Double?, priceChangePercentage14D: Double?, priceChangePercentage30D: Double?, priceChangePercentage60D: Double?, priceChangePercentage200D: Double?, priceChangePercentage1Y: Double?, marketCapChange24H: Int?, marketCapChangePercentage24H: Double?, priceChange24HInCurrency: [String: Double]?, priceChangePercentage1HInCurrency: [String: Double]?, priceChangePercentage24HInCurrency: [String: Double]?, priceChangePercentage7DInCurrency: [String: Double]?, priceChangePercentage14DInCurrency: [String: Double]?, priceChangePercentage30DInCurrency: [String: Double]?, priceChangePercentage60DInCurrency: [String: Double]?, priceChangePercentage200DInCurrency: [String: Double]?, priceChangePercentage1YInCurrency: [String: Double]?, marketCapChange24HInCurrency: [String: Double]?, marketCapChangePercentage24HInCurrency: [String: Double]?, totalSupply: Int?, maxSupply: Int?, circulatingSupply: Int?, lastUpdated: String?) {
+    init(currentPrice: [String: Double]?, totalValueLocked: [String: Int]?, mcapToTvlRatio: Double?, fdvToTvlRatio: Double?, roi: Roi?, ath: [String: Double]?, athChangePercentage: [String: Double]?, athDate: [String: String]?, atl: [String: Double]?, atlChangePercentage: [String: Double]?, atlDate: [String: String]?, marketCap: [String: Double]?, marketCapRank: Int?, fullyDilutedValuation: [String: Double]?, marketCapFdvRatio: Double?, totalVolume: [String: Double]?, high24H: [String: Double]?, low24H: [String: Double]?, priceChange24H: Double?, priceChangePercentage24H: Double?, priceChangePercentage7D: Double?, priceChangePercentage14D: Double?, priceChangePercentage30D: Double?, priceChangePercentage60D: Double?, priceChangePercentage200D: Double?, priceChangePercentage1Y: Double?, marketCapChange24H: Double?, marketCapChangePercentage24H: Double?, priceChange24HInCurrency: [String: Double]?, priceChangePercentage1HInCurrency: [String: Double]?, priceChangePercentage24HInCurrency: [String: Double]?, priceChangePercentage7DInCurrency: [String: Double]?, priceChangePercentage14DInCurrency: [String: Double]?, priceChangePercentage30DInCurrency: [String: Double]?, priceChangePercentage60DInCurrency: [String: Double]?, priceChangePercentage200DInCurrency: [String: Double]?, priceChangePercentage1YInCurrency: [String: Double]?, marketCapChange24HInCurrency: [String: Double]?, marketCapChangePercentage24HInCurrency: [String: Double]?, totalSupply: Double?, maxSupply: Double?, circulatingSupply: Double?, lastUpdated: String?) {
         self.currentPrice = currentPrice
         self.totalValueLocked = totalValueLocked
         self.mcapToTvlRatio = mcapToTvlRatio
@@ -538,75 +527,3 @@ class MarketData: Codable {
 //        self.bingMatches = bingMatches
 //    }
 //}
-
-// MARK: - Ticker
-class Ticker: Codable {
-    var base: String?
-    var target: String?
-    var market: Market?
-    var last, volume: Double?
-    var convertedLast, convertedVolume: [String: Double]?
-    var trustScore: String?
-    var bidAskSpreadPercentage: Double?
-    var timestamp, lastTradedAt, lastFetchAt: String?
-    var isAnomaly, isStale: Bool?
-    var tradeURL: String?
-    var tokenInfoURL: String?
-    var coinID: String?
-    var targetCoinID: String?
-
-    enum CodingKeys: String, CodingKey {
-        case base, target, market, last, volume
-        case convertedLast = "converted_last"
-        case convertedVolume = "converted_volume"
-        case trustScore = "trust_score"
-        case bidAskSpreadPercentage = "bid_ask_spread_percentage"
-        case timestamp
-        case lastTradedAt = "last_traded_at"
-        case lastFetchAt = "last_fetch_at"
-        case isAnomaly = "is_anomaly"
-        case isStale = "is_stale"
-        case tradeURL = "trade_url"
-        case tokenInfoURL = "token_info_url"
-        case coinID = "coin_id"
-        case targetCoinID = "target_coin_id"
-    }
-
-    init(base: String?, target: String?, market: Market?, last: Double?, volume: Double?, convertedLast: [String: Double]?, convertedVolume: [String: Double]?, trustScore: String?, bidAskSpreadPercentage: Double?, timestamp: String?, lastTradedAt: String?, lastFetchAt: String?, isAnomaly: Bool?, isStale: Bool?, tradeURL: String?, tokenInfoURL: String?, coinID: String?, targetCoinID: String?) {
-        self.base = base
-        self.target = target
-        self.market = market
-        self.last = last
-        self.volume = volume
-        self.convertedLast = convertedLast
-        self.convertedVolume = convertedVolume
-        self.trustScore = trustScore
-        self.bidAskSpreadPercentage = bidAskSpreadPercentage
-        self.timestamp = timestamp
-        self.lastTradedAt = lastTradedAt
-        self.lastFetchAt = lastFetchAt
-        self.isAnomaly = isAnomaly
-        self.isStale = isStale
-        self.tradeURL = tradeURL
-        self.tokenInfoURL = tokenInfoURL
-        self.coinID = coinID
-        self.targetCoinID = targetCoinID
-    }
-}
-
-// MARK: - Market
-class Market: Codable {
-    var name, identifier: String?
-    var hasTradingIncentive: Bool?
-
-    enum CodingKeys: String, CodingKey {
-        case name, identifier
-        case hasTradingIncentive = "has_trading_incentive"
-    }
-
-    init(name: String?, identifier: String?, hasTradingIncentive: Bool?) {
-        self.name = name
-        self.identifier = identifier
-        self.hasTradingIncentive = hasTradingIncentive
-    }
-}

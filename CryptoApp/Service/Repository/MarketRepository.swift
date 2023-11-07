@@ -12,9 +12,25 @@ protocol MarketRepository {
     func getListCoinMarket<T:Decodable>(currency: String?, orderBy: OrderMarketBy?, priceChangeByTime: Interval, page: Int?, coinPerPage: Int?, sparkline: Bool?) -> Observable<T>
     func getDetailCoin<T:Decodable>(id: String) -> Observable<T>
     func getSimplePrice<T:Decodable>(id: String, currency: String?) -> Observable<T>
+    func getExchangeInfo<T:Decodable>(id: String) -> Observable<T>
+    func searchEntity<T:Decodable>(text: String) -> Observable<T>
+    func getTrending<T: Decodable>() -> Observable<T>
 }
 
 public final class DefaultMarketRepository: MarketRepository{
+    func searchEntity<T>(text: String) -> RxSwift.Observable<T> where T : Decodable {
+        let params = ["query":text]
+        return ApiHelper<T>.get(baseOtherUrl: ServiceUrl.baseUrl,url: ApiEndPoint.search, params: params)
+    }
+    
+    func getTrending<T>() -> RxSwift.Observable<T> where T : Decodable {
+        return ApiHelper<T>.get(baseOtherUrl: ServiceUrl.baseUrl, url: .searchTrending, params: [:])
+    }
+    
+    func getExchangeInfo<T>(id: String) -> RxSwift.Observable<T> where T : Decodable {
+        return ApiHelper<T>.get(baseOtherUrl: ServiceUrl.baseUrl, url: ApiEndPoint.getExchangeInfo(id: id), params: [:])
+    }
+    
     func getDetailCoin<T>(id: String) -> RxSwift.Observable<T> where T : Decodable {
         let params = ["localization": false,
                       "tickers": true,

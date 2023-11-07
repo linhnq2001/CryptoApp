@@ -39,7 +39,7 @@ class LoginViewController: UIViewController {
             emailInputTF.contentType = .emailAddress
         }
     }
-    
+
     @IBOutlet weak var passwordInputTF: InputTextField!{
         didSet {
             passwordInputTF.contentType = .password
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
         self.viewModel = viewModel
         super.init(nibName: String(describing: LoginViewController.self), bundle: Bundle(for: LoginViewController.self))
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
         bindingData()
         // Do any additional setup after loading the view.
     }
-    
+
     private func bindingData(){
         let input = LoginViewModel.Input(loginAction: loginBtn.rx.tap.asDriver(), resetPasswordAction: resetPassBtn.rx.tap.asDriver(), loginWithGoogleAction: signinGGBtn.rx.tap.asDriver(), email: emailInputTF.inputTextField.rx.text.orEmpty.asDriver(), password: passwordInputTF.inputTextField.rx.text.orEmpty.asDriver())
         
@@ -74,7 +74,7 @@ class LoginViewController: UIViewController {
         handleLoginResult(input,output)
         handleLoading(input,output)
     }
-    
+
     private func handleLoginResult(_ input: LoginViewModel.Input, _ output: LoginViewModel.Output){
         output.loginResult.subscribe(onNext: { [weak self] (result,error) in
             guard let self = self else { return }
@@ -85,23 +85,22 @@ class LoginViewController: UIViewController {
             }
         }).disposed(by: disposeBag)
     }
-    
+
     private func handleLoading(_ input: LoginViewModel.Input, _ output: LoginViewModel.Output){
         output.showLoading.subscribe(onNext: {[weak self] isLoading in
             guard let self = self else {return}
             self.loginBtn.loadingIndicator(isLoading)
         }).disposed(by: disposeBag)
     }
-    
+
     @IBAction func didTapCreateAccount(_ sender: Any) {
         let viewModel = RegisterViewModel()
         let vc = RegisterViewController(viewModel: viewModel)
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
+
     @IBAction func didTapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
+
 }

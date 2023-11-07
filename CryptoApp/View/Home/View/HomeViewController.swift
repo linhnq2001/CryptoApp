@@ -55,8 +55,10 @@ class HomeViewController: UIViewController {
         tableview.rx.setDelegate(self).disposed(by: disposeBag)
         tableview.register(UINib(nibName: "CoinInfoTableViewCell", bundle: .main), forCellReuseIdentifier: "CoinInfoTableViewCell")
         tableview.rowHeight = 60
-        tableview.rx.modelSelected(CoinInMarketResponse.self).subscribe(onNext: {model in
-            
+        tableview.rx.modelSelected(CoinInMarketResponse.self).subscribe(onNext: { [weak self] model in
+            guard let self = self else { return }
+            let vc = CoinDetailViewController(viewModel: CoinDetailViewModel(id: model.id))
+            self.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: disposeBag)
     }
     
