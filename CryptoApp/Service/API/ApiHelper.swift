@@ -24,7 +24,9 @@ public struct ApiHelper<T:Decodable> {
                            params: [String: Any]) -> Observable<T> {
         return Observable.create { observer in
             AF.request(baseOtherUrl + url.endpoint,method: .get,parameters: params).responseDecodable(of:T.self) { response in
-                print(response.data.map { String(decoding: $0, as: UTF8.self) } ?? "No data.")
+                print("===== Request URL: \(response.response?.url?.absoluteString ?? "")")
+                print(response.data?.prettyJson ?? "")
+                print("===========================")
                 switch response.result {
                 case .success(let data):
                     observer.onNext(data)
@@ -92,5 +94,15 @@ public enum ApiEndPoint{
         case .searchTrending:
             return "search/trending"
         }
+    }
+}
+
+extension Data {
+    var prettyJson: String? {
+        guard let object = try? JSONSerialization.jsonObject(with: self, options: []),
+              let data = try? JSONSerialization.data(withJSONObject: object, options: [.prettyPrinted]),
+              let prettyPrintedString = String(data: data, encoding:.utf8) else { return nil }
+
+        return prettyPrintedString
     }
 }

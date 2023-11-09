@@ -110,5 +110,67 @@ final public class FirestoreHelper: NSObject{
             return Disposables.create()
         }
     }
+    
+    func addTokenToRecentSearch(_ id: String) -> Observable<(Bool,String)> {
+        return Observable.create { [weak self] observable in
+            guard let self = self else {
+                observable.onNext((false,"Somethings wrong"))
+                observable.onCompleted()
+                return Disposables.create()
+            }
+            let uid = FirebaseAuthHelper.shared.getUID()
+            let docRef = self.db.collection("data").document(uid)
+            self.getRecentSearchList().subscribe { result, recentSearch in
+                var newRecentSearch = recentSearch
+                if !result {
+                    observable.onNext((false,"Somethings wrong"))
+                    observable.onCompleted()
+                } else {
+                    if !recentSearch.contains(id) {
+                        newRecentSearch.append(id)
+                        docRef.updateData(["recentSearch": newRecentSearch]) { error in
+                            if let error = error {
+                                observable.onNext((false,"Somethings wrong"))
+                                observable.onCompleted()
+                            } else {
+                                observable.onNext((true,"Success"))
+                                observable.onCompleted()
+                            }
+                        }
+                    }
+                }
+            }.disposed(by: disposeBag)
+            return Disposables.create()
+        }
+    }
+
+    func getRecentSearchList() -> Observable<(Bool,[String])> {
+        return Observable.create { [weak self] observable in
+            guard let self = self else {
+                observable.onNext((false,[]))
+                observable.onCompleted()
+                return Disposables.create()
+            }
+            let uid = FirebaseAuthHelper.shared.getUID()
+            if !uid.isEmpty {
+                self.db.collection("data").document(uid).getDocument(as: UserDataFb.self) { result in
+                    switch result {
+                    case .success(let data):
+                        observable.onNext((true,data.recentSearch))
+                        observable.onCompleted()
+                        break
+                    case .failure(_):
+                        observable.onNext((false,[]))
+                        observable.onCompleted()
+                        break
+                    }
+                }
+            } else {
+                observable.onNext((false,[]))
+                observable.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
 
 }

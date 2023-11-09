@@ -51,7 +51,7 @@ class CoinInfoTableViewCell: UITableViewCell {
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
         numberFormatter.minimumFractionDigits = 2
-        self.ordinalLb.text = "\(data.marketCapRank!)"
+        self.ordinalLb.text = "\(data.marketCapRank ?? 0)"
         self.symbolLb.text = data.symbol!.uppercased()
         self.nameLb.text = data.name!
         if let url = data.image?.thumb {
@@ -62,6 +62,13 @@ class CoinInfoTableViewCell: UITableViewCell {
         self.priceChangeLb.textColor = data.marketData?.priceChange24H ?? 0 >= 0 ? UIColor.systemGreen : UIColor.red
         self.marketCapLb.text = "$ \(formatNumber(number: Double(data.marketData?.marketCap?["usd"] ?? 0)))"
         self.volLb.text = "$ \(formatNumber(number: data.marketData?.totalVolume?["usd"] ?? 0))"
+    }
+    
+    public func configData(data: SearchDataSource) {
+        guard let data = data as? CoinInfoResponse else {
+            return
+        }
+        configData(data: data)
     }
     
     private func formatNumber(number: Double) -> String{

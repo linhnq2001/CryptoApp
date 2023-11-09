@@ -7,11 +7,11 @@
 
 import Foundation
 
-class CoinInfoResponse: Codable {
+class CoinInfoResponse: Codable, SearchDataSource {
     var id: String?
     var symbol, name: String?
     var assetPlatformID: String?
-    var platforms: Platforms
+    var platforms: Platforms?
     var detailPlatforms: [String: DetailPlatform]?
     var blockTimeInMinutes: Int?
     var hashingAlgorithm: String?
@@ -162,7 +162,7 @@ class CoinInfoResponse: Codable {
     }
     
     public func getCurrentPrice() -> String {
-        return String(describing: self.marketData?.currentPrice?["usd"])
+        return String(describing: self.marketData?.currentPrice?["usd"] ?? 0)
     }
 }
 
@@ -350,7 +350,6 @@ class Links: Codable {
     var chatURL, announcementURL: [String]?
     var twitterScreenName: String?
     var facebookUsername: String?
-    var bitcointalkThreadIdentifier: String?
     var telegramChannelIdentifier: String?
     var subredditURL: String?
     var reposURL: ReposURL?
@@ -363,13 +362,12 @@ class Links: Codable {
         case announcementURL = "announcement_url"
         case twitterScreenName = "twitter_screen_name"
         case facebookUsername = "facebook_username"
-        case bitcointalkThreadIdentifier = "bitcointalk_thread_identifier"
         case telegramChannelIdentifier = "telegram_channel_identifier"
         case subredditURL = "subreddit_url"
         case reposURL = "repos_url"
     }
 
-    init(homepage: [String]?, blockchainSite: [String]?, officialForumURL: [String]?, chatURL: [String]?, announcementURL: [String]?, twitterScreenName: String?, facebookUsername: String?, bitcointalkThreadIdentifier: String?, telegramChannelIdentifier: String?, subredditURL: String?, reposURL: ReposURL?) {
+    init(homepage: [String]?, blockchainSite: [String]?, officialForumURL: [String]?, chatURL: [String]?, announcementURL: [String]?, twitterScreenName: String?, facebookUsername: String?, telegramChannelIdentifier: String?, subredditURL: String?, reposURL: ReposURL?) {
         self.homepage = homepage
         self.blockchainSite = blockchainSite
         self.officialForumURL = officialForumURL
@@ -377,7 +375,6 @@ class Links: Codable {
         self.announcementURL = announcementURL
         self.twitterScreenName = twitterScreenName
         self.facebookUsername = facebookUsername
-        self.bitcointalkThreadIdentifier = bitcointalkThreadIdentifier
         self.telegramChannelIdentifier = telegramChannelIdentifier
         self.subredditURL = subredditURL
         self.reposURL = reposURL

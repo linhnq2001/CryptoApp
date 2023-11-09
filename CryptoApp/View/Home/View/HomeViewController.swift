@@ -47,7 +47,7 @@ class HomeViewController: UIViewController {
     }
     
     @objc private func didTapSearch(){
-        let vc = SearchViewController()
+        let vc = SearchViewController(viewModel: SearchViewModel())
         self.navigationController?.pushViewController(vc, animated: false)
     }
     

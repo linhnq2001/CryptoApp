@@ -11,6 +11,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="CryptoApp" customModuleProvider="target">
             <connections>
+                <outlet property="searchTF" destination="UFT-he-uA7" id="E6z-os-Dmz"/>
+                <outlet property="tableview" destination="0O9-jy-BT3" id="uHd-wr-Bfo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,10 +28,26 @@
                             <rect key="frame" x="306.33333333333331" y="2.6666666666666643" width="76.666666666666686" height="35"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
+                            <connections>
+                                <action selector="didTapCancel:" destination="-1" eventType="touchUpInside" id="5oy-Jh-m3r"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFh-ez-t9a">
                             <rect key="frame" x="10" y="0.0" width="286.33333333333331" height="40"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UFT-he-uA7">
+                                    <rect key="frame" x="15" y="5" width="256.33333333333331" height="30"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                            </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="UFT-he-uA7" firstAttribute="top" secondItem="sFh-ez-t9a" secondAttribute="top" constant="5" id="M1p-ne-wBC"/>
+                                <constraint firstAttribute="bottom" secondItem="UFT-he-uA7" secondAttribute="bottom" constant="5" id="O1k-pO-Dqy"/>
+                                <constraint firstItem="UFT-he-uA7" firstAttribute="leading" secondItem="sFh-ez-t9a" secondAttribute="leading" constant="15" id="qxg-2Q-0cJ"/>
+                                <constraint firstAttribute="trailing" secondItem="UFT-he-uA7" secondAttribute="trailing" constant="15" id="uDo-WL-sHa"/>
+                            </constraints>
                         </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>

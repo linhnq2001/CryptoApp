@@ -81,5 +81,9 @@ final class FirebaseAuthHelper: NSObject {
             return false
         }
     }
-    
+
+    func getUID() -> String {
+        return Auth.auth().currentUser?.uid ?? ""
+    }
+
 }
