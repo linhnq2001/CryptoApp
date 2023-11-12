@@ -23,7 +23,40 @@ final public class FirestoreHelper: NSObject{
                 observable.onCompleted()
                 return Disposables.create()
             }
-            self.db.collection("users").document(user.id).setData(user.convertToDictionary()) { error in
+            let data = UserDataFb(watchList: [], recentSearch: [])
+            let userReference = self.db.collection("users").document(user.id)
+            let dataReference = self.db.collection("data").document(user.id)
+            self.db.runTransaction { transaction, error in
+                transaction.setData(user.convertToDictionary(), forDocument: userReference)
+                transaction.setData(data.convertToDictionary(), forDocument: dataReference)
+                return nil
+            } completion: { object, error in
+                observable.onNext((error == nil,error.debugDescription))
+                if let error = error {
+                    print("Transaction failed: \(error)")
+                } else {
+                    print("Transaction successfully committed!")
+                }
+            }
+//            self.db.collection("users").document(user.id).setData(user.convertToDictionary()) { error in
+//                observable.onNext((error == nil,error.debugDescription))
+//            }
+//            self.db.collection("data").document(user.id).setData(data.convertToDictionary()) { error in
+//                observable.onNext((error == nil,error.debugDescription))
+//            }
+            return Disposables.create()
+        }
+    }
+    
+    func addDataForNewUser(_ user: User) -> Observable<(Bool,String)> {
+        return Observable.create { [weak self] observable in
+            guard let self = self else {
+                observable.onNext((false,"Somethings Wrong"))
+                observable.onCompleted()
+                return Disposables.create()
+            }
+            let data = UserDataFb(watchList: [], recentSearch: [])
+            self.db.collection("data").document(user.id).setData(data.convertToDictionary()) { error in
                 observable.onNext((error == nil,error.debugDescription))
             }
             return Disposables.create()
@@ -159,7 +192,7 @@ final public class FirestoreHelper: NSObject{
                         observable.onNext((true,data.recentSearch))
                         observable.onCompleted()
                         break
-                    case .failure(_):
+                    case .failure(let error):
                         observable.onNext((false,[]))
                         observable.onCompleted()
                         break
@@ -167,6 +200,27 @@ final public class FirestoreHelper: NSObject{
                 }
             } else {
                 observable.onNext((false,[]))
+                observable.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
+
+    func clearRecentSearchList() -> Observable<(Bool,String)> {
+        return Observable.create { [weak self] observable in
+            guard let self = self else {
+                observable.onNext((false,"Something wrong"))
+                observable.onCompleted()
+                return Disposables.create()
+            }
+            let uid = FirebaseAuthHelper.shared.getUID()
+            if !uid.isEmpty {
+                self.db.collection("data").document(uid).updateData(["recentSearch": []]) { error in
+                    observable.onNext((error == nil, error == nil ? "" : "Something wrong"))
+                    observable.onCompleted()
+                }
+            } else {
+                observable.onNext((false,"Something wrong"))
                 observable.onCompleted()
             }
             return Disposables.create()

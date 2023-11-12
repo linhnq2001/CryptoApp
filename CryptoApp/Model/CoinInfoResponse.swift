@@ -204,7 +204,8 @@ class Platforms: Codable {
 // MARK: - CommunityData
 class CommunityData: Codable {
     var facebookLikes: Int?
-    var twitterFollowers, redditAveragePosts48H, redditAverageComments48H, redditSubscribers: Int?
+    var twitterFollowers, redditSubscribers: Int?
+    var redditAveragePosts48H, redditAverageComments48H: Double?
     var redditAccountsActive48H: Int?
     var telegramChannelUserCount: Int?
 
@@ -218,7 +219,7 @@ class CommunityData: Codable {
         case telegramChannelUserCount = "telegram_channel_user_count"
     }
 
-    init(facebookLikes: Int?, twitterFollowers: Int?, redditAveragePosts48H: Int?, redditAverageComments48H: Int?, redditSubscribers: Int?, redditAccountsActive48H: Int?, telegramChannelUserCount: Int?) {
+    init(facebookLikes: Int?, twitterFollowers: Int?, redditAveragePosts48H: Double?, redditAverageComments48H: Double?, redditSubscribers: Int?, redditAccountsActive48H: Int?, telegramChannelUserCount: Int?) {
         self.facebookLikes = facebookLikes
         self.twitterFollowers = twitterFollowers
         self.redditAveragePosts48H = redditAveragePosts48H
@@ -395,7 +396,7 @@ class ReposURL: Codable {
 // MARK: - MarketData
 class MarketData: Codable {
     var currentPrice: [String: Double]?
-    var totalValueLocked: [String: Int]?
+    var totalValueLocked: [String: Double]?
     var mcapToTvlRatio, fdvToTvlRatio: Double?
     var roi: Roi?
     var ath, athChangePercentage: [String: Double]?
@@ -406,7 +407,7 @@ class MarketData: Codable {
     var marketCapRank: Int?
     var fullyDilutedValuation: [String: Double]?
     var marketCapFdvRatio: Double?
-    var totalVolume, high24H, low24H: [String: Double]?
+    var totalVolume, high24H, low24H: [String: Double?]?
     var priceChange24H, priceChangePercentage24H, priceChangePercentage7D, priceChangePercentage14D: Double?
     var priceChangePercentage30D, priceChangePercentage60D, priceChangePercentage200D, priceChangePercentage1Y: Double?
     var marketCapChange24H: Double?
@@ -462,7 +463,7 @@ class MarketData: Codable {
         case lastUpdated = "last_updated"
     }
 
-    init(currentPrice: [String: Double]?, totalValueLocked: [String: Int]?, mcapToTvlRatio: Double?, fdvToTvlRatio: Double?, roi: Roi?, ath: [String: Double]?, athChangePercentage: [String: Double]?, athDate: [String: String]?, atl: [String: Double]?, atlChangePercentage: [String: Double]?, atlDate: [String: String]?, marketCap: [String: Double]?, marketCapRank: Int?, fullyDilutedValuation: [String: Double]?, marketCapFdvRatio: Double?, totalVolume: [String: Double]?, high24H: [String: Double]?, low24H: [String: Double]?, priceChange24H: Double?, priceChangePercentage24H: Double?, priceChangePercentage7D: Double?, priceChangePercentage14D: Double?, priceChangePercentage30D: Double?, priceChangePercentage60D: Double?, priceChangePercentage200D: Double?, priceChangePercentage1Y: Double?, marketCapChange24H: Double?, marketCapChangePercentage24H: Double?, priceChange24HInCurrency: [String: Double]?, priceChangePercentage1HInCurrency: [String: Double]?, priceChangePercentage24HInCurrency: [String: Double]?, priceChangePercentage7DInCurrency: [String: Double]?, priceChangePercentage14DInCurrency: [String: Double]?, priceChangePercentage30DInCurrency: [String: Double]?, priceChangePercentage60DInCurrency: [String: Double]?, priceChangePercentage200DInCurrency: [String: Double]?, priceChangePercentage1YInCurrency: [String: Double]?, marketCapChange24HInCurrency: [String: Double]?, marketCapChangePercentage24HInCurrency: [String: Double]?, totalSupply: Double?, maxSupply: Double?, circulatingSupply: Double?, lastUpdated: String?) {
+    init(currentPrice: [String: Double]?, totalValueLocked: [String: Double]?, mcapToTvlRatio: Double?, fdvToTvlRatio: Double?, roi: Roi?, ath: [String: Double]?, athChangePercentage: [String: Double]?, athDate: [String: String]?, atl: [String: Double]?, atlChangePercentage: [String: Double]?, atlDate: [String: String]?, marketCap: [String: Double]?, marketCapRank: Int?, fullyDilutedValuation: [String: Double]?, marketCapFdvRatio: Double?, totalVolume: [String: Double]?, high24H: [String: Double]?, low24H: [String: Double]?, priceChange24H: Double?, priceChangePercentage24H: Double?, priceChangePercentage7D: Double?, priceChangePercentage14D: Double?, priceChangePercentage30D: Double?, priceChangePercentage60D: Double?, priceChangePercentage200D: Double?, priceChangePercentage1Y: Double?, marketCapChange24H: Double?, marketCapChangePercentage24H: Double?, priceChange24HInCurrency: [String: Double]?, priceChangePercentage1HInCurrency: [String: Double]?, priceChangePercentage24HInCurrency: [String: Double]?, priceChangePercentage7DInCurrency: [String: Double]?, priceChangePercentage14DInCurrency: [String: Double]?, priceChangePercentage30DInCurrency: [String: Double]?, priceChangePercentage60DInCurrency: [String: Double]?, priceChangePercentage200DInCurrency: [String: Double]?, priceChangePercentage1YInCurrency: [String: Double]?, marketCapChange24HInCurrency: [String: Double]?, marketCapChangePercentage24HInCurrency: [String: Double]?, totalSupply: Double?, maxSupply: Double?, circulatingSupply: Double?, lastUpdated: String?) {
         self.currentPrice = currentPrice
         self.totalValueLocked = totalValueLocked
         self.mcapToTvlRatio = mcapToTvlRatio

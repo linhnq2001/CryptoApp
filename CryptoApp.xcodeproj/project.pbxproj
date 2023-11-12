@@ -40,6 +40,8 @@
 		13607BE72ACD696A008529D2 /* CryptoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BE62ACD696A008529D2 /* CryptoAppTests.swift */; };
 		13607BF12ACD696A008529D2 /* CryptoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BF02ACD696A008529D2 /* CryptoAppUITests.swift */; };
 		13607BF32ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */; };
+		136409692B0138B100429F93 /* ResultSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136409672B0138B100429F93 /* ResultSearchCell.swift */; };
+		1364096A2B0138B100429F93 /* ResultSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136409682B0138B100429F93 /* ResultSearchCell.xib */; };
 		137078282AE2860600438377 /* HeaderMarketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137078272AE2860600438377 /* HeaderMarketView.xib */; };
 		1370782A2AE2864400438377 /* HeaderMarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137078292AE2864400438377 /* HeaderMarketView.swift */; };
 		137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C04E62ACEBC4D009E0317 /* Validation.swift */; };
@@ -153,6 +155,8 @@
 		13607BEC2ACD696A008529D2 /* CryptoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CryptoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13607BF02ACD696A008529D2 /* CryptoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAppUITests.swift; sourceTree = "<group>"; };
 		13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		136409672B0138B100429F93 /* ResultSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchCell.swift; sourceTree = "<group>"; };
+		136409682B0138B100429F93 /* ResultSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultSearchCell.xib; sourceTree = "<group>"; };
 		137078272AE2860600438377 /* HeaderMarketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderMarketView.xib; sourceTree = "<group>"; };
 		137078292AE2864400438377 /* HeaderMarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMarketView.swift; sourceTree = "<group>"; };
 		137C04E62ACEBC4D009E0317 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -684,6 +688,8 @@
 				13FCE3AC2AFCB72F003B5414 /* RecentSearchCell.xib */,
 				13C1840E2AFCC47E00E7CEED /* RecentSearchCollectionViewCell.swift */,
 				13C1840F2AFCC47E00E7CEED /* RecentSearchCollectionViewCell.xib */,
+				136409672B0138B100429F93 /* ResultSearchCell.swift */,
+				136409682B0138B100429F93 /* ResultSearchCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -904,6 +910,7 @@
 				13FCE3AE2AFCB72F003B5414 /* RecentSearchCell.xib in Resources */,
 				1397D01E2AD5C5E8006325BE /* PortfolioViewController.xib in Resources */,
 				137078282AE2860600438377 /* HeaderMarketView.xib in Resources */,
+				1364096A2B0138B100429F93 /* ResultSearchCell.xib in Resources */,
 				1337DB242AF61D450048C32C /* OverviewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1040,6 +1047,7 @@
 				13468F0F2ADDA062006915F6 /* CoinInfoTableViewCell.swift in Sources */,
 				131EB55E2ADC7C0600BAD22D /* ApiHelper.swift in Sources */,
 				1337DB232AF61D450048C32C /* OverviewViewController.swift in Sources */,
+				136409692B0138B100429F93 /* ResultSearchCell.swift in Sources */,
 				1337DB3A2AF884C50048C32C /* CategoryView.swift in Sources */,
 				13FE0FE52ACD72E500D519CA /* RegisterViewController.swift in Sources */,
 				133F2F2E2AD2B48B00676947 /* UIViewController+Extension.swift in Sources */,

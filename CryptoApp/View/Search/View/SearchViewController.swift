@@ -32,18 +32,22 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var tableview: UITableView!
     lazy var dataSource = RxTableViewSectionedReloadDataSource<SearchSection> { dataSource, tableview, indexPath, item in
-        guard let recentCell = tableview.dequeueReusableCell(withIdentifier: "RecentSearchCell", for: indexPath) as? RecentSearchCell, let searchCell = tableview.dequeueReusableCell(withIdentifier: "CoinInfoTableViewCell", for: indexPath) as? CoinInfoTableViewCell else {
+        guard let recentCell = tableview.dequeueReusableCell(withIdentifier: "RecentSearchCell", for: indexPath) as? RecentSearchCell, let searchCell = tableview.dequeueReusableCell(withIdentifier: "ResultSearchCell", for: indexPath) as? ResultSearchCell else {
             return UITableViewCell()
         }
         switch dataSource.sectionModels[indexPath.section].model {
         case .recentSearch:
             recentCell.configData(data: item)
+            recentCell.didTapClearRecentSearch = { [weak self] in
+                guard let self = self else { return }
+                self.actionCleanRecent.onNext(())
+            }
             return recentCell
         case .searchResult:
-            searchCell.configData(data: item)
+            searchCell.configData(data: item, type: .searchResult)
             return searchCell
         case .trendingSearch:
-            searchCell.configData(data: item)
+            searchCell.configData(data: item, type: .trendingSearch)
             return searchCell
         }
     }
@@ -51,9 +55,12 @@ class SearchViewController: UIViewController {
     private(set) var viewModel: SearchViewModel!
     private let trigger = PublishSubject<Void>()
     private let inSearch = PublishRelay<String>()
+    private let actionTapToken = PublishRelay<(SearchTitle,String)>()
+    private let actionCleanRecent = PublishSubject<Void>()
     private let disposeBag = DisposeBag()
     private var recentSearchData: [CoinInfoResponse] = []
     private var trendingSearch: TrendingSearchResponse?
+    private var listSection: [SearchSection] = []
 
     init(viewModel: SearchViewModel!) {
         self.viewModel = viewModel
@@ -66,16 +73,45 @@ class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableview.delegate = nil
-        self.tableview.dataSource = nil
-        tableview.register(UINib(nibName: "RecentSearchCell", bundle: nil), forCellReuseIdentifier: "RecentSearchCell")
-        tableview.register(UINib(nibName: "CoinInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "CoinInfoTableViewCell")
         bindingData()
+        setupTableview()
         // Do any additional setup after loading the view.
     }
     
+    private func setupTableview() {
+        tableview.rx.setDelegate(self).disposed(by: disposeBag)
+        tableview.register(UINib(nibName: "RecentSearchCell", bundle: nil), forCellReuseIdentifier: "RecentSearchCell")
+        tableview.register(UINib(nibName: "ResultSearchCell", bundle: nil), forCellReuseIdentifier: "ResultSearchCell")
+        tableview.rx
+            .itemSelected
+            .subscribe(onNext: { [weak self] indexPath in
+                guard let self = self else {return}
+                switch self.listSection[indexPath.section].model {
+                case .recentSearch: 
+
+                    break
+                case .searchResult:
+                    guard let data = self.listSection[indexPath.section].items[indexPath.row] as? CoinSearchResponse else {return}
+                    let id = data.id ?? ""
+                    self.actionTapToken.accept((.searchResult,id))
+                    let viewModel = CoinDetailViewModel(id: id)
+                    let vc = CoinDetailViewController(viewModel: viewModel)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                case .trendingSearch:
+                    guard let data = self.listSection[indexPath.section].items[indexPath.row] as? CoinItem else {return}
+                    let id = data.item?.id ?? ""
+                    self.actionTapToken.accept((.trendingSearch, id))
+                    let viewModel = CoinDetailViewModel(id: id)
+                    let vc = CoinDetailViewController(viewModel: viewModel)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+                print("selected with indextPath: \(indexPath)")
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func bindingData() {
-        let input = SearchViewModel.Input(trigger: trigger, inSearch: inSearch)
+        let input = SearchViewModel.Input(trigger: trigger, inSearch: inSearch,actionTapToken: actionTapToken, actionCleanRecent: actionCleanRecent)
         let output = viewModel.transform(input)
         handleLoading(output)
         handleSearchResult(output)
@@ -88,10 +124,33 @@ class SearchViewController: UIViewController {
     }
 
     private func handleSearchResult(_ output: SearchViewModel.Output) {
-        output.searchResult.bind(to: tableview.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        output.searchResult.do(onNext: {[weak self] section in
+            guard let self = self else {
+                return
+            }
+            self.listSection = section
+        }).bind(to: tableview.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
 
     @IBAction func didTapCancel(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+}
+
+extension SearchViewController: UITableViewDelegate {
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if self.listSection[indexPath.section].model == .recentSearch {
+//            return 400
+//        } else {
+//            return 120
+//        }
+//    }
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if self.listSection[indexPath.section].model == .recentSearch {
+//            return 400
+//        } else {
+//            return 400
+//        }
+//        return UITableView.automaticDimension
+//    }
 }

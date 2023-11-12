@@ -39,7 +39,7 @@ class CategoryTrending: Codable {
 }
 
 // MARK: - Coin
-class CoinItem: Codable {
+class CoinItem: Codable, SearchDataSource {
     var item: TrendingCoin?
 
     init(item: TrendingCoin?) {

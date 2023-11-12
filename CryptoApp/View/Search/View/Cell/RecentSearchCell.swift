@@ -11,6 +11,7 @@ class RecentSearchCell: UITableViewCell {
 
     @IBOutlet weak var collectionview: UICollectionView!
     var recentSearch: [CoinInfoResponse] = []
+    var didTapClearRecentSearch: (()-> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -34,7 +35,7 @@ class RecentSearchCell: UITableViewCell {
     }
 
     @IBAction func didTapClearRecentSearch(_ sender: Any) {
-        
+        self.didTapClearRecentSearch?()
     }
 }
 extension RecentSearchCell: UICollectionViewDelegateFlowLayout,UICollectionViewDataSource {

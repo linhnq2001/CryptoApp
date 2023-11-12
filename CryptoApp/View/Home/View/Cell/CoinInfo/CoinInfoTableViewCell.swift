@@ -52,8 +52,8 @@ class CoinInfoTableViewCell: UITableViewCell {
         numberFormatter.maximumFractionDigits = 2
         numberFormatter.minimumFractionDigits = 2
         self.ordinalLb.text = "\(data.marketCapRank ?? 0)"
-        self.symbolLb.text = data.symbol!.uppercased()
-        self.nameLb.text = data.name!
+        self.symbolLb.text = (data.symbol ?? "").uppercased()
+        self.nameLb.text = data.name ?? ""
         if let url = data.image?.thumb {
             self.coinImage.kf.setImage(with: URL(string: url))
         }
@@ -61,7 +61,7 @@ class CoinInfoTableViewCell: UITableViewCell {
         self.priceChangeLb.text = numberFormatter.string(for: data.marketData?.priceChange24H)! + " %"
         self.priceChangeLb.textColor = data.marketData?.priceChange24H ?? 0 >= 0 ? UIColor.systemGreen : UIColor.red
         self.marketCapLb.text = "$ \(formatNumber(number: Double(data.marketData?.marketCap?["usd"] ?? 0)))"
-        self.volLb.text = "$ \(formatNumber(number: data.marketData?.totalVolume?["usd"] ?? 0))"
+        self.volLb.text = "$ \(formatNumber(number: (data.marketData?.totalVolume?["usd"] ?? 0) ?? 0))"
     }
     
     public func configData(data: SearchDataSource) {
@@ -85,6 +85,5 @@ class CoinInfoTableViewCell: UITableViewCell {
             return "\(number)"
         }
     }
-    
 
 }

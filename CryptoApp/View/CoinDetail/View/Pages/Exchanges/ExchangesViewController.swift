@@ -12,10 +12,11 @@ class ExchangesViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var tableview: UITableView!
     var data: CoinInfoResponse? {
         didSet {
-            listTickets = data?.tickers
+            listTickets = data?.tickers ?? []
+            listTickets = Array(listTickets[0..<10])
         }
     }
-    var listTickets: [Ticker]? = []
+    var listTickets: [Ticker] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,21 +32,19 @@ class ExchangesViewController: UIViewController, IndicatorInfoProvider {
 }
 extension ExchangesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data?.tickers?.count ?? 0
+        return listTickets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ExchangeCell", for: indexPath) as? ExchangeCell else {
             return UITableViewCell()
         }
-        if let ticket = listTickets?[indexPath.row] {
-            cell.configData(data: ticket)
-        }
+        cell.configData(data: listTickets[indexPath.row])
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if let url = URL(string: listTickets?[indexPath.row].tradeURL ?? "") {
+        if let url = URL(string: listTickets[indexPath.row].tradeURL ?? "") {
             UIApplication.shared.open(url)
         }
     }

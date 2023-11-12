@@ -33,7 +33,7 @@ class CategorySearchResponse: Codable {
 }
 
 // MARK: - Coin
-class CoinSearchResponse: Codable {
+class CoinSearchResponse: Codable, SearchDataSource {
     var id, name, apiSymbol, symbol: String?
     var marketCapRank: Int?
     var thumb, large: String?

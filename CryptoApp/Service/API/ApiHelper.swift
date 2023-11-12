@@ -32,6 +32,8 @@ public struct ApiHelper<T:Decodable> {
                     observer.onNext(data)
                     observer.onCompleted()
                 case .failure(let error as Error): 
+                    print("== API FAILURE URL: \(response.response?.url?.absoluteString ?? "") ")
+                    print("== ERROR: \(error)")
                     observer.onError(error)
                 }
             }
