@@ -23,7 +23,7 @@ final public class FirestoreHelper: NSObject{
                 observable.onCompleted()
                 return Disposables.create()
             }
-            let data = UserDataFb(watchList: [], recentSearch: [])
+            let data = UserDataFb(watchList: [], recentSearch: [], portfolio: [])
             let userReference = self.db.collection("users").document(user.id)
             let dataReference = self.db.collection("data").document(user.id)
             self.db.runTransaction { transaction, error in
@@ -38,12 +38,6 @@ final public class FirestoreHelper: NSObject{
                     print("Transaction successfully committed!")
                 }
             }
-//            self.db.collection("users").document(user.id).setData(user.convertToDictionary()) { error in
-//                observable.onNext((error == nil,error.debugDescription))
-//            }
-//            self.db.collection("data").document(user.id).setData(data.convertToDictionary()) { error in
-//                observable.onNext((error == nil,error.debugDescription))
-//            }
             return Disposables.create()
         }
     }
@@ -55,7 +49,7 @@ final public class FirestoreHelper: NSObject{
                 observable.onCompleted()
                 return Disposables.create()
             }
-            let data = UserDataFb(watchList: [], recentSearch: [])
+            let data = UserDataFb(watchList: [], recentSearch: [], portfolio: [])
             self.db.collection("data").document(user.id).setData(data.convertToDictionary()) { error in
                 observable.onNext((error == nil,error.debugDescription))
             }
@@ -226,5 +220,101 @@ final public class FirestoreHelper: NSObject{
             return Disposables.create()
         }
     }
+}
+//MARK: Portfolio
+extension FirestoreHelper {
+    func getAllPortfolio() -> Observable<(Bool,[Portfolio])> {
+        return Observable.create {[weak self] observable in
+            guard let self = self else {
+                observable.onNext((false, []))
+                observable.onCompleted()
+                return Disposables.create()
+            }
+            let uid = FirebaseAuthHelper.shared.getUID()
+            if !uid.isEmpty {
+                self.db.collection("data").document(uid).getDocument(as: UserDataFb.self) { result in
+                    switch result {
+                    case .success(let data):
+                        observable.onNext((true,data.portfolio))
+                        observable.onCompleted()
+                    case .failure(let failure):
+                        print("get Portfolio fail \(failure.localizedDescription)")
+                        observable.onNext((false,[]))
+                        observable.onCompleted()
+                    }
+                }
+            } else {
+                observable.onNext((false,[]))
+                observable.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
 
+    func addNewPortfolio(_ portfolio: Portfolio) -> Observable<(Bool,String)> {
+        return Observable.create { [weak self] observable in
+            guard let self = self else {
+                observable.onNext((false,"Somethings wrong"))
+                observable.onCompleted()
+                return Disposables.create()
+            }
+            let uid = FirebaseAuthHelper.shared.getUID()
+            let docRef = self.db.collection("data").document(uid)
+            self.getAllPortfolio().subscribe { result, listPortfolio in
+                var newPortfolio = listPortfolio
+                if !result {
+                    observable.onNext((false,"Somethings wrong"))
+                    observable.onCompleted()
+                } else {
+                    if !newPortfolio.contains(where: {$0.name == portfolio.name}) {
+                        newPortfolio.append(portfolio)
+                        docRef.updateData(["portfolio": newPortfolio]) { error in
+                            if error != nil {
+                                observable.onNext((false,"Somethings wrong"))
+                                observable.onCompleted()
+                            } else {
+                                observable.onNext((true,"Success"))
+                                observable.onCompleted()
+                            }
+                        }
+                    } else {
+                        observable.onNext((false,"Wrong Name"))
+                        observable.onCompleted()
+                    }
+                }
+            }.disposed(by: disposeBag)
+            return Disposables.create()
+        }
+    }
+
+    func removePortfolio(_ portfolio: Portfolio) -> Observable<(Bool,String)> {
+        return Observable.create { [weak self] observable in
+            guard let self = self else {
+                observable.onNext((false,"Somethings wrong"))
+                observable.onCompleted()
+                return Disposables.create()
+            }
+            let uid = FirebaseAuthHelper.shared.getUID()
+            let docRef = self.db.collection("data").document(uid)
+            self.getAllPortfolio().subscribe { result, listPortfolio in
+                var newPortfolio = listPortfolio
+                if !result {
+                    observable.onNext((false,"Somethings wrong"))
+                    observable.onCompleted()
+                } else {
+                    newPortfolio.removeAll(where: {$0.name == portfolio.name})
+                    docRef.updateData(["portfolio": newPortfolio]) { error in
+                        if error != nil {
+                            observable.onNext((false,"Somethings wrong"))
+                            observable.onCompleted()
+                        } else {
+                            observable.onNext((true,"Success"))
+                            observable.onCompleted()
+                        }
+                    }
+                }
+            }.disposed(by: disposeBag)
+            return Disposables.create()
+        }
+    }
 }

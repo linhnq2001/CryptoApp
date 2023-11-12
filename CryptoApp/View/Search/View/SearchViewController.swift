@@ -14,6 +14,8 @@ public enum SearchTitle {
     case recentSearch
     case searchResult
     case trendingSearch
+    case marketCoin
+    case portfolioCoin
 }
 
 typealias SearchSection = SectionModel<SearchTitle,SearchDataSource>
@@ -49,6 +51,8 @@ class SearchViewController: UIViewController {
         case .trendingSearch:
             searchCell.configData(data: item, type: .trendingSearch)
             return searchCell
+        default:
+            break
         }
     }
     
@@ -104,6 +108,8 @@ class SearchViewController: UIViewController {
                     let viewModel = CoinDetailViewModel(id: id)
                     let vc = CoinDetailViewController(viewModel: viewModel)
                     self.navigationController?.pushViewController(vc, animated: true)
+                default:
+                    break
                 }
                 print("selected with indextPath: \(indexPath)")
             })

@@ -10,12 +10,16 @@ import Foundation
 final public class UserDataFb: NSObject, Codable{
     var watchList: [String] = []
     var recentSearch: [String] = []
-    init(watchList: [String], recentSearch: [String]) {
+    var portfolio: [Portfolio] = []
+
+    init(watchList: [String], recentSearch: [String],portfolio: [Portfolio] ) {
         self.watchList = watchList
         self.recentSearch = recentSearch
+        self.portfolio = portfolio
     }
     func convertToDictionary() -> [String: Any] {
         return ["watchList": watchList,
-                "recentSearch":recentSearch]
+                "recentSearch":recentSearch,
+                "portfolio":portfolio]
     }
 }

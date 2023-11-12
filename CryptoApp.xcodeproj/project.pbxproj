@@ -42,6 +42,10 @@
 		13607BF32ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */; };
 		136409692B0138B100429F93 /* ResultSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136409672B0138B100429F93 /* ResultSearchCell.swift */; };
 		1364096A2B0138B100429F93 /* ResultSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136409682B0138B100429F93 /* ResultSearchCell.xib */; };
+		136A6A022B0182E2008DF789 /* ChooseAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6A002B0182E2008DF789 /* ChooseAssetVC.swift */; };
+		136A6A032B0182E2008DF789 /* ChooseAssetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A6A012B0182E2008DF789 /* ChooseAssetVC.xib */; };
+		136A6A062B0183E5008DF789 /* ChooseAssetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6A052B0183E5008DF789 /* ChooseAssetViewModel.swift */; };
+		136A6A082B0187D5008DF789 /* PortfolioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6A072B0187D5008DF789 /* PortfolioModel.swift */; };
 		137078282AE2860600438377 /* HeaderMarketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137078272AE2860600438377 /* HeaderMarketView.xib */; };
 		1370782A2AE2864400438377 /* HeaderMarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137078292AE2864400438377 /* HeaderMarketView.swift */; };
 		137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C04E62ACEBC4D009E0317 /* Validation.swift */; };
@@ -157,6 +161,10 @@
 		13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		136409672B0138B100429F93 /* ResultSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchCell.swift; sourceTree = "<group>"; };
 		136409682B0138B100429F93 /* ResultSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultSearchCell.xib; sourceTree = "<group>"; };
+		136A6A002B0182E2008DF789 /* ChooseAssetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAssetVC.swift; sourceTree = "<group>"; };
+		136A6A012B0182E2008DF789 /* ChooseAssetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseAssetVC.xib; sourceTree = "<group>"; };
+		136A6A052B0183E5008DF789 /* ChooseAssetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAssetViewModel.swift; sourceTree = "<group>"; };
+		136A6A072B0187D5008DF789 /* PortfolioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioModel.swift; sourceTree = "<group>"; };
 		137078272AE2860600438377 /* HeaderMarketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderMarketView.xib; sourceTree = "<group>"; };
 		137078292AE2864400438377 /* HeaderMarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMarketView.swift; sourceTree = "<group>"; };
 		137C04E62ACEBC4D009E0317 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -441,6 +449,24 @@
 			path = CryptoAppUITests;
 			sourceTree = "<group>";
 		};
+		136A69FF2B0182BD008DF789 /* ChooseAsset */ = {
+			isa = PBXGroup;
+			children = (
+				136A6A042B0183D0008DF789 /* ViewModel */,
+				136A6A002B0182E2008DF789 /* ChooseAssetVC.swift */,
+				136A6A012B0182E2008DF789 /* ChooseAssetVC.xib */,
+			);
+			path = ChooseAsset;
+			sourceTree = "<group>";
+		};
+		136A6A042B0183D0008DF789 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				136A6A052B0183E5008DF789 /* ChooseAssetViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		1370782B2AE289A000438377 /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -494,6 +520,7 @@
 		1397D0112AD5C362006325BE /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
+				136A69FF2B0182BD008DF789 /* ChooseAsset */,
 				13C184122AFCD7EA00E7CEED /* ViewModel */,
 				1397D01B2AD5C5E8006325BE /* PortfolioViewController.swift */,
 				1397D01C2AD5C5E8006325BE /* PortfolioViewController.xib */,
@@ -524,6 +551,7 @@
 				13F8D8B42AFA7EB300A93E07 /* SearchResponse.swift */,
 				13F8D8B62AFA822B00A93E07 /* TrendingSearchResponse.swift */,
 				13FCE3A32AFB734D003B5414 /* UserDataFb.swift */,
+				136A6A072B0187D5008DF789 /* PortfolioModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -898,6 +926,7 @@
 				13E1CFD22AF95765002D9A91 /* ExchangeCell.xib in Resources */,
 				13607BD92ACD696A008529D2 /* Assets.xcassets in Resources */,
 				13C184112AFCC47E00E7CEED /* RecentSearchCollectionViewCell.xib in Resources */,
+				136A6A032B0182E2008DF789 /* ChooseAssetVC.xib in Resources */,
 				1397D0222AD5C5F6006325BE /* SettingViewController.xib in Resources */,
 				13B2E1E12ADEFF1D007ED6CD /* CoinDetailViewController.xib in Resources */,
 				1337DB2A2AF61DA80048C32C /* ExchangesViewController.xib in Resources */,
@@ -1045,6 +1074,7 @@
 				13FE0FDF2ACD72BA00D519CA /* LoginViewController.swift in Sources */,
 				139DA42F2ADC5E2A00908D25 /* HomeViewModel.swift in Sources */,
 				13468F0F2ADDA062006915F6 /* CoinInfoTableViewCell.swift in Sources */,
+				136A6A062B0183E5008DF789 /* ChooseAssetViewModel.swift in Sources */,
 				131EB55E2ADC7C0600BAD22D /* ApiHelper.swift in Sources */,
 				1337DB232AF61D450048C32C /* OverviewViewController.swift in Sources */,
 				136409692B0138B100429F93 /* ResultSearchCell.swift in Sources */,
@@ -1083,12 +1113,14 @@
 				13FE0FFC2ACDCC3300D519CA /* InputTextField.swift in Sources */,
 				13EAA7762AED989E00610D9D /* SimplePriceResponse.swift in Sources */,
 				1397D0152AD5C46E006325BE /* HomeViewController.swift in Sources */,
+				136A6A022B0182E2008DF789 /* ChooseAssetVC.swift in Sources */,
 				13A4D53E2ADFDE930087561C /* EditProfileViewController.swift in Sources */,
 				131EB5412ADC6BAE00BAD22D /* SearchViewController.swift in Sources */,
 				137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */,
 				13C184102AFCC47E00E7CEED /* RecentSearchCollectionViewCell.swift in Sources */,
 				13F8D8B72AFA822B00A93E07 /* TrendingSearchResponse.swift in Sources */,
 				13B2E1E02ADEFF1D007ED6CD /* CoinDetailViewController.swift in Sources */,
+				136A6A082B0187D5008DF789 /* PortfolioModel.swift in Sources */,
 				13B30F732AD0816F004FDEE0 /* FirebaseAuthHelper.swift in Sources */,
 				1397D0212AD5C5F6006325BE /* SettingViewController.swift in Sources */,
 				1337DB292AF61DA80048C32C /* ExchangesViewController.swift in Sources */,

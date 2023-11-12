@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class CoinInMarketResponse: Codable {
+public class CoinInMarketResponse: Codable,SearchDataSource {
     var id: String
     var symbol, name: String?
     var image: String?
