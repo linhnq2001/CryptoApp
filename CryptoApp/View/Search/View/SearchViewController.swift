@@ -52,6 +52,7 @@ class SearchViewController: UIViewController {
             searchCell.configData(data: item, type: .trendingSearch)
             return searchCell
         default:
+            return UITableViewCell()
             break
         }
     }
@@ -83,7 +84,6 @@ class SearchViewController: UIViewController {
     }
     
     private func setupTableview() {
-        tableview.rx.setDelegate(self).disposed(by: disposeBag)
         tableview.register(UINib(nibName: "RecentSearchCell", bundle: nil), forCellReuseIdentifier: "RecentSearchCell")
         tableview.register(UINib(nibName: "ResultSearchCell", bundle: nil), forCellReuseIdentifier: "ResultSearchCell")
         tableview.rx
@@ -122,7 +122,7 @@ class SearchViewController: UIViewController {
         handleLoading(output)
         handleSearchResult(output)
         trigger.onNext(())
-        searchTF.rx.controlEvent(.editingDidEnd).withLatestFrom(searchTF.rx.text.orEmpty).debounce(.milliseconds(500), scheduler: MainScheduler.instance).bind(to: inSearch).disposed(by: disposeBag)
+        searchTF.rx.controlEvent(.editingDidEnd).withLatestFrom(searchTF.rx.text.orEmpty).bind(to: inSearch).disposed(by: disposeBag)
     }
     
     private func handleLoading(_ output: SearchViewModel.Output) {
@@ -141,22 +141,4 @@ class SearchViewController: UIViewController {
     @IBAction func didTapCancel(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-}
-
-extension SearchViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if self.listSection[indexPath.section].model == .recentSearch {
-//            return 400
-//        } else {
-//            return 120
-//        }
-//    }
-//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if self.listSection[indexPath.section].model == .recentSearch {
-//            return 400
-//        } else {
-//            return 400
-//        }
-//        return UITableView.automaticDimension
-//    }
 }

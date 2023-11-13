@@ -42,10 +42,17 @@
 		13607BF32ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */; };
 		136409692B0138B100429F93 /* ResultSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136409672B0138B100429F93 /* ResultSearchCell.swift */; };
 		1364096A2B0138B100429F93 /* ResultSearchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136409682B0138B100429F93 /* ResultSearchCell.xib */; };
+		1369347F2B027BEC005D739B /* ChooseColorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1369347E2B027BEC005D739B /* ChooseColorView.xib */; };
+		136934812B027BFD005D739B /* ChooseColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136934802B027BFD005D739B /* ChooseColorView.swift */; };
+		136934832B0289F3005D739B /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136934822B0289F3005D739B /* UIColor+Extension.swift */; };
+		136934A12B028EEA005D739B /* PortfolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1369349F2B028EEA005D739B /* PortfolioCell.swift */; };
+		136934A22B028EEA005D739B /* PortfolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136934A02B028EEA005D739B /* PortfolioCell.xib */; };
 		136A6A022B0182E2008DF789 /* ChooseAssetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6A002B0182E2008DF789 /* ChooseAssetVC.swift */; };
 		136A6A032B0182E2008DF789 /* ChooseAssetVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A6A012B0182E2008DF789 /* ChooseAssetVC.xib */; };
 		136A6A062B0183E5008DF789 /* ChooseAssetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6A052B0183E5008DF789 /* ChooseAssetViewModel.swift */; };
 		136A6A082B0187D5008DF789 /* PortfolioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6A072B0187D5008DF789 /* PortfolioModel.swift */; };
+		136A6A0C2B0192C2008DF789 /* ChooseAssetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136A6A0A2B0192C2008DF789 /* ChooseAssetCell.swift */; };
+		136A6A0D2B0192C2008DF789 /* ChooseAssetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 136A6A0B2B0192C2008DF789 /* ChooseAssetCell.xib */; };
 		137078282AE2860600438377 /* HeaderMarketView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 137078272AE2860600438377 /* HeaderMarketView.xib */; };
 		1370782A2AE2864400438377 /* HeaderMarketView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137078292AE2864400438377 /* HeaderMarketView.swift */; };
 		137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C04E62ACEBC4D009E0317 /* Validation.swift */; };
@@ -161,10 +168,17 @@
 		13607BF22ACD696A008529D2 /* CryptoAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		136409672B0138B100429F93 /* ResultSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultSearchCell.swift; sourceTree = "<group>"; };
 		136409682B0138B100429F93 /* ResultSearchCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultSearchCell.xib; sourceTree = "<group>"; };
+		1369347E2B027BEC005D739B /* ChooseColorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseColorView.xib; sourceTree = "<group>"; };
+		136934802B027BFD005D739B /* ChooseColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseColorView.swift; sourceTree = "<group>"; };
+		136934822B0289F3005D739B /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		1369349F2B028EEA005D739B /* PortfolioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioCell.swift; sourceTree = "<group>"; };
+		136934A02B028EEA005D739B /* PortfolioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PortfolioCell.xib; sourceTree = "<group>"; };
 		136A6A002B0182E2008DF789 /* ChooseAssetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAssetVC.swift; sourceTree = "<group>"; };
 		136A6A012B0182E2008DF789 /* ChooseAssetVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseAssetVC.xib; sourceTree = "<group>"; };
 		136A6A052B0183E5008DF789 /* ChooseAssetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAssetViewModel.swift; sourceTree = "<group>"; };
 		136A6A072B0187D5008DF789 /* PortfolioModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioModel.swift; sourceTree = "<group>"; };
+		136A6A0A2B0192C2008DF789 /* ChooseAssetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseAssetCell.swift; sourceTree = "<group>"; };
+		136A6A0B2B0192C2008DF789 /* ChooseAssetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChooseAssetCell.xib; sourceTree = "<group>"; };
 		137078272AE2860600438377 /* HeaderMarketView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderMarketView.xib; sourceTree = "<group>"; };
 		137078292AE2864400438377 /* HeaderMarketView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMarketView.swift; sourceTree = "<group>"; };
 		137C04E62ACEBC4D009E0317 /* Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validation.swift; sourceTree = "<group>"; };
@@ -338,6 +352,7 @@
 		1337DB352AF884630048C32C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1369347D2B027BD3005D739B /* ChooseColorView */,
 				13FCE3A52AFB885A003B5414 /* CoinRoundedView */,
 				1337DB3B2AF894B70048C32C /* TagListView */,
 				1337DB382AF884AF0048C32C /* CategoryView */,
@@ -449,9 +464,28 @@
 			path = CryptoAppUITests;
 			sourceTree = "<group>";
 		};
+		1369347D2B027BD3005D739B /* ChooseColorView */ = {
+			isa = PBXGroup;
+			children = (
+				1369347E2B027BEC005D739B /* ChooseColorView.xib */,
+				136934802B027BFD005D739B /* ChooseColorView.swift */,
+			);
+			path = ChooseColorView;
+			sourceTree = "<group>";
+		};
+		1369349E2B028EBE005D739B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				1369349F2B028EEA005D739B /* PortfolioCell.swift */,
+				136934A02B028EEA005D739B /* PortfolioCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		136A69FF2B0182BD008DF789 /* ChooseAsset */ = {
 			isa = PBXGroup;
 			children = (
+				136A6A092B01929C008DF789 /* Cell */,
 				136A6A042B0183D0008DF789 /* ViewModel */,
 				136A6A002B0182E2008DF789 /* ChooseAssetVC.swift */,
 				136A6A012B0182E2008DF789 /* ChooseAssetVC.xib */,
@@ -465,6 +499,15 @@
 				136A6A052B0183E5008DF789 /* ChooseAssetViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		136A6A092B01929C008DF789 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				136A6A0A2B0192C2008DF789 /* ChooseAssetCell.swift */,
+				136A6A0B2B0192C2008DF789 /* ChooseAssetCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		1370782B2AE289A000438377 /* Header */ = {
@@ -520,6 +563,7 @@
 		1397D0112AD5C362006325BE /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
+				1369349E2B028EBE005D739B /* Cell */,
 				136A69FF2B0182BD008DF789 /* ChooseAsset */,
 				13C184122AFCD7EA00E7CEED /* ViewModel */,
 				1397D01B2AD5C5E8006325BE /* PortfolioViewController.swift */,
@@ -767,6 +811,7 @@
 				137C04E62ACEBC4D009E0317 /* Validation.swift */,
 				133F2F2B2AD2B46700676947 /* UIButton+Extension.swift */,
 				133F2F2D2AD2B48B00676947 /* UIViewController+Extension.swift */,
+				136934822B0289F3005D739B /* UIColor+Extension.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -912,7 +957,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				136934A22B028EEA005D739B /* PortfolioCell.xib in Resources */,
 				13FE0FE02ACD72BA00D519CA /* LoginViewController.xib in Resources */,
+				136A6A0D2B0192C2008DF789 /* ChooseAssetCell.xib in Resources */,
 				1337DB2F2AF61E1E0048C32C /* AboutViewController.xib in Resources */,
 				1337DB372AF884A80048C32C /* CategoryView.xib in Resources */,
 				13FE0FE62ACD72E500D519CA /* RegisterViewController.xib in Resources */,
@@ -935,6 +982,7 @@
 				137C04E92ACF3D4E009E0317 /* GoogleService-Info.plist in Resources */,
 				1397D0162AD5C46E006325BE /* HomeViewController.xib in Resources */,
 				1337DB342AF8819C0048C32C /* DescriptionCell.xib in Resources */,
+				1369347F2B027BEC005D739B /* ChooseColorView.xib in Resources */,
 				13F8D8BF2AFA87CA00A93E07 /* InputTextField.xib in Resources */,
 				13FCE3AE2AFCB72F003B5414 /* RecentSearchCell.xib in Resources */,
 				1397D01E2AD5C5E8006325BE /* PortfolioViewController.xib in Resources */,
@@ -1073,6 +1121,7 @@
 				1397D01D2AD5C5E8006325BE /* PortfolioViewController.swift in Sources */,
 				13FE0FDF2ACD72BA00D519CA /* LoginViewController.swift in Sources */,
 				139DA42F2ADC5E2A00908D25 /* HomeViewModel.swift in Sources */,
+				136A6A0C2B0192C2008DF789 /* ChooseAssetCell.swift in Sources */,
 				13468F0F2ADDA062006915F6 /* CoinInfoTableViewCell.swift in Sources */,
 				136A6A062B0183E5008DF789 /* ChooseAssetViewModel.swift in Sources */,
 				131EB55E2ADC7C0600BAD22D /* ApiHelper.swift in Sources */,
@@ -1096,6 +1145,7 @@
 				13607BD02ACD6969008529D2 /* AppDelegate.swift in Sources */,
 				13CA1DB12AF2BBDB00572AF6 /* TimeFrameView.swift in Sources */,
 				13FE0FCF2ACD6F6D00D519CA /* MainViewController.swift in Sources */,
+				136934A12B028EEA005D739B /* PortfolioCell.swift in Sources */,
 				13B30F752AD08710004FDEE0 /* FirestoreHelper.swift in Sources */,
 				13CA1DB52AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.swift in Sources */,
 				13F8D8B52AFA7EB300A93E07 /* SearchResponse.swift in Sources */,
@@ -1122,8 +1172,10 @@
 				13B2E1E02ADEFF1D007ED6CD /* CoinDetailViewController.swift in Sources */,
 				136A6A082B0187D5008DF789 /* PortfolioModel.swift in Sources */,
 				13B30F732AD0816F004FDEE0 /* FirebaseAuthHelper.swift in Sources */,
+				136934832B0289F3005D739B /* UIColor+Extension.swift in Sources */,
 				1397D0212AD5C5F6006325BE /* SettingViewController.swift in Sources */,
 				1337DB292AF61DA80048C32C /* ExchangesViewController.swift in Sources */,
+				136934812B027BFD005D739B /* ChooseColorView.swift in Sources */,
 				13FE0FD22ACD705A00D519CA /* SceneDelegate.swift in Sources */,
 				13FCE3A42AFB734D003B5414 /* UserDataFb.swift in Sources */,
 				1337DB2E2AF61E1E0048C32C /* AboutViewController.swift in Sources */,

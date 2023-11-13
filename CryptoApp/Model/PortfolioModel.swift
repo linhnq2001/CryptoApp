@@ -7,7 +7,7 @@
 
 import Foundation
 
-final public class Portfolio: NSObject,Codable {
+final public class Portfolio: NSObject,Codable,SearchDataSource {
     var name: String
     var color: String
     var createdAt: Int
@@ -21,7 +21,7 @@ final public class Portfolio: NSObject,Codable {
     }
 }
 
-final public class TokenInPortfolio: NSObject,Codable {
+final public class TokenInPortfolio: NSObject,Codable,SearchDataSource {
     var id: String
     var name: String
     var symbol: String

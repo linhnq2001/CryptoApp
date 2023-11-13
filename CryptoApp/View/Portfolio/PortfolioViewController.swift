@@ -25,5 +25,11 @@ class PortfolioViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
+    @IBAction func didTapAllPortfolio(_ sender: Any) {
+        let vc = ChooseAssetVC(viewModel: ChooseAssetViewModel())
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 
 }

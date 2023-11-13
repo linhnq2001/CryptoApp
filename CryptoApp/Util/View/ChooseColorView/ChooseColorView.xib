@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChooseColorView" customModule="CryptoApp" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="F2v-NF-zbF" id="0vd-Gx-ExV"/>
+                <outlet property="stackView" destination="RVm-is-7Jd" id="IPn-My-a0s"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="727" height="300"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2v-NF-zbF">
+                    <rect key="frame" x="0.0" y="0.0" width="727" height="300"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RVm-is-7Jd">
+                            <rect key="frame" x="10" y="0.0" width="707" height="300"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="RVm-is-7Jd" firstAttribute="leading" secondItem="F2v-NF-zbF" secondAttribute="leading" constant="10" id="MPY-rG-Tot"/>
+                        <constraint firstAttribute="trailing" secondItem="RVm-is-7Jd" secondAttribute="trailing" constant="10" id="Sjq-z0-fd2"/>
+                        <constraint firstAttribute="bottom" secondItem="RVm-is-7Jd" secondAttribute="bottom" id="lP3-2U-IHW"/>
+                        <constraint firstItem="RVm-is-7Jd" firstAttribute="top" secondItem="F2v-NF-zbF" secondAttribute="top" id="uu3-SC-g85"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="F2v-NF-zbF" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="7lV-WZ-gnG"/>
+                <constraint firstAttribute="bottom" secondItem="F2v-NF-zbF" secondAttribute="bottom" id="OkU-0m-B7X"/>
+                <constraint firstAttribute="trailing" secondItem="F2v-NF-zbF" secondAttribute="trailing" id="YoK-t3-A2t"/>
+                <constraint firstItem="F2v-NF-zbF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="pZK-Y0-xfw"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="249.61832061068702" y="-174.64788732394368"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

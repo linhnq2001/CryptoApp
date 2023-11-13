@@ -43,6 +43,8 @@ class ResultSearchCell: UITableViewCell {
             self.symbolLb.text = data.item?.symbol ?? ""
             self.tokenImage.kf.setImage(with: URL(string: data.item?.thumb ?? ""))
             break
+        default:
+            break
         }
     }
     
