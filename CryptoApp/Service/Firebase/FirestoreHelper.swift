@@ -268,7 +268,7 @@ extension FirestoreHelper {
                 } else {
                     if !newPortfolio.contains(where: {$0.name == portfolio.name}) {
                         newPortfolio.append(portfolio)
-                        docRef.updateData(["portfolio": newPortfolio]) { error in
+                        docRef.updateData(["portfolio": FieldValue.arrayUnion(newPortfolio.map({$0.toDictionnary}))]) { error in
                             if error != nil {
                                 observable.onNext((false,"Somethings wrong"))
                                 observable.onCompleted()

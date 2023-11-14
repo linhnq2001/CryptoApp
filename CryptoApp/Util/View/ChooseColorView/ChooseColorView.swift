@@ -12,6 +12,7 @@ final public class ChooseColorView: UIView {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var stackView: UIStackView!
     var listColor = ["#69D5EF","#9098F4","#C193F8","#80E094","#7DAEF6","#80E094"]
+    var selectedColor: String = "#69D5EF"
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()

@@ -40,6 +40,11 @@ class ChooseAssetCell: UITableViewCell {
             self.tokenImage.kf.setImage(with: URL(string: data.urlImage ))
             self.nameLb.text = data.name 
             self.symbolLb.text = data.symbol.uppercased()
+        case .searchResult:
+            guard let data = data as? CoinSearchResponse else {return}
+            self.tokenImage.kf.setImage(with: URL(string: data.large ?? ""))
+            self.nameLb.text = data.name
+            self.symbolLb.text = data.symbol?.uppercased()
         default:
             break
         }

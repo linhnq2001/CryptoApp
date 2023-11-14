@@ -7,17 +7,21 @@
 
 import Foundation
 
-final public class Portfolio: NSObject,Codable,SearchDataSource {
+final public class Portfolio: NSObject,Codable,SearchDataSource,PortfolioDataSource {
     var name: String
     var color: String
     var createdAt: Int
-    var listToken: [TokenInPortfolio]
+    var listToken: [TokenInPortfolio]? = []
     
-    init(name: String, color: String, createdAt: Int, listToken: [TokenInPortfolio]) {
+    init(name: String, color: String, createdAt: Int, listToken: [TokenInPortfolio]? = []) {
         self.name = name
         self.color = color
         self.createdAt = createdAt
         self.listToken = listToken
+    }
+    
+    func getValue() -> Double {
+        return 0
     }
 }
 
@@ -66,4 +70,13 @@ final public class TradeHistory: NSObject,Codable {
 public enum TradeType: String,Codable {
     case buy
     case sell
+}
+
+extension Encodable {
+    var toDictionnary: [String : Any]? {
+        guard let data =  try? JSONEncoder().encode(self) else {
+            return nil
+        }
+        return try? JSONSerialization.jsonObject(with: data, options: .allowFragments) as? [String: Any]
+    }
 }

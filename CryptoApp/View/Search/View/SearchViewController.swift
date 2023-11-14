@@ -130,12 +130,14 @@ class SearchViewController: UIViewController {
     }
 
     private func handleSearchResult(_ output: SearchViewModel.Output) {
-        output.searchResult.do(onNext: {[weak self] section in
+        output.searchResult.subscribe(onNext: { [weak self] section in
             guard let self = self else {
                 return
             }
             self.listSection = section
-        }).bind(to: tableview.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
+        }).disposed(by: disposeBag)
+
+        output.searchResult.bind(to: tableview.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
 
     @IBAction func didTapCancel(_ sender: Any) {

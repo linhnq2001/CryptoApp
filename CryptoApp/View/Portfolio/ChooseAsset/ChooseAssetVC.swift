@@ -16,11 +16,32 @@ class ChooseAssetVC: UIViewController {
     private let trigger = PublishSubject<Void>()
     private let inSearch = PublishRelay<String>()
     private let choosseAsset = PublishRelay<String>()
+    private var sections: [SearchSection] = []
     
     @IBOutlet weak var searchTF: UITextField!
     @IBOutlet weak var tableview: UITableView! {
         didSet {
             tableview.register(UINib(nibName: "ChooseAssetCell", bundle: nil), forCellReuseIdentifier: "ChooseAssetCell")
+            tableview.rx.itemSelected.subscribe(onNext: {[weak self] indexPath in
+                guard let self = self else {return}
+                let sectiontype = self.sections[indexPath.section].model
+                switch sectiontype {
+                case .portfolioCoin:
+                    guard let data = self.sections[indexPath.section].items[indexPath.row] as? TokenInPortfolio else { return }
+                    self.goToAddTransaction(id: data.id)
+                    break
+                case .marketCoin:
+                    guard let data = self.sections[indexPath.section].items[indexPath.row] as? CoinInMarketResponse else {return}
+                    self.goToAddTransaction(id: data.id, data: data)
+                    break
+                case .searchResult:
+                    guard let data = self.sections[indexPath.section].items[indexPath.row] as? CoinSearchResponse else {return}
+                    self.goToAddTransaction(id: data.id ?? "")
+                    break
+                default:
+                    break
+                }
+            }).disposed(by: disposeBag)
         }
     }
     lazy var dataSource = RxTableViewSectionedReloadDataSource<SearchSection> { dataSource, tableview, indexPath, item in
@@ -38,7 +59,7 @@ class ChooseAssetVC: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         bindingData()
@@ -58,6 +79,10 @@ class ChooseAssetVC: UIViewController {
     }
     
     private func handleSearchResult(_ output: ChooseAssetViewModel.Output) {
+        output.searchResult.subscribe(onNext: {[weak self] sections in
+            guard let self = self else {return}
+            self.sections = sections
+        }).disposed(by: disposeBag)
         output.searchResult.bind(to: tableview.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
     
@@ -65,4 +90,8 @@ class ChooseAssetVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    func goToAddTransaction(id: String , data: CoinInMarketResponse? = nil) {
+        let vc = AddTransactionVC(id: id)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 }

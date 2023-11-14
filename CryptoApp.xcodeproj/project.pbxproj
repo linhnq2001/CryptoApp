@@ -82,6 +82,14 @@
 		13CA1DB12AF2BBDB00572AF6 /* TimeFrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA1DB02AF2BBDB00572AF6 /* TimeFrameView.swift */; };
 		13CA1DB52AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CA1DB32AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.swift */; };
 		13CA1DB62AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CA1DB42AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.xib */; };
+		13D41E202B037C160050F045 /* NewPortfolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D41E1E2B037C160050F045 /* NewPortfolioCell.swift */; };
+		13D41E212B037C160050F045 /* NewPortfolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D41E1F2B037C160050F045 /* NewPortfolioCell.xib */; };
+		13D41E252B03F0600050F045 /* AddTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D41E232B03F0600050F045 /* AddTransactionVC.swift */; };
+		13D41E262B03F0600050F045 /* AddTransactionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D41E242B03F0600050F045 /* AddTransactionVC.xib */; };
+		13D41E2B2B03F1E90050F045 /* BuyTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D41E292B03F1E90050F045 /* BuyTransactionVC.swift */; };
+		13D41E2C2B03F1E90050F045 /* BuyTransactionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D41E2A2B03F1E90050F045 /* BuyTransactionVC.xib */; };
+		13D41E2F2B03F1FB0050F045 /* SellTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D41E2D2B03F1FB0050F045 /* SellTransactionVC.swift */; };
+		13D41E302B03F1FB0050F045 /* SellTransactionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13D41E2E2B03F1FB0050F045 /* SellTransactionVC.xib */; };
 		13E1CFD12AF95765002D9A91 /* ExchangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E1CFCF2AF95765002D9A91 /* ExchangeCell.swift */; };
 		13E1CFD22AF95765002D9A91 /* ExchangeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13E1CFD02AF95765002D9A91 /* ExchangeCell.xib */; };
 		13EAA7582AED0B0100610D9D /* WatchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13EAA7572AED0B0100610D9D /* WatchListViewModel.swift */; };
@@ -208,6 +216,14 @@
 		13CA1DB02AF2BBDB00572AF6 /* TimeFrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrameView.swift; sourceTree = "<group>"; };
 		13CA1DB32AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrameCollectionViewCell.swift; sourceTree = "<group>"; };
 		13CA1DB42AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeFrameCollectionViewCell.xib; sourceTree = "<group>"; };
+		13D41E1E2B037C160050F045 /* NewPortfolioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPortfolioCell.swift; sourceTree = "<group>"; };
+		13D41E1F2B037C160050F045 /* NewPortfolioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPortfolioCell.xib; sourceTree = "<group>"; };
+		13D41E232B03F0600050F045 /* AddTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionVC.swift; sourceTree = "<group>"; };
+		13D41E242B03F0600050F045 /* AddTransactionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTransactionVC.xib; sourceTree = "<group>"; };
+		13D41E292B03F1E90050F045 /* BuyTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyTransactionVC.swift; sourceTree = "<group>"; };
+		13D41E2A2B03F1E90050F045 /* BuyTransactionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BuyTransactionVC.xib; sourceTree = "<group>"; };
+		13D41E2D2B03F1FB0050F045 /* SellTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SellTransactionVC.swift; sourceTree = "<group>"; };
+		13D41E2E2B03F1FB0050F045 /* SellTransactionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SellTransactionVC.xib; sourceTree = "<group>"; };
 		13E1CFCF2AF95765002D9A91 /* ExchangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCell.swift; sourceTree = "<group>"; };
 		13E1CFD02AF95765002D9A91 /* ExchangeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExchangeCell.xib; sourceTree = "<group>"; };
 		13EAA7572AED0B0100610D9D /* WatchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewModel.swift; sourceTree = "<group>"; };
@@ -478,6 +494,8 @@
 			children = (
 				1369349F2B028EEA005D739B /* PortfolioCell.swift */,
 				136934A02B028EEA005D739B /* PortfolioCell.xib */,
+				13D41E1E2B037C160050F045 /* NewPortfolioCell.swift */,
+				13D41E1F2B037C160050F045 /* NewPortfolioCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -563,6 +581,7 @@
 		1397D0112AD5C362006325BE /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
+				13D41E222B03F0400050F045 /* AddTransaction */,
 				1369349E2B028EBE005D739B /* Cell */,
 				136A69FF2B0182BD008DF789 /* ChooseAsset */,
 				13C184122AFCD7EA00E7CEED /* ViewModel */,
@@ -717,6 +736,27 @@
 			children = (
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		13D41E222B03F0400050F045 /* AddTransaction */ = {
+			isa = PBXGroup;
+			children = (
+				13D41E282B03F1CD0050F045 /* TransactionView */,
+				13D41E232B03F0600050F045 /* AddTransactionVC.swift */,
+				13D41E242B03F0600050F045 /* AddTransactionVC.xib */,
+			);
+			path = AddTransaction;
+			sourceTree = "<group>";
+		};
+		13D41E282B03F1CD0050F045 /* TransactionView */ = {
+			isa = PBXGroup;
+			children = (
+				13D41E292B03F1E90050F045 /* BuyTransactionVC.swift */,
+				13D41E2A2B03F1E90050F045 /* BuyTransactionVC.xib */,
+				13D41E2D2B03F1FB0050F045 /* SellTransactionVC.swift */,
+				13D41E2E2B03F1FB0050F045 /* SellTransactionVC.xib */,
+			);
+			path = TransactionView;
 			sourceTree = "<group>";
 		};
 		13E1CFCE2AF95748002D9A91 /* Cell */ = {
@@ -959,8 +999,10 @@
 			files = (
 				136934A22B028EEA005D739B /* PortfolioCell.xib in Resources */,
 				13FE0FE02ACD72BA00D519CA /* LoginViewController.xib in Resources */,
+				13D41E212B037C160050F045 /* NewPortfolioCell.xib in Resources */,
 				136A6A0D2B0192C2008DF789 /* ChooseAssetCell.xib in Resources */,
 				1337DB2F2AF61E1E0048C32C /* AboutViewController.xib in Resources */,
+				13D41E262B03F0600050F045 /* AddTransactionVC.xib in Resources */,
 				1337DB372AF884A80048C32C /* CategoryView.xib in Resources */,
 				13FE0FE62ACD72E500D519CA /* RegisterViewController.xib in Resources */,
 				13A4D53F2ADFDE930087561C /* EditProfileViewController.xib in Resources */,
@@ -986,7 +1028,9 @@
 				13F8D8BF2AFA87CA00A93E07 /* InputTextField.xib in Resources */,
 				13FCE3AE2AFCB72F003B5414 /* RecentSearchCell.xib in Resources */,
 				1397D01E2AD5C5E8006325BE /* PortfolioViewController.xib in Resources */,
+				13D41E2C2B03F1E90050F045 /* BuyTransactionVC.xib in Resources */,
 				137078282AE2860600438377 /* HeaderMarketView.xib in Resources */,
+				13D41E302B03F1FB0050F045 /* SellTransactionVC.xib in Resources */,
 				1364096A2B0138B100429F93 /* ResultSearchCell.xib in Resources */,
 				1337DB242AF61D450048C32C /* OverviewViewController.xib in Resources */,
 			);
@@ -1149,23 +1193,27 @@
 				13B30F752AD08710004FDEE0 /* FirestoreHelper.swift in Sources */,
 				13CA1DB52AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.swift in Sources */,
 				13F8D8B52AFA7EB300A93E07 /* SearchResponse.swift in Sources */,
+				13D41E252B03F0600050F045 /* AddTransactionVC.swift in Sources */,
 				13C184142AFCD8B100E7CEED /* PortfolioViewModel.swift in Sources */,
 				1397D0192AD5C482006325BE /* WatchListViewController.swift in Sources */,
 				1337DB412AF894D30048C32C /* TagListView.swift in Sources */,
 				13468F0B2ADD7EE2006915F6 /* MarketRepository.swift in Sources */,
 				1337DB402AF894D30048C32C /* CloseButton.swift in Sources */,
 				1350B34D2AF9D8030081C2CE /* Ticket.swift in Sources */,
+				13D41E2F2B03F1FB0050F045 /* SellTransactionVC.swift in Sources */,
 				13468F082ADD7CED006915F6 /* ServiceUrl.swift in Sources */,
 				1337DB332AF8819C0048C32C /* DescriptionCell.swift in Sources */,
 				13E1CFD12AF95765002D9A91 /* ExchangeCell.swift in Sources */,
 				13EAA7582AED0B0100610D9D /* WatchListViewModel.swift in Sources */,
 				13EAA75A2AED835100610D9D /* CoinInfoResponse.swift in Sources */,
 				13FE0FFC2ACDCC3300D519CA /* InputTextField.swift in Sources */,
+				13D41E202B037C160050F045 /* NewPortfolioCell.swift in Sources */,
 				13EAA7762AED989E00610D9D /* SimplePriceResponse.swift in Sources */,
 				1397D0152AD5C46E006325BE /* HomeViewController.swift in Sources */,
 				136A6A022B0182E2008DF789 /* ChooseAssetVC.swift in Sources */,
 				13A4D53E2ADFDE930087561C /* EditProfileViewController.swift in Sources */,
 				131EB5412ADC6BAE00BAD22D /* SearchViewController.swift in Sources */,
+				13D41E2B2B03F1E90050F045 /* BuyTransactionVC.swift in Sources */,
 				137C04E72ACEBC4D009E0317 /* Validation.swift in Sources */,
 				13C184102AFCC47E00E7CEED /* RecentSearchCollectionViewCell.swift in Sources */,
 				13F8D8B72AFA822B00A93E07 /* TrendingSearchResponse.swift in Sources */,

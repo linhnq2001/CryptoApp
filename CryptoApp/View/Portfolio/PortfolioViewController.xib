@@ -12,7 +12,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PortfolioViewController" customModule="CryptoApp" customModuleProvider="target">
             <connections>
+                <outlet property="chooseColorView" destination="eLR-Kg-rm1" id="efE-bq-Zvt"/>
                 <outlet property="collectionview" destination="mZW-U7-mbG" id="1ei-Bn-T9h"/>
+                <outlet property="emptyView" destination="R94-y3-2Ns" id="E2U-fg-ZqH"/>
+                <outlet property="nameInputTF" destination="2A9-CN-Uwe" id="jcn-gJ-zHz"/>
+                <outlet property="newPortfolioView" destination="rYQ-4l-mM6" id="y8i-mu-TBa"/>
+                <outlet property="portfolioView" destination="eUv-m1-Q4E" id="Crm-fQ-ucd"/>
+                <outlet property="tableView" destination="oCy-Jp-CkT" id="FM3-NW-NYv"/>
+                <outlet property="timeFrameView" destination="mSM-el-RHJ" id="Ole-n9-n0f"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -60,13 +67,13 @@
                         <constraint firstItem="s09-bf-NLr" firstAttribute="leading" secondItem="x0e-gK-4bX" secondAttribute="leading" constant="10" id="wkZ-9U-umE"/>
                     </constraints>
                 </view>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mZW-U7-mbG">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="mZW-U7-mbG">
                     <rect key="frame" x="0.0" y="104" width="393" height="200"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="200" id="m9y-Ia-1qG"/>
                     </constraints>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jz8-Zd-xSU">
+                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jz8-Zd-xSU">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -76,7 +83,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vJ-fa-ERG">
                     <rect key="frame" x="0.0" y="304" width="393" height="514"/>
                     <subviews>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R94-y3-2Ns" userLabel="empty View">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R94-y3-2Ns" userLabel="empty View">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="514"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jqu-3c-gs4">
@@ -100,6 +107,9 @@
                                             <buttonConfiguration key="configuration" style="filled" title="Add coin">
                                                 <fontDescription key="titleFontDescription" type="boldSystem" pointSize="18"/>
                                             </buttonConfiguration>
+                                            <connections>
+                                                <action selector="didTapAddNewCoin:" destination="-1" eventType="touchUpInside" id="tgD-lZ-2n9"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </stackView>
@@ -110,7 +120,7 @@
                                 <constraint firstItem="jqu-3c-gs4" firstAttribute="centerX" secondItem="R94-y3-2Ns" secondAttribute="centerX" id="R18-dG-dat"/>
                             </constraints>
                         </view>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYQ-4l-mM6" userLabel="new portfolio View">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYQ-4l-mM6" userLabel="new portfolio View">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="514"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIN-Ga-8OP">
@@ -159,6 +169,9 @@
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <buttonConfiguration key="configuration" style="filled" title="Create portfolio"/>
+                                            <connections>
+                                                <action selector="didTapCreatePortfolio:" destination="-1" eventType="touchUpInside" id="wP6-jq-aXT"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -188,6 +201,32 @@
                                 <constraint firstItem="FIN-Ga-8OP" firstAttribute="top" secondItem="rYQ-4l-mM6" secondAttribute="top" constant="20" id="qXd-xq-Zh7"/>
                             </constraints>
                         </view>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUv-m1-Q4E" userLabel="portfolio view">
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="514"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mSM-el-RHJ" customClass="TimeFrameView" customModule="CryptoApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="40"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="hfW-J0-liX"/>
+                                    </constraints>
+                                </view>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oCy-Jp-CkT">
+                                    <rect key="frame" x="0.0" y="40" width="393" height="474"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstItem="mSM-el-RHJ" firstAttribute="leading" secondItem="eUv-m1-Q4E" secondAttribute="leading" id="1jn-5A-qPL"/>
+                                <constraint firstItem="oCy-Jp-CkT" firstAttribute="leading" secondItem="eUv-m1-Q4E" secondAttribute="leading" id="Fev-hy-PFo"/>
+                                <constraint firstAttribute="trailing" secondItem="mSM-el-RHJ" secondAttribute="trailing" id="L2j-EN-qQI"/>
+                                <constraint firstItem="mSM-el-RHJ" firstAttribute="top" secondItem="eUv-m1-Q4E" secondAttribute="top" id="Uwq-UI-SsM"/>
+                                <constraint firstAttribute="bottom" secondItem="oCy-Jp-CkT" secondAttribute="bottom" id="dEE-Zi-cIr"/>
+                                <constraint firstAttribute="trailing" secondItem="oCy-Jp-CkT" secondAttribute="trailing" id="eaX-YU-Xis"/>
+                                <constraint firstItem="oCy-Jp-CkT" firstAttribute="top" secondItem="mSM-el-RHJ" secondAttribute="bottom" id="oad-wk-mLZ"/>
+                            </constraints>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>
@@ -198,6 +237,7 @@
                 <constraint firstItem="rYQ-4l-mM6" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="7Jk-OW-VY1"/>
                 <constraint firstItem="1vJ-fa-ERG" firstAttribute="top" secondItem="mZW-U7-mbG" secondAttribute="bottom" id="7xR-29-N07"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="1vJ-fa-ERG" secondAttribute="bottom" id="Ghf-wA-bEC"/>
+                <constraint firstItem="eUv-m1-Q4E" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="JCe-eU-vp4"/>
                 <constraint firstItem="R94-y3-2Ns" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="OBh-PP-owI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1vJ-fa-ERG" secondAttribute="trailing" id="ZTr-eB-aA2"/>
                 <constraint firstItem="x0e-gK-4bX" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="5" id="hMz-ys-l87"/>

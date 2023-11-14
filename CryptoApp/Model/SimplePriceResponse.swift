@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 typealias SimplePriceResponse = [String: SimplePrice]
 
@@ -24,5 +25,14 @@ class SimplePrice: Codable {
         self.usdMarketCap = usdMarketCap
         self.usd24HVol = usd24HVol
         self.usd24HChange = usd24HChange
+    }
+}
+
+class LocalPriceData: Object {
+    var id: String
+    var data: SimplePrice
+    init(id: String, data: SimplePrice) {
+        self.id = id
+        self.data = data
     }
 }
