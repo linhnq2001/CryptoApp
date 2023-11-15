@@ -14,6 +14,7 @@ import RealmSwift
 final public class PortfolioViewModel: NSObject {
     private let repository = DefaultMarketRepository()
     private let disposeBag = DisposeBag()
+    let triggerUpdatePrice = PublishSubject<Void>()
 
     public struct Input {
         let trigger: PublishSubject<Void>
@@ -26,7 +27,7 @@ final public class PortfolioViewModel: NSObject {
         let showLoading: PublishRelay<Bool>
         let didChangePortfolio: PublishSubject<Portfolio>
         let didCreatePortfolio: PublishSubject<(Bool,String)>
-        let listTokenPortfolio: PublishSubject<[SectionModel<String,CoinInfoResponse>]>
+        let listTokenPortfolio: PublishSubject<[SectionModel<String,TokenInPortfolio>]>
     }
     
     func transform(_ input: PortfolioViewModel.Input) -> PortfolioViewModel.Output {
@@ -34,7 +35,7 @@ final public class PortfolioViewModel: NSObject {
         let showLoading = PublishRelay<Bool>()
         let didChangePortfolio = PublishSubject<Portfolio>()
         let didCreatePortfolio = PublishSubject<(Bool,String)>()
-        let listTokenPortfolio = PublishSubject<[SectionModel<String,CoinInfoResponse>]>()
+        let listTokenPortfolio = PublishSubject<[SectionModel<String,TokenInPortfolio>]>()
         
         let output = PortfolioViewModel.Output(listPortfolio: listPortfolio, showLoading: showLoading, didChangePortfolio: didChangePortfolio, didCreatePortfolio: didCreatePortfolio, listTokenPortfolio: listTokenPortfolio)
         
@@ -65,19 +66,23 @@ final public class PortfolioViewModel: NSObject {
     }
 
     private func handleActionChangePortfolio(_ input: PortfolioViewModel.Input, _ output: PortfolioViewModel.Output) {
-        input.actionChangePortfolio.flatMap { [weak self] portfolio -> Observable<[CoinInfoResponse]> in
-            guard let listtoken = portfolio.listToken, let self = self else {
+        input.actionChangePortfolio.flatMap { [weak self] portfolio -> Observable<([CoinInfoResponse], [TokenInPortfolio])> in
+            guard let self = self else {
                 return .empty()
             }
+            let listtoken = portfolio.listToken
             let listid = listtoken.map({$0.id})
-            return Observable.zip(listid.map({ id in
+            let listCoinInfo: Observable<[CoinInfoResponse]> = Observable.zip(listid.map({ id in
                 let coinInfo: Observable<CoinInfoResponse> = self.repository.getDetailCoin(id: id)
                 return coinInfo
             }))
-        }.subscribe(onNext: { [weak self] data in
+            let listTokenInPort = Observable.just(listtoken)
+            return Observable.zip(listCoinInfo, listTokenInPort)
+        }.subscribe(onNext: { [weak self] listCoinInfo, listTokenInPort in
             guard let self = self else {return}
-            self.saveLocalDataPrice(data: data)
-            output.listTokenPortfolio.onNext([SectionModel(model: "", items: data)])
+            self.saveLocalDataPrice(data: listCoinInfo)
+            self.triggerUpdatePrice.onNext(())
+            output.listTokenPortfolio.onNext([SectionModel(model: "", items: listTokenInPort)])
         }).disposed(by: disposeBag)
     }
     
@@ -88,7 +93,7 @@ final public class PortfolioViewModel: NSObject {
             return priceData
         }
         try! realm.write({
-            realm.add(listPrice)
+            realm.add(listPrice, update: .all)
         })
     }
 }

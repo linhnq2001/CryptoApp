@@ -34,7 +34,7 @@ class PortfolioViewController: UIViewController {
                 newPortfolioView.isHidden = false
             } else if sections.count == 2 {
                 guard let portfolio = sections.first?.items.first as? Portfolio else { return }
-                if let listToken = portfolio.listToken, !listToken.isEmpty {
+                if !portfolio.listToken.isEmpty {
                     portfolioView.isHidden = false
                 } else {
                     emptyView.isHidden = false
@@ -66,12 +66,12 @@ class PortfolioViewController: UIViewController {
     @IBOutlet weak var timeFrameView: TimeFrameView!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
-            tableView.register(UINib(nibName: "CoinInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "CoinInfoTableViewCell")
+            tableView.register(UINib(nibName: "TokenInPortfolioCell", bundle: nil), forCellReuseIdentifier: "TokenInPortfolioCell")
         }
     }
     
-    lazy var tableViewDataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,CoinInfoResponse>> { dataSource, tableview, indexPath, item in
-        guard let cell = tableview.dequeueReusableCell(withIdentifier: "CoinInfoTableViewCell", for: indexPath) as? CoinInfoTableViewCell else { return UITableViewCell() }
+    lazy var tableViewDataSource = RxTableViewSectionedReloadDataSource<SectionModel<String,TokenInPortfolio>> { dataSource, tableview, indexPath, item in
+        guard let cell = tableview.dequeueReusableCell(withIdentifier: "TokenInPortfolioCell", for: indexPath) as? TokenInPortfolioCell else { return UITableViewCell() }
         cell.configData(data: item)
         return cell
     }
@@ -84,7 +84,7 @@ class PortfolioViewController: UIViewController {
         case .newPortfolio:
             return newPortfolioCell
         case .portfolio:
-            portfolioCell.configData(data: item)
+            portfolioCell.configData(data: item,triggerUpdatePrice: self.viewModel.triggerUpdatePrice)
             return portfolioCell
         }
     }
@@ -160,10 +160,10 @@ class PortfolioViewController: UIViewController {
     }
     
     @IBAction func didTapAddNewCoin(_ sender: Any) {
-        let vc = ChooseAssetVC(viewModel: ChooseAssetViewModel(portfolioName: self.selectedPortfolio?.name))
+        let vc = ChooseAssetVC(viewModel: ChooseAssetViewModel(portfolioName: self.selectedPortfolio?.name, portfolio: self.selectedPortfolio))
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
+
 }
 
 extension PortfolioViewController: UICollectionViewDelegateFlowLayout {

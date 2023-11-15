@@ -10,8 +10,11 @@ import RealmSwift
 
 typealias SimplePriceResponse = [String: SimplePrice]
 
-class SimplePrice: Codable {
-    var usd, usdMarketCap, usd24HVol, usd24HChange: Double?
+class SimplePrice: Object, Codable {
+    @Persisted var usd: Double?
+    @Persisted var usdMarketCap: Double?
+    @Persisted var usd24HVol: Double?
+    @Persisted var usd24HChange: Double?
     
     enum CodingKeys: String, CodingKey {
         case usd
@@ -20,7 +23,8 @@ class SimplePrice: Codable {
         case usd24HChange = "usd_24h_change"
     }
     
-    init(usd: Double?, usdMarketCap: Double?, usd24HVol: Double?, usd24HChange: Double?) {
+    convenience init(usd: Double?, usdMarketCap: Double?, usd24HVol: Double?, usd24HChange: Double?) {
+        self.init()
         self.usd = usd
         self.usdMarketCap = usdMarketCap
         self.usd24HVol = usd24HVol
@@ -29,9 +33,11 @@ class SimplePrice: Codable {
 }
 
 class LocalPriceData: Object {
-    var id: String
-    var data: SimplePrice
-    init(id: String, data: SimplePrice) {
+    @Persisted(primaryKey: true) var id: String
+    @Persisted var data: SimplePrice?
+
+    convenience init(id: String, data: SimplePrice?) {
+        self.init()
         self.id = id
         self.data = data
     }

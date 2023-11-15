@@ -267,8 +267,7 @@ extension FirestoreHelper {
                     observable.onCompleted()
                 } else {
                     if !newPortfolio.contains(where: {$0.name == portfolio.name}) {
-                        newPortfolio.append(portfolio)
-                        docRef.updateData(["portfolio": FieldValue.arrayUnion(newPortfolio.map({$0.toDictionnary}))]) { error in
+                        docRef.updateData(["portfolio": FieldValue.arrayUnion([portfolio.toDictionnary])]) { error in
                             if error != nil {
                                 observable.onNext((false,"Somethings wrong"))
                                 observable.onCompleted()
@@ -317,4 +316,35 @@ extension FirestoreHelper {
             return Disposables.create()
         }
     }
+
+    func addTransaction(_ transaction: TokenInPortfolio, namePortfolio: String) -> Observable<(Bool,String)> {
+        return Observable.create { observable in
+            let uid = FirebaseAuthHelper.shared.getUID()
+            self.db.collection("data").document(uid).getDocument(as: UserDataFb.self) { result in
+                switch result {
+                case .success(let success):
+                    var data = success
+                    if let index = data.portfolio.firstIndex(where: {$0.name == namePortfolio}) {
+                        if let indexToken = data.portfolio[index].listToken.firstIndex(where: {$0.id == transaction.id}) {
+                            data.portfolio[index].listToken[indexToken].tradesHistory.append(contentsOf: transaction.tradesHistory)
+                        } else {
+                            data.portfolio[index].listToken.append(transaction)
+                        }
+                        self.db.collection("data").document(uid).updateData(["portfolio": data.portfolio.map({$0.toDictionnary})]) { error in
+                            observable.onNext((error == nil,error != nil ? "Something wrong" : ""))
+                            observable.onCompleted()
+                        }
+                    } else {
+                        observable.onNext((false,"Something wrong"))
+                        observable.onCompleted()
+                    }
+                case .failure(_):
+                    observable.onNext((false,"Something wrong"))
+                    observable.onCompleted()
+                }
+            }
+            return Disposables.create()
+        }
+    }
+
 }

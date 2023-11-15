@@ -50,6 +50,10 @@ class WatchListViewController: UIViewController {
         handleLoading(output)
         handleBindingTableView(output)
         trigger.onNext(())
+        searchBtn.rx.controlEvent(.touchUpInside).subscribe(onNext: { [weak self] in
+            let vc = SearchViewController(viewModel: SearchViewModel())
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }).disposed(by: disposeBag)
     }
 
     private func handleLoading(_ output: WatchListViewModel.Output) {

@@ -11,6 +11,8 @@
 		131EB5412ADC6BAE00BAD22D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131EB53F2ADC6BAE00BAD22D /* SearchViewController.swift */; };
 		131EB5422ADC6BAE00BAD22D /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131EB5402ADC6BAE00BAD22D /* SearchViewController.xib */; };
 		131EB55E2ADC7C0600BAD22D /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131EB55D2ADC7C0600BAD22D /* ApiHelper.swift */; };
+		1322AE5D2B0559E500E497A8 /* TokenInPortfolioCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1322AE5B2B0559E500E497A8 /* TokenInPortfolioCell.swift */; };
+		1322AE5E2B0559E500E497A8 /* TokenInPortfolioCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1322AE5C2B0559E500E497A8 /* TokenInPortfolioCell.xib */; };
 		1337DB232AF61D450048C32C /* OverviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1337DB212AF61D450048C32C /* OverviewViewController.swift */; };
 		1337DB242AF61D450048C32C /* OverviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1337DB222AF61D450048C32C /* OverviewViewController.xib */; };
 		1337DB292AF61DA80048C32C /* ExchangesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1337DB272AF61DA80048C32C /* ExchangesViewController.swift */; };
@@ -141,6 +143,8 @@
 		131EB53F2ADC6BAE00BAD22D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		131EB5402ADC6BAE00BAD22D /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		131EB55D2ADC7C0600BAD22D /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
+		1322AE5B2B0559E500E497A8 /* TokenInPortfolioCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInPortfolioCell.swift; sourceTree = "<group>"; };
+		1322AE5C2B0559E500E497A8 /* TokenInPortfolioCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TokenInPortfolioCell.xib; sourceTree = "<group>"; };
 		1337DB212AF61D450048C32C /* OverviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverviewViewController.swift; sourceTree = "<group>"; };
 		1337DB222AF61D450048C32C /* OverviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OverviewViewController.xib; sourceTree = "<group>"; };
 		1337DB272AF61DA80048C32C /* ExchangesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangesViewController.swift; sourceTree = "<group>"; };
@@ -315,6 +319,26 @@
 				13468F072ADD7CED006915F6 /* ServiceUrl.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		1322AE592B05585000E497A8 /* CollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1369349F2B028EEA005D739B /* PortfolioCell.swift */,
+				136934A02B028EEA005D739B /* PortfolioCell.xib */,
+				13D41E1E2B037C160050F045 /* NewPortfolioCell.swift */,
+				13D41E1F2B037C160050F045 /* NewPortfolioCell.xib */,
+			);
+			path = CollectionViewCell;
+			sourceTree = "<group>";
+		};
+		1322AE5A2B0559C000E497A8 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				1322AE5B2B0559E500E497A8 /* TokenInPortfolioCell.swift */,
+				1322AE5C2B0559E500E497A8 /* TokenInPortfolioCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		1337DB202AF61CE60048C32C /* Pages */ = {
@@ -492,10 +516,8 @@
 		1369349E2B028EBE005D739B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				1369349F2B028EEA005D739B /* PortfolioCell.swift */,
-				136934A02B028EEA005D739B /* PortfolioCell.xib */,
-				13D41E1E2B037C160050F045 /* NewPortfolioCell.swift */,
-				13D41E1F2B037C160050F045 /* NewPortfolioCell.xib */,
+				1322AE5A2B0559C000E497A8 /* TableViewCell */,
+				1322AE592B05585000E497A8 /* CollectionViewCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1008,6 +1030,7 @@
 				13A4D53F2ADFDE930087561C /* EditProfileViewController.xib in Resources */,
 				13CA1DAF2AF2BBC500572AF6 /* TimeFrameView.xib in Resources */,
 				131EB5422ADC6BAE00BAD22D /* SearchViewController.xib in Resources */,
+				1322AE5E2B0559E500E497A8 /* TokenInPortfolioCell.xib in Resources */,
 				13468F102ADDA062006915F6 /* CoinInfoTableViewCell.xib in Resources */,
 				1397D01A2AD5C482006325BE /* WatchListViewController.xib in Resources */,
 				13607BDC2ACD696A008529D2 /* LaunchScreen.storyboard in Resources */,
@@ -1207,6 +1230,7 @@
 				13EAA7582AED0B0100610D9D /* WatchListViewModel.swift in Sources */,
 				13EAA75A2AED835100610D9D /* CoinInfoResponse.swift in Sources */,
 				13FE0FFC2ACDCC3300D519CA /* InputTextField.swift in Sources */,
+				1322AE5D2B0559E500E497A8 /* TokenInPortfolioCell.swift in Sources */,
 				13D41E202B037C160050F045 /* NewPortfolioCell.swift in Sources */,
 				13EAA7762AED989E00610D9D /* SimplePriceResponse.swift in Sources */,
 				1397D0152AD5C46E006325BE /* HomeViewController.swift in Sources */,

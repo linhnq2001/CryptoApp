@@ -6,22 +6,60 @@
 //
 
 import Foundation
+import RealmSwift
 
 final public class Portfolio: NSObject,Codable,SearchDataSource,PortfolioDataSource {
     var name: String
     var color: String
     var createdAt: Int
-    var listToken: [TokenInPortfolio]? = []
+    var listToken: [TokenInPortfolio] = []
     
-    init(name: String, color: String, createdAt: Int, listToken: [TokenInPortfolio]? = []) {
+    init(name: String, color: String, createdAt: Int, listToken: [TokenInPortfolio]) {
         self.name = name
         self.color = color
         self.createdAt = createdAt
         self.listToken = listToken
     }
+
+    init(name: String, color: String, createdAt: Int) {
+        self.name = name
+        self.color = color
+        self.createdAt = createdAt
+    }
     
     func getValue() -> Double {
+        var sum = 0.0
+        listToken.forEach { tokenInPortfolio in
+            let realm = try! Realm()
+            let currentPrice = realm.objects(LocalPriceData.self).first(where: {$0.id == tokenInPortfolio.id})?.data?.usd ?? 0
+            tokenInPortfolio.tradesHistory.forEach { tradeHistory in
+                switch tradeHistory.type {
+                case .buy:
+                    sum += tradeHistory.amount * currentPrice
+                case .sell:
+                    sum -= tradeHistory.amount * currentPrice
+                }
+            }
+        }
+        return sum
+    }
+
+    func getValueChange() -> Double {
+        
         return 0
+    }
+
+    func getPercentChange() -> Double {
+        
+        return 0
+    }
+
+    func addTransaction(tokeninPortfolio: TokenInPortfolio) {
+        if let index = listToken.firstIndex(where: {$0.id == tokeninPortfolio.id}) {
+            listToken[index].tradesHistory.append(contentsOf: tokeninPortfolio.tradesHistory)
+        } else {
+            listToken.append(tokeninPortfolio)
+        }
     }
 }
 
@@ -50,6 +88,10 @@ final public class TokenInPortfolio: NSObject,Codable,SearchDataSource {
             }
         }
         return sum
+    }
+    
+    func getProfit() -> Double {
+        return 0
     }
 }
 

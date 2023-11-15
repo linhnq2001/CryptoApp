@@ -13,8 +13,10 @@ final public class ChooseAssetViewModel: NSObject {
     private let disposeBag = DisposeBag()
     private let repository = DefaultMarketRepository()
     var portfolioName: String?
-    init(portfolioName: String? = nil) {
+    var portfolio: Portfolio?
+    init(portfolioName: String? = nil, portfolio: Portfolio? = nil) {
         self.portfolioName = portfolioName
+        self.portfolio = portfolio
     }
     
     public struct Input {

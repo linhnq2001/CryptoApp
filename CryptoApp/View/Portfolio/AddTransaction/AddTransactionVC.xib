@@ -13,6 +13,9 @@
             <connections>
                 <outlet property="containerView" destination="Zsr-fD-y6t" id="QO9-xj-1rM"/>
                 <outlet property="segmentedControl" destination="syy-fM-3gM" id="tQt-BR-m2h"/>
+                <outlet property="tokenImage" destination="eu3-ka-Icj" id="fi8-AX-1Tc"/>
+                <outlet property="tokenNameLb" destination="gxh-dw-FpI" id="gvI-Uj-cpx"/>
+                <outlet property="tokenSymbolLb" destination="1OF-wP-XU4" id="FeC-Nv-66v"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

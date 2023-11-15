@@ -58,7 +58,7 @@ class CoinInfoTableViewCell: UITableViewCell {
             self.coinImage.kf.setImage(with: URL(string: url))
         }
         self.priceLb.text = "$ \(data.getCurrentPrice())"
-        self.priceChangeLb.text = numberFormatter.string(for: data.marketData?.priceChange24H)! + " %"
+        self.priceChangeLb.text = numberFormatter.string(for: data.marketData?.priceChangePercentage24H)! + " %"
         self.priceChangeLb.textColor = data.marketData?.priceChange24H ?? 0 >= 0 ? UIColor.systemGreen : UIColor.red
         self.marketCapLb.text = "$ \(formatNumber(number: Double(data.marketData?.marketCap?["usd"] ?? 0)))"
         self.volLb.text = "$ \(formatNumber(number: (data.marketData?.totalVolume?["usd"] ?? 0) ?? 0))"
