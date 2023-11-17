@@ -163,6 +163,8 @@
             </constraints>
             <size key="customSize" width="325" height="180"/>
             <connections>
+                <outlet property="analyticsView" destination="Q0n-X5-0gj" id="ERR-hA-TOF"/>
+                <outlet property="historyView" destination="RST-ov-SH6" id="oFR-FP-Dgg"/>
                 <outlet property="nameLb" destination="v7O-Gg-Mqo" id="qEt-kK-FRv"/>
                 <outlet property="percentageChangeLb" destination="Y1n-zc-nIN" id="FgM-Vw-8db"/>
                 <outlet property="portfolioImage" destination="kZZ-Ga-EYn" id="EXc-MU-TQh"/>

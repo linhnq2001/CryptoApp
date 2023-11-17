@@ -76,8 +76,8 @@ class PortfolioViewController: UIViewController {
         return cell
     }
     
-    lazy var dataSource = RxCollectionViewSectionedReloadDataSource<PortfolioSection>  { dataSource, collectionview, indexPath, item in
-        guard let newPortfolioCell = collectionview.dequeueReusableCell(withReuseIdentifier: "NewPortfolioCell", for: indexPath) as? NewPortfolioCell, let portfolioCell = collectionview.dequeueReusableCell(withReuseIdentifier: "PortfolioCell", for: indexPath) as? PortfolioCell else {
+    lazy var dataSource = RxCollectionViewSectionedReloadDataSource<PortfolioSection>  {[weak self] dataSource, collectionview, indexPath, item in
+        guard let newPortfolioCell = collectionview.dequeueReusableCell(withReuseIdentifier: "NewPortfolioCell", for: indexPath) as? NewPortfolioCell, let portfolioCell = collectionview.dequeueReusableCell(withReuseIdentifier: "PortfolioCell", for: indexPath) as? PortfolioCell, let self = self else {
             return UICollectionViewCell()
         }
         switch dataSource.sectionModels[indexPath.section].model {
@@ -85,6 +85,12 @@ class PortfolioViewController: UIViewController {
             return newPortfolioCell
         case .portfolio:
             portfolioCell.configData(data: item,triggerUpdatePrice: self.viewModel.triggerUpdatePrice)
+            portfolioCell.didTapHistoryAction.subscribe(onNext: { _ in
+                self.openTransactionHistory()
+            }).disposed(by: self.disposeBag)
+            portfolioCell.didTapAnalyticsAction.subscribe(onNext: { _ in
+                
+            }).disposed(by: self.disposeBag)
             return portfolioCell
         }
     }
@@ -161,6 +167,13 @@ class PortfolioViewController: UIViewController {
     
     @IBAction func didTapAddNewCoin(_ sender: Any) {
         let vc = ChooseAssetVC(viewModel: ChooseAssetViewModel(portfolioName: self.selectedPortfolio?.name, portfolio: self.selectedPortfolio))
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func openTransactionHistory() {
+        guard let selectedPortfolio = selectedPortfolio else { return }
+        let viewModel = TransactionHistoryViewModel(portfolio: selectedPortfolio)
+        let vc = TransactionHistoryVC(viewModel: viewModel)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 

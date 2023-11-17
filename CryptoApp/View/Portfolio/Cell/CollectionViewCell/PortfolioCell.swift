@@ -16,12 +16,27 @@ class PortfolioCell: UICollectionViewCell {
     @IBOutlet weak var percentageChangeLb: UILabel!
     @IBOutlet weak var valueChangeLb: UILabel!
     @IBOutlet weak var timeframeLb: UILabel!
-    
+    @IBOutlet weak var historyView: UIView!
+    @IBOutlet weak var analyticsView: UIView!
     private let disposeBag = DisposeBag()
+    let didTapHistoryAction = PublishSubject<Void>()
+    let didTapAnalyticsAction = PublishSubject<Void>()
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let didTapHistoryView = UITapGestureRecognizer(target: self, action: #selector(didTapHistory))
+        historyView.addGestureRecognizer(didTapHistoryView)
+        let didTapAnalyticsView = UITapGestureRecognizer(target: self, action: #selector(didTapAnalytics))
+        analyticsView.addGestureRecognizer(didTapAnalyticsView)
+    }
+    
+    @objc func didTapHistory() {
+        didTapHistoryAction.onNext(())
+    }
+    
+    @objc func didTapAnalytics() {
+        didTapAnalyticsAction.onNext(())
     }
     
     func configData(data: PortfolioDataSource, triggerUpdatePrice: PublishSubject<Void>) {

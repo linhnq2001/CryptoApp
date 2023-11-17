@@ -70,7 +70,12 @@ class BuyTransactionVC: UIViewController {
         } else {
             getPrice()
         }
+        setupTF()
         // Do any additional setup after loading the view.
+    }
+    
+    private func setupTF() {
+        
     }
     
     private func getPrice() {
@@ -165,20 +170,4 @@ extension BuyTransactionVC: IndicatorInfoProvider{
     func indicatorInfo(for pagerTabStripController: XLPagerTabStrip.PagerTabStripViewController) -> XLPagerTabStrip.IndicatorInfo {
         IndicatorInfo(title: "Buy")
     }
-}
-
-extension Date {
-
-    func stripTime() -> Date {
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
-        let date = Calendar.current.date(from: components)
-        return date!
-    }
-
-    func stripDay() -> Date {
-        let components = Calendar.current.dateComponents([.hour, .minute], from: self)
-        let date = Calendar.current.date(from: components)
-        return date!
-    }
-
 }

@@ -46,7 +46,7 @@ class AddTransactionVC: SegmentedPagerTabStripViewController {
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
         let buyVC = BuyTransactionVC(tokenId: id,data: data, portfolio: portfolio)
-        let sellVC = SellTransactionVC()
+        let sellVC = SellTransactionVC(tokenId: id,data: data, portfolio: portfolio)
         return [buyVC,sellVC]
     }
 
