@@ -15,6 +15,8 @@ class OverviewViewController: UIViewController, IndicatorInfoProvider {
             tableview.reloadData()
         }
     }
+    var moveToExchangeView: (() -> Void)?
+    var moveToAboutView: (() -> Void)?
 
     @IBOutlet weak var tableview: UITableView! {
         didSet {
@@ -77,8 +79,17 @@ extension OverviewViewController: UITableViewDelegate , UITableViewDataSource {
             cell3.configData(data: data)
             return cell3
         case 3:
+            cell4.configData(data: data)
+            cell4.didTapSeeMore = { [weak self] in
+                guard let self = self else { return }
+                self.moveToExchangeView?()
+            }
             return cell4
         case 4:
+            cell5.didTapSeeMore = {[weak self] () in
+                guard let self = self else { return }
+                self.moveToAboutView?()
+            }
             cell5.configData(data: data)
             return cell5
         case 5:

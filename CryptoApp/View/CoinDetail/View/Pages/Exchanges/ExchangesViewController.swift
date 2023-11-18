@@ -12,7 +12,9 @@ class ExchangesViewController: UIViewController, IndicatorInfoProvider {
     @IBOutlet weak var tableview: UITableView!
     var data: CoinInfoResponse? {
         didSet {
-            listTickets = data?.tickers ?? []
+            listTickets = data?.tickers?.filter({$0.base?.uppercased() == data?.symbol?.uppercased()}).sorted(by: { tickerOne, tickerTwo in
+                return tickerOne.volume ?? 0.0 > tickerTwo.volume ?? 0.0
+            }) ?? []
             listTickets = Array(listTickets[0..<10])
         }
     }

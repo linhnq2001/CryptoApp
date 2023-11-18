@@ -74,11 +74,21 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRr-qo-G4K">
+                                                <rect key="frame" x="10" y="59" width="317" height="1"/>
+                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="0Wc-k3-11C"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="IGO-wT-Ahn"/>
+                                            <constraint firstItem="ZRr-qo-G4K" firstAttribute="leading" secondItem="868-WX-h0s" secondAttribute="leading" id="M6f-HQ-jJL"/>
+                                            <constraint firstItem="ZRr-qo-G4K" firstAttribute="trailing" secondItem="EeD-5d-apA" secondAttribute="trailing" id="VfU-2A-7nQ"/>
                                             <constraint firstAttribute="trailing" secondItem="EeD-5d-apA" secondAttribute="trailing" constant="10" id="XQD-b5-NWu"/>
+                                            <constraint firstAttribute="bottom" secondItem="ZRr-qo-G4K" secondAttribute="bottom" id="Y8Y-w4-X05"/>
                                             <constraint firstItem="EeD-5d-apA" firstAttribute="centerY" secondItem="EQI-Fa-KJC" secondAttribute="centerY" id="aIs-my-emq"/>
                                             <constraint firstItem="SJG-JC-Ia9" firstAttribute="centerY" secondItem="EQI-Fa-KJC" secondAttribute="centerY" id="aUK-lm-sQT"/>
                                             <constraint firstItem="SJG-JC-Ia9" firstAttribute="leading" secondItem="868-WX-h0s" secondAttribute="trailing" constant="10" id="llW-R9-0b2"/>
@@ -130,6 +140,13 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfw-zE-djv">
+                                                <rect key="frame" x="10" y="59" width="317" height="1"/>
+                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="vnQ-rp-wBB"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -138,8 +155,11 @@
                                             <constraint firstAttribute="trailing" secondItem="E16-re-eZ8" secondAttribute="trailing" constant="10" id="JT3-u6-BDI"/>
                                             <constraint firstItem="E16-re-eZ8" firstAttribute="centerY" secondItem="mwF-DS-lwD" secondAttribute="centerY" id="Vg1-NG-UG2"/>
                                             <constraint firstItem="N2J-ud-hi0" firstAttribute="leading" secondItem="mwF-DS-lwD" secondAttribute="leading" constant="10" id="ZVs-0u-BnC"/>
+                                            <constraint firstItem="rfw-zE-djv" firstAttribute="leading" secondItem="N2J-ud-hi0" secondAttribute="leading" id="dLi-0I-lUy"/>
+                                            <constraint firstItem="rfw-zE-djv" firstAttribute="trailing" secondItem="E16-re-eZ8" secondAttribute="trailing" id="rYn-YW-fuI"/>
                                             <constraint firstItem="WyB-ma-xRQ" firstAttribute="leading" secondItem="N2J-ud-hi0" secondAttribute="trailing" constant="10" id="uPT-2T-56m"/>
                                             <constraint firstItem="WyB-ma-xRQ" firstAttribute="centerY" secondItem="mwF-DS-lwD" secondAttribute="centerY" id="xKQ-Tg-ac2"/>
+                                            <constraint firstAttribute="bottom" secondItem="rfw-zE-djv" secondAttribute="bottom" id="ycD-3a-x9A"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0u-9P-dnr">
@@ -186,6 +206,13 @@
                                                     </label>
                                                 </subviews>
                                             </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVs-S3-k93">
+                                                <rect key="frame" x="10" y="59" width="317" height="1"/>
+                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="Umo-ee-aru"/>
+                                                </constraints>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -193,9 +220,12 @@
                                             <constraint firstItem="dtY-3C-BuP" firstAttribute="centerY" secondItem="y0u-9P-dnr" secondAttribute="centerY" id="Jrm-qf-T28"/>
                                             <constraint firstItem="TyR-wz-fVe" firstAttribute="leading" secondItem="XdE-85-IZm" secondAttribute="trailing" constant="10" id="P6C-SY-kZ2"/>
                                             <constraint firstItem="TyR-wz-fVe" firstAttribute="centerY" secondItem="y0u-9P-dnr" secondAttribute="centerY" id="RuF-dB-O7u"/>
+                                            <constraint firstItem="OVs-S3-k93" firstAttribute="trailing" secondItem="dtY-3C-BuP" secondAttribute="trailing" id="XVi-Kg-4V6"/>
                                             <constraint firstItem="XdE-85-IZm" firstAttribute="leading" secondItem="y0u-9P-dnr" secondAttribute="leading" constant="10" id="Ygx-Cw-JBs"/>
                                             <constraint firstAttribute="trailing" secondItem="dtY-3C-BuP" secondAttribute="trailing" constant="10" id="asE-9m-EPT"/>
                                             <constraint firstItem="XdE-85-IZm" firstAttribute="centerY" secondItem="y0u-9P-dnr" secondAttribute="centerY" id="vxX-5W-oA3"/>
+                                            <constraint firstItem="OVs-S3-k93" firstAttribute="leading" secondItem="XdE-85-IZm" secondAttribute="leading" id="xeE-4r-fMr"/>
+                                            <constraint firstAttribute="bottom" secondItem="OVs-S3-k93" secondAttribute="bottom" id="zJO-Jb-Y4h"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WzP-LC-Uwt">
@@ -205,6 +235,9 @@
                                                 <rect key="frame" x="120.33333333333334" y="13" width="96.666666666666657" height="34.333333333333336"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" title="See More"/>
+                                                <connections>
+                                                    <action selector="didTapSeeMore:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="K2B-dP-WWo"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -242,11 +275,29 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="exchangesView" destination="Yvq-ko-8QO" id="Pee-5g-39A"/>
+                <outlet property="imageOne" destination="868-WX-h0s" id="fAe-4u-4Ry"/>
+                <outlet property="imageThree" destination="XdE-85-IZm" id="gSl-aX-cec"/>
+                <outlet property="imageTwo" destination="N2J-ud-hi0" id="KNB-No-AEX"/>
+                <outlet property="nameOneLb" destination="gzw-Jw-MSC" id="b47-CF-KeH"/>
+                <outlet property="nameThreeLb" destination="ZQi-mE-X9g" id="7XU-c1-6kl"/>
+                <outlet property="nameTwoLb" destination="c44-IT-4r9" id="OLE-RY-Ejz"/>
+                <outlet property="priceOneLb" destination="hbb-6i-NiK" id="SHZ-Xb-L9N"/>
+                <outlet property="priceThreeLb" destination="UGV-cW-Dza" id="CoP-Vt-koK"/>
+                <outlet property="priceTwoLb" destination="EGF-HB-Ec3" id="WpK-7M-UWR"/>
+                <outlet property="symbolOneLb" destination="DiJ-e5-SW8" id="6ph-nB-NlX"/>
+                <outlet property="symbolThreeLb" destination="2Ot-L8-E3f" id="fAO-Kl-k6U"/>
+                <outlet property="symbolTwoLb" destination="gOi-cP-yQd" id="tOx-qo-FpX"/>
+                <outlet property="volOneLb" destination="Z26-pG-HCU" id="0ED-u1-Ngj"/>
+                <outlet property="volThreeLb" destination="gY3-ot-z5G" id="iCw-ZP-kPv"/>
+                <outlet property="volTwoLb" destination="iwb-9M-tfn" id="ei4-wn-1Pt"/>
             </connections>
             <point key="canvasLocation" x="80.152671755725194" y="110.21126760563381"/>
         </tableViewCell>
     </objects>
     <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

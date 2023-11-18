@@ -84,6 +84,14 @@ class CoinDetailViewController: ButtonBarPagerTabStripViewController {
     }
 
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
+        overview.moveToExchangeView = { [weak self] () in
+            guard let self = self else { return }
+            self.moveToViewController(at: 1)
+        }
+        overview.moveToAboutView = { [weak self] () in
+            guard let self = self else { return }
+            self.moveToViewController(at: 2)
+        }
         return [overview, exchanges, about]
     }
     

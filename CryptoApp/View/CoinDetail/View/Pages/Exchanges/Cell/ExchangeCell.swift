@@ -26,6 +26,20 @@ class ExchangeCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+        trigger.flatMap({ [weak self] id -> Observable<ExchangeInfoResponse> in
+            guard let self = self else {
+                return .empty()
+            }
+            if !id.isEmpty {
+                return self.repository.getExchangeInfo(id: id)
+            }
+            return .empty()
+        }).subscribe(onNext: {[weak self] info in
+            guard let self = self else { return }
+            if let url = URL(string: info.image ?? "") {
+                self.exchangeImage.kf.setImage(with: url)
+            }
+        }).disposed(by: disposeBag)
         // Initialization code
     }
 
@@ -43,20 +57,7 @@ class ExchangeCell: UITableViewCell {
         self.priceLb.text = String(format: "%.2f", data.last ?? 0)
         self.volLb.text = "$ \(formatNumber(number: data.volume ?? 0))"
         trigger.onNext(data.market?.identifier ?? "")
-        trigger.flatMap({ [weak self] id -> Observable<ExchangeInfoResponse> in
-            guard let self = self else {
-                return .empty()
-            }
-            if !id.isEmpty {
-                return self.repository.getExchangeInfo(id: id)
-            }
-            return .empty()
-        }).subscribe(onNext: {[weak self] info in
-            guard let self = self else { return }
-            if let url = URL(string: info.image ?? "") {
-                self.exchangeImage.kf.setImage(with: url)
-            }
-        }).disposed(by: disposeBag)
+        
     }
     
     private func formatNumber(number: Double) -> String{

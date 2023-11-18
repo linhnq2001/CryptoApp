@@ -40,7 +40,7 @@
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="See more detail"/>
                         <connections>
-                            <action selector="didTapSeeMore:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mlK-Nf-agd"/>
+                            <action selector="didTapSeeMore:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="KET-Fw-cb0"/>
                         </connections>
                     </button>
                 </subviews>
