@@ -42,3 +42,12 @@ extension UIView {
         return nib.instantiate (withOwner: self, options: nil).first as? UIView
     }
 }
+
+extension UIView {
+    func addShadow(){
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowOpacity = 1
+        self.layer.shadowOffset = CGSize.zero
+        self.layer.shadowRadius = 5
+    }
+}

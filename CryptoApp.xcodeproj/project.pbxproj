@@ -35,6 +35,8 @@
 		1343F23F2B0768F400F7A33E /* TransactionDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1343F23D2B0768F400F7A33E /* TransactionDetailVC.xib */; };
 		1343F2432B0778F000F7A33E /* EditTransactionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343F2412B0778F000F7A33E /* EditTransactionVC.swift */; };
 		1343F2442B0778F000F7A33E /* EditTransactionVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1343F2422B0778F000F7A33E /* EditTransactionVC.xib */; };
+		1343F2482B08C2EA00F7A33E /* MarketStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1343F2462B08C2EA00F7A33E /* MarketStatisticsVC.swift */; };
+		1343F2492B08C2EA00F7A33E /* MarketStatisticsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1343F2472B08C2EA00F7A33E /* MarketStatisticsVC.xib */; };
 		13468F062ADD79B5006915F6 /* MarketResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F052ADD79B5006915F6 /* MarketResponse.swift */; };
 		13468F082ADD7CED006915F6 /* ServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F072ADD7CED006915F6 /* ServiceUrl.swift */; };
 		13468F0B2ADD7EE2006915F6 /* MarketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13468F0A2ADD7EE2006915F6 /* MarketRepository.swift */; };
@@ -190,6 +192,8 @@
 		1343F23D2B0768F400F7A33E /* TransactionDetailVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionDetailVC.xib; sourceTree = "<group>"; };
 		1343F2412B0778F000F7A33E /* EditTransactionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTransactionVC.swift; sourceTree = "<group>"; };
 		1343F2422B0778F000F7A33E /* EditTransactionVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditTransactionVC.xib; sourceTree = "<group>"; };
+		1343F2462B08C2EA00F7A33E /* MarketStatisticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketStatisticsVC.swift; sourceTree = "<group>"; };
+		1343F2472B08C2EA00F7A33E /* MarketStatisticsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketStatisticsVC.xib; sourceTree = "<group>"; };
 		13468F052ADD79B5006915F6 /* MarketResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketResponse.swift; sourceTree = "<group>"; };
 		13468F072ADD7CED006915F6 /* ServiceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrl.swift; sourceTree = "<group>"; };
 		13468F0A2ADD7EE2006915F6 /* MarketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketRepository.swift; sourceTree = "<group>"; };
@@ -419,6 +423,7 @@
 		1337DB252AF61D4B0048C32C /* Overview */ = {
 			isa = PBXGroup;
 			children = (
+				1343F2452B08C2D000F7A33E /* MarketStatisticsView */,
 				1349849A2B070B8E004E283A /* Cell */,
 				1337DB212AF61D450048C32C /* OverviewViewController.swift */,
 				1337DB222AF61D450048C32C /* OverviewViewController.xib */,
@@ -503,6 +508,15 @@
 				1343F2422B0778F000F7A33E /* EditTransactionVC.xib */,
 			);
 			path = EditTransaction;
+			sourceTree = "<group>";
+		};
+		1343F2452B08C2D000F7A33E /* MarketStatisticsView */ = {
+			isa = PBXGroup;
+			children = (
+				1343F2462B08C2EA00F7A33E /* MarketStatisticsVC.swift */,
+				1343F2472B08C2EA00F7A33E /* MarketStatisticsVC.xib */,
+			);
+			path = MarketStatisticsView;
 			sourceTree = "<group>";
 		};
 		13468F092ADD7EC6006915F6 /* Repository */ = {
@@ -1215,6 +1229,7 @@
 				1397D0222AD5C5F6006325BE /* SettingViewController.xib in Resources */,
 				13B2E1E12ADEFF1D007ED6CD /* CoinDetailViewController.xib in Resources */,
 				1337DB2A2AF61DA80048C32C /* ExchangesViewController.xib in Resources */,
+				1343F2492B08C2EA00F7A33E /* MarketStatisticsVC.xib in Resources */,
 				13FCE3A72AFB8883003B5414 /* CoinRoundedView.xib in Resources */,
 				13CA1DB62AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.xib in Resources */,
 				137C04E92ACF3D4E009E0317 /* GoogleService-Info.plist in Resources */,
@@ -1361,6 +1376,7 @@
 				139A39CA2AD13FA000FE27EE /* User.swift in Sources */,
 				13EAA75C2AED8F9900610D9D /* Roi.swift in Sources */,
 				1397D01D2AD5C5E8006325BE /* PortfolioViewController.swift in Sources */,
+				1343F2482B08C2EA00F7A33E /* MarketStatisticsVC.swift in Sources */,
 				13FE0FDF2ACD72BA00D519CA /* LoginViewController.swift in Sources */,
 				1349849D2B070BA6004E283A /* TrendingAssetsCell.swift in Sources */,
 				139DA42F2ADC5E2A00908D25 /* HomeViewModel.swift in Sources */,

@@ -9,9 +9,14 @@ import UIKit
 
 class ExchangesCell: UITableViewCell {
 
+    
+    @IBOutlet weak var exchangesView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        exchangesView.addShadow()
+        selectionStyle = .none
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

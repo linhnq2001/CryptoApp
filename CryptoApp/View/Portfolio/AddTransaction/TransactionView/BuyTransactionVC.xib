@@ -14,6 +14,7 @@
                 <outlet property="amountTF" destination="6h8-Kv-lUH" id="aNR-xC-Wbc"/>
                 <outlet property="dateLb" destination="l2Z-Up-8fp" id="Zff-NY-aBF"/>
                 <outlet property="dateView" destination="MPW-Rs-qzr" id="bfy-40-FRs"/>
+                <outlet property="portfolioView" destination="8Ya-58-wJW" id="nrv-LU-3Cb"/>
                 <outlet property="priceTF" destination="RrF-N0-QdP" id="MVO-Z0-Y87"/>
                 <outlet property="timeLb" destination="U5p-Sn-EWg" id="Hne-w9-K7K"/>
                 <outlet property="timeView" destination="lGM-2M-cn0" id="kwl-VQ-zYS"/>

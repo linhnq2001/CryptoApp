@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,6 +14,7 @@
                 <outlet property="amountTF" destination="Rqw-Qo-b3J" id="QIG-Ww-BO4"/>
                 <outlet property="dateLb" destination="Gc2-iB-SqZ" id="qU8-YW-Eze"/>
                 <outlet property="dateView" destination="aQm-vO-Q2F" id="rYb-x5-ycM"/>
+                <outlet property="portfolioView" destination="93A-0I-spJ" id="02R-G2-VxF"/>
                 <outlet property="priceTF" destination="F4U-D5-zzh" id="TOv-aH-1th"/>
                 <outlet property="timeLb" destination="es2-h6-QWt" id="Gi4-fI-A1X"/>
                 <outlet property="timeView" destination="7CY-ky-D0d" id="6sq-e4-DfJ"/>

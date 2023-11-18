@@ -17,6 +17,7 @@ class CoinDetailViewController: ButtonBarPagerTabStripViewController {
         didSet {
             about.data = coinInfo
             exchanges.data = coinInfo
+            overview.data = coinInfo
         }
     }
     private(set) var viewModel: CoinDetailViewModel!

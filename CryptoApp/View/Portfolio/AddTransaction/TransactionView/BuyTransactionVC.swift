@@ -25,6 +25,8 @@ class BuyTransactionVC: UIViewController {
     @IBOutlet weak var dateLb: UILabel!
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var timeLb: UILabel!
+    
+    @IBOutlet weak var portfolioView: UIView!
     var selectedDate: Double = Date().stripTime().timeIntervalSince1970 {
         didSet {
             timeStamp = selectedDate + selectedTime
@@ -71,6 +73,7 @@ class BuyTransactionVC: UIViewController {
             getPrice()
         }
         setupTF()
+        portfolioView.addShadow()
         // Do any additional setup after loading the view.
     }
     

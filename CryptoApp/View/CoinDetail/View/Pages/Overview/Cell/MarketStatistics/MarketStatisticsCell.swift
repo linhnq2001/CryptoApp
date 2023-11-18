@@ -15,6 +15,8 @@ class MarketStatisticsCell: UITableViewCell {
     @IBOutlet weak var circSupplyLb: UILabel!
     @IBOutlet weak var percentCircSupplyLb: UILabel!
     @IBOutlet weak var volLb: UILabel!
+    @IBOutlet weak var contextView: UIView!
+    var didTapSeeAll: (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +24,9 @@ class MarketStatisticsCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        contextView.backgroundColor = UIColor.white
+        contextView.addShadow()
+        selectionStyle = .none
 
         // Configure the view for the selected state
     }
@@ -34,7 +39,8 @@ class MarketStatisticsCell: UITableViewCell {
         self.volLb.text = "$ \(formatNumber(number: ((data.marketData?.totalVolume?["usd"]) ?? 0) ?? 0))"
         if let maxSupply = data.marketData?.totalSupply {
             self.totalSupplyLb.text = "\(formatNumber(number: maxSupply)) \(data.symbol?.uppercased() ?? "")"
-            self.percentCircSupplyLb.text = "\((data.marketData?.circulatingSupply ?? 0) / maxSupply) %"
+            let percent = round((data.marketData?.circulatingSupply ?? 0) / maxSupply * 1000) / 1000
+            self.percentCircSupplyLb.text = "\(percent) %"
         }
     }
     
@@ -53,4 +59,7 @@ class MarketStatisticsCell: UITableViewCell {
         }
     }
     
+    @IBAction func didTapSeeAll(_ sender: Any) {
+        didTapSeeAll?()
+    }
 }

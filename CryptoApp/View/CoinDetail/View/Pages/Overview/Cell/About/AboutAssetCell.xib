@@ -19,13 +19,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcW-px-bny">
-                        <rect key="frame" x="9.9999999999999964" y="10" width="49.666666666666657" height="21"/>
+                        <rect key="frame" x="19.999999999999996" y="10" width="49.666666666666657" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iQn-L3-HVt">
-                        <rect key="frame" x="10" y="41" width="290" height="100"/>
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="iQn-L3-HVt">
+                        <rect key="frame" x="20" y="41" width="270" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="vJd-9z-n5O"/>
@@ -36,7 +36,7 @@
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szd-uZ-JT1">
-                        <rect key="frame" x="10" y="151" width="143" height="63"/>
+                        <rect key="frame" x="20" y="151" width="143" height="63"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="See more detail"/>
                         <connections>
@@ -47,11 +47,11 @@
                 <constraints>
                     <constraint firstItem="iQn-L3-HVt" firstAttribute="top" secondItem="YcW-px-bny" secondAttribute="bottom" constant="10" id="CZ4-xh-SZt"/>
                     <constraint firstAttribute="bottom" secondItem="szd-uZ-JT1" secondAttribute="bottom" constant="10" id="McL-lo-XlT"/>
-                    <constraint firstAttribute="trailing" secondItem="iQn-L3-HVt" secondAttribute="trailing" constant="10" id="NGr-iV-w3N"/>
-                    <constraint firstItem="YcW-px-bny" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="TGT-5e-QRu"/>
-                    <constraint firstItem="szd-uZ-JT1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="auo-a8-ZCg"/>
+                    <constraint firstAttribute="trailing" secondItem="iQn-L3-HVt" secondAttribute="trailing" constant="20" id="NGr-iV-w3N"/>
+                    <constraint firstItem="YcW-px-bny" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="TGT-5e-QRu"/>
+                    <constraint firstItem="szd-uZ-JT1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="auo-a8-ZCg"/>
                     <constraint firstItem="YcW-px-bny" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gJI-ee-k9w"/>
-                    <constraint firstItem="iQn-L3-HVt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="r8s-g2-ggM"/>
+                    <constraint firstItem="iQn-L3-HVt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="r8s-g2-ggM"/>
                     <constraint firstItem="szd-uZ-JT1" firstAttribute="top" secondItem="iQn-L3-HVt" secondAttribute="bottom" constant="10" id="yl4-bv-2p4"/>
                 </constraints>
             </tableViewCellContentView>

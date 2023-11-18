@@ -10,7 +10,11 @@ import UIKit
 class TransactionDetailVC: UIViewController {
     private(set) var data: TradeDetailHistory!
     
-    @IBOutlet weak var imageToken: UIImageView!
+    @IBOutlet weak var imageToken: UIImageView! {
+        didSet {
+            imageToken.layer.cornerRadius = 40
+        }
+    }
     @IBOutlet weak var titleLb: UILabel!
     @IBOutlet weak var priceLb: UILabel!
     @IBOutlet weak var totalLb: UILabel!
@@ -32,7 +36,17 @@ class TransactionDetailVC: UIViewController {
     }
     
     private func setupUI() {
-        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+
+        let formattedDate = dateFormatter.string(from: Date(timeIntervalSince1970: Double(data.createAt)))
+
+        imageToken.kf.setImage(with: URL(string: data.urlImage))
+        titleLb.text = "\(data.type.rawValue.uppercased()) \(data.symbol.uppercased())"
+        priceLb.text = "$ \(data.price)"
+        totalLb.text = "$ \(data.amount * data.price)"
+        dateLb.text = formattedDate
     }
 
     @IBAction func didTapBack(_ sender: Any) {
