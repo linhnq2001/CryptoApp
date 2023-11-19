@@ -42,7 +42,24 @@ class PortfolioViewController: UIViewController {
             }
         }
     }
-    private var selectedPortfolio: Portfolio?
+    private var selectedPortfolio: Portfolio? {
+        didSet {
+            if selectedPortfolio == nil {
+                newPortfolioView.isHidden = false
+                portfolioView.isHidden = true
+                emptyView.isHidden = true
+            } else {
+                newPortfolioView.isHidden = true
+                if let listToken = selectedPortfolio?.listToken , !listToken.isEmpty {
+                    portfolioView.isHidden = false
+                    emptyView.isHidden = true
+                } else {
+                    portfolioView.isHidden = true
+                    emptyView.isHidden = false
+                }
+            }
+        }
+    }
     private let trigger = PublishSubject<Void>()
     private let actionChangePortfolio = PublishSubject<Portfolio>()
     private let actionCreatePortfolio = PublishSubject<Portfolio>()
@@ -57,12 +74,9 @@ class PortfolioViewController: UIViewController {
     
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var newPortfolioView: UIView!
-    
     @IBOutlet weak var nameInputTF: InputTextField!
     @IBOutlet weak var chooseColorView: ChooseColorView!
-    
     @IBOutlet weak var portfolioView: UIView!
-    
     @IBOutlet weak var timeFrameView: TimeFrameView!
     @IBOutlet weak var tableView: UITableView! {
         didSet {
@@ -89,11 +103,13 @@ class PortfolioViewController: UIViewController {
                 self.openTransactionHistory()
             }).disposed(by: self.disposeBag)
             portfolioCell.didTapAnalyticsAction.subscribe(onNext: { _ in
-                
+                self.openAnalytics()
             }).disposed(by: self.disposeBag)
             return portfolioCell
         }
     }
+    
+    var didCreatePortfolio: Bool = false
     
     init(viewModel: PortfolioViewModel!) {
         self.viewModel = viewModel
@@ -139,16 +155,27 @@ class PortfolioViewController: UIViewController {
             guard let self = self else { return }
             self.sections = listSection
             if self.selectedPortfolio == nil {
-                guard let firstPortfolio = listSection.first(where: {$0.model == .portfolio})?.items.first as? Portfolio else {return}
-                self.actionChangePortfolio.onNext(firstPortfolio)
-                self.selectedPortfolio = firstPortfolio
+                if didCreatePortfolio {
+                    guard let lastPortfolio = listSection.first(where: {$0.model == .portfolio})?.items.last as? Portfolio else {return}
+                    self.actionChangePortfolio.onNext(lastPortfolio)
+                    self.selectedPortfolio = lastPortfolio
+                } else {
+                    guard let firstPortfolio = listSection.first(where: {$0.model == .portfolio})?.items.first as? Portfolio else {return}
+                    self.actionChangePortfolio.onNext(firstPortfolio)
+                    self.selectedPortfolio = firstPortfolio
+                }
             }
+            didCreatePortfolio = false
         }).disposed(by: disposeBag)
 
         output.listPortfolio.bind(to: collectionview.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
     }
 
     private func handleListToken(_ output: PortfolioViewModel.Output) {
+        output.listTokenPortfolio.subscribe(onNext: { [weak self] _ in
+            guard let self = self else { return }
+            self.newPortfolioView.isHidden = true
+        }).disposed(by: disposeBag)
         output.listTokenPortfolio.bind(to: tableView.rx.items(dataSource: tableViewDataSource)).disposed(by: disposeBag)
     }
 
@@ -163,6 +190,8 @@ class PortfolioViewController: UIViewController {
         }
         let portfolio = Portfolio(name: name, color: chooseColorView.selectedColor, createdAt: Int(Date().timeIntervalSince1970))
         actionCreatePortfolio.onNext(portfolio)
+        nameInputTF.text = ""
+        didCreatePortfolio = true
     }
     
     @IBAction func didTapAddNewCoin(_ sender: Any) {
@@ -170,10 +199,21 @@ class PortfolioViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func didTapAddNewCoinInPortfolioView(_ sender: Any) {
+        let vc = ChooseAssetVC(viewModel: ChooseAssetViewModel(portfolioName: self.selectedPortfolio?.name, portfolio: self.selectedPortfolio))
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
     private func openTransactionHistory() {
         guard let selectedPortfolio = selectedPortfolio else { return }
         let viewModel = TransactionHistoryViewModel(portfolio: selectedPortfolio)
         let vc = TransactionHistoryVC(viewModel: viewModel)
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    private func openAnalytics() {
+        let vc = AnalyticsVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -182,5 +222,27 @@ class PortfolioViewController: UIViewController {
 extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.view.frame.size.width, height: collectionView.frame.size.height)
+    }
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        print("linhdebug3 \(collectionview.contentOffset.x)")
+        var closestCell : UICollectionViewCell = collectionview.visibleCells[0];
+        for cell in collectionview!.visibleCells as [UICollectionViewCell] {
+            let closestCellDelta = abs(closestCell.center.x - collectionview.bounds.size.width/2.0 - collectionview.contentOffset.x)
+            let cellDelta = abs(cell.center.x - collectionview.bounds.size.width/2.0 - collectionview.contentOffset.x)
+            if (cellDelta < closestCellDelta){
+                closestCell = cell
+            }
+        }
+        if let indexPath = collectionview.indexPath(for: closestCell) {
+            let data = sections[indexPath.section]
+            if data.model != .newPortfolio, let portfolio = data.items[indexPath.row] as? Portfolio {
+                self.selectedPortfolio = portfolio
+                self.actionChangePortfolio.onNext(portfolio)
+            } else {
+                self.selectedPortfolio = nil
+            }
+            collectionview.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
+        }
     }
 }

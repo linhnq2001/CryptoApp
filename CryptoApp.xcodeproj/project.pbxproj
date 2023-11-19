@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		069256070567886C2D003ADD /* Pods_CryptoApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C0D79AC9E713F4BEF91CB44 /* Pods_CryptoApp.framework */; };
 		130BA2FB2B05F28C00CD7B38 /* TransactionHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130BA2FA2B05F28C00CD7B38 /* TransactionHistoryViewModel.swift */; };
+		130FC1962B0A97E900A33919 /* AnalyticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130FC1942B0A97E900A33919 /* AnalyticsVC.swift */; };
+		130FC1972B0A97E900A33919 /* AnalyticsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 130FC1952B0A97E900A33919 /* AnalyticsVC.xib */; };
 		131EB5412ADC6BAE00BAD22D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131EB53F2ADC6BAE00BAD22D /* SearchViewController.swift */; };
 		131EB5422ADC6BAE00BAD22D /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 131EB5402ADC6BAE00BAD22D /* SearchViewController.xib */; };
 		131EB55E2ADC7C0600BAD22D /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131EB55D2ADC7C0600BAD22D /* ApiHelper.swift */; };
@@ -166,6 +168,8 @@
 
 /* Begin PBXFileReference section */
 		130BA2FA2B05F28C00CD7B38 /* TransactionHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionHistoryViewModel.swift; sourceTree = "<group>"; };
+		130FC1942B0A97E900A33919 /* AnalyticsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsVC.swift; sourceTree = "<group>"; };
+		130FC1952B0A97E900A33919 /* AnalyticsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnalyticsVC.xib; sourceTree = "<group>"; };
 		131EB53F2ADC6BAE00BAD22D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		131EB5402ADC6BAE00BAD22D /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
 		131EB55D2ADC7C0600BAD22D /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
@@ -349,6 +353,15 @@
 				130BA2FA2B05F28C00CD7B38 /* TransactionHistoryViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		130FC1932B0A97C900A33919 /* AnalyticsPortfolio */ = {
+			isa = PBXGroup;
+			children = (
+				130FC1942B0A97E900A33919 /* AnalyticsVC.swift */,
+				130FC1952B0A97E900A33919 /* AnalyticsVC.xib */,
+			);
+			path = AnalyticsPortfolio;
 			sourceTree = "<group>";
 		};
 		131EB53E2ADC6B9D00BAD22D /* Search */ = {
@@ -777,6 +790,7 @@
 		1397D0112AD5C362006325BE /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
+				130FC1932B0A97C900A33919 /* AnalyticsPortfolio */,
 				1343F2402B0778D500F7A33E /* EditTransaction */,
 				1343F23B2B07647100F7A33E /* TransactionDetail */,
 				1322AE5F2B0563FB00E497A8 /* TransactionHistory */,
@@ -1227,6 +1241,7 @@
 				1349849E2B070BA6004E283A /* TrendingAssetsCell.xib in Resources */,
 				136A6A032B0182E2008DF789 /* ChooseAssetVC.xib in Resources */,
 				1397D0222AD5C5F6006325BE /* SettingViewController.xib in Resources */,
+				130FC1972B0A97E900A33919 /* AnalyticsVC.xib in Resources */,
 				13B2E1E12ADEFF1D007ED6CD /* CoinDetailViewController.xib in Resources */,
 				1337DB2A2AF61DA80048C32C /* ExchangesViewController.xib in Resources */,
 				1343F2492B08C2EA00F7A33E /* MarketStatisticsVC.xib in Resources */,
@@ -1374,6 +1389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				139A39CA2AD13FA000FE27EE /* User.swift in Sources */,
+				130FC1962B0A97E900A33919 /* AnalyticsVC.swift in Sources */,
 				13EAA75C2AED8F9900610D9D /* Roi.swift in Sources */,
 				1397D01D2AD5C5E8006325BE /* PortfolioViewController.swift in Sources */,
 				1343F2482B08C2EA00F7A33E /* MarketStatisticsVC.swift in Sources */,

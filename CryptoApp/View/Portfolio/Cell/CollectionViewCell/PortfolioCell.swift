@@ -18,6 +18,8 @@ class PortfolioCell: UICollectionViewCell {
     @IBOutlet weak var timeframeLb: UILabel!
     @IBOutlet weak var historyView: UIView!
     @IBOutlet weak var analyticsView: UIView!
+    @IBOutlet weak var containerView: UIView!
+
     private let disposeBag = DisposeBag()
     let didTapHistoryAction = PublishSubject<Void>()
     let didTapAnalyticsAction = PublishSubject<Void>()
@@ -29,6 +31,7 @@ class PortfolioCell: UICollectionViewCell {
         historyView.addGestureRecognizer(didTapHistoryView)
         let didTapAnalyticsView = UITapGestureRecognizer(target: self, action: #selector(didTapAnalytics))
         analyticsView.addGestureRecognizer(didTapAnalyticsView)
+        containerView.addShadow()
     }
     
     @objc func didTapHistory() {

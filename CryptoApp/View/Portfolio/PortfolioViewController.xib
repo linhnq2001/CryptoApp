@@ -215,11 +215,32 @@
                                     <rect key="frame" x="0.0" y="40" width="393" height="474"/>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 </tableView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAB-CM-Pia">
+                                    <rect key="frame" x="333" y="454" width="40" height="40"/>
+                                    <color key="backgroundColor" systemColor="linkColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="40" id="Uov-tc-CqF"/>
+                                        <constraint firstAttribute="height" constant="40" id="eHl-bH-wlj"/>
+                                    </constraints>
+                                    <color key="tintColor" red="0.92156863209999995" green="0.94117647410000005" blue="0.99607843159999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="20"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="didTapAddNewCoinInPortfolioView:" destination="-1" eventType="touchUpInside" id="iUm-25-Sgg"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
+                                <constraint firstAttribute="bottom" secondItem="EAB-CM-Pia" secondAttribute="bottom" constant="20" id="0eJ-T8-ob5"/>
                                 <constraint firstItem="mSM-el-RHJ" firstAttribute="leading" secondItem="eUv-m1-Q4E" secondAttribute="leading" id="1jn-5A-qPL"/>
                                 <constraint firstItem="oCy-Jp-CkT" firstAttribute="leading" secondItem="eUv-m1-Q4E" secondAttribute="leading" id="Fev-hy-PFo"/>
+                                <constraint firstAttribute="trailing" secondItem="EAB-CM-Pia" secondAttribute="trailing" constant="20" id="Gkr-VG-t6a"/>
                                 <constraint firstAttribute="trailing" secondItem="mSM-el-RHJ" secondAttribute="trailing" id="L2j-EN-qQI"/>
                                 <constraint firstItem="mSM-el-RHJ" firstAttribute="top" secondItem="eUv-m1-Q4E" secondAttribute="top" id="Uwq-UI-SsM"/>
                                 <constraint firstAttribute="bottom" secondItem="oCy-Jp-CkT" secondAttribute="bottom" id="dEE-Zi-cIr"/>
@@ -254,6 +275,10 @@
         <image name="chevron.forward" catalog="system" width="97" height="128"/>
         <image name="ellipsis" catalog="system" width="128" height="37"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
