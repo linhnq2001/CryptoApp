@@ -27,6 +27,13 @@ class BuyTransactionVC: UIViewController {
     @IBOutlet weak var timeLb: UILabel!
     
     @IBOutlet weak var portfolioView: UIView!
+    @IBOutlet weak var namePortfolioLb: UILabel!
+    @IBOutlet weak var assetPortfolioLb: UILabel!
+    
+    @IBOutlet weak var marketPriceView: UIView!
+    @IBOutlet weak var marketLb: UILabel!
+    @IBOutlet weak var customPriceView: UIView!
+    @IBOutlet weak var customLb: UILabel!
     var selectedDate: Double = Date().stripTime().timeIntervalSince1970 {
         didSet {
             timeStamp = selectedDate + selectedTime
@@ -46,11 +53,13 @@ class BuyTransactionVC: UIViewController {
         }
     }
     var timeStamp: Double = 0
+    var currentPrice: Double = 0
 
     init(tokenId: String, data: CoinInMarketResponse? = nil, portfolio: Portfolio?) {
         self.tokenId = tokenId
         self.data = data
         self.portfolio = portfolio
+        self.currentPrice = data?.currentPrice ?? 0
         super.init(nibName: String(describing: BuyTransactionVC.self), bundle: Bundle(for: BuyTransactionVC.self))
     }
 
@@ -64,21 +73,57 @@ class BuyTransactionVC: UIViewController {
         selectedDate = Date().stripTime().timeIntervalSince1970
         selectedTime = Date().timeIntervalSince1970 - Date().stripTime().timeIntervalSince1970
         
+        setupPortfolioView()
+        setupTF()
+        portfolioView.addShadow()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapGetPrice))
+        marketPriceView.addGestureRecognizer(tapGesture)
+        // Do any additional setup after loading the view.
+    }
+    
+    private func setupPortfolioView() {
+        self.namePortfolioLb.text = portfolio?.name
+        if let amount = portfolio?.listToken.first(where: {$0.id == tokenId})?.getBalance(), let symbol = data?.symbol?.uppercased() {
+            self.assetPortfolioLb.text = "In portfolio \(amount) \(symbol)"
+        }
+    }
+    
+    @objc func didTapGetPrice() {
+        getPrice()
+    }
+    
+    private func setupTF() {
+        self.marketLb.textColor = UIColor.blue.withAlphaComponent(0.8)
+        self.marketPriceView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+        self.customLb.textColor = .black
+        self.customPriceView.backgroundColor = UIColor(hex: "#F3F3F6")
         if let data = data {
             if let price = data.currentPrice {
                 self.priceTF.text = "\(price)"
             }
-            
         } else {
             getPrice()
         }
-        setupTF()
-        portfolioView.addShadow()
-        // Do any additional setup after loading the view.
-    }
-    
-    private func setupTF() {
+        amountTF.rx.controlEvent(.editingChanged).withLatestFrom(amountTF.rx.text.orEmpty).subscribe(onNext: { [weak self] text in
+            guard let self = self else { return }
+            if let amount = Double(text) , let currentPrice = Double(self.priceTF.text ?? "") {
+                self.totalTF.text = "\(amount * currentPrice)"
+            }
+        }).disposed(by: disposeBag)
         
+        totalTF.rx.controlEvent(.editingChanged).withLatestFrom(totalTF.rx.text.orEmpty).subscribe(onNext: { [weak self] text in
+            guard let self = self else { return }
+            if let total = Double(text) , let currentPrice = Double(self.priceTF.text ?? "") {
+                self.amountTF.text = "\(total / currentPrice)"
+            }
+        }).disposed(by: disposeBag)
+        
+        priceTF.rx.controlEvent(.editingChanged).subscribe(onNext: { [weak self] _ in
+            self?.marketLb.textColor = .black
+            self?.marketPriceView.backgroundColor = UIColor(hex: "#F3F3F6")
+            self?.customLb.textColor = UIColor.blue.withAlphaComponent(0.8)
+            self?.customPriceView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+        }).disposed(by: disposeBag)
     }
     
     private func getPrice() {
@@ -87,6 +132,11 @@ class BuyTransactionVC: UIViewController {
             guard let self = self else { return }
             if let price = response[self.tokenId]?.usd {
                 self.priceTF.text = "\(price)"
+                self.currentPrice = price
+                self.marketLb.textColor = UIColor.blue.withAlphaComponent(0.8)
+                self.marketPriceView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+                self.customLb.textColor = .black
+                self.customPriceView.backgroundColor = UIColor(hex: "#F3F3F6")
             }
         }).disposed(by: disposeBag)
     }
@@ -122,7 +172,7 @@ class BuyTransactionVC: UIViewController {
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { _ in
             // Handle the selected date (if needed)
-            var date = datePicker.date.stripTime()
+            let date = datePicker.date.stripTime()
             self.selectedDate = date.timeIntervalSince1970
         }))
         

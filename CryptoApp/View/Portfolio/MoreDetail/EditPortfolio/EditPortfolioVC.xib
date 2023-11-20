@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EditPortfolioVC" customModule="CryptoApp" customModuleProvider="target">
+            <connections>
+                <outlet property="nameInputTF" destination="YtF-hL-4QY" id="150-OZ-AVm"/>
+                <outlet property="titleLb" destination="AZD-iB-FQd" id="yyb-ao-mfQ"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edit portfolio" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZD-iB-FQd">
+                    <rect key="frame" x="143.66666666666666" y="20" width="106" height="20.333333333333329"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZ3-lh-bNq">
+                    <rect key="frame" x="20" y="303.33333333333337" width="353" height="270.33333333333337"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="YYL-c4-VtQ">
+                            <rect key="frame" x="10" y="20" width="333" height="40"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YtF-hL-4QY" customClass="InputTextField" customModule="CryptoApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="333" height="40"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="POR-EK-zcz"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="4un-NN-Fs4">
+                            <rect key="frame" x="10" y="100" width="333" height="90.333333333333314"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQR-k6-t3u">
+                                    <rect key="frame" x="0.0" y="0.0" width="333" height="20.333333333333332"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G2W-nX-4D8" customClass="ChooseColorView" customModule="CryptoApp" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="30.333333333333371" width="333" height="60"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="60" id="W7f-Vj-OJ5"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTy-cK-VmG">
+                            <rect key="frame" x="10" y="210.33333333333331" width="333" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="hci-LE-OAZ"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="filled" title="Save changes"/>
+                            <connections>
+                                <action selector="didTapSave:" destination="-1" eventType="touchUpInside" id="MKD-Ur-8G4"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="4un-NN-Fs4" secondAttribute="trailing" constant="10" id="06J-z9-vyz"/>
+                        <constraint firstItem="YYL-c4-VtQ" firstAttribute="leading" secondItem="bZ3-lh-bNq" secondAttribute="leading" constant="10" id="0HE-7m-amN"/>
+                        <constraint firstItem="4un-NN-Fs4" firstAttribute="top" secondItem="YYL-c4-VtQ" secondAttribute="bottom" constant="40" id="BkL-z4-k8Q"/>
+                        <constraint firstAttribute="trailing" secondItem="tTy-cK-VmG" secondAttribute="trailing" constant="10" id="GB6-y9-Hfe"/>
+                        <constraint firstItem="4un-NN-Fs4" firstAttribute="leading" secondItem="bZ3-lh-bNq" secondAttribute="leading" constant="10" id="GSO-n3-tb0"/>
+                        <constraint firstItem="tTy-cK-VmG" firstAttribute="leading" secondItem="bZ3-lh-bNq" secondAttribute="leading" constant="10" id="M41-u1-iCL"/>
+                        <constraint firstAttribute="trailing" secondItem="YYL-c4-VtQ" secondAttribute="trailing" constant="10" id="Osv-M4-Gor"/>
+                        <constraint firstItem="YYL-c4-VtQ" firstAttribute="top" secondItem="bZ3-lh-bNq" secondAttribute="top" constant="20" id="Tey-nB-sbO"/>
+                        <constraint firstAttribute="bottom" secondItem="tTy-cK-VmG" secondAttribute="bottom" constant="20" id="bdX-1v-G6C"/>
+                        <constraint firstItem="tTy-cK-VmG" firstAttribute="top" secondItem="4un-NN-Fs4" secondAttribute="bottom" constant="20" id="cWM-JA-LOZ"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="12"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mf0-Nf-n26">
+                    <rect key="frame" x="348.66666666666669" y="13" width="34.333333333333314" height="34.333333333333336"/>
+                    <color key="tintColor" red="0.9529411793" green="0.9529411793" blue="0.96470588450000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="xmark.circle.fill" catalog="system" cornerStyle="capsule">
+                        <backgroundConfiguration key="background"/>
+                    </buttonConfiguration>
+                    <connections>
+                        <action selector="didTapDismiss:" destination="-1" eventType="touchUpInside" id="cd2-CR-ddV"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Mf0-Nf-n26" secondAttribute="trailing" constant="10" id="BWr-Ej-6ZR"/>
+                <constraint firstItem="bZ3-lh-bNq" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="MKm-4w-Swf"/>
+                <constraint firstItem="AZD-iB-FQd" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Ur2-3J-mkP"/>
+                <constraint firstItem="Mf0-Nf-n26" firstAttribute="centerY" secondItem="AZD-iB-FQd" secondAttribute="centerY" id="d93-Ac-Ntu"/>
+                <constraint firstItem="bZ3-lh-bNq" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="oCO-Ln-gze"/>
+                <constraint firstItem="AZD-iB-FQd" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="yTR-zL-IWg"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="-86" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="xmark.circle.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

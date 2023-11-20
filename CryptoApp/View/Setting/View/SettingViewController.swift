@@ -12,9 +12,7 @@ import Kingfisher
 class SettingViewController: UIViewController {
     
     @IBOutlet weak var signInView: UIView!
-    
     @IBOutlet weak var userView: UIView!
-    
     @IBOutlet weak var userAvt: UIImageView!
     @IBOutlet weak var usernameLb: UILabel!
     @IBOutlet weak var emailLb: UILabel!
@@ -41,6 +39,17 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bindingData()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapLogOut))
+        signOutView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func didTapLogOut() {
+        FirebaseAuthHelper.shared.logout().subscribe(onNext: { [weak self] result, _  in
+            guard let self = self else { return }
+            if result {
+                self.trigger.onNext(())
+            }
+        }).disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +80,7 @@ class SettingViewController: UIViewController {
             self.usernameLb.text = user?.username
             self.emailLb.text = user?.email
             self.userAvt.image = UIImage(named: "ic_user")
+            self.signOutView.isHidden = !isLogin
         }).disposed(by: disposeBag)
     }
 
@@ -78,6 +88,5 @@ class SettingViewController: UIViewController {
         let vc = LoginViewController(viewModel: LoginViewModel())
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 
 }

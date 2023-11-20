@@ -74,6 +74,11 @@ class PortfolioViewController: UIViewController {
     
     @IBOutlet weak var emptyView: UIView!
     @IBOutlet weak var newPortfolioView: UIView!
+    @IBOutlet weak var containerNewPortfolioView: UIView! {
+        didSet {
+            containerNewPortfolioView.addShadow()
+        }
+    }
     @IBOutlet weak var nameInputTF: InputTextField!
     @IBOutlet weak var chooseColorView: ChooseColorView!
     @IBOutlet weak var portfolioView: UIView!
@@ -119,11 +124,16 @@ class PortfolioViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        trigger.onNext(())
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         bindingData()
         let gesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        gesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(gesture)
     }
 
@@ -154,7 +164,10 @@ class PortfolioViewController: UIViewController {
         output.listPortfolio.subscribe(onNext: { [weak self] listSection in
             guard let self = self else { return }
             self.sections = listSection
-            if self.selectedPortfolio == nil {
+            if let selectedPortfolio = self.selectedPortfolio {
+                self.actionChangePortfolio.onNext(selectedPortfolio)
+                self.selectedPortfolio = selectedPortfolio
+            } else {
                 if didCreatePortfolio {
                     guard let lastPortfolio = listSection.first(where: {$0.model == .portfolio})?.items.last as? Portfolio else {return}
                     self.actionChangePortfolio.onNext(lastPortfolio)
@@ -172,9 +185,11 @@ class PortfolioViewController: UIViewController {
     }
 
     private func handleListToken(_ output: PortfolioViewModel.Output) {
-        output.listTokenPortfolio.subscribe(onNext: { [weak self] _ in
+        output.listTokenPortfolio.subscribe(onNext: { [weak self] listToken in
             guard let self = self else { return }
             self.newPortfolioView.isHidden = true
+            self.emptyView.isHidden = !listToken.isEmpty
+            self.portfolioView.isHidden = listToken.isEmpty
         }).disposed(by: disposeBag)
         output.listTokenPortfolio.bind(to: tableView.rx.items(dataSource: tableViewDataSource)).disposed(by: disposeBag)
     }
@@ -204,6 +219,10 @@ class PortfolioViewController: UIViewController {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    @IBAction func didTapSearch(_ sender: Any) {
+        let vc = SearchViewController(viewModel: SearchViewModel())
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     
     private func openTransactionHistory() {
         guard let selectedPortfolio = selectedPortfolio else { return }
@@ -216,6 +235,17 @@ class PortfolioViewController: UIViewController {
         let vc = AnalyticsVC()
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction func didTapMoreDetail(_ sender: Any) {
+        let vc = MoreDetailsVC(portfolio: selectedPortfolio)
+        let nav = UINavigationController(rootViewController: vc)
+        nav.modalPresentationStyle = .pageSheet
+        if let sheet = nav.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+        }
+        self.present(nav, animated: true)
+    }
+    
 
 }
 

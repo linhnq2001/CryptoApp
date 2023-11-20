@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="chooseColorView" destination="eLR-Kg-rm1" id="efE-bq-Zvt"/>
                 <outlet property="collectionview" destination="mZW-U7-mbG" id="1ei-Bn-T9h"/>
+                <outlet property="containerNewPortfolioView" destination="FIN-Ga-8OP" id="QiF-dC-t4h"/>
                 <outlet property="emptyView" destination="R94-y3-2Ns" id="E2U-fg-ZqH"/>
                 <outlet property="nameInputTF" destination="2A9-CN-Uwe" id="jcn-gJ-zHz"/>
                 <outlet property="newPortfolioView" destination="rYQ-4l-mM6" id="y8i-mu-TBa"/>
@@ -48,12 +49,18 @@
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="magnifyingglass" catalog="system"/>
+                            <connections>
+                                <action selector="didTapSearch:" destination="-1" eventType="touchUpInside" id="8Av-YG-zTi"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kH8-Zz-5LX">
                             <rect key="frame" x="335.33333333333331" y="3" width="47.666666666666686" height="34.333333333333336"/>
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <state key="normal" title="Button"/>
                             <buttonConfiguration key="configuration" style="plain" image="ellipsis" catalog="system"/>
+                            <connections>
+                                <action selector="didTapMoreDetail:" destination="-1" eventType="touchUpInside" id="Sbp-cG-u7f"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -83,7 +90,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1vJ-fa-ERG">
                     <rect key="frame" x="0.0" y="304" width="393" height="514"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R94-y3-2Ns" userLabel="empty View">
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R94-y3-2Ns" userLabel="empty View">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="514"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="jqu-3c-gs4">
@@ -120,7 +127,7 @@
                                 <constraint firstItem="jqu-3c-gs4" firstAttribute="centerX" secondItem="R94-y3-2Ns" secondAttribute="centerX" id="R18-dG-dat"/>
                             </constraints>
                         </view>
-                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYQ-4l-mM6" userLabel="new portfolio View">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rYQ-4l-mM6" userLabel="new portfolio View">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="514"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FIN-Ga-8OP">

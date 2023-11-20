@@ -99,6 +99,10 @@
 		13A4D53E2ADFDE930087561C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A4D53C2ADFDE930087561C /* EditProfileViewController.swift */; };
 		13A4D53F2ADFDE930087561C /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A4D53D2ADFDE930087561C /* EditProfileViewController.xib */; };
 		13A4D5422AE050F90087561C /* SettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A4D5412AE050F90087561C /* SettingViewModel.swift */; };
+		13A587332B0B9C6800695FAB /* MoreDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A587312B0B9C6800695FAB /* MoreDetailsVC.swift */; };
+		13A587342B0B9C6800695FAB /* MoreDetailsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A587322B0B9C6800695FAB /* MoreDetailsVC.xib */; };
+		13A587382B0BC1D700695FAB /* EditPortfolioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A587362B0BC1D700695FAB /* EditPortfolioVC.swift */; };
+		13A587392B0BC1D700695FAB /* EditPortfolioVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13A587372B0BC1D700695FAB /* EditPortfolioVC.xib */; };
 		13B06DF62B07247000C90731 /* Double+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B06DF52B07247000C90731 /* Double+Extension.swift */; };
 		13B2E1E02ADEFF1D007ED6CD /* CoinDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B2E1DE2ADEFF1D007ED6CD /* CoinDetailViewController.swift */; };
 		13B2E1E12ADEFF1D007ED6CD /* CoinDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B2E1DF2ADEFF1D007ED6CD /* CoinDetailViewController.xib */; };
@@ -262,6 +266,10 @@
 		13A4D53C2ADFDE930087561C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		13A4D53D2ADFDE930087561C /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 		13A4D5412AE050F90087561C /* SettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewModel.swift; sourceTree = "<group>"; };
+		13A587312B0B9C6800695FAB /* MoreDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreDetailsVC.swift; sourceTree = "<group>"; };
+		13A587322B0B9C6800695FAB /* MoreDetailsVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoreDetailsVC.xib; sourceTree = "<group>"; };
+		13A587362B0BC1D700695FAB /* EditPortfolioVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPortfolioVC.swift; sourceTree = "<group>"; };
+		13A587372B0BC1D700695FAB /* EditPortfolioVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditPortfolioVC.xib; sourceTree = "<group>"; };
 		13B06DF52B07247000C90731 /* Double+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extension.swift"; sourceTree = "<group>"; };
 		13B2E1DE2ADEFF1D007ED6CD /* CoinDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinDetailViewController.swift; sourceTree = "<group>"; };
 		13B2E1DF2ADEFF1D007ED6CD /* CoinDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinDetailViewController.xib; sourceTree = "<group>"; };
@@ -790,6 +798,7 @@
 		1397D0112AD5C362006325BE /* Portfolio */ = {
 			isa = PBXGroup;
 			children = (
+				13A587302B0B9C4600695FAB /* MoreDetail */,
 				130FC1932B0A97C900A33919 /* AnalyticsPortfolio */,
 				1343F2402B0778D500F7A33E /* EditTransaction */,
 				1343F23B2B07647100F7A33E /* TransactionDetail */,
@@ -866,6 +875,25 @@
 				13A4D5412AE050F90087561C /* SettingViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		13A587302B0B9C4600695FAB /* MoreDetail */ = {
+			isa = PBXGroup;
+			children = (
+				13A587352B0BBE1200695FAB /* EditPortfolio */,
+				13A587312B0B9C6800695FAB /* MoreDetailsVC.swift */,
+				13A587322B0B9C6800695FAB /* MoreDetailsVC.xib */,
+			);
+			path = MoreDetail;
+			sourceTree = "<group>";
+		};
+		13A587352B0BBE1200695FAB /* EditPortfolio */ = {
+			isa = PBXGroup;
+			children = (
+				13A587362B0BC1D700695FAB /* EditPortfolioVC.swift */,
+				13A587372B0BC1D700695FAB /* EditPortfolioVC.xib */,
+			);
+			path = EditPortfolio;
 			sourceTree = "<group>";
 		};
 		13B2E1DA2ADEFED3007ED6CD /* View */ = {
@@ -1238,6 +1266,7 @@
 				13E1CFD22AF95765002D9A91 /* ExchangeCell.xib in Resources */,
 				13607BD92ACD696A008529D2 /* Assets.xcassets in Resources */,
 				13C184112AFCC47E00E7CEED /* RecentSearchCollectionViewCell.xib in Resources */,
+				13A587342B0B9C6800695FAB /* MoreDetailsVC.xib in Resources */,
 				1349849E2B070BA6004E283A /* TrendingAssetsCell.xib in Resources */,
 				136A6A032B0182E2008DF789 /* ChooseAssetVC.xib in Resources */,
 				1397D0222AD5C5F6006325BE /* SettingViewController.xib in Resources */,
@@ -1248,6 +1277,7 @@
 				13FCE3A72AFB8883003B5414 /* CoinRoundedView.xib in Resources */,
 				13CA1DB62AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.xib in Resources */,
 				137C04E92ACF3D4E009E0317 /* GoogleService-Info.plist in Resources */,
+				13A587392B0BC1D700695FAB /* EditPortfolioVC.xib in Resources */,
 				1397D0162AD5C46E006325BE /* HomeViewController.xib in Resources */,
 				1337DB342AF8819C0048C32C /* DescriptionCell.xib in Resources */,
 				1369347F2B027BEC005D739B /* ChooseColorView.xib in Resources */,
@@ -1404,6 +1434,7 @@
 				136409692B0138B100429F93 /* ResultSearchCell.swift in Sources */,
 				1337DB3A2AF884C50048C32C /* CategoryView.swift in Sources */,
 				13FE0FE52ACD72E500D519CA /* RegisterViewController.swift in Sources */,
+				13A587332B0B9C6800695FAB /* MoreDetailsVC.swift in Sources */,
 				133F2F2E2AD2B48B00676947 /* UIViewController+Extension.swift in Sources */,
 				13FE0FF82ACD780100D519CA /* UIView+Extension.swift in Sources */,
 				135E83542B065C9300790E67 /* TransactionHistoryCell.swift in Sources */,
@@ -1433,6 +1464,7 @@
 				1337DB412AF894D30048C32C /* TagListView.swift in Sources */,
 				134984A92B070C27004E283A /* MarketStatisticsCell.swift in Sources */,
 				1343F23E2B0768F400F7A33E /* TransactionDetailVC.swift in Sources */,
+				13A587382B0BC1D700695FAB /* EditPortfolioVC.swift in Sources */,
 				13468F0B2ADD7EE2006915F6 /* MarketRepository.swift in Sources */,
 				1337DB402AF894D30048C32C /* CloseButton.swift in Sources */,
 				1350B34D2AF9D8030081C2CE /* Ticket.swift in Sources */,

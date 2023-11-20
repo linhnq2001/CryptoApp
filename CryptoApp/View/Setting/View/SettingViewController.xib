@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -48,22 +48,25 @@
                                                         <constraint firstAttribute="width" constant="100" id="nIx-JR-T7E"/>
                                                     </constraints>
                                                 </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wyu-Dr-hnU">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Wyu-Dr-hnU">
                                                     <rect key="frame" x="40" y="160" width="273.66666666666669" height="72.333333333333314"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign into your account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2F-P1-CAm">
-                                                            <rect key="frame" x="22.333333333333343" y="0.0" width="229" height="26.333333333333332"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign into your account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H2F-P1-CAm">
+                                                            <rect key="frame" x="0.0" y="0.0" width="273.66666666666669" height="26.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get customized price signals, watchlist sync and more" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EP0-Tl-Li4">
-                                                            <rect key="frame" x="1.3333333333333428" y="36.333333333333314" width="271" height="36"/>
+                                                            <rect key="frame" x="0.0" y="36.333333333333314" width="273.66666666666669" height="36"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="80" id="orM-wv-dXF"/>
+                                                    </constraints>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0cC-ey-iIs">
                                                     <rect key="frame" x="20" y="294" width="313.66666666666669" height="40"/>
@@ -370,7 +373,7 @@
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Va9-tH-0X0">
                                     <rect key="frame" x="0.0" y="215" width="373" height="50"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_phone" translatesAutoresizingMaskIntoConstraints="NO" id="UkB-SK-njy">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_logout" translatesAutoresizingMaskIntoConstraints="NO" id="UkB-SK-njy">
                                             <rect key="frame" x="10" y="15" width="20" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="20" id="Bb3-X9-YFU"/>
@@ -391,21 +394,13 @@
                                                 <constraint firstAttribute="width" constant="20" id="neF-DO-caY"/>
                                             </constraints>
                                         </imageView>
-                                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Market" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pU9-cl-Q69">
-                                            <rect key="frame" x="289" y="16" width="49" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
-                                            <color key="textColor" red="0.6549019814" green="0.67058825489999996" blue="0.69803923369999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="OPZ-TN-joC"/>
-                                        <constraint firstItem="DTa-FC-Fvf" firstAttribute="leading" secondItem="pU9-cl-Q69" secondAttribute="trailing" constant="5" id="Ptf-rE-ThW"/>
                                         <constraint firstItem="UkB-SK-njy" firstAttribute="leading" secondItem="Va9-tH-0X0" secondAttribute="leading" constant="10" id="Sz6-WJ-0a5"/>
                                         <constraint firstAttribute="trailing" secondItem="DTa-FC-Fvf" secondAttribute="trailing" constant="10" id="X5L-75-aHP"/>
                                         <constraint firstItem="a1G-OX-7X2" firstAttribute="leading" secondItem="UkB-SK-njy" secondAttribute="trailing" constant="5" id="fJU-qx-B9d"/>
-                                        <constraint firstItem="pU9-cl-Q69" firstAttribute="centerY" secondItem="Va9-tH-0X0" secondAttribute="centerY" id="i1x-Nb-msU"/>
                                         <constraint firstItem="a1G-OX-7X2" firstAttribute="centerY" secondItem="Va9-tH-0X0" secondAttribute="centerY" id="kXh-H3-CWs"/>
                                         <constraint firstItem="UkB-SK-njy" firstAttribute="centerY" secondItem="Va9-tH-0X0" secondAttribute="centerY" id="l54-kP-rgT"/>
                                         <constraint firstItem="DTa-FC-Fvf" firstAttribute="centerY" secondItem="Va9-tH-0X0" secondAttribute="centerY" id="zrU-ao-yNq"/>
@@ -443,6 +438,7 @@
         <image name="ic_file" width="42.666667938232422" height="42.666667938232422"/>
         <image name="ic_google" width="48" height="48"/>
         <image name="ic_idea" width="42.666667938232422" height="42.666667938232422"/>
+        <image name="ic_logout" width="42.666667938232422" height="42.666667938232422"/>
         <image name="ic_phone" width="42.666667938232422" height="42.666667938232422"/>
         <image name="ic_translate" width="42.666667938232422" height="42.666667938232422"/>
         <systemColor name="systemBackgroundColor">

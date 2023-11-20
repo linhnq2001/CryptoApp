@@ -12,8 +12,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BuyTransactionVC" customModule="CryptoApp" customModuleProvider="target">
             <connections>
                 <outlet property="amountTF" destination="6h8-Kv-lUH" id="aNR-xC-Wbc"/>
+                <outlet property="assetPortfolioLb" destination="Tgs-YO-rCd" id="y6L-TX-TSK"/>
+                <outlet property="customLb" destination="33P-d2-1wT" id="FPJ-4h-ecx"/>
+                <outlet property="customPriceView" destination="apf-td-MlF" id="GFA-Dk-vxQ"/>
                 <outlet property="dateLb" destination="l2Z-Up-8fp" id="Zff-NY-aBF"/>
                 <outlet property="dateView" destination="MPW-Rs-qzr" id="bfy-40-FRs"/>
+                <outlet property="marketLb" destination="f8g-J2-kgV" id="5Rm-pJ-NUf"/>
+                <outlet property="marketPriceView" destination="ff4-9R-fSv" id="75s-0C-5Kf"/>
+                <outlet property="namePortfolioLb" destination="m3q-y5-grf" id="iqh-ir-ObB"/>
                 <outlet property="portfolioView" destination="8Ya-58-wJW" id="nrv-LU-3Cb"/>
                 <outlet property="priceTF" destination="RrF-N0-QdP" id="MVO-Z0-Y87"/>
                 <outlet property="timeLb" destination="U5p-Sn-EWg" id="Hne-w9-K7K"/>

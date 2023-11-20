@@ -287,32 +287,79 @@ extension FirestoreHelper {
     }
 
     func removePortfolio(_ portfolio: Portfolio) -> Observable<(Bool,String)> {
-        return Observable.create { [weak self] observable in
-            guard let self = self else {
-                observable.onNext((false,"Somethings wrong"))
-                observable.onCompleted()
-                return Disposables.create()
-            }
+        return .create { observable in
             let uid = FirebaseAuthHelper.shared.getUID()
-            let docRef = self.db.collection("data").document(uid)
-            self.getAllPortfolio().subscribe { result, listPortfolio in
-                var newPortfolio = listPortfolio
-                if !result {
-                    observable.onNext((false,"Somethings wrong"))
+            self.db.collection("data").document(uid).getDocument(as: UserDataFb.self) { result in
+                switch result {
+                case .success(let success):
+                    let data = success
+                    data.portfolio.removeAll(where: {$0.name == portfolio.name})
+                    self.db.collection("data").document(uid).updateData(["portfolio": data.portfolio.map({$0.toDictionnary})]) { error in
+                        observable.onNext((error == nil,error != nil ? "Something wrong" : ""))
+                        observable.onCompleted()
+                    }
+                case .failure(_):
+                    observable.onNext((false,"Something wrong"))
                     observable.onCompleted()
-                } else {
-                    newPortfolio.removeAll(where: {$0.name == portfolio.name})
-                    docRef.updateData(["portfolio": newPortfolio]) { error in
-                        if error != nil {
-                            observable.onNext((false,"Somethings wrong"))
-                            observable.onCompleted()
-                        } else {
-                            observable.onNext((true,"Success"))
+                }
+            }
+            return Disposables.create()
+        }
+    }
+
+    func renamePortfolio(portfolio: Portfolio, newName: String) -> Observable<(Bool,String)> {
+        return .create { observable in
+            let uid = FirebaseAuthHelper.shared.getUID()
+            self.db.collection("data").document(uid).getDocument(as: UserDataFb.self) { result in
+                switch result {
+                case .success(let success):
+                    var data = success
+                    if let index = data.portfolio.firstIndex(where: {$0.name == portfolio.name}) {
+                        data.portfolio[index].name = newName
+                        self.db.collection("data").document(uid).updateData(["portfolio": data.portfolio.map({$0.toDictionnary})]) { error in
+                            observable.onNext((error == nil,error != nil ? "Something wrong" : ""))
                             observable.onCompleted()
                         }
+                    } else {
+                        observable.onNext((false,"Something wrong"))
+                        observable.onCompleted()
                     }
+                case .failure(_):
+                    observable.onNext((false,"Something wrong"))
+                    observable.onCompleted()
                 }
-            }.disposed(by: disposeBag)
+            }
+            return Disposables.create()
+        }
+    }
+
+    func duplicatePortfolio(portfolio: Portfolio, newName: String) -> Observable<(Bool,String)> {
+        return .create { observable in
+            let uid = FirebaseAuthHelper.shared.getUID()
+            self.db.collection("data").document(uid).getDocument(as: UserDataFb.self) { result in
+                switch result {
+                case .success(let success):
+                    var data = success
+                    if let newPortfolio = data.portfolio.first(where: {$0.name == portfolio.name}) {
+                        if newName == newPortfolio.name {
+                            observable.onNext((false,"InValid Name"))
+                            observable.onCompleted()
+                        }
+                        newPortfolio.name = newName
+                        data.portfolio.append(newPortfolio)
+                        self.db.collection("data").document(uid).updateData(["portfolio": data.portfolio.map({$0.toDictionnary})]) { error in
+                            observable.onNext((error == nil,error != nil ? "Something wrong" : ""))
+                            observable.onCompleted()
+                        }
+                    } else {
+                        observable.onNext((false,"Something wrong"))
+                        observable.onCompleted()
+                    }
+                case .failure(_):
+                    observable.onNext((false,"Something wrong"))
+                    observable.onCompleted()
+                }
+            }
             return Disposables.create()
         }
     }
