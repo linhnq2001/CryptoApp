@@ -63,6 +63,7 @@ class PortfolioViewController: UIViewController {
     private let trigger = PublishSubject<Void>()
     private let actionChangePortfolio = PublishSubject<Portfolio>()
     private let actionCreatePortfolio = PublishSubject<Portfolio>()
+    private let didEditPortfolio = PublishSubject<Void>()
     
     @IBOutlet weak var collectionview: UICollectionView! {
         didSet {
@@ -149,6 +150,10 @@ class PortfolioViewController: UIViewController {
         handleListToken(output)
         handleCreatePortfolio(output)
         trigger.onNext(())
+        didEditPortfolio.subscribe(onNext: { [weak self] _ in
+            guard let self = self else { return }
+            self.trigger.onNext(())
+        }).disposed(by: disposeBag)
     }
 
     private func handleCreatePortfolio(_ output: PortfolioViewModel.Output) {
@@ -237,7 +242,7 @@ class PortfolioViewController: UIViewController {
     }
     
     @IBAction func didTapMoreDetail(_ sender: Any) {
-        let vc = MoreDetailsVC(portfolio: selectedPortfolio)
+        let vc = MoreDetailsVC(portfolio: selectedPortfolio, didEditPortfolio: didEditPortfolio)
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .pageSheet
         if let sheet = nav.sheetPresentationController {

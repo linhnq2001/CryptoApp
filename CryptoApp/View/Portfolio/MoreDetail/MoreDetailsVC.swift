@@ -11,14 +11,16 @@ import RxSwift
 class MoreDetailsVC: UIViewController {
     
     private(set) var portfolio: Portfolio!
+    private(set) var didEditPortfolio: PublishSubject<Void>
     private let disposeBag = DisposeBag()
     
     @IBOutlet weak var editView: UIView!
     @IBOutlet weak var duplicateView: UIView!
     @IBOutlet weak var deleteView: UIView!
     
-    init(portfolio: Portfolio!) {
+    init(portfolio: Portfolio!, didEditPortfolio: PublishSubject<Void>) {
         self.portfolio = portfolio
+        self.didEditPortfolio = didEditPortfolio
         super.init(nibName: String(describing: MoreDetailsVC.self), bundle: Bundle(for: MoreDetailsVC.self))
     }
     
@@ -38,7 +40,7 @@ class MoreDetailsVC: UIViewController {
     }
     
     @objc func didTapEdit() {
-        let vc = EditPortfolioVC(type: .editName, portfolio: portfolio)
+        let vc = EditPortfolioVC(type: .editName, portfolio: portfolio, didEditPortfolio: didEditPortfolio)
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .pageSheet
         if let sheet = nav.sheetPresentationController {
@@ -48,7 +50,7 @@ class MoreDetailsVC: UIViewController {
     }
     
     @objc func didTapDuplicate() {
-        let vc = EditPortfolioVC(type: .duplicate, portfolio: portfolio)
+        let vc = EditPortfolioVC(type: .duplicate, portfolio: portfolio,didEditPortfolio: didEditPortfolio)
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .pageSheet
         if let sheet = nav.sheetPresentationController {
@@ -66,6 +68,7 @@ class MoreDetailsVC: UIViewController {
             FirestoreHelper.shared.removePortfolio(self.portfolio).subscribe(onNext: { [weak self] result, error in
                 guard let self = self else { return }
                 if result {
+                    self.didEditPortfolio.onNext(())
                     self.dismiss(animated: true)
                 } else {
                     self.showToast(message: error, font: UIFont.systemFont(ofSize: 12)) { _ in
