@@ -13,6 +13,10 @@
             <connections>
                 <outlet property="buttonBarView" destination="eKy-Bl-GPO" id="lBZ-gt-AW4"/>
                 <outlet property="containerView" destination="cpP-Io-U0m" id="qh7-SP-D0j"/>
+                <outlet property="favouriteBtn" destination="uva-hr-5Bj" id="W3c-hU-Bok"/>
+                <outlet property="imageToken" destination="X1s-OH-B6n" id="LcJ-2W-E6v"/>
+                <outlet property="marketRankLb" destination="2Xi-d7-gmm" id="1P2-iC-eEl"/>
+                <outlet property="nameLb" destination="0V0-b7-knG" id="ukH-Tt-pS7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,7 +38,7 @@
                             </connections>
                         </button>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="iSO-QS-0T6">
-                            <rect key="frame" x="140.33333333333334" y="10" width="112.66666666666666" height="40.333333333333336"/>
+                            <rect key="frame" x="140.33333333333334" y="20" width="112.66666666666666" height="20"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="NNX-TK-I6n">
                                     <rect key="frame" x="0.0" y="0.0" width="112.66666666666667" height="20"/>
@@ -60,17 +64,17 @@
                                         </label>
                                     </subviews>
                                 </stackView>
-                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ahy-rt-AMU">
-                                    <rect key="frame" x="12.333333333333314" y="20" width="87.666666666666671" height="20.333333333333329"/>
+                                <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="ahy-rt-AMU">
+                                    <rect key="frame" x="12.333333333333314" y="0.0" width="87.666666666666671" height="0.0"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AoB-ec-Wbo">
-                                            <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="20.333333333333332"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="41.333333333333336" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hR3-Sx-iS2">
-                                            <rect key="frame" x="46.333333333333343" y="0.0" width="41.333333333333343" height="20.333333333333332"/>
+                                            <rect key="frame" x="46.333333333333343" y="0.0" width="41.333333333333343" height="0.0"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>

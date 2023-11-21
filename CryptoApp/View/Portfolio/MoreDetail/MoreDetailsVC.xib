@@ -11,8 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MoreDetailsVC" customModule="CryptoApp" customModuleProvider="target">
             <connections>
+                <outlet property="deleteTitleLb" destination="3i4-qE-tL4" id="RMs-4R-hru"/>
                 <outlet property="deleteView" destination="ftw-9k-wWV" id="22R-48-fFM"/>
+                <outlet property="duplicateTitleLb" destination="9o5-00-d40" id="qb1-Zk-ZgS"/>
                 <outlet property="duplicateView" destination="KK1-n0-hY9" id="FoF-06-Bff"/>
+                <outlet property="editTitleLb" destination="Zq9-37-drM" id="BhG-Pj-iJZ"/>
                 <outlet property="editView" destination="CBN-31-PJP" id="6Yp-Fc-DgD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

@@ -8,8 +8,14 @@
 import UIKit
 import RxSwift
 import XLPagerTabStrip
+import Kingfisher
 
 class CoinDetailViewController: ButtonBarPagerTabStripViewController {
+    
+    @IBOutlet weak var imageToken: UIImageView!
+    @IBOutlet weak var nameLb: UILabel!
+    @IBOutlet weak var marketRankLb: UILabel!
+    @IBOutlet weak var favouriteBtn: UIButton!
     
     let disposeBag = DisposeBag()
     let trigger = PublishSubject<Void>()
@@ -18,6 +24,7 @@ class CoinDetailViewController: ButtonBarPagerTabStripViewController {
             about.data = coinInfo
             exchanges.data = coinInfo
             overview.data = coinInfo
+            setupUI()
         }
     }
     private(set) var viewModel: CoinDetailViewModel!
@@ -37,6 +44,14 @@ class CoinDetailViewController: ButtonBarPagerTabStripViewController {
         super.viewDidLoad()
         bindingData()
         configureButtonBar()
+        setupUI()
+        
+    }
+    
+    private func setupUI() {
+        imageToken.kf.setImage(with: URL(string: coinInfo?.image?.large ?? ""))
+        nameLb.text = coinInfo?.name ?? ""
+        marketRankLb.text = "# \(coinInfo?.marketCapRank ?? 0)"
     }
     
     private func bindingData() {

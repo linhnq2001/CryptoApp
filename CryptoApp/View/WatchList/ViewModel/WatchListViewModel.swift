@@ -16,20 +16,24 @@ final public class WatchListViewModel: NSObject {
     public struct Input {
         let trigger: PublishSubject<Void>
         let tapToWatchList: PublishRelay<CoinInfoResponse>
+        let removeFromWatchlist: PublishRelay<String>
     }
     
     public struct Output {
         let showLoading: PublishRelay<Bool>
         let watchList: PublishRelay<[CoinInfoResponse]>
         let didTapToWatchList: PublishRelay<(Bool,String)>
+        let resultRemoveFromWatchList: PublishRelay<(Bool,String)>
     }
     
     public func transform(_ input: WatchListViewModel.Input) -> WatchListViewModel.Output {
         let showLoading = PublishRelay<Bool>()
         let watchList = PublishRelay<[CoinInfoResponse]>()
         let didTapToWatchList = PublishRelay<(Bool,String)>()
-        let output = Output(showLoading: showLoading, watchList: watchList, didTapToWatchList: didTapToWatchList)
+        let resultRemoveFromWatchList = PublishRelay<(Bool,String)>()
+        let output = Output(showLoading: showLoading, watchList: watchList, didTapToWatchList: didTapToWatchList, resultRemoveFromWatchList: resultRemoveFromWatchList)
         handleInitData(input, output)
+        handleRemoveFromWatchlist(input, output)
         return output
     }
 
@@ -47,6 +51,14 @@ final public class WatchListViewModel: NSObject {
             return data
         }.subscribe(onNext: { listData in
             output.watchList.accept(listData)
+        }).disposed(by: disposeBag)
+    }
+    
+    private func handleRemoveFromWatchlist(_ input: WatchListViewModel.Input, _ output: WatchListViewModel.Output) {
+        input.removeFromWatchlist.flatMap { id -> Observable<(Bool,String)> in
+            return FirestoreHelper.shared.addOrRemoveWatchList(id)
+        }.subscribe(onNext: { (result, error) in
+            output.resultRemoveFromWatchList.accept((result,error))
         }).disposed(by: disposeBag)
     }
 }

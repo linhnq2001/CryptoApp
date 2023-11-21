@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WatchListViewController" customModule="CryptoApp" customModuleProvider="target">
             <connections>
+                <outlet property="emptyView" destination="byV-HI-f8I" id="aCj-5m-sHO"/>
                 <outlet property="searchBtn" destination="f0t-yC-DKI" id="kxx-OW-b25"/>
                 <outlet property="tableview" destination="GzD-Ts-Y9X" id="5MS-sr-5Uj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -44,6 +45,45 @@
                     <rect key="frame" x="0.0" y="153.33333333333331" width="393" height="664.66666666666674"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="byV-HI-f8I">
+                    <rect key="frame" x="0.0" y="153.33333333333331" width="393" height="664.66666666666674"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="hVD-IM-JhA">
+                            <rect key="frame" x="74.000000000000014" y="263.33333333333337" width="245.33333333333337" height="138.33333333333337"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_star" translatesAutoresizingMaskIntoConstraints="NO" id="oOY-er-QnD">
+                                    <rect key="frame" x="82.666666666666657" y="0.0" width="80" height="80"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="HLZ-mq-P0l"/>
+                                        <constraint firstAttribute="height" constant="80" id="uTF-bR-a7Y"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <real key="value" value="40"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Watchlist is empty" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Am1-sj-JuN">
+                                    <rect key="frame" x="27" y="90" width="191.33333333333334" height="20.333333333333329"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add an asset to start your watchlist." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9lg-fa-M6z">
+                                    <rect key="frame" x="0.0" y="120.33333333333331" width="245.33333333333334" height="18"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="hVD-IM-JhA" firstAttribute="centerX" secondItem="byV-HI-f8I" secondAttribute="centerX" id="6hD-bn-MgM"/>
+                        <constraint firstItem="hVD-IM-JhA" firstAttribute="centerY" secondItem="byV-HI-f8I" secondAttribute="centerY" id="nLf-HI-N1u"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -51,19 +91,24 @@
                 <constraint firstItem="7HQ-um-lKN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4Cs-1Q-PQB"/>
                 <constraint firstItem="GzD-Ts-Y9X" firstAttribute="top" secondItem="7HQ-um-lKN" secondAttribute="bottom" id="9FH-wa-dwm"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GzD-Ts-Y9X" secondAttribute="trailing" id="9ZM-0x-0X6"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="byV-HI-f8I" secondAttribute="trailing" id="C3N-JI-dgH"/>
                 <constraint firstItem="GzD-Ts-Y9X" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DiT-I2-NUg"/>
                 <constraint firstItem="PIZ-bV-SvJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="QEH-ab-ZGG"/>
                 <constraint firstItem="PIZ-bV-SvJ" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="SQd-Ml-tkG"/>
                 <constraint firstItem="7HQ-um-lKN" firstAttribute="top" secondItem="f0t-yC-DKI" secondAttribute="bottom" constant="20" id="VMq-gN-h98"/>
+                <constraint firstItem="byV-HI-f8I" firstAttribute="top" secondItem="7HQ-um-lKN" secondAttribute="bottom" id="Ya8-1V-aa3"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="byV-HI-f8I" secondAttribute="bottom" id="a4a-hA-2EX"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GzD-Ts-Y9X" secondAttribute="bottom" id="inV-fk-vqC"/>
                 <constraint firstItem="f0t-yC-DKI" firstAttribute="centerY" secondItem="PIZ-bV-SvJ" secondAttribute="centerY" id="lue-Fr-jWI"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7HQ-um-lKN" secondAttribute="trailing" id="mtW-98-Cbp"/>
+                <constraint firstItem="byV-HI-f8I" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vKz-Al-TUT"/>
                 <constraint firstAttribute="trailing" secondItem="f0t-yC-DKI" secondAttribute="trailing" constant="20" id="xdi-1Z-WJJ"/>
             </constraints>
             <point key="canvasLocation" x="110" y="21"/>
         </view>
     </objects>
     <resources>
+        <image name="ic_star" width="30" height="30"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

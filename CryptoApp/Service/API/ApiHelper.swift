@@ -23,8 +23,10 @@ public struct ApiHelper<T:Decodable> {
                            otherHeaders: [String : String]? = nil,
                            params: [String: Any]) -> Observable<T> {
         return Observable.create { observer in
-            AF.request(baseOtherUrl + url.endpoint,method: .get,parameters: params).responseDecodable(of:T.self) { response in
-                print("===== Request URL: \(response.response?.url?.absoluteString ?? "")")
+            var pramsTwo = params
+            pramsTwo["x_cg_demo_api_key"] = "CG-m1fosyDHP7Pyn6yb65zxJdHA"
+            AF.request(baseOtherUrl + url.endpoint,method: .get,parameters: pramsTwo).responseDecodable(of:T.self) { response in
+                print("===== Request GET URL: \(response.response?.url?.absoluteString ?? "")")
                 print(response.data?.prettyJson ?? "")
                 print("===========================")
                 switch response.result {
@@ -46,6 +48,9 @@ public struct ApiHelper<T:Decodable> {
                            params: [String: Any]) -> Observable<T> {
         return Observable.create { observer in
             AF.request(baseOtherUrl + url.endpoint,method: .post,parameters: params).responseDecodable(of:T.self) { response in
+                print("===== Request POST URL: \(response.response?.url?.absoluteString ?? "")")
+                print(response.data?.prettyJson ?? "")
+                print("===========================")
                 switch response.result {
                 case .success(let data):
                     observer.onNext(data)

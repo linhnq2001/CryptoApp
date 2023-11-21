@@ -40,7 +40,7 @@ final public class HomeViewModel: NSObject {
     
     private func handleWatchListAction(_ input: HomeViewModel.Input, _ output: HomeViewModel.Output) {
         input.tapToWatchList.flatMap { coin -> Observable<(Bool,String)> in
-            return FirestoreHelper.shared.addOrRemoveWatchList(coin)
+            return FirestoreHelper.shared.addOrRemoveWatchList(coin.id)
         }.subscribe { (isSuccess, context) in
             output.didTapToWatchList.accept((isSuccess , context))
         }.disposed(by: disposeBag)

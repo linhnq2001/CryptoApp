@@ -15,9 +15,12 @@ class MoreDetailsVC: UIViewController {
     private let disposeBag = DisposeBag()
     
     @IBOutlet weak var editView: UIView!
+    @IBOutlet weak var editTitleLb: UILabel!
     @IBOutlet weak var duplicateView: UIView!
+    @IBOutlet weak var duplicateTitleLb: UILabel!
     @IBOutlet weak var deleteView: UIView!
-    
+    @IBOutlet weak var deleteTitleLb: UILabel!
+
     init(portfolio: Portfolio!, didEditPortfolio: PublishSubject<Void>) {
         self.portfolio = portfolio
         self.didEditPortfolio = didEditPortfolio
@@ -30,13 +33,25 @@ class MoreDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupGesture()
+        setupUI()
+        // Do any additional setup after loading the view.
+    }
+    
+    private func setupUI() {
+        editTitleLb.text = "Edit ≪ \(portfolio.name) ≫"
+        duplicateTitleLb.text = "Duplicate ≪ \(portfolio.name) ≫"
+        deleteTitleLb.text = "Delete ≪ \(portfolio.name) ≫"
+        deleteTitleLb.textColor = UIColor.red.withAlphaComponent(0.8)
+    }
+    
+    private func setupGesture() {
         let tapEdit = UITapGestureRecognizer(target: self, action: #selector(didTapEdit))
         let tapDuplicate = UITapGestureRecognizer(target: self, action: #selector(didTapDuplicate))
         let tapDelete = UITapGestureRecognizer(target: self, action: #selector(didTapDelete))
         editView.addGestureRecognizer(tapEdit)
         duplicateView.addGestureRecognizer(tapDuplicate)
         deleteView.addGestureRecognizer(tapDelete)
-        // Do any additional setup after loading the view.
     }
     
     @objc func didTapEdit() {

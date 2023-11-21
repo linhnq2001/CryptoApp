@@ -106,7 +106,10 @@ final public class FirestoreHelper: NSObject{
         }
     }
     
-    func addOrRemoveWatchList(_ coin: CoinInMarketResponse) -> Observable<(Bool,String)> {
+}
+// MARK: WatchList
+extension FirestoreHelper {
+    func addOrRemoveWatchList(_ coinId: String) -> Observable<(Bool,String)> {
         return Observable.create { [weak self] observable in
             guard let self = self else {
                 observable.onNext((false,"Somethings wrong"))
@@ -119,13 +122,13 @@ final public class FirestoreHelper: NSObject{
                         return
                     }
                     let watchList = user.watchList
-                    if let index = watchList.firstIndex(where: {$0 == coin.id}) {
+                    if let index = watchList.firstIndex(where: {$0 == coinId}) {
                         user.watchList.remove(at: index)
                         self.updateUser(user).subscribe(onNext: { (result, error) in
                             observable.onNext((result, result ? "Success Remove token from watch list" : "Somethings wrong"))
                         }).disposed(by: self.disposeBag)
                     } else {
-                        user.watchList.append(coin.id)
+                        user.watchList.append(coinId)
                         self.updateUser(user).subscribe(onNext: { (result, error) in
                             observable.onNext((result, result ? "Success add token to watch list" : "Somethings wrong"))
                         }).disposed(by: self.disposeBag)
@@ -138,6 +141,36 @@ final public class FirestoreHelper: NSObject{
         }
     }
     
+    func checkTokenInWatchlist(_ coinId: String) -> Observable<(Bool,String)> {
+        return Observable.create { [weak self] observable in
+            guard let self = self else {
+                observable.onNext((false,"Somethings wrong"))
+                observable.onCompleted()
+                return Disposables.create()
+            }
+            if FirebaseAuthHelper.shared.isLogin() {
+                FirebaseAuthHelper.shared.getCurrentUser().subscribe(onNext: { user in
+                    guard let user = user else {
+                        return
+                    }
+                    let watchList = user.watchList
+                    if let index = watchList.firstIndex(where: {$0 == coinId}) {
+                        observable.onNext((true,""))
+                        observable.onCompleted()
+                    } else {
+                        observable.onNext((false,"Somethings wrong"))
+                        observable.onCompleted()
+                    }
+                }).disposed(by: self.disposeBag)
+            } else {
+                
+            }
+            return Disposables.create()
+        }
+    }
+}
+// MARK: Recent Search
+extension FirestoreHelper {
     func addTokenToRecentSearch(_ id: String) -> Observable<(Bool,String)> {
         return Observable.create { [weak self] observable in
             guard let self = self else {
@@ -221,6 +254,7 @@ final public class FirestoreHelper: NSObject{
         }
     }
 }
+
 //MARK: Portfolio
 extension FirestoreHelper {
     func getAllPortfolio() -> Observable<(Bool,[Portfolio])> {
@@ -364,13 +398,17 @@ extension FirestoreHelper {
         }
     }
 
+}
+
+// MARK: Transaction
+extension FirestoreHelper {
     func addTransaction(_ transaction: TokenInPortfolio, namePortfolio: String) -> Observable<(Bool,String)> {
         return Observable.create { observable in
             let uid = FirebaseAuthHelper.shared.getUID()
             self.db.collection("data").document(uid).getDocument(as: UserDataFb.self) { result in
                 switch result {
                 case .success(let success):
-                    var data = success
+                    let data = success
                     if let index = data.portfolio.firstIndex(where: {$0.name == namePortfolio}) {
                         if let indexToken = data.portfolio[index].listToken.firstIndex(where: {$0.id == transaction.id}) {
                             data.portfolio[index].listToken[indexToken].tradesHistory.append(contentsOf: transaction.tradesHistory)
@@ -393,5 +431,32 @@ extension FirestoreHelper {
             return Disposables.create()
         }
     }
-
+    
+    func deleteTransaction(_ transaction: TradeDetailHistory, namePortfolio: String) -> Observable<(Bool,String)> {
+        return Observable.create { observable in
+            let uid = FirebaseAuthHelper.shared.getUID()
+            self.db.collection("data").document(uid).getDocument(as: UserDataFb.self) { result in
+                switch result {
+                case .success(let success):
+                    let data = success
+                    if let index = data.portfolio.firstIndex(where: {$0.name == namePortfolio}) {
+                        if let indexToken = data.portfolio[index].listToken.firstIndex(where: {$0.id == transaction.id}) {
+                            data.portfolio[index].listToken[indexToken].tradesHistory.removeAll(where: {$0.createAt == transaction.createAt && $0.type == transaction.type && $0.amount == transaction.amount})
+                            self.db.collection("data").document(uid).updateData(["portfolio": data.portfolio.map({$0.toDictionnary})]) { error in
+                                observable.onNext((error == nil,error != nil ? "Something wrong" : ""))
+                                observable.onCompleted()
+                            }
+                        }
+                    } else {
+                        observable.onNext((false,"Something wrong"))
+                        observable.onCompleted()
+                    }
+                case .failure(_):
+                    observable.onNext((false,"Something wrong"))
+                    observable.onCompleted()
+                }
+            }
+            return Disposables.create()
+        }
+    }
 }
