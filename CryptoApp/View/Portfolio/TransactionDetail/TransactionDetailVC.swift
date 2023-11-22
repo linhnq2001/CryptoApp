@@ -6,9 +6,13 @@
 //
 
 import UIKit
+import RxSwift
 
 class TransactionDetailVC: UIViewController {
     private(set) var data: TradeDetailHistory!
+    private(set) var name: String!
+    private(set) var didEditPortfolio: PublishSubject<Void>
+    private let disposeBag = DisposeBag()
     
     @IBOutlet weak var imageToken: UIImageView! {
         didSet {
@@ -20,8 +24,10 @@ class TransactionDetailVC: UIViewController {
     @IBOutlet weak var totalLb: UILabel!
     @IBOutlet weak var dateLb: UILabel!
     
-    init(data: TradeDetailHistory!) {
+    init(data: TradeDetailHistory!, name: String, didEditPortfolio: PublishSubject<Void>) {
+        self.name = name
         self.data = data
+        self.didEditPortfolio = didEditPortfolio
         super.init(nibName: String(describing: TransactionDetailVC.self), bundle: Bundle(for: TransactionDetailVC.self))
     }
     
@@ -58,10 +64,20 @@ class TransactionDetailVC: UIViewController {
         let alertController = UIAlertController(title: "Delete Transaction", message: "Are you sure you want to delete this conversation ?", preferredStyle: .alert)
         
         // Create an action
-        let yesAction = UIAlertAction(title: "Yes", style: .cancel) { (_) in
-
+        let yesAction = UIAlertAction(title: "Yes", style: .cancel) { [weak self] (_) in
+            guard let self = self else { return }
+            FirestoreHelper.shared.deleteTransaction(self.data, namePortfolio: self.name).subscribe(onNext: { [weak self] (result, error) in
+                guard let self = self else { return }
+                if result {
+                    self.didEditPortfolio.onNext(())
+                }
+                self.showToast(message: result ? "success" : error, font: UIFont.systemFont(ofSize: 12)) { _ in
+                    if result {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+            }).disposed(by: self.disposeBag)
         }
-        
         let noAction = UIAlertAction(title: "No", style: .default) { (_) in
 
         }

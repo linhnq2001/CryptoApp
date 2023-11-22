@@ -12,6 +12,7 @@ class MoreDetailsVC: UIViewController {
     
     private(set) var portfolio: Portfolio!
     private(set) var didEditPortfolio: PublishSubject<Void>
+    private(set) var didDeletePortfolio: PublishSubject<Void>
     private let disposeBag = DisposeBag()
     
     @IBOutlet weak var editView: UIView!
@@ -21,9 +22,10 @@ class MoreDetailsVC: UIViewController {
     @IBOutlet weak var deleteView: UIView!
     @IBOutlet weak var deleteTitleLb: UILabel!
 
-    init(portfolio: Portfolio!, didEditPortfolio: PublishSubject<Void>) {
+    init(portfolio: Portfolio!, didEditPortfolio: PublishSubject<Void>, didDeletePortfolio: PublishSubject<Void>) {
         self.portfolio = portfolio
         self.didEditPortfolio = didEditPortfolio
+        self.didDeletePortfolio = didDeletePortfolio
         super.init(nibName: String(describing: MoreDetailsVC.self), bundle: Bundle(for: MoreDetailsVC.self))
     }
     
@@ -83,7 +85,7 @@ class MoreDetailsVC: UIViewController {
             FirestoreHelper.shared.removePortfolio(self.portfolio).subscribe(onNext: { [weak self] result, error in
                 guard let self = self else { return }
                 if result {
-                    self.didEditPortfolio.onNext(())
+                    self.didDeletePortfolio.onNext(())
                     self.dismiss(animated: true)
                 } else {
                     self.showToast(message: error, font: UIFont.systemFont(ofSize: 12)) { _ in

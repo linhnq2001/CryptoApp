@@ -64,6 +64,8 @@ class PortfolioViewController: UIViewController {
     private let actionChangePortfolio = PublishSubject<Portfolio>()
     private let actionCreatePortfolio = PublishSubject<Portfolio>()
     private let didEditPortfolio = PublishSubject<Void>()
+    private let didDeletePortfolio = PublishSubject<Void>()
+    private let didRenamePortfolio = PublishSubject<Void>()
     
     @IBOutlet weak var collectionview: UICollectionView! {
         didSet {
@@ -87,6 +89,12 @@ class PortfolioViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.register(UINib(nibName: "TokenInPortfolioCell", bundle: nil), forCellReuseIdentifier: "TokenInPortfolioCell")
+            tableView.rx.modelSelected(TokenInPortfolio.self).subscribe(onNext: { [weak self] item in
+                guard let self = self else { return }
+                let viewModel = CoinDetailViewModel(id: item.id)
+                let vc = CoinDetailViewController(viewModel: viewModel)
+                self.navigationController?.pushViewController(vc, animated: true)
+            }).disposed(by: disposeBag)
         }
     }
     
@@ -97,7 +105,9 @@ class PortfolioViewController: UIViewController {
     }
     
     lazy var dataSource = RxCollectionViewSectionedReloadDataSource<PortfolioSection>  {[weak self] dataSource, collectionview, indexPath, item in
-        guard let newPortfolioCell = collectionview.dequeueReusableCell(withReuseIdentifier: "NewPortfolioCell", for: indexPath) as? NewPortfolioCell, let portfolioCell = collectionview.dequeueReusableCell(withReuseIdentifier: "PortfolioCell", for: indexPath) as? PortfolioCell, let self = self else {
+        guard let newPortfolioCell = collectionview.dequeueReusableCell(withReuseIdentifier: "NewPortfolioCell", for: indexPath) as? NewPortfolioCell,
+              let portfolioCell = collectionview.dequeueReusableCell(withReuseIdentifier: "PortfolioCell", for: indexPath) as? PortfolioCell,
+              let self = self else {
             return UICollectionViewCell()
         }
         switch dataSource.sectionModels[indexPath.section].model {
@@ -105,17 +115,20 @@ class PortfolioViewController: UIViewController {
             return newPortfolioCell
         case .portfolio:
             portfolioCell.configData(data: item,triggerUpdatePrice: self.viewModel.triggerUpdatePrice)
-            portfolioCell.didTapHistoryAction.subscribe(onNext: { _ in
+            portfolioCell.didTapHistoryAction.subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 self.openTransactionHistory()
-            }).disposed(by: self.disposeBag)
-            portfolioCell.didTapAnalyticsAction.subscribe(onNext: { _ in
+            }).disposed(by: portfolioCell.disposeBag)
+            portfolioCell.didTapAnalyticsAction.subscribe(onNext: { [weak self] _ in
+                guard let self = self else { return }
                 self.openAnalytics()
-            }).disposed(by: self.disposeBag)
+            }).disposed(by: portfolioCell.disposeBag)
             return portfolioCell
         }
     }
     
     var didCreatePortfolio: Bool = false
+    var firstAppear: Bool = true
     
     init(viewModel: PortfolioViewModel!) {
         self.viewModel = viewModel
@@ -127,7 +140,10 @@ class PortfolioViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        trigger.onNext(())
+        if !firstAppear {
+            trigger.onNext(())
+        }
+        firstAppear = false
     }
 
     override func viewDidLoad() {
@@ -143,7 +159,9 @@ class PortfolioViewController: UIViewController {
     }
 
     private func bindingData() {
-        let input = PortfolioViewModel.Input(trigger: trigger, actionCreatePortfolio: actionCreatePortfolio, actionChangePortfolio: actionChangePortfolio)
+        let input = PortfolioViewModel.Input(trigger: trigger, 
+                                             actionCreatePortfolio: actionCreatePortfolio,
+                                             actionChangePortfolio: actionChangePortfolio)
         
         let output = viewModel.transform(input)
         handlePortfolioData(output)
@@ -152,6 +170,12 @@ class PortfolioViewController: UIViewController {
         trigger.onNext(())
         didEditPortfolio.subscribe(onNext: { [weak self] _ in
             guard let self = self else { return }
+            self.trigger.onNext(())
+        }).disposed(by: disposeBag)
+        
+        didDeletePortfolio.subscribe(onNext: { [weak self] _ in
+            guard let self = self else { return }
+            self.selectedPortfolio = nil
             self.trigger.onNext(())
         }).disposed(by: disposeBag)
     }
@@ -170,20 +194,20 @@ class PortfolioViewController: UIViewController {
             guard let self = self else { return }
             self.sections = listSection
             if let selectedPortfolio = self.selectedPortfolio {
-                self.actionChangePortfolio.onNext(selectedPortfolio)
                 self.selectedPortfolio = selectedPortfolio
+                self.actionChangePortfolio.onNext(selectedPortfolio)
             } else {
-                if didCreatePortfolio {
+                if self.didCreatePortfolio {
                     guard let lastPortfolio = listSection.first(where: {$0.model == .portfolio})?.items.last as? Portfolio else {return}
-                    self.actionChangePortfolio.onNext(lastPortfolio)
                     self.selectedPortfolio = lastPortfolio
+                    self.actionChangePortfolio.onNext(lastPortfolio)
                 } else {
                     guard let firstPortfolio = listSection.first(where: {$0.model == .portfolio})?.items.first as? Portfolio else {return}
-                    self.actionChangePortfolio.onNext(firstPortfolio)
                     self.selectedPortfolio = firstPortfolio
+                    self.actionChangePortfolio.onNext(firstPortfolio)
                 }
             }
-            didCreatePortfolio = false
+            self.didCreatePortfolio = false
         }).disposed(by: disposeBag)
 
         output.listPortfolio.bind(to: collectionview.rx.items(dataSource: dataSource)).disposed(by: disposeBag)
@@ -196,6 +220,7 @@ class PortfolioViewController: UIViewController {
             self.emptyView.isHidden = !listToken.isEmpty
             self.portfolioView.isHidden = listToken.isEmpty
         }).disposed(by: disposeBag)
+        
         output.listTokenPortfolio.bind(to: tableView.rx.items(dataSource: tableViewDataSource)).disposed(by: disposeBag)
     }
 
@@ -231,7 +256,7 @@ class PortfolioViewController: UIViewController {
     
     private func openTransactionHistory() {
         guard let selectedPortfolio = selectedPortfolio else { return }
-        let viewModel = TransactionHistoryViewModel(portfolio: selectedPortfolio)
+        let viewModel = TransactionHistoryViewModel(portfolio: selectedPortfolio, didEditPortfolio: didEditPortfolio)
         let vc = TransactionHistoryVC(viewModel: viewModel)
         self.navigationController?.pushViewController(vc, animated: true)
     }
@@ -242,7 +267,7 @@ class PortfolioViewController: UIViewController {
     }
     
     @IBAction func didTapMoreDetail(_ sender: Any) {
-        let vc = MoreDetailsVC(portfolio: selectedPortfolio, didEditPortfolio: didEditPortfolio)
+        let vc = MoreDetailsVC(portfolio: selectedPortfolio, didEditPortfolio: didEditPortfolio,didDeletePortfolio: didDeletePortfolio)
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .pageSheet
         if let sheet = nav.sheetPresentationController {

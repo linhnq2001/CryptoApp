@@ -37,7 +37,11 @@ final public class PortfolioViewModel: NSObject {
         let didCreatePortfolio = PublishSubject<(Bool,String)>()
         let listTokenPortfolio = PublishSubject<[SectionModel<String,TokenInPortfolio>]>()
         
-        let output = PortfolioViewModel.Output(listPortfolio: listPortfolio, showLoading: showLoading, didChangePortfolio: didChangePortfolio, didCreatePortfolio: didCreatePortfolio, listTokenPortfolio: listTokenPortfolio)
+        let output = PortfolioViewModel.Output(listPortfolio: listPortfolio, 
+                                               showLoading: showLoading,
+                                               didChangePortfolio: didChangePortfolio,
+                                               didCreatePortfolio: didCreatePortfolio,
+                                               listTokenPortfolio: listTokenPortfolio)
         
         handleInitData(input, output)
         handleActionCreatePortfolio(input,output)
@@ -72,6 +76,7 @@ final public class PortfolioViewModel: NSObject {
             }
             let listtoken = portfolio.listToken
             let listid = listtoken.map({$0.id})
+            print("linhdebug2")
             let listCoinInfo: Observable<[CoinInfoResponse]> = Observable.zip(listid.map({ id in
                 let coinInfo: Observable<CoinInfoResponse> = self.repository.getDetailCoin(id: id)
                 return coinInfo
@@ -80,9 +85,16 @@ final public class PortfolioViewModel: NSObject {
             return Observable.zip(listCoinInfo, listTokenInPort)
         }.subscribe(onNext: { [weak self] listCoinInfo, listTokenInPort in
             guard let self = self else {return}
+            print("linhdebug \(listTokenInPort)")
             self.saveLocalDataPrice(data: listCoinInfo)
             self.triggerUpdatePrice.onNext(())
             output.listTokenPortfolio.onNext([SectionModel(model: "", items: listTokenInPort)])
+        },onError: { error in
+            print("linhdebug error \(error)")
+        },onCompleted: {
+            print("linhdebug onCompleted ")
+        },onDisposed: {
+            print("linhdebug onDisposed ")
         }).disposed(by: disposeBag)
     }
     

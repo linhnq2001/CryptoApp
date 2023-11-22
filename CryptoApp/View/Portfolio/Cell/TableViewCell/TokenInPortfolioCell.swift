@@ -36,7 +36,13 @@ class TokenInPortfolioCell: UITableViewCell {
         self.symbolToken.text = data.symbol.uppercased()
         self.amountToken.text = "\(balance) \(data.symbol.uppercased())"
         self.currentPriceLb.text = "$ \(currentPrice)"
-        self.holdingValueLb.text = "$ \(currentPrice * balance)"
-        self.profitLb.text = "$ \(data.getProfit())"
+        let holdingValue = round(currentPrice * balance * 100) / 100
+        self.holdingValueLb.text = "$ \(holdingValue)"
+        let profit = round(data.getProfit() * 100) / 100
+        self.profitLb.text = "$ \(profit)"
+        self.profitLb.textColor = profit >= 0 ? UIColor.green.withAlphaComponent(0.8) : UIColor.red.withAlphaComponent(0.8)
+        let percentChange = round(profit / holdingValue * 100) / 100
+        self.percentChangeLb.text = "\(percentChange) %"
+        self.percentChangeLb.textColor = profit >= 0 ? UIColor.green.withAlphaComponent(0.8) : UIColor.red.withAlphaComponent(0.8)
     }
 }

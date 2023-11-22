@@ -24,7 +24,7 @@ public struct ApiHelper<T:Decodable> {
                            params: [String: Any]) -> Observable<T> {
         return Observable.create { observer in
             var pramsTwo = params
-            pramsTwo["x_cg_demo_api_key"] = "CG-m1fosyDHP7Pyn6yb65zxJdHA"
+//            pramsTwo["x_cg_demo_api_key"] = "CG-m1fosyDHP7Pyn6yb65zxJdHA"
             AF.request(baseOtherUrl + url.endpoint,method: .get,parameters: pramsTwo).responseDecodable(of:T.self) { response in
                 print("===== Request GET URL: \(response.response?.url?.absoluteString ?? "")")
                 print(response.data?.prettyJson ?? "")

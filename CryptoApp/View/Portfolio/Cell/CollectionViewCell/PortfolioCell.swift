@@ -20,9 +20,14 @@ class PortfolioCell: UICollectionViewCell {
     @IBOutlet weak var analyticsView: UIView!
     @IBOutlet weak var containerView: UIView!
 
-    private let disposeBag = DisposeBag()
+    var disposeBag = DisposeBag()
     let didTapHistoryAction = PublishSubject<Void>()
     let didTapAnalyticsAction = PublishSubject<Void>()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()

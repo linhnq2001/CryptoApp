@@ -442,6 +442,9 @@ extension FirestoreHelper {
                     if let index = data.portfolio.firstIndex(where: {$0.name == namePortfolio}) {
                         if let indexToken = data.portfolio[index].listToken.firstIndex(where: {$0.id == transaction.id}) {
                             data.portfolio[index].listToken[indexToken].tradesHistory.removeAll(where: {$0.createAt == transaction.createAt && $0.type == transaction.type && $0.amount == transaction.amount})
+                            if data.portfolio[index].listToken[indexToken].tradesHistory.isEmpty {
+                                data.portfolio[index].listToken.remove(at: indexToken)
+                            }
                             self.db.collection("data").document(uid).updateData(["portfolio": data.portfolio.map({$0.toDictionnary})]) { error in
                                 observable.onNext((error == nil,error != nil ? "Something wrong" : ""))
                                 observable.onCompleted()

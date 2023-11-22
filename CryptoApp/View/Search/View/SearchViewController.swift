@@ -66,6 +66,7 @@ class SearchViewController: UIViewController {
     private var recentSearchData: [CoinInfoResponse] = []
     private var trendingSearch: TrendingSearchResponse?
     private var listSection: [SearchSection] = []
+    private var firstAppear: Bool = true
 
     init(viewModel: SearchViewModel!) {
         self.viewModel = viewModel
@@ -74,6 +75,14 @@ class SearchViewController: UIViewController {
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if !firstAppear {
+            trigger.onNext(())
+        }
+        firstAppear = false
     }
 
     override func viewDidLoad() {

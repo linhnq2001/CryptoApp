@@ -26,6 +26,13 @@ class SellTransactionVC: UIViewController {
     @IBOutlet weak var timeView: UIView!
     @IBOutlet weak var timeLb: UILabel!
     @IBOutlet weak var portfolioView: UIView!
+    
+    @IBOutlet weak var marketPriceView: UIView!
+    @IBOutlet weak var marketLb: UILabel!
+    
+    @IBOutlet weak var customPriceView: UIView!
+    @IBOutlet weak var customLb: UILabel!
+    
     var selectedDate: Double = Date().stripTime().timeIntervalSince1970 {
         didSet {
             timeStamp = selectedDate + selectedTime
@@ -74,7 +81,41 @@ class SellTransactionVC: UIViewController {
     }
     
     private func setupTF() {
+        self.marketLb.textColor = UIColor.blue.withAlphaComponent(0.8)
+        self.marketPriceView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+        self.customLb.textColor = .black
+        self.customPriceView.backgroundColor = UIColor(hex: "#F3F3F6")
+        if let data = data {
+            if let price = data.currentPrice {
+                self.priceTF.text = "\(price)"
+            }
+        } else {
+            getPrice()
+        }
+        amountTF.rx.controlEvent(.editingChanged).withLatestFrom(amountTF.rx.text.orEmpty).subscribe(onNext: { [weak self] text in
+            guard let self = self else { return }
+            if let amount = Double(text) , let currentPrice = Double(self.priceTF.text ?? "") {
+                self.totalTF.text = "\(amount * currentPrice)"
+            }
+        }).disposed(by: disposeBag)
         
+        totalTF.rx.controlEvent(.editingChanged).withLatestFrom(totalTF.rx.text.orEmpty).subscribe(onNext: { [weak self] text in
+            guard let self = self else { return }
+            if let total = Double(text) , let currentPrice = Double(self.priceTF.text ?? "") {
+                self.amountTF.text = "\(total / currentPrice)"
+            }
+        }).disposed(by: disposeBag)
+        
+        priceTF.rx.controlEvent(.editingChanged).subscribe(onNext: { [weak self] _ in
+            self?.marketLb.textColor = .black
+            self?.marketPriceView.backgroundColor = UIColor(hex: "#F3F3F6")
+            self?.customLb.textColor = UIColor.blue.withAlphaComponent(0.8)
+            self?.customPriceView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+            if  let amount = Double(self?.amountTF.text ?? "0"),
+                let currentPrice = Double(self?.priceTF.text ?? "") , amount != 0 {
+                self?.totalTF.text = "\(amount * currentPrice)"
+            }
+        }).disposed(by: disposeBag)
     }
     
     private func getPrice() {

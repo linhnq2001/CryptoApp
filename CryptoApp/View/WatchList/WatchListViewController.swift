@@ -33,6 +33,7 @@ class WatchListViewController: UIViewController {
     private let removeFromWatchList = PublishRelay<String>()
     private var disposeBag = DisposeBag()
     private var listData: [CoinInfoResponse] = []
+    private var firstAppear: Bool = true
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -50,7 +51,10 @@ class WatchListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        trigger.onNext(())
+        if !firstAppear {
+            trigger.onNext(())
+        }
+        firstAppear = false
     }
     
     private func bindingData() {

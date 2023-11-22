@@ -123,6 +123,10 @@ class BuyTransactionVC: UIViewController {
             self?.marketPriceView.backgroundColor = UIColor(hex: "#F3F3F6")
             self?.customLb.textColor = UIColor.blue.withAlphaComponent(0.8)
             self?.customPriceView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+            if  let amount = Double(self?.amountTF.text ?? "0"),
+                let currentPrice = Double(self?.priceTF.text ?? "") , amount != 0 {
+                self?.totalTF.text = "\(amount * currentPrice)"
+            }
         }).disposed(by: disposeBag)
     }
     

@@ -12,8 +12,12 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SellTransactionVC" customModule="CryptoApp" customModuleProvider="target">
             <connections>
                 <outlet property="amountTF" destination="Rqw-Qo-b3J" id="QIG-Ww-BO4"/>
+                <outlet property="customLb" destination="be3-aU-cmu" id="QnF-7O-luw"/>
+                <outlet property="customPriceView" destination="d4K-EE-n0M" id="Wb8-GB-hPk"/>
                 <outlet property="dateLb" destination="Gc2-iB-SqZ" id="qU8-YW-Eze"/>
                 <outlet property="dateView" destination="aQm-vO-Q2F" id="rYb-x5-ycM"/>
+                <outlet property="marketLb" destination="uSo-o8-4Mf" id="QR2-g6-b6r"/>
+                <outlet property="marketPriceView" destination="IIv-t0-rXo" id="n79-Sn-0mS"/>
                 <outlet property="portfolioView" destination="93A-0I-spJ" id="02R-G2-VxF"/>
                 <outlet property="priceTF" destination="F4U-D5-zzh" id="TOv-aH-1th"/>
                 <outlet property="timeLb" destination="es2-h6-QWt" id="Gi4-fI-A1X"/>
@@ -538,7 +542,7 @@
                 <constraint firstItem="yu1-uE-dcj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="vVd-fC-2bZ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="zkB-PU-xmI" secondAttribute="trailing" constant="15" id="vth-CN-Rbf"/>
             </constraints>
-            <point key="canvasLocation" x="36" y="21"/>
+            <point key="canvasLocation" x="35.877862595419849" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>

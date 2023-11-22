@@ -91,7 +91,27 @@ final public class TokenInPortfolio: NSObject,Codable,SearchDataSource {
     }
     
     func getProfit() -> Double {
-        return 0
+        var sum = 0.0
+        tradesHistory.forEach { tradeHistory in
+            if tradeHistory.type == .buy {
+                sum += tradeHistory.amount * tradeHistory.price
+            } else if tradeHistory.type == .sell {
+                sum -= tradeHistory.amount + tradeHistory.price
+            }
+        }
+        
+        var sum2 = 0.0
+        tradesHistory.forEach { trade in
+            let realm = try! Realm()
+            let currentPrice = realm.objects(LocalPriceData.self).first(where: {$0.id == self.id})?.data?.usd ?? 0
+            switch trade.type {
+            case .buy:
+                sum2 += trade.amount * currentPrice
+            case .sell:
+                sum2 -= trade.amount * currentPrice
+            }
+        }
+        return sum2 - sum
     }
 }
 

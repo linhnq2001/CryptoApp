@@ -12,10 +12,12 @@ import Differentiator
 
 final public class TransactionHistoryViewModel: NSObject {
     private(set) var portfolio: Portfolio
+    private(set) var didEditPortfolio: PublishSubject<Void>
     private let disposeBag = DisposeBag()
     
-    init(portfolio: Portfolio) {
+    init(portfolio: Portfolio, didEditPortfolio: PublishSubject<Void>) {
         self.portfolio = portfolio
+        self.didEditPortfolio = didEditPortfolio
     }
     
     public struct Input {
@@ -51,6 +53,10 @@ final public class TransactionHistoryViewModel: NSObject {
         }.subscribe(onNext: { item in
             output.listTransactionHistory.accept(item)
         }).disposed(by: disposeBag)
+    }
+    
+    func getName() -> String {
+        return self.portfolio.name
     }
 }
 

@@ -48,7 +48,7 @@ class TransactionHistoryVC: UIViewController {
         trigger.onNext(())
         tableview.rx.modelSelected(TradeDetailHistory.self).subscribe(onNext: {[weak self] data in
             guard let self = self else { return }
-            let vc = TransactionDetailVC(data: data)
+            let vc = TransactionDetailVC(data: data, name: viewModel.getName(), didEditPortfolio: self.viewModel.didEditPortfolio)
             self.navigationController?.pushViewController(vc, animated: true)
         }).disposed(by: disposeBag)
     }
