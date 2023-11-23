@@ -108,6 +108,8 @@
 		13B2E1E12ADEFF1D007ED6CD /* CoinDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B2E1DF2ADEFF1D007ED6CD /* CoinDetailViewController.xib */; };
 		13B30F732AD0816F004FDEE0 /* FirebaseAuthHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B30F722AD0816F004FDEE0 /* FirebaseAuthHelper.swift */; };
 		13B30F752AD08710004FDEE0 /* FirestoreHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B30F742AD08710004FDEE0 /* FirestoreHelper.swift */; };
+		13BB85CF2B0F33FA00CBB356 /* TokenInPortfolioHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13BB85CE2B0F33FA00CBB356 /* TokenInPortfolioHeader.xib */; };
+		13BB85D12B0F341E00CBB356 /* TokenInPortfolioHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BB85D02B0F341E00CBB356 /* TokenInPortfolioHeader.swift */; };
 		13C184102AFCC47E00E7CEED /* RecentSearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C1840E2AFCC47E00E7CEED /* RecentSearchCollectionViewCell.swift */; };
 		13C184112AFCC47E00E7CEED /* RecentSearchCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13C1840F2AFCC47E00E7CEED /* RecentSearchCollectionViewCell.xib */; };
 		13C184142AFCD8B100E7CEED /* PortfolioViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13C184132AFCD8B100E7CEED /* PortfolioViewModel.swift */; };
@@ -275,6 +277,8 @@
 		13B2E1DF2ADEFF1D007ED6CD /* CoinDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CoinDetailViewController.xib; sourceTree = "<group>"; };
 		13B30F722AD0816F004FDEE0 /* FirebaseAuthHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthHelper.swift; sourceTree = "<group>"; };
 		13B30F742AD08710004FDEE0 /* FirestoreHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreHelper.swift; sourceTree = "<group>"; };
+		13BB85CE2B0F33FA00CBB356 /* TokenInPortfolioHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TokenInPortfolioHeader.xib; sourceTree = "<group>"; };
+		13BB85D02B0F341E00CBB356 /* TokenInPortfolioHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInPortfolioHeader.swift; sourceTree = "<group>"; };
 		13C1840E2AFCC47E00E7CEED /* RecentSearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		13C1840F2AFCC47E00E7CEED /* RecentSearchCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecentSearchCollectionViewCell.xib; sourceTree = "<group>"; };
 		13C184132AFCD8B100E7CEED /* PortfolioViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioViewModel.swift; sourceTree = "<group>"; };
@@ -711,6 +715,7 @@
 		1369349E2B028EBE005D739B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				13BB85CD2B0F33C800CBB356 /* Header */,
 				1322AE5A2B0559C000E497A8 /* TableViewCell */,
 				1322AE592B05585000E497A8 /* CollectionViewCell */,
 			);
@@ -943,6 +948,15 @@
 				13B30F742AD08710004FDEE0 /* FirestoreHelper.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		13BB85CD2B0F33C800CBB356 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				13BB85CE2B0F33FA00CBB356 /* TokenInPortfolioHeader.xib */,
+				13BB85D02B0F341E00CBB356 /* TokenInPortfolioHeader.swift */,
+			);
+			path = Header;
 			sourceTree = "<group>";
 		};
 		13C184122AFCD7EA00E7CEED /* ViewModel */ = {
@@ -1286,6 +1300,7 @@
 				1397D01E2AD5C5E8006325BE /* PortfolioViewController.xib in Resources */,
 				13D41E2C2B03F1E90050F045 /* BuyTransactionVC.xib in Resources */,
 				137078282AE2860600438377 /* HeaderMarketView.xib in Resources */,
+				13BB85CF2B0F33FA00CBB356 /* TokenInPortfolioHeader.xib in Resources */,
 				134984B22B070C60004E283A /* ChartCell.xib in Resources */,
 				13D41E302B03F1FB0050F045 /* SellTransactionVC.xib in Resources */,
 				1364096A2B0138B100429F93 /* ResultSearchCell.xib in Resources */,
@@ -1456,6 +1471,7 @@
 				13FE0FCF2ACD6F6D00D519CA /* MainViewController.swift in Sources */,
 				136934A12B028EEA005D739B /* PortfolioCell.swift in Sources */,
 				13B30F752AD08710004FDEE0 /* FirestoreHelper.swift in Sources */,
+				13BB85D12B0F341E00CBB356 /* TokenInPortfolioHeader.swift in Sources */,
 				13CA1DB52AF2C4CA00572AF6 /* TimeFrameCollectionViewCell.swift in Sources */,
 				13F8D8B52AFA7EB300A93E07 /* SearchResponse.swift in Sources */,
 				13D41E252B03F0600050F045 /* AddTransactionVC.swift in Sources */,

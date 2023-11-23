@@ -91,7 +91,10 @@ class ChooseAssetVC: UIViewController {
     }
     
     func goToAddTransaction(id: String , data: CoinInMarketResponse? = nil) {
-        let vc = AddTransactionVC(id: id,data: data,portfolio: viewModel.portfolio)
+        let vc = AddTransactionVC(id: id,
+                                  data: data,
+                                  portfolio: viewModel.portfolio,
+                                  didEditPortfolio: viewModel.didEditPortfolio)
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }

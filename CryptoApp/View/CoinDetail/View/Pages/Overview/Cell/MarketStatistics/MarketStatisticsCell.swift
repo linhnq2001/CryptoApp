@@ -39,7 +39,7 @@ class MarketStatisticsCell: UITableViewCell {
         self.volLb.text = "$ \(formatNumber(number: ((data.marketData?.totalVolume?["usd"]) ?? 0) ?? 0))"
         if let maxSupply = data.marketData?.totalSupply {
             self.totalSupplyLb.text = "\(formatNumber(number: maxSupply)) \(data.symbol?.uppercased() ?? "")"
-            let percent = round((data.marketData?.circulatingSupply ?? 0) / maxSupply * 1000) / 1000
+            let percent = round((data.marketData?.circulatingSupply ?? 0) * 100 / maxSupply * 1000) / 1000
             self.percentCircSupplyLb.text = "\(percent) %"
         }
     }

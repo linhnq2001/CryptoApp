@@ -13,6 +13,7 @@ class BuyTransactionVC: UIViewController {
     private var tokenId: String
     private(set) var data: CoinInMarketResponse?
     private(set) var portfolio: Portfolio?
+    private(set) var didEditPortfolio: PublishSubject<Void>
 
     private let repository = DefaultMarketRepository()
     private let disposeBag = DisposeBag()
@@ -55,11 +56,15 @@ class BuyTransactionVC: UIViewController {
     var timeStamp: Double = 0
     var currentPrice: Double = 0
 
-    init(tokenId: String, data: CoinInMarketResponse? = nil, portfolio: Portfolio?) {
+    init(tokenId: String,
+         data: CoinInMarketResponse? = nil,
+         portfolio: Portfolio?,
+         didEditPortfolio: PublishSubject<Void>) {
         self.tokenId = tokenId
         self.data = data
         self.portfolio = portfolio
         self.currentPrice = data?.currentPrice ?? 0
+        self.didEditPortfolio = didEditPortfolio
         super.init(nibName: String(describing: BuyTransactionVC.self), bundle: Bundle(for: BuyTransactionVC.self))
     }
 
@@ -218,6 +223,7 @@ class BuyTransactionVC: UIViewController {
         FirestoreHelper.shared.addTransaction(tokenInPortfolio, namePortfolio: portfolio?.name ?? "").subscribe(onNext: { [weak self] result , error in
             guard let self = self else {return}
             if result {
+                self.didEditPortfolio.onNext(())
                 self.navigationController?.popViewController(animated: true)
             }
         }).disposed(by: disposeBag)

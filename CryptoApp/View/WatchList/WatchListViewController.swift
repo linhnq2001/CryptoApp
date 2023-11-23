@@ -51,10 +51,7 @@ class WatchListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if !firstAppear {
-            trigger.onNext(())
-        }
-        firstAppear = false
+        trigger.onNext(())
     }
     
     private func bindingData() {
@@ -109,6 +106,15 @@ class WatchListViewController: UIViewController {
 }
 
 extension WatchListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = HeaderMarketView()
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
+    }
+    
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let favourite = UIContextualAction(style: .normal, title: "Delete") { [weak self] (action, view, completionHandler) in
             guard let self = self else { return }

@@ -14,9 +14,11 @@ final public class ChooseAssetViewModel: NSObject {
     private let repository = DefaultMarketRepository()
     var portfolioName: String?
     var portfolio: Portfolio?
-    init(portfolioName: String? = nil, portfolio: Portfolio? = nil) {
+    var didEditPortfolio: PublishSubject<Void>
+    init(portfolioName: String? = nil, portfolio: Portfolio? = nil , didEditPortfolio: PublishSubject<Void>) {
         self.portfolioName = portfolioName
         self.portfolio = portfolio
+        self.didEditPortfolio = didEditPortfolio
     }
     
     public struct Input {

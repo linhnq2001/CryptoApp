@@ -89,6 +89,7 @@ class PortfolioViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.register(UINib(nibName: "TokenInPortfolioCell", bundle: nil), forCellReuseIdentifier: "TokenInPortfolioCell")
+            tableView.rx.setDelegate(self).disposed(by: disposeBag)
             tableView.rx.modelSelected(TokenInPortfolio.self).subscribe(onNext: { [weak self] item in
                 guard let self = self else { return }
                 let viewModel = CoinDetailViewModel(id: item.id)
@@ -168,9 +169,21 @@ class PortfolioViewController: UIViewController {
         handleListToken(output)
         handleCreatePortfolio(output)
         trigger.onNext(())
-        didEditPortfolio.subscribe(onNext: { [weak self] _ in
+
+        didEditPortfolio.flatMap { [weak self] _ -> Observable<Portfolio?> in
+            guard let self = self else { return .just(nil)}
+            if self.selectedPortfolio != nil {
+                return FirestoreHelper.shared.getAllPortfolio().map({$0.1.first(where: {$0.name == self.selectedPortfolio?.name})})
+            } else {
+                self.trigger.onNext(())
+                return .just(nil)
+            }
+        }.subscribe(onNext: { [weak self] selectedPort in
             guard let self = self else { return }
-            self.trigger.onNext(())
+            if selectedPort != nil {
+                self.selectedPortfolio = selectedPort
+                self.trigger.onNext(())
+            }
         }).disposed(by: disposeBag)
         
         didDeletePortfolio.subscribe(onNext: { [weak self] _ in
@@ -240,12 +253,18 @@ class PortfolioViewController: UIViewController {
     }
     
     @IBAction func didTapAddNewCoin(_ sender: Any) {
-        let vc = ChooseAssetVC(viewModel: ChooseAssetViewModel(portfolioName: self.selectedPortfolio?.name, portfolio: self.selectedPortfolio))
+        let viewModel = ChooseAssetViewModel(portfolioName: self.selectedPortfolio?.name,
+                                             portfolio: self.selectedPortfolio,
+                                             didEditPortfolio: self.didEditPortfolio)
+        let vc = ChooseAssetVC(viewModel: viewModel)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func didTapAddNewCoinInPortfolioView(_ sender: Any) {
-        let vc = ChooseAssetVC(viewModel: ChooseAssetViewModel(portfolioName: self.selectedPortfolio?.name, portfolio: self.selectedPortfolio))
+        let viewModel = ChooseAssetViewModel(portfolioName: self.selectedPortfolio?.name,
+                                             portfolio: self.selectedPortfolio,
+                                             didEditPortfolio: self.didEditPortfolio)
+        let vc = ChooseAssetVC(viewModel: viewModel)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -267,7 +286,12 @@ class PortfolioViewController: UIViewController {
     }
     
     @IBAction func didTapMoreDetail(_ sender: Any) {
-        let vc = MoreDetailsVC(portfolio: selectedPortfolio, didEditPortfolio: didEditPortfolio,didDeletePortfolio: didDeletePortfolio)
+        if selectedPortfolio == nil {
+            return
+        }
+        let vc = MoreDetailsVC(portfolio: selectedPortfolio,
+                               didEditPortfolio: didEditPortfolio,
+                               didDeletePortfolio: didDeletePortfolio)
         let nav = UINavigationController(rootViewController: vc)
         nav.modalPresentationStyle = .pageSheet
         if let sheet = nav.sheetPresentationController {
@@ -276,7 +300,6 @@ class PortfolioViewController: UIViewController {
         self.present(nav, animated: true)
     }
     
-
 }
 
 extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
@@ -304,5 +327,16 @@ extension PortfolioViewController: UICollectionViewDelegateFlowLayout {
             }
             collectionview.scrollToItem(at: indexPath, at: UICollectionView.ScrollPosition.centeredHorizontally, animated: true)
         }
+    }
+}
+
+extension PortfolioViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = TokenInPortfolioHeader()
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 20
     }
 }

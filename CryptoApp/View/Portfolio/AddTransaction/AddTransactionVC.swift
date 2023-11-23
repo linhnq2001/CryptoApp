@@ -7,11 +7,13 @@
 
 import UIKit
 import XLPagerTabStrip
+import RxSwift
 
 class AddTransactionVC: SegmentedPagerTabStripViewController {
     private(set) var id: String = ""
     private(set) var data: CoinInMarketResponse?
     private(set) var portfolio: Portfolio?
+    private(set) var didEditPortfolio: PublishSubject<Void>
     
     @IBOutlet weak var tokenImage: UIImageView!{
         didSet {
@@ -21,10 +23,14 @@ class AddTransactionVC: SegmentedPagerTabStripViewController {
     @IBOutlet weak var tokenNameLb: UILabel!
     @IBOutlet weak var tokenSymbolLb: UILabel!
     
-    init(id: String, data: CoinInMarketResponse? = nil, portfolio: Portfolio?) {
+    init(id: String,
+         data: CoinInMarketResponse? = nil,
+         portfolio: Portfolio?,
+         didEditPortfolio: PublishSubject<Void>) {
         self.id = id
         self.data = data
         self.portfolio = portfolio
+        self.didEditPortfolio = didEditPortfolio
         super.init(nibName: String(describing: AddTransactionVC.self), bundle: Bundle(for: AddTransactionVC.self))
     }
     
@@ -45,8 +51,14 @@ class AddTransactionVC: SegmentedPagerTabStripViewController {
     }
     
     override func viewControllers(for pagerTabStripController: PagerTabStripViewController) -> [UIViewController] {
-        let buyVC = BuyTransactionVC(tokenId: id,data: data, portfolio: portfolio)
-        let sellVC = SellTransactionVC(tokenId: id,data: data, portfolio: portfolio)
+        let buyVC = BuyTransactionVC(tokenId: id,
+                                     data: data,
+                                     portfolio: portfolio,
+                                     didEditPortfolio: didEditPortfolio)
+        let sellVC = SellTransactionVC(tokenId: id,
+                                       data: data,
+                                       portfolio: portfolio,
+                                       didEditPortfolio: didEditPortfolio)
         return [buyVC,sellVC]
     }
 
