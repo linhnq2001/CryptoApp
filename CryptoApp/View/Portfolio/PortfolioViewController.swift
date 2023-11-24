@@ -281,7 +281,8 @@ class PortfolioViewController: UIViewController {
     }
     
     private func openAnalytics() {
-        let vc = AnalyticsVC()
+        guard let selectedPortfolio = self.selectedPortfolio else { return }
+        let vc = AnalyticsVC(portfolio: selectedPortfolio)
         self.navigationController?.pushViewController(vc, animated: true)
     }
     

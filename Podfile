@@ -19,6 +19,7 @@ target 'CryptoApp' do
   pod 'FirebaseFirestoreSwift'
   pod 'SkeletonView'
   pod 'XLPagerTabStrip', '~> 9.0'
+  pod 'Charts'
 
   target 'CryptoAppTests' do
     inherit! :search_paths

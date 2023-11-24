@@ -43,7 +43,43 @@ final public class Portfolio: NSObject,Codable,SearchDataSource,PortfolioDataSou
         }
         return sum
     }
+    
+    func getTotalProfit() -> Double {
+        var sum: Double = 0
+        self.listToken.forEach { token in
+            sum += token.getProfit()
+        }
+        return sum
+    }
 
+    func getRealizedProfit() -> Double? {
+        if listToken.contains(where: { tokenInPort in
+            return tokenInPort.tradesHistory.contains(where: {$0.type == .sell})
+        }) {
+            var result = 0.0
+            listToken.forEach { tokenIn in
+                result += tokenIn.getRealizedProfit()
+            }
+            return result
+        }
+        return nil
+    }
+    
+    func getUnrealizedProfit() -> Double {
+        var result = 0.0
+        listToken.forEach { tokenIn in
+            result += tokenIn.getUnrealizedProfit()
+        }
+        return result
+    }
+
+    func getTotalInvested() -> Double {
+        var result = 0.0
+        listToken.forEach { tokenIn in
+            result += tokenIn.getTotalInvested()
+        }
+        return result
+    }
     func getValueChange() -> Double {
         
         return 0
@@ -90,6 +126,20 @@ final public class TokenInPortfolio: NSObject,Codable,SearchDataSource {
         return sum
     }
     
+    func getValue() -> Double {
+        var result = 0.0
+        let realm = try! Realm()
+        let currentPrice = realm.objects(LocalPriceData.self).first(where: {$0.id == self.id})?.data?.usd ?? 0
+        tradesHistory.forEach { tradeHistory in
+            if tradeHistory.type == .buy {
+                result += tradeHistory.amount * currentPrice
+            } else if tradeHistory.type == .sell {
+                result -= tradeHistory.amount * currentPrice
+            }
+        }
+        return result
+    }
+    
     func getProfit() -> Double {
         var sum = 0.0
         tradesHistory.forEach { tradeHistory in
@@ -101,9 +151,9 @@ final public class TokenInPortfolio: NSObject,Codable,SearchDataSource {
         }
         
         var sum2 = 0.0
+        let realm = try! Realm()
+        let currentPrice = realm.objects(LocalPriceData.self).first(where: {$0.id == self.id})?.data?.usd ?? 0
         tradesHistory.forEach { trade in
-            let realm = try! Realm()
-            let currentPrice = realm.objects(LocalPriceData.self).first(where: {$0.id == self.id})?.data?.usd ?? 0
             switch trade.type {
             case .buy:
                 sum2 += trade.amount * currentPrice
@@ -112,6 +162,73 @@ final public class TokenInPortfolio: NSObject,Codable,SearchDataSource {
             }
         }
         return sum2 - sum
+    }
+    
+    func getRealizedProfit() -> Double {
+        var result = 0.0
+        var totalBuy = 0.0
+        var amountBuy = 0.0
+        var totalSell = 0.0
+        var amountSell = 0.0
+        tradesHistory.forEach { tradeHistory in
+            switch tradeHistory.type {
+            case .buy:
+                totalBuy += tradeHistory.amount * tradeHistory.price
+                amountBuy += tradeHistory.amount
+            case .sell:
+                totalSell += tradeHistory.amount * tradeHistory.price
+                amountSell += tradeHistory.amount
+            }
+        }
+        let avgBuy = totalBuy / amountBuy
+        let avgSell = totalSell / amountSell
+        result = (avgSell - avgBuy) * amountSell
+        return result
+    }
+    
+    func getUnrealizedProfit() -> Double {
+        var result = 0.0
+        var totalBuy = 0.0
+        var amountBuy = 0.0
+        var totalSell = 0.0
+        var amountSell = 0.0
+        tradesHistory.forEach { tradeHistory in
+            switch tradeHistory.type {
+            case .buy:
+                totalBuy += tradeHistory.amount * tradeHistory.price
+                amountBuy += tradeHistory.amount
+            case .sell:
+                totalSell += tradeHistory.amount * tradeHistory.price
+                amountSell += tradeHistory.amount
+            }
+        }
+        let avgBuy = totalBuy / amountBuy
+        let avgSell = totalSell / amountSell
+        let realm = try! Realm()
+        let currentPrice = realm.objects(LocalPriceData.self).first(where: {$0.id == self.id})?.data?.usd ?? 0
+        result = (currentPrice - avgBuy) * (amountBuy - amountSell)
+        return result
+    }
+    
+    func getTotalInvested() -> Double {
+        var result = 0.0
+        var totalBuy = 0.0
+        var amountBuy = 0.0
+        var totalSell = 0.0
+        var amountSell = 0.0
+        tradesHistory.forEach { tradeHistory in
+            switch tradeHistory.type {
+            case .buy:
+                totalBuy += tradeHistory.amount * tradeHistory.price
+                amountBuy += tradeHistory.amount
+            case .sell:
+                totalSell += tradeHistory.amount * tradeHistory.price
+                amountSell += tradeHistory.amount
+            }
+        }
+        let avgBuy = totalBuy / amountBuy
+        result = avgBuy * (amountBuy - amountSell)
+        return result
     }
 }
 
