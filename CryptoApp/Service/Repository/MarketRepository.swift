@@ -32,12 +32,12 @@ public final class DefaultMarketRepository: MarketRepository{
     }
     
     func getDetailCoin<T>(id: String) -> RxSwift.Observable<T> where T : Decodable {
-        let params = ["localization": false,
-                      "tickers": true,
-                      "market_data": true,
-                      "community_data": true,
-                      "developer_data": true,
-                      "sparkline": true]
+        let params = ["localization": "false",
+                      "tickers": "true",
+                      "market_data": "true",
+                      "community_data": "true",
+                      "developer_data": "true",
+                      "sparkline": "true"]
         return ApiHelper<T>.get(baseOtherUrl: ServiceUrl.baseUrl, url: ApiEndPoint.getCoinDetail(id: id), params: params)
     }
     

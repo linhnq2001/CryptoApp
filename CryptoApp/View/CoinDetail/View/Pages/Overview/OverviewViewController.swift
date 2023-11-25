@@ -69,6 +69,7 @@ extension OverviewViewController: UITableViewDelegate , UITableViewDataSource {
             cell1.configData(data: data)
             return cell1
         case 1:
+            cell2.configData(data: data)
             return cell2
         case 2:
             cell3.didTapSeeAll = { [weak self] in

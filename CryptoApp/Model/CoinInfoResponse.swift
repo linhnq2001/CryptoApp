@@ -416,6 +416,7 @@ class MarketData: Codable {
     var priceChangePercentage14DInCurrency, priceChangePercentage30DInCurrency, priceChangePercentage60DInCurrency, priceChangePercentage200DInCurrency: [String: Double]?
     var priceChangePercentage1YInCurrency, marketCapChange24HInCurrency, marketCapChangePercentage24HInCurrency: [String: Double]?
     var totalSupply, maxSupply, circulatingSupply: Double?
+    var sparkline7D: Sparkline7D?
     var lastUpdated: String?
 
     enum CodingKeys: String, CodingKey {
@@ -460,10 +461,12 @@ class MarketData: Codable {
         case totalSupply = "total_supply"
         case maxSupply = "max_supply"
         case circulatingSupply = "circulating_supply"
+        case sparkline7D = "sparkline_7d"
         case lastUpdated = "last_updated"
+        
     }
 
-    init(currentPrice: [String: Double]?, totalValueLocked: [String: Double]?, mcapToTvlRatio: Double?, fdvToTvlRatio: Double?, roi: Roi?, ath: [String: Double]?, athChangePercentage: [String: Double]?, athDate: [String: String]?, atl: [String: Double]?, atlChangePercentage: [String: Double]?, atlDate: [String: String]?, marketCap: [String: Double]?, marketCapRank: Int?, fullyDilutedValuation: [String: Double]?, marketCapFdvRatio: Double?, totalVolume: [String: Double]?, high24H: [String: Double]?, low24H: [String: Double]?, priceChange24H: Double?, priceChangePercentage24H: Double?, priceChangePercentage7D: Double?, priceChangePercentage14D: Double?, priceChangePercentage30D: Double?, priceChangePercentage60D: Double?, priceChangePercentage200D: Double?, priceChangePercentage1Y: Double?, marketCapChange24H: Double?, marketCapChangePercentage24H: Double?, priceChange24HInCurrency: [String: Double]?, priceChangePercentage1HInCurrency: [String: Double]?, priceChangePercentage24HInCurrency: [String: Double]?, priceChangePercentage7DInCurrency: [String: Double]?, priceChangePercentage14DInCurrency: [String: Double]?, priceChangePercentage30DInCurrency: [String: Double]?, priceChangePercentage60DInCurrency: [String: Double]?, priceChangePercentage200DInCurrency: [String: Double]?, priceChangePercentage1YInCurrency: [String: Double]?, marketCapChange24HInCurrency: [String: Double]?, marketCapChangePercentage24HInCurrency: [String: Double]?, totalSupply: Double?, maxSupply: Double?, circulatingSupply: Double?, lastUpdated: String?) {
+    init(currentPrice: [String: Double]?, totalValueLocked: [String: Double]?, mcapToTvlRatio: Double?, fdvToTvlRatio: Double?, roi: Roi?, ath: [String: Double]?, athChangePercentage: [String: Double]?, athDate: [String: String]?, atl: [String: Double]?, atlChangePercentage: [String: Double]?, atlDate: [String: String]?, marketCap: [String: Double]?, marketCapRank: Int?, fullyDilutedValuation: [String: Double]?, marketCapFdvRatio: Double?, totalVolume: [String: Double]?, high24H: [String: Double]?, low24H: [String: Double]?, priceChange24H: Double?, priceChangePercentage24H: Double?, priceChangePercentage7D: Double?, priceChangePercentage14D: Double?, priceChangePercentage30D: Double?, priceChangePercentage60D: Double?, priceChangePercentage200D: Double?, priceChangePercentage1Y: Double?, marketCapChange24H: Double?, marketCapChangePercentage24H: Double?, priceChange24HInCurrency: [String: Double]?, priceChangePercentage1HInCurrency: [String: Double]?, priceChangePercentage24HInCurrency: [String: Double]?, priceChangePercentage7DInCurrency: [String: Double]?, priceChangePercentage14DInCurrency: [String: Double]?, priceChangePercentage30DInCurrency: [String: Double]?, priceChangePercentage60DInCurrency: [String: Double]?, priceChangePercentage200DInCurrency: [String: Double]?, priceChangePercentage1YInCurrency: [String: Double]?, marketCapChange24HInCurrency: [String: Double]?, marketCapChangePercentage24HInCurrency: [String: Double]?, totalSupply: Double?, maxSupply: Double?, circulatingSupply: Double?, lastUpdated: String?, sparkline7D: Sparkline7D?) {
         self.currentPrice = currentPrice
         self.totalValueLocked = totalValueLocked
         self.mcapToTvlRatio = mcapToTvlRatio
@@ -507,6 +510,16 @@ class MarketData: Codable {
         self.maxSupply = maxSupply
         self.circulatingSupply = circulatingSupply
         self.lastUpdated = lastUpdated
+        self.sparkline7D = sparkline7D
+    }
+}
+
+// MARK: - Sparkline7D
+class Sparkline7D: Codable {
+    var price: [Double]?
+
+    init(price: [Double]?) {
+        self.price = price
     }
 }
 
