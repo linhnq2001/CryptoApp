@@ -23,5 +23,11 @@ class DescriptionCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    
+    func configData(data: CoinInfoResponse?) {
+        nameLb.text = data?.name
+        descriptionLb.text = data?.description?.en
+        if let list = data?.categories {
+            categoryList.addTags(list)
+        }
+    }
 }

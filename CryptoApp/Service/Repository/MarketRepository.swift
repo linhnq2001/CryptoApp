@@ -44,10 +44,10 @@ public final class DefaultMarketRepository: MarketRepository{
     func getSimplePrice<T>(id: String, currency: String?) -> RxSwift.Observable<T> where T : Decodable {
         let params = ["ids": id,
                       "vs_currencies": currency ?? "usd",
-                      "include_market_cap": true,
-                      "include_24hr_vol": true,
-                      "include_24hr_change": true,
-                      "include_last_updated_at": true,
+                      "include_market_cap": "true",
+                      "include_24hr_vol": "true",
+                      "include_24hr_change": "true",
+                      "include_last_updated_at": "true",
                       "precision": "2"] as [String : Any]
         return ApiHelper<T>.get(baseOtherUrl: ServiceUrl.baseUrl,url: ApiEndPoint.simplePrice, params: params)
     }
