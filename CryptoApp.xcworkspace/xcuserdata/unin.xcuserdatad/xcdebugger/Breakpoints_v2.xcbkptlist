@@ -7,143 +7,94 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "DEA22E41-B05E-4A93-87D7-DF6B92C2DF75"
+            uuid = "D925503D-9015-4680-90AB-F11ED4AE2D94"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CryptoApp/View/WatchList/WatchListViewController.swift"
+            filePath = "CryptoApp/View/CoinDetail/View/Pages/Overview/Cell/Chart/ChartCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "handleBindingTableView(_:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "setupChartData()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8593BEC0-17CB-4AFA-BC44-EDBE0D30E78F"
-            shouldBeEnabled = "No"
+            uuid = "FB41F13C-34C3-4753-8938-27F85C97972B"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CryptoApp/Util/TimeFrameView/TimeFrameView.swift"
+            filePath = "CryptoApp/View/CoinDetail/ViewModel/CoinDetailViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "collectionView(_:layout:sizeForItemAt:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "handleInitData(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E2B42600-1055-49B5-9775-76914A2C140A"
+            uuid = "71404942-D743-4BE8-B70E-A44B1EDE49E8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CryptoApp/View/Auth/View/RegisterViewController.swift"
+            filePath = "CryptoApp/View/Portfolio/AnalyticsPortfolio/AnalyticsVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "handleShowResultRegister(_:_:)"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "setupUI()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "247EC67E-8C05-4A06-A196-A54CF925FB1F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CryptoApp/View/Home/View/HomeViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
-            landmarkName = "setupTableView()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "9F5D9E80-8EB4-4B98-A94A-AD8751B78374"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CryptoApp/Util/View/TagListView/TagView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "16"
-            endingLineNumber = "16"
-            landmarkName = "tagCornerRadius"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "60AC86F3-1E23-43B3-ABD1-628B88BC4AEF"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CryptoApp/Util/View/TagListView/TagListView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70"
-            landmarkName = "tagCornerRadius"
-            landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B88E1CB5-DB6C-47BE-BF68-E832819B86F4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "CryptoApp/Util/View/TagListView/TagListView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
-            landmarkName = "tagCornerRadius"
-            landmarkType = "24">
             <Locations>
                <Location
-                  uuid = "B88E1CB5-DB6C-47BE-BF68-E832819B86F4 - 2260bec984fe7a9c"
+                  uuid = "71404942-D743-4BE8-B70E-A44B1EDE49E8 - e2261bc491f2dc26"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "CryptoApp.TagListView.tagCornerRadius.didset : CoreGraphics.CGFloat"
+                  symbolName = "CryptoApp.AnalyticsVC.setupUI() -&gt; ()"
                   moduleName = "CryptoApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/Util/View/TagListView/TagListView.swift"
+                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/View/Portfolio/AnalyticsPortfolio/AnalyticsVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "56">
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "1668">
                </Location>
                <Location
-                  uuid = "B88E1CB5-DB6C-47BE-BF68-E832819B86F4 - 1d0b2f93f1f982ae"
+                  uuid = "71404942-D743-4BE8-B70E-A44B1EDE49E8 - e2261bc491f2dc26"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (CryptoApp.TagView) -&gt; () in CryptoApp.TagListView.tagCornerRadius.didset : CoreGraphics.CGFloat"
+                  symbolName = "CryptoApp.AnalyticsVC.setupUI() -&gt; ()"
                   moduleName = "CryptoApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/Util/View/TagListView/TagListView.swift"
+                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/View/Portfolio/AnalyticsPortfolio/AnalyticsVC.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "60">
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "1692">
+               </Location>
+               <Location
+                  uuid = "71404942-D743-4BE8-B70E-A44B1EDE49E8 - e2261bc491f2dc26"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoApp.AnalyticsVC.setupUI() -&gt; ()"
+                  moduleName = "CryptoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/View/Portfolio/AnalyticsPortfolio/AnalyticsVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "1696">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -151,47 +102,159 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E0812715-14A4-4687-A817-115234257799"
+            uuid = "E8E9DBD3-CD3E-40B1-A857-75CA733FF843"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "CryptoApp/Util/View/TagListView/TagListView.swift"
+            filePath = "CryptoApp/Model/PortfolioModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "393"
-            endingLineNumber = "393"
-            landmarkName = "addTagViews(_:)"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "getRealizedProfit()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "E0812715-14A4-4687-A817-115234257799 - 9dca23d769210d47"
+                  uuid = "E8E9DBD3-CD3E-40B1-A857-75CA733FF843 - 5f98c7f0cf44327c"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "CryptoApp.TagListView.addTagViews(Swift.Array&lt;CryptoApp.TagView&gt;) -&gt; Swift.Array&lt;CryptoApp.TagView&gt;"
+                  symbolName = "CryptoApp.Portfolio.getRealizedProfit() -&gt; Swift.Optional&lt;Swift.Double&gt;"
                   moduleName = "CryptoApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/Util/View/TagListView/TagListView.swift"
+                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/Model/PortfolioModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "393"
-                  endingLineNumber = "393"
-                  offsetFromSymbolStart = "80">
+                  startingLineNumber = "56"
+                  endingLineNumber = "56"
+                  offsetFromSymbolStart = "52">
                </Location>
                <Location
-                  uuid = "E0812715-14A4-4687-A817-115234257799 - 96f87849eef1cb32"
+                  uuid = "E8E9DBD3-CD3E-40B1-A857-75CA733FF843 - 713cd89b70d7cc99"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (CryptoApp.TagView) -&gt; () in CryptoApp.TagListView.addTagViews(Swift.Array&lt;CryptoApp.TagView&gt;) -&gt; Swift.Array&lt;CryptoApp.TagView&gt;"
+                  symbolName = "closure #1 (CryptoApp.TokenInPortfolio) -&gt; Swift.Bool in CryptoApp.Portfolio.getRealizedProfit() -&gt; Swift.Optional&lt;Swift.Double&gt;"
                   moduleName = "CryptoApp"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/Util/View/TagListView/TagListView.swift"
+                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/Model/PortfolioModel.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "393"
-                  endingLineNumber = "393"
-                  offsetFromSymbolStart = "60">
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "36">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2034966A-3A34-4D17-BAA1-9A7BB8074891"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoApp/Model/PortfolioModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "getRealizedProfit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "723D20B2-F8C8-40C1-98B7-4DA4994AE6E9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoApp/Model/PortfolioModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "65"
+            endingLineNumber = "65"
+            landmarkName = "getRealizedProfit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0D6ACEB-FEE6-4169-91A5-1DAEBDFCE07B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoApp/Model/PortfolioModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "getRealizedProfit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42FA00D0-BDAB-4437-8908-F5C3AB5AE442"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoApp/Model/PortfolioModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "getRealizedProfit()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2879502D-64DA-4B1A-BD0A-F87572BAEA32"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "CryptoApp/Model/PortfolioModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "getRealizedProfit()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2879502D-64DA-4B1A-BD0A-F87572BAEA32 - b39d81c7b851ebc7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoApp.TokenInPortfolio.getRealizedProfit() -&gt; Swift.Double"
+                  moduleName = "CryptoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/Model/PortfolioModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "332">
+               </Location>
+               <Location
+                  uuid = "2879502D-64DA-4B1A-BD0A-F87572BAEA32 - b39d81c7b851ebe6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "CryptoApp.TokenInPortfolio.getRealizedProfit() -&gt; Swift.Double"
+                  moduleName = "CryptoApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/unin/Desktop/IOSProject/CryptoApp/CryptoApp/Model/PortfolioModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "332">
                </Location>
             </Locations>
          </BreakpointContent>

@@ -180,6 +180,9 @@ final public class TokenInPortfolio: NSObject,Codable,SearchDataSource {
                 amountSell += tradeHistory.amount
             }
         }
+        if amountSell == 0 {
+            return 0
+        }
         let avgBuy = totalBuy / amountBuy
         let avgSell = totalSell / amountSell
         result = (avgSell - avgBuy) * amountSell

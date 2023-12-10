@@ -108,25 +108,25 @@ extension HomeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let favourite = UIContextualAction(style: .normal, title: "Delete") { (action, view, completionHandler) in
-            print("Delete: \(indexPath.row + 1)")
-            completionHandler(true)
-        }
-        favourite.image = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
-            UIImage(systemName: "star")?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
-        }
-        favourite.backgroundColor = .white
-        
-        // share
-        let notification = UIContextualAction(style: .normal, title: "Share") { (action, view, completionHandler) in
-            print("Share: \(indexPath.row + 1)")
-            completionHandler(true)
-        }
-        notification.image = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
-            UIImage(systemName: "star")?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
-        }
-        notification.backgroundColor = .white
-        
+//        let favourite = UIContextualAction(style: .normal, title: "Delete") { (action, view, completionHandler) in
+//            print("Delete: \(indexPath.row + 1)")
+//            completionHandler(true)
+//        }
+//        favourite.image = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
+//            UIImage(systemName: "star")?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        }
+//        favourite.backgroundColor = .white
+//
+//        // share
+//        let notification = UIContextualAction(style: .normal, title: "Share") { (action, view, completionHandler) in
+//            print("Share: \(indexPath.row + 1)")
+//            completionHandler(true)
+//        }
+//        notification.image = UIGraphicsImageRenderer(size: CGSize(width: 30, height: 30)).image { _ in
+//            UIImage(systemName: "star")?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
+//        }
+//        notification.backgroundColor = .white
+//
         // download
         let portfolio = UIContextualAction(style: .normal, title: "Download") { [weak self] (action, view, completionHandler) in
             guard let self = self else {
@@ -143,7 +143,7 @@ extension HomeViewController: UITableViewDelegate {
         
         
         // swipe
-        let swipe = UISwipeActionsConfiguration(actions: [favourite, notification, portfolio])
+        let swipe = UISwipeActionsConfiguration(actions: [portfolio])
         
         return swipe
     }

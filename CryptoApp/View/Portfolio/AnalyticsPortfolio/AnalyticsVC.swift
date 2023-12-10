@@ -75,7 +75,7 @@ class AnalyticsVC: UIViewController, ChartViewDelegate {
     private func setupUI() {
         self.totalValueLb.text = "$ \(portfolio.getValue())"
         let totalProfit = portfolio.getTotalProfit()
-        let totalInvested = portfolio.getTotalInvested()
+        let totalInvested = round(portfolio.getTotalInvested() * 100) / 100
         let percentProfit = round(totalProfit / totalInvested * 100 * 100) / 100
         self.totalProfitLb.text = "$ \(totalProfit)"
         self.percentProfitLb.text = "\(percentProfit) %"
@@ -85,7 +85,8 @@ class AnalyticsVC: UIViewController, ChartViewDelegate {
         } else {
             self.realizedProfitView.isHidden = true
         }
-        self.unrealizedProfitLb.text = "$ \(portfolio.getUnrealizedProfit())"
+        let unrealizedProfit = round(portfolio.getUnrealizedProfit() * 100) / 100
+        self.unrealizedProfitLb.text = "$ \(unrealizedProfit)"
         self.totalInvestedLb.text = "$ \(totalInvested)"
     }
 
