@@ -15,7 +15,7 @@ final public class ChooseAssetViewModel: NSObject {
     var portfolioName: String?
     var portfolio: Portfolio?
     var didEditPortfolio: PublishSubject<Void>
-    init(portfolioName: String? = nil, portfolio: Portfolio? = nil , didEditPortfolio: PublishSubject<Void>) {
+    init(portfolioName: String? = nil, portfolio: Portfolio? = nil, didEditPortfolio: PublishSubject<Void>) {
         self.portfolioName = portfolioName
         self.portfolio = portfolio
         self.didEditPortfolio = didEditPortfolio
@@ -43,15 +43,19 @@ final public class ChooseAssetViewModel: NSObject {
     }
 
     private func handleInitData(_ input: ChooseAssetViewModel.Input, _ output: ChooseAssetViewModel.Output) {
-        input.trigger.flatMap { _ -> Observable<([Portfolio],[CoinInMarketResponse])> in
-            let getPortfolio = FirestoreHelper.shared.getAllPortfolio().map({$0.1})
-            let coinInMarket: Observable<[CoinInMarketResponse]> = self.repository.getListCoinMarket(currency: "usd", orderBy: .market_cap_desc, priceChangeByTime: .day,page: 1,coinPerPage: 120)
+        input.trigger.flatMap { _ -> Observable<([Portfolio], [CoinInMarketResponse])> in
+            let getPortfolio = FirestoreHelper.shared.getAllPortfolio().map({ $0.1 })
+            let coinInMarket: Observable<[CoinInMarketResponse]> = self.repository.getListCoinMarket(currency: "usd",
+                                                                                                     orderBy: .market_cap_desc,
+                                                                                                     priceChangeByTime: .day,
+                                                                                                     page: 1,
+                                                                                                     coinPerPage: 120)
             return Observable.zip(getPortfolio, coinInMarket)
-        }.subscribe(onNext: { listPortfolio , coinInMarket in
-            let portfolio = listPortfolio.first(where: {$0.name == self.portfolioName})
+        }.subscribe(onNext: { listPortfolio, coinInMarket in
+            let portfolio = listPortfolio.first(where: { $0.name == self.portfolioName })
             var item = [SearchSection(model: .portfolioCoin, items: portfolio?.listToken ?? []),
                         SearchSection(model: .marketCoin, items: coinInMarket)]
-            item.removeAll(where: {$0.model == .portfolioCoin && $0.items.isEmpty})
+            item.removeAll(where: { $0.model == .portfolioCoin && $0.items.isEmpty })
             output.searchResult.accept(item)
         }).disposed(by: disposeBag)
     }

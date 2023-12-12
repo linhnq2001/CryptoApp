@@ -20,6 +20,7 @@ target 'CryptoApp' do
   pod 'SkeletonView'
   pod 'XLPagerTabStrip', '~> 9.0'
   pod 'Charts'
+  pod 'SwiftLint'
 
   target 'CryptoAppTests' do
     inherit! :search_paths

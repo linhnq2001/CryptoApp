@@ -19,7 +19,6 @@ class TokenInPortfolioHeader: UIView {
         setupView()
     }
 
-    
     private func setupView(){
         Bundle.main.loadNibNamed("TokenInPortfolioHeader", owner: self)
         self.addSubview(contentView)

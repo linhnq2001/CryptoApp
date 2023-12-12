@@ -18,8 +18,8 @@ class ChooseAssetVC: UIViewController {
     private let choosseAsset = PublishRelay<String>()
     private var sections: [SearchSection] = []
     
-    @IBOutlet weak var searchTF: UITextField!
-    @IBOutlet weak var tableview: UITableView! {
+    @IBOutlet private weak var searchTF: UITextField!
+    @IBOutlet private weak var tableview: UITableView! {
         didSet {
             tableview.register(UINib(nibName: "ChooseAssetCell", bundle: nil), forCellReuseIdentifier: "ChooseAssetCell")
             tableview.rx.itemSelected.subscribe(onNext: {[weak self] indexPath in
@@ -29,15 +29,12 @@ class ChooseAssetVC: UIViewController {
                 case .portfolioCoin:
                     guard let data = self.sections[indexPath.section].items[indexPath.row] as? TokenInPortfolio else { return }
                     self.goToAddTransaction(id: data.id)
-                    break
                 case .marketCoin:
                     guard let data = self.sections[indexPath.section].items[indexPath.row] as? CoinInMarketResponse else {return}
                     self.goToAddTransaction(id: data.id, data: data)
-                    break
                 case .searchResult:
                     guard let data = self.sections[indexPath.section].items[indexPath.row] as? CoinSearchResponse else {return}
                     self.goToAddTransaction(id: data.id ?? "")
-                    break
                 default:
                     break
                 }
@@ -90,7 +87,7 @@ class ChooseAssetVC: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func goToAddTransaction(id: String , data: CoinInMarketResponse? = nil) {
+    func goToAddTransaction(id: String, data: CoinInMarketResponse? = nil) {
         let vc = AddTransactionVC(id: id,
                                   data: data,
                                   portfolio: viewModel.portfolio,

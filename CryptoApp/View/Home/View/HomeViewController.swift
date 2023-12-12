@@ -140,8 +140,6 @@ extension HomeViewController: UITableViewDelegate {
             UIImage(systemName: "star")?.draw(in: CGRect(x: 0, y: 0, width: 30, height: 30))
         }
         portfolio.backgroundColor = .white
-        
-        
         // swipe
         let swipe = UISwipeActionsConfiguration(actions: [portfolio])
         

@@ -10,27 +10,27 @@ import FirebaseFirestore
 import FirebaseFirestoreSwift
 import RxSwift
 
-final public class FirestoreHelper: NSObject{
+final public class FirestoreHelper: NSObject {
     public static let shared = FirestoreHelper()
     
     private let db = Firestore.firestore()
     private let disposeBag = DisposeBag()
     
-    func addUser(_ user: User) -> Observable<(Bool,String)> {
+    func addUser(_ user: User) -> Observable<(Bool, String)> {
         return Observable.create { [weak self] observable in
             guard let self = self else {
-                observable.onNext((false,"Somethings Wrong"))
+                observable.onNext((false, "Somethings Wrong"))
                 observable.onCompleted()
                 return Disposables.create()
             }
             let data = UserDataFb(watchList: [], recentSearch: [], portfolio: [])
             let userReference = self.db.collection("users").document(user.id)
             let dataReference = self.db.collection("data").document(user.id)
-            self.db.runTransaction { transaction, error in
+            self.db.runTransaction { transaction, _ in
                 transaction.setData(user.convertToDictionary(), forDocument: userReference)
                 transaction.setData(data.convertToDictionary(), forDocument: dataReference)
                 return nil
-            } completion: { object, error in
+            } completion: { _, error in
                 observable.onNext((error == nil,error.debugDescription))
                 if let error = error {
                     print("Transaction failed: \(error)")

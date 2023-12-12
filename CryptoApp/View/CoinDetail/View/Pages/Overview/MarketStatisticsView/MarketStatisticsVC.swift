@@ -25,7 +25,6 @@ class MarketStatisticsVC: UIViewController {
         self.data = data
         super.init(nibName: String(describing: MarketStatisticsVC.self), bundle: Bundle(for: MarketStatisticsVC.self))
     }
-
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

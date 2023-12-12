@@ -12,10 +12,10 @@ import Kingfisher
 
 class CoinDetailViewController: ButtonBarPagerTabStripViewController {
     
-    @IBOutlet weak var imageToken: UIImageView!
-    @IBOutlet weak var nameLb: UILabel!
-    @IBOutlet weak var marketRankLb: UILabel!
-    @IBOutlet weak var favouriteBtn: UIButton!
+    @IBOutlet private weak var imageToken: UIImageView!
+    @IBOutlet private weak var nameLb: UILabel!
+    @IBOutlet private weak var marketRankLb: UILabel!
+    @IBOutlet private weak var favouriteBtn: UIButton!
     
     let disposeBag = DisposeBag()
     let trigger = PublishSubject<Void>()
@@ -63,7 +63,7 @@ class CoinDetailViewController: ButtonBarPagerTabStripViewController {
     }
 
     private func handleLoading(_ output: CoinDetailViewModel.Output) {
-        output.showLoading.subscribe(onNext: {isLoading in
+        output.showLoading.subscribe(onNext: { _ in
             
         }).disposed(by: disposeBag)
     }
@@ -91,8 +91,8 @@ class CoinDetailViewController: ButtonBarPagerTabStripViewController {
         settings.style.selectedBarBackgroundColor = .black
         
         // Changing item text color on swipe
-        changeCurrentIndexProgressive = { [weak self] (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, progressPercentage: CGFloat, changeCurrentIndex: Bool, animated: Bool) -> Void in
-            guard changeCurrentIndex == true else { return }
+        changeCurrentIndexProgressive = { (oldCell: ButtonBarViewCell?, newCell: ButtonBarViewCell?, _: CGFloat, changeCurrentIndex: Bool, _: Bool) -> Void in
+            guard changeCurrentIndex else { return }
             oldCell?.label.textColor = .black
             newCell?.label.textColor = .black
         }
@@ -109,8 +109,7 @@ class CoinDetailViewController: ButtonBarPagerTabStripViewController {
         }
         return [overview, exchanges, about]
     }
-    
-    
+
     @IBAction func didTapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }

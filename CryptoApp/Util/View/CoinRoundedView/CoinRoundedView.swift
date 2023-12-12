@@ -10,16 +10,16 @@ import UIKit
 import Kingfisher
 
 final public class CoinRoundedView: UIView {
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var logoImage: UIImageView!{
+    @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var logoImage: UIImageView!{
         didSet {
             logoImage.layer.cornerRadius = 15
         }
     }
-    @IBOutlet weak var symbolLb: UILabel!
-    @IBOutlet weak var nameLb: UILabel!
-    @IBOutlet weak var priceLb: UILabel!
-    @IBOutlet weak var priceChangeLb: UILabel!
+    @IBOutlet private weak var symbolLb: UILabel!
+    @IBOutlet private weak var nameLb: UILabel!
+    @IBOutlet private weak var priceLb: UILabel!
+    @IBOutlet private weak var priceChangeLb: UILabel!
 
     override init(frame: CGRect) {
         super.init(frame: frame)

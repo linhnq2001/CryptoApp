@@ -9,7 +9,6 @@ import UIKit
 
 class HeaderMarketView: UIView {
     
-    
     @IBOutlet var contentView: UIView!
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -20,7 +19,6 @@ class HeaderMarketView: UIView {
         super.init(coder: coder)
         setupView()
     }
-
     
     private func setupView(){
         Bundle.main.loadNibNamed("HeaderMarketView", owner: self)

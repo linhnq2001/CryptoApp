@@ -50,6 +50,4 @@ extension ExchangesViewController: UITableViewDelegate, UITableViewDataSource {
             UIApplication.shared.open(url)
         }
     }
-    
-    
 }

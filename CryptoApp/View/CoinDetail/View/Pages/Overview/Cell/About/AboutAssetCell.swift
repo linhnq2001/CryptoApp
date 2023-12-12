@@ -8,20 +8,9 @@
 import UIKit
 
 class AboutAssetCell: UITableViewCell {
-    @IBOutlet weak var titleLb: UILabel!
-    @IBOutlet weak var aboutLb: UITextView!
+    @IBOutlet private weak var titleLb: UILabel!
+    @IBOutlet private weak var aboutLb: UITextView!
     var didTapSeeMore: (() -> Void)?
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
     @IBAction func didTapSeeMore(_ sender: Any) {
         self.didTapSeeMore?()

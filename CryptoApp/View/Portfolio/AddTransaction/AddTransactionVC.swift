@@ -15,13 +15,13 @@ class AddTransactionVC: SegmentedPagerTabStripViewController {
     private(set) var portfolio: Portfolio?
     private(set) var didEditPortfolio: PublishSubject<Void>
     
-    @IBOutlet weak var tokenImage: UIImageView!{
+    @IBOutlet private weak var tokenImage: UIImageView! {
         didSet {
             tokenImage.layer.cornerRadius = 15
         }
     }
-    @IBOutlet weak var tokenNameLb: UILabel!
-    @IBOutlet weak var tokenSymbolLb: UILabel!
+    @IBOutlet private weak var tokenNameLb: UILabel!
+    @IBOutlet private weak var tokenSymbolLb: UILabel!
     
     init(id: String,
          data: CoinInMarketResponse? = nil,
@@ -59,7 +59,7 @@ class AddTransactionVC: SegmentedPagerTabStripViewController {
                                        data: data,
                                        portfolio: portfolio,
                                        didEditPortfolio: didEditPortfolio)
-        return [buyVC,sellVC]
+        return [buyVC, sellVC]
     }
 
     @IBAction func didTapBack(_ sender: Any) {

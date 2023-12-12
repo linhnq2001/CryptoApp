@@ -9,8 +9,6 @@ import UIKit
 
 @IBDesignable
 final class InputTextField: UIView {
-    
-    
     @IBOutlet weak var contextView: UIView!
     @IBOutlet weak var inputTextField: UITextField!
     @IBOutlet weak var cleanTextBtn: UIButton!
@@ -71,7 +69,6 @@ final class InputTextField: UIView {
         self.cleanTextBtn.isHidden = true
         self.didCleanText?()
     }
-    
 }
 
 extension InputTextField: UITextFieldDelegate {

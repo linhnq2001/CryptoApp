@@ -82,5 +82,3 @@ final public class TradeDetailHistory: NSObject,Codable {
     }
 
 }
-
-

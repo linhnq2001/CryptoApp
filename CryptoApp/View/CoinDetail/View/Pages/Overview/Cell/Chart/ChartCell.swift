@@ -8,7 +8,7 @@
 import UIKit
 import Charts
 
-class ChartCell: UITableViewCell, ChartViewDelegate{
+class ChartCell: UITableViewCell, ChartViewDelegate {
     lazy var lineChartView: LineChartView = {
         let chartView = LineChartView()
         chartView.rightAxis.enabled = false
@@ -35,12 +35,8 @@ class ChartCell: UITableViewCell, ChartViewDelegate{
         }
     }
 
-    @IBOutlet weak var containerView: UIView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
+    @IBOutlet private weak var containerView: UIView!
+
     private func setupChartData() {
         lineChartView.backgroundColor = UIColor.systemBlue
         lineChartView.frame = CGRect(x: 10, y: 10, width: UIScreen.main.bounds.width - 20, height: 240)
@@ -59,12 +55,6 @@ class ChartCell: UITableViewCell, ChartViewDelegate{
         let lineChartData = LineChartData(dataSet: lineChartDataSet)
         lineChartData.setDrawValues(false)
         lineChartView.data = lineChartData
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configData(data: CoinInfoResponse) {

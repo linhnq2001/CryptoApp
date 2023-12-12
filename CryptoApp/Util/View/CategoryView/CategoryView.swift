@@ -10,8 +10,8 @@ import UIKit
 
 @IBDesignable
 final public class CategoryView: UIView {
-    @IBOutlet weak var titleLb: UILabel!
-    @IBOutlet weak var contentView: UIView!
+    @IBOutlet private weak var titleLb: UILabel!
+    @IBOutlet private weak var contentView: UIView!
     var title: String? = "" {
         didSet {
             self.titleLb.text = title

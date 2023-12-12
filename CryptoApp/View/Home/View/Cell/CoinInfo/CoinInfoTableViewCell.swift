@@ -10,27 +10,16 @@ import Kingfisher
 
 class CoinInfoTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var ordinalLb: UILabel!
-    @IBOutlet weak var coinImage: UIImageView!
-    @IBOutlet weak var symbolLb: UILabel!
-    @IBOutlet weak var nameLb: UILabel!
-    @IBOutlet weak var priceLb: UILabel!
-    @IBOutlet weak var priceChangeLb: UILabel!
-    @IBOutlet weak var marketCapLb: UILabel!
-    @IBOutlet weak var volLb: UILabel!
+    @IBOutlet private weak var ordinalLb: UILabel!
+    @IBOutlet private weak var coinImage: UIImageView!
+    @IBOutlet private weak var symbolLb: UILabel!
+    @IBOutlet private weak var nameLb: UILabel!
+    @IBOutlet private weak var priceLb: UILabel!
+    @IBOutlet private weak var priceChangeLb: UILabel!
+    @IBOutlet private weak var marketCapLb: UILabel!
+    @IBOutlet private weak var volLb: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
-    public func configData(data: CoinInMarketResponse){	
+    public func configData(data: CoinInMarketResponse) {	
         let numberFormatter = NumberFormatter()
         numberFormatter.maximumFractionDigits = 2
         numberFormatter.minimumFractionDigits = 2
@@ -71,15 +60,15 @@ class CoinInfoTableViewCell: UITableViewCell {
         configData(data: data)
     }
     
-    private func formatNumber(number: Double) -> String{
+    private func formatNumber(number: Double) -> String {
         let knumber = round(number/1000.0 * 100) / 100.0
         let mnumber = round(number/1000000.0 * 100) / 100.0
-        let bnumber = round(number/1000000000.0 * 100) / 100.0
-        if bnumber >= 1{
+        let bnumber = round(number/1_000_000_000.0 * 100) / 100.0
+        if bnumber >= 1 {
             return "\(bnumber) B"
         } else if mnumber >= 1 {
             return "\(mnumber) M"
-        } else if knumber >= 1{
+        } else if knumber >= 1 {
             return "\(knumber) K"
         } else {
             return "\(number)"

@@ -10,7 +10,7 @@ import XLPagerTabStrip
 
 class AboutViewController: UIViewController, IndicatorInfoProvider {
 
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet private weak var tableview: UITableView!
     var data: CoinInfoResponse? {
         didSet {
             if let data = data {
@@ -46,20 +46,20 @@ class AboutViewController: UIViewController, IndicatorInfoProvider {
     private func filterData(data: CoinInfoResponse) -> [LinkData] {
         var result: [LinkData] = []
         if let link = data.links {
-            if let homepage = link.homepage?.filter({!$0.isEmpty}), !homepage.isEmpty {
+            if let homepage = link.homepage?.filter({ !$0.isEmpty }), !homepage.isEmpty {
                 result.append(LinkData(title: "Home Page", links: homepage))
             }
-            if let blockchain_site = link.blockchainSite?.filter({!$0.isEmpty}), !blockchain_site.isEmpty {
+            if let blockchain_site = link.blockchainSite?.filter({ !$0.isEmpty }), !blockchain_site.isEmpty {
                 result.append(LinkData(title: "Blockchain Site", links: blockchain_site))
             }
             if let twitterLink = link.twitterScreenName {
                 result.append(LinkData(title: "Twitter", links: ["https://twitter.com/\(twitterLink)"]))
             }
             var otherLinks: [String] = []
-            if let chatsLink = link.chatURL?.filter({!$0.isEmpty}) {
+            if let chatsLink = link.chatURL?.filter({ !$0.isEmpty }) {
                 otherLinks.append(contentsOf: chatsLink)
             }
-            if let anoumentLink = link.announcementURL?.filter({!$0.isEmpty}) {
+            if let anoumentLink = link.announcementURL?.filter({ !$0.isEmpty }) {
                 otherLinks.append(contentsOf: anoumentLink)
             }
             if !otherLinks.isEmpty {
@@ -70,7 +70,7 @@ class AboutViewController: UIViewController, IndicatorInfoProvider {
     }
 
 }
-extension AboutViewController: UITableViewDelegate,UITableViewDataSource {
+extension AboutViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1 + linkData.count
     }
@@ -90,7 +90,7 @@ extension AboutViewController: UITableViewDelegate,UITableViewDataSource {
     }
 }
 
-public struct LinkData{
+public struct LinkData {
     var title: String
     var links: [String]
 }

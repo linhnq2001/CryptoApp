@@ -10,37 +10,37 @@ import RxSwift
 
 class ExchangesCell: UITableViewCell {
 
-    @IBOutlet weak var exchangesView: UIView!
+    @IBOutlet private weak var exchangesView: UIView!
 
-    @IBOutlet weak var imageOne: UIImageView! {
+    @IBOutlet private weak var imageOne: UIImageView! {
         didSet {
             imageOne.layer.cornerRadius = 15
         }
     }
-    @IBOutlet weak var symbolOneLb: UILabel!
-    @IBOutlet weak var nameOneLb: UILabel!
-    @IBOutlet weak var priceOneLb: UILabel!
-    @IBOutlet weak var volOneLb: UILabel!
+    @IBOutlet private weak var symbolOneLb: UILabel!
+    @IBOutlet private weak var nameOneLb: UILabel!
+    @IBOutlet private weak var priceOneLb: UILabel!
+    @IBOutlet private weak var volOneLb: UILabel!
     
-    @IBOutlet weak var imageTwo: UIImageView! {
+    @IBOutlet private weak var imageTwo: UIImageView! {
         didSet {
             imageTwo.layer.cornerRadius = 15
         }
     }
-    @IBOutlet weak var symbolTwoLb: UILabel!
-    @IBOutlet weak var nameTwoLb: UILabel!
-    @IBOutlet weak var priceTwoLb: UILabel!
-    @IBOutlet weak var volTwoLb: UILabel!
+    @IBOutlet private weak var symbolTwoLb: UILabel!
+    @IBOutlet private weak var nameTwoLb: UILabel!
+    @IBOutlet private weak var priceTwoLb: UILabel!
+    @IBOutlet private weak var volTwoLb: UILabel!
     
-    @IBOutlet weak var imageThree: UIImageView! {
+    @IBOutlet private weak var imageThree: UIImageView! {
         didSet {
             imageThree.layer.cornerRadius = 15
         }
     }
-    @IBOutlet weak var symbolThreeLb: UILabel!
-    @IBOutlet weak var nameThreeLb: UILabel!
-    @IBOutlet weak var priceThreeLb: UILabel!
-    @IBOutlet weak var volThreeLb: UILabel!
+    @IBOutlet private weak var symbolThreeLb: UILabel!
+    @IBOutlet private weak var nameThreeLb: UILabel!
+    @IBOutlet private weak var priceThreeLb: UILabel!
+    @IBOutlet private weak var volThreeLb: UILabel!
     
     var listTicker: [Ticker] = []
     private let trigger = PublishSubject<String>()
@@ -56,14 +56,23 @@ class ExchangesCell: UITableViewCell {
         // Initialization code
         exchangesView.addShadow()
         selectionStyle = .none
+        bindingImage()
+    }
+    
+    private func infoExchange(_ id: String) -> Observable<ExchangeInfoResponse> {
+        if id.isEmpty {
+            return .empty()
+        }
+        let infoExchange: Observable<ExchangeInfoResponse> = self.repository.getExchangeInfo(id: id)
+        return infoExchange
+    }
+    
+    private func bindingImage() {
         trigger.flatMap({ [weak self] id -> Observable<ExchangeInfoResponse> in
             guard let self = self else {
                 return .empty()
             }
-            if !id.isEmpty {
-                return self.repository.getExchangeInfo(id: id)
-            }
-            return .empty()
+            return self.infoExchange(id)
         }).subscribe(onNext: {[weak self] info in
             guard let self = self else { return }
             if let url = URL(string: info.image ?? "") {
@@ -75,10 +84,7 @@ class ExchangesCell: UITableViewCell {
             guard let self = self else {
                 return .empty()
             }
-            if !id.isEmpty {
-                return self.repository.getExchangeInfo(id: id)
-            }
-            return .empty()
+            return self.infoExchange(id)
         }).subscribe(onNext: {[weak self] info in
             guard let self = self else { return }
             if let url = URL(string: info.image ?? "") {
@@ -90,22 +96,13 @@ class ExchangesCell: UITableViewCell {
             guard let self = self else {
                 return .empty()
             }
-            if !id.isEmpty {
-                return self.repository.getExchangeInfo(id: id)
-            }
-            return .empty()
+            return self.infoExchange(id)
         }).subscribe(onNext: {[weak self] info in
             guard let self = self else { return }
             if let url = URL(string: info.image ?? "") {
                 self.imageThree.kf.setImage(with: url)
             }
         }).disposed(by: disposeBag)
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     func configData(data: CoinInfoResponse) {
@@ -121,7 +118,6 @@ class ExchangesCell: UITableViewCell {
         self.priceOneLb.text = String(format: "%.2f", dataOne.last ?? 0)
         self.volOneLb.text = "$ \(formatNumber(number: dataOne.volume ?? 0))"
         trigger.onNext(dataOne.market?.identifier ?? "")
-        
         
         let dataTwo = listTicker[1]
         if let base = dataTwo.base, let target = dataTwo.target {
@@ -147,15 +143,15 @@ class ExchangesCell: UITableViewCell {
         self.didTapSeeMore?()
     }
     
-    private func formatNumber(number: Double) -> String{
+    private func formatNumber(number: Double) -> String {
         let knumber = round(number/1000.0 * 100) / 100.0
         let mnumber = round(number/1000000.0 * 100) / 100.0
-        let bnumber = round(number/1000000000.0 * 100) / 100.0
-        if bnumber >= 1{
+        let bnumber = round(number/1_000_000_000.0 * 100) / 100.0
+        if bnumber >= 1 {
             return "\(bnumber) B"
         } else if mnumber >= 1 {
             return "\(mnumber) M"
-        } else if knumber >= 1{
+        } else if knumber >= 1 {
             return "\(knumber) K"
         } else {
             return "\(number)"

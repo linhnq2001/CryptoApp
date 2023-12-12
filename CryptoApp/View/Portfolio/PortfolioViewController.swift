@@ -240,7 +240,6 @@ class PortfolioViewController: UIViewController {
     @IBAction func didTapAllPortfolio(_ sender: Any) {
         
     }
-
     
     @IBAction func didTapCreatePortfolio(_ sender: Any) {
         guard let name = nameInputTF.text else {

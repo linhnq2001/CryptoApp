@@ -9,9 +9,8 @@ import UIKit
 import RxSwift
 
 class LoginViewController: UIViewController {
-    
-    
-    @IBOutlet weak var signinGGBtn: UIButton!{
+
+    @IBOutlet private weak var signinGGBtn: UIButton!{
         didSet{
 //            let image = UIImage(named: "ic_google")
 //            signinGGBtn.setImage(image, for: .normal)
@@ -34,20 +33,20 @@ class LoginViewController: UIViewController {
 //            signinGGBtn.configuration = filled
         }
     }
-    @IBOutlet weak var emailInputTF: InputTextField!{
+    @IBOutlet private weak var emailInputTF: InputTextField!{
         didSet {
             emailInputTF.contentType = .emailAddress
         }
     }
 
-    @IBOutlet weak var passwordInputTF: InputTextField!{
+    @IBOutlet private weak var passwordInputTF: InputTextField!{
         didSet {
             passwordInputTF.contentType = .password
         }
     }
-    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet private weak var loginBtn: UIButton!
     
-    @IBOutlet weak var resetPassBtn: UIButton!
+    @IBOutlet private weak var resetPassBtn: UIButton!
     
     private(set) var viewModel: LoginViewModel!
     private var disposeBag = DisposeBag()
@@ -67,9 +66,11 @@ class LoginViewController: UIViewController {
     }
 
     private func bindingData(){
-        let input = LoginViewModel.Input(loginAction: loginBtn.rx.tap.asDriver(), resetPasswordAction: resetPassBtn.rx.tap.asDriver(), loginWithGoogleAction: signinGGBtn.rx.tap.asDriver(), email: emailInputTF.inputTextField.rx.text.orEmpty.asDriver(), password: passwordInputTF.inputTextField.rx.text.orEmpty.asDriver())
-        
-        
+        let input = LoginViewModel.Input(loginAction: loginBtn.rx.tap.asDriver(), 
+                                         resetPasswordAction: resetPassBtn.rx.tap.asDriver(),
+                                         loginWithGoogleAction: signinGGBtn.rx.tap.asDriver(),
+                                         email: emailInputTF.inputTextField.rx.text.orEmpty.asDriver(),
+                                         password: passwordInputTF.inputTextField.rx.text.orEmpty.asDriver())
         let output = viewModel.tranform(input)
         handleLoginResult(input,output)
         handleLoading(input,output)

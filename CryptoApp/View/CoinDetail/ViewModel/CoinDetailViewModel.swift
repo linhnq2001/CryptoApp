@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 import RxRelay
 
-final public class CoinDetailViewModel: NSObject{
+final public class CoinDetailViewModel: NSObject {
     let disposeBag = DisposeBag()
     let repository = DefaultMarketRepository()
     var id: String

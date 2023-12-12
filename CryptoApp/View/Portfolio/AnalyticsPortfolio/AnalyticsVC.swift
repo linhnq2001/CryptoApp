@@ -10,23 +10,23 @@ import Charts
 
 class AnalyticsVC: UIViewController, ChartViewDelegate {
     private(set) var portfolio: Portfolio
-    @IBOutlet weak var portfolioView: UIView! {
+    @IBOutlet private weak var portfolioView: UIView! {
         didSet {
             portfolioView.addShadow()
         }
     }
-    @IBOutlet weak var timeframeView: TimeFrameView!
-    @IBOutlet weak var totalValueLb: UILabel!
-    @IBOutlet weak var percentChangeLb: UILabel!
-    @IBOutlet weak var percentChangeView: UIView!
-    @IBOutlet weak var totalProfitLb: UILabel!
-    @IBOutlet weak var percentProfitLb: UILabel!
-    @IBOutlet weak var realizedProfitView: UIView!
-    @IBOutlet weak var realizedProfitLb: UILabel!
-    @IBOutlet weak var totalInvestedLb: UILabel!
-    @IBOutlet weak var unrealizedProfitLb: UILabel!
+    @IBOutlet private weak var timeframeView: TimeFrameView!
+    @IBOutlet private weak var totalValueLb: UILabel!
+    @IBOutlet private weak var percentChangeLb: UILabel!
+    @IBOutlet private weak var percentChangeView: UIView!
+    @IBOutlet private weak var totalProfitLb: UILabel!
+    @IBOutlet private weak var percentProfitLb: UILabel!
+    @IBOutlet private weak var realizedProfitView: UIView!
+    @IBOutlet private weak var realizedProfitLb: UILabel!
+    @IBOutlet private weak var totalInvestedLb: UILabel!
+    @IBOutlet private weak var unrealizedProfitLb: UILabel!
     
-    @IBOutlet weak var chartView: UIView!
+    @IBOutlet private weak var chartView: UIView!
     private var pieChart = PieChartView()
     
     init(portfolio: Portfolio) {
@@ -94,15 +94,15 @@ class AnalyticsVC: UIViewController, ChartViewDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func formatNumber(number: Double) -> String{
+    private func formatNumber(number: Double) -> String {
         let knumber = round(number/1000.0 * 100) / 100.0
         let mnumber = round(number/1000000.0 * 100) / 100.0
-        let bnumber = round(number/1000000000.0 * 100) / 100.0
-        if bnumber >= 1{
+        let bnumber = round(number/1_000_000_000.0 * 100) / 100.0
+        if bnumber >= 1 {
             return "\(bnumber) B"
         } else if mnumber >= 1 {
             return "\(mnumber) M"
-        } else if knumber >= 1{
+        } else if knumber >= 1 {
             return "\(knumber) K"
         } else {
             return "\(number)"

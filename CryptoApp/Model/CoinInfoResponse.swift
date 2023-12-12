@@ -124,7 +124,7 @@ class CoinInfoResponse: Codable, SearchDataSource {
         case empty = ""
     }
 
-    init(id: String?, symbol: String?, name: String?, assetPlatformID: String?, platforms: Platforms, detailPlatforms: [String : DetailPlatform]?, blockTimeInMinutes: Int?, hashingAlgorithm: String?, categories: [String]?, previewListing: Bool?, publicNotice: String?, localization: Tion?, description: Tion?, links: Links?, image: ImageData?, countryOrigin: String?, genesisDate: String?, sentimentVotesUpPercentage: Double?, sentimentVotesDownPercentage: Double?, watchlistPortfolioUsers: Int?, marketCapRank: Int?, coingeckoRank: Int?, coingeckoScore: Double?, developerScore: Double?, communityScore: Double?, liquidityScore: Double?, publicInterestScore: Double?, marketData: MarketData?,communityData: CommunityData?, developerData: DeveloperData?, lastUpdated: String?, tickers: [Ticker]?) {
+    init(id: String?, symbol: String?, name: String?, assetPlatformID: String?, platforms: Platforms, detailPlatforms: [String: DetailPlatform]?, blockTimeInMinutes: Int?, hashingAlgorithm: String?, categories: [String]?, previewListing: Bool?, publicNotice: String?, localization: Tion?, description: Tion?, links: Links?, image: ImageData?, countryOrigin: String?, genesisDate: String?, sentimentVotesUpPercentage: Double?, sentimentVotesDownPercentage: Double?, watchlistPortfolioUsers: Int?, marketCapRank: Int?, coingeckoRank: Int?, coingeckoScore: Double?, developerScore: Double?, communityScore: Double?, liquidityScore: Double?, publicInterestScore: Double?, marketData: MarketData?, communityData: CommunityData?, developerData: DeveloperData?, lastUpdated: String?, tickers: [Ticker]?) {
         self.id = id
         self.symbol = symbol
         self.name = name
@@ -335,6 +335,7 @@ class DeveloperData: Codable {
 }
 
 // MARK: - CodeAdditionsDeletions4_Weeks
+// swiftlint:disable type_name
 class CodeAdditionsDeletions4_Weeks: Codable {
     var additions, deletions: Int?
 
@@ -524,7 +525,7 @@ class Sparkline7D: Codable {
 }
 
 // MARK: - PublicInterestStats
-//class PublicInterestStats: Codable {
+// class PublicInterestStats: Codable {
 //    var alexaRank: Int?
 //    var bingMatches: JSONNull?
 //
@@ -537,4 +538,4 @@ class Sparkline7D: Codable {
 //        self.alexaRank = alexaRank
 //        self.bingMatches = bingMatches
 //    }
-//}
+// }

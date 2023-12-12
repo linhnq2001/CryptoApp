@@ -31,10 +31,11 @@ public class RecentSearchDataSource: SearchDataSource {
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet weak var searchTF: UITextField!
-    @IBOutlet weak var tableview: UITableView!
+    @IBOutlet private weak var searchTF: UITextField!
+    @IBOutlet private weak var tableview: UITableView!
     lazy var dataSource = RxTableViewSectionedReloadDataSource<SearchSection> { dataSource, tableview, indexPath, item in
-        guard let recentCell = tableview.dequeueReusableCell(withIdentifier: "RecentSearchCell", for: indexPath) as? RecentSearchCell, let searchCell = tableview.dequeueReusableCell(withIdentifier: "ResultSearchCell", for: indexPath) as? ResultSearchCell else {
+        guard let recentCell = tableview.dequeueReusableCell(withIdentifier: "RecentSearchCell", for: indexPath) as? RecentSearchCell,
+              let searchCell = tableview.dequeueReusableCell(withIdentifier: "ResultSearchCell", for: indexPath) as? ResultSearchCell else {
             return UITableViewCell()
         }
         switch dataSource.sectionModels[indexPath.section].model {
@@ -53,14 +54,13 @@ class SearchViewController: UIViewController {
             return searchCell
         default:
             return UITableViewCell()
-            break
         }
     }
     
     private(set) var viewModel: SearchViewModel!
     private let trigger = PublishSubject<Void>()
     private let inSearch = PublishRelay<String>()
-    private let actionTapToken = PublishRelay<(SearchTitle,String)>()
+    private let actionTapToken = PublishRelay<(SearchTitle, String)>()
     private let actionCleanRecent = PublishSubject<Void>()
     private let disposeBag = DisposeBag()
     private var recentSearchData: [CoinInfoResponse] = []
@@ -106,7 +106,7 @@ class SearchViewController: UIViewController {
                 case .searchResult:
                     guard let data = self.listSection[indexPath.section].items[indexPath.row] as? CoinSearchResponse else {return}
                     let id = data.id ?? ""
-                    self.actionTapToken.accept((.searchResult,id))
+                    self.actionTapToken.accept((.searchResult, id))
                     let viewModel = CoinDetailViewModel(id: id)
                     let vc = CoinDetailViewController(viewModel: viewModel)
                     self.navigationController?.pushViewController(vc, animated: true)
@@ -126,7 +126,7 @@ class SearchViewController: UIViewController {
     }
     
     private func bindingData() {
-        let input = SearchViewModel.Input(trigger: trigger, inSearch: inSearch,actionTapToken: actionTapToken, actionCleanRecent: actionCleanRecent)
+        let input = SearchViewModel.Input(trigger: trigger, inSearch: inSearch, actionTapToken: actionTapToken, actionCleanRecent: actionCleanRecent)
         let output = viewModel.transform(input)
         handleLoading(output)
         handleSearchResult(output)

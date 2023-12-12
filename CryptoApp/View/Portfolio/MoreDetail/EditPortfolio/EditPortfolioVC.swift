@@ -15,8 +15,8 @@ enum EditPortfolioType {
 
 class EditPortfolioVC: UIViewController {
     
-    @IBOutlet weak var titleLb: UILabel!
-    @IBOutlet weak var nameInputTF: InputTextField!
+    @IBOutlet private weak var titleLb: UILabel!
+    @IBOutlet private weak var nameInputTF: InputTextField!
     var type: EditPortfolioType {
         didSet {
             switch type {
@@ -31,7 +31,7 @@ class EditPortfolioVC: UIViewController {
     var portfolio: Portfolio
     private let disposeBag = DisposeBag()
     
-    init(type: EditPortfolioType, portfolio: Portfolio,didEditPortfolio: PublishSubject<Void>) {
+    init(type: EditPortfolioType, portfolio: Portfolio, didEditPortfolio: PublishSubject<Void>) {
         self.type = type
         self.portfolio = portfolio
         self.didEditPortfolio = didEditPortfolio
@@ -51,7 +51,7 @@ class EditPortfolioVC: UIViewController {
     @IBAction func didTapSave(_ sender: Any) {
         switch type {
         case .editName:
-            if let text = nameInputTF.text , !text.isEmpty{
+            if let text = nameInputTF.text, !text.isEmpty {
                 FirestoreHelper.shared.renamePortfolio(portfolio: self.portfolio, newName: text).subscribe(onNext: { [weak self] (result, error) in
                     guard let self = self else { return }
                     if result {
@@ -71,7 +71,7 @@ class EditPortfolioVC: UIViewController {
                 }
             }
         case .duplicate:
-            if let text = nameInputTF.text , !text.isEmpty{
+            if let text = nameInputTF.text, !text.isEmpty {
                 FirestoreHelper.shared.duplicatePortfolio(portfolio: self.portfolio, newName: text).subscribe(onNext: { [weak self] (result, error) in
                     guard let self = self else { return }
                     if result {

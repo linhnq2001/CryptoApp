@@ -58,8 +58,7 @@ class TransactionDetailVC: UIViewController {
     @IBAction func didTapBack(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-    
-    
+
     @IBAction func didTapDelete(_ sender: Any) {
         let alertController = UIAlertController(title: "Delete Transaction", message: "Are you sure you want to delete this conversation ?", preferredStyle: .alert)
         

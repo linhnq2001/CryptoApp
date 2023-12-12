@@ -11,18 +11,18 @@ import RxCocoa
 
 class RegisterViewController: UIViewController {
     
-    @IBOutlet weak var usernameInputTF: InputTextField!
-    @IBOutlet weak var emailInputTF: InputTextField! {
+    @IBOutlet private weak var usernameInputTF: InputTextField!
+    @IBOutlet private weak var emailInputTF: InputTextField! {
         didSet {
             emailInputTF.contentType = .emailAddress
         }
     }
-    @IBOutlet weak var passwordInputTF: InputTextField! {
+    @IBOutlet private weak var passwordInputTF: InputTextField! {
         didSet {
             passwordInputTF.contentType = .password
         }
     }
-    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet private weak var registerBtn: UIButton!
     
     private var disposeBag = DisposeBag()
     private(set) var viewModel: RegisterViewModel!
@@ -43,7 +43,10 @@ class RegisterViewController: UIViewController {
     }
 
     private func bindingData() {
-        let input = RegisterViewModel.Input(username: self.usernameInputTF.inputTextField.rx.text.orEmpty.asDriver(), email: self.emailInputTF.inputTextField.rx.text.orEmpty.asDriver(), password: self.passwordInputTF.inputTextField.rx.text.orEmpty.asDriver(), registerAction: self.registerBtn.rx.tap.asDriver())
+        let input = RegisterViewModel.Input(username: usernameInputTF.inputTextField.rx.text.orEmpty.asDriver(),
+                                            email: emailInputTF.inputTextField.rx.text.orEmpty.asDriver(),
+                                            password: passwordInputTF.inputTextField.rx.text.orEmpty.asDriver(),
+                                            registerAction: registerBtn.rx.tap.asDriver())
         
         let output = viewModel.tranform(input)
         handleShowLoading(input, output)

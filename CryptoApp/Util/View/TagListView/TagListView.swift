@@ -401,7 +401,6 @@ open class TagListView: UIView {
     open func insertTag(_ title: String, at index: Int) -> TagView {
         return insertTagView(createNewTagView(title), at: index)
     }
-    
 
     @discardableResult
     open func insertTagView(_ tagView: TagView, at index: Int) -> TagView {

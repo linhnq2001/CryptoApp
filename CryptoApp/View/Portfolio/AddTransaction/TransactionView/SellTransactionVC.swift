@@ -164,7 +164,7 @@ class SellTransactionVC: UIViewController {
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: "Done", style: .default, handler: { _ in
             // Handle the selected date (if needed)
-            var date = datePicker.date.stripTime()
+            let date = datePicker.date.stripTime()
             self.selectedDate = date.timeIntervalSince1970
         }))
         

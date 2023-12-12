@@ -10,25 +10,15 @@ import Kingfisher
 
 class ChooseAssetCell: UITableViewCell {
 
-    @IBOutlet weak var tokenImage: UIImageView!{
+    @IBOutlet private weak var tokenImage: UIImageView! {
         didSet {
             tokenImage.layer.cornerRadius = 15
         }
     }
-    @IBOutlet weak var nameLb: UILabel!
-    @IBOutlet weak var symbolLb: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
+    @IBOutlet private weak var nameLb: UILabel!
+    @IBOutlet private weak var symbolLb: UILabel!
     
-    func configData(data: SearchDataSource , type: SearchTitle) {
+    func configData(data: SearchDataSource, type: SearchTitle) {
         switch type {
         case .marketCoin:
             guard let data = data as? CoinInMarketResponse else {return}

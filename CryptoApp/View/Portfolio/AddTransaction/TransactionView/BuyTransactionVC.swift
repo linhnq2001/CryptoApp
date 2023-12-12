@@ -18,23 +18,23 @@ class BuyTransactionVC: UIViewController {
     private let repository = DefaultMarketRepository()
     private let disposeBag = DisposeBag()
     
-    @IBOutlet weak var amountTF: UITextField!
-    @IBOutlet weak var priceTF: UITextField!
-    @IBOutlet weak var totalTF: UITextField!
+    @IBOutlet private weak var amountTF: UITextField!
+    @IBOutlet private weak var priceTF: UITextField!
+    @IBOutlet private weak var totalTF: UITextField!
     
-    @IBOutlet weak var dateView: UIView!
-    @IBOutlet weak var dateLb: UILabel!
-    @IBOutlet weak var timeView: UIView!
-    @IBOutlet weak var timeLb: UILabel!
+    @IBOutlet private weak var dateView: UIView!
+    @IBOutlet private weak var dateLb: UILabel!
+    @IBOutlet private weak var timeView: UIView!
+    @IBOutlet private weak var timeLb: UILabel!
     
-    @IBOutlet weak var portfolioView: UIView!
-    @IBOutlet weak var namePortfolioLb: UILabel!
-    @IBOutlet weak var assetPortfolioLb: UILabel!
+    @IBOutlet private weak var portfolioView: UIView!
+    @IBOutlet private weak var namePortfolioLb: UILabel!
+    @IBOutlet private weak var assetPortfolioLb: UILabel!
     
-    @IBOutlet weak var marketPriceView: UIView!
-    @IBOutlet weak var marketLb: UILabel!
-    @IBOutlet weak var customPriceView: UIView!
-    @IBOutlet weak var customLb: UILabel!
+    @IBOutlet private weak var marketPriceView: UIView!
+    @IBOutlet private weak var marketLb: UILabel!
+    @IBOutlet private weak var customPriceView: UIView!
+    @IBOutlet private weak var customLb: UILabel!
     var selectedDate: Double = Date().stripTime().timeIntervalSince1970 {
         didSet {
             timeStamp = selectedDate + selectedTime
@@ -88,7 +88,7 @@ class BuyTransactionVC: UIViewController {
     
     private func setupPortfolioView() {
         self.namePortfolioLb.text = portfolio?.name
-        if let amount = portfolio?.listToken.first(where: {$0.id == tokenId})?.getBalance(), let symbol = data?.symbol?.uppercased() {
+        if let amount = portfolio?.listToken.first(where: { $0.id == tokenId })?.getBalance(), let symbol = data?.symbol?.uppercased() {
             self.assetPortfolioLb.text = "In portfolio \(amount) \(symbol)"
         }
     }
@@ -111,14 +111,14 @@ class BuyTransactionVC: UIViewController {
         }
         amountTF.rx.controlEvent(.editingChanged).withLatestFrom(amountTF.rx.text.orEmpty).subscribe(onNext: { [weak self] text in
             guard let self = self else { return }
-            if let amount = Double(text) , let currentPrice = Double(self.priceTF.text ?? "") {
+            if let amount = Double(text), let currentPrice = Double(self.priceTF.text ?? "") {
                 self.totalTF.text = "\(amount * currentPrice)"
             }
         }).disposed(by: disposeBag)
         
         totalTF.rx.controlEvent(.editingChanged).withLatestFrom(totalTF.rx.text.orEmpty).subscribe(onNext: { [weak self] text in
             guard let self = self else { return }
-            if let total = Double(text) , let currentPrice = Double(self.priceTF.text ?? "") {
+            if let total = Double(text), let currentPrice = Double(self.priceTF.text ?? "") {
                 self.amountTF.text = "\(total / currentPrice)"
             }
         }).disposed(by: disposeBag)
@@ -129,7 +129,7 @@ class BuyTransactionVC: UIViewController {
             self?.customLb.textColor = UIColor.blue.withAlphaComponent(0.8)
             self?.customPriceView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
             if  let amount = Double(self?.amountTF.text ?? "0"),
-                let currentPrice = Double(self?.priceTF.text ?? "") , amount != 0 {
+                let currentPrice = Double(self?.priceTF.text ?? ""), amount != 0 {
                 self?.totalTF.text = "\(amount * currentPrice)"
             }
         }).disposed(by: disposeBag)
@@ -169,8 +169,7 @@ class BuyTransactionVC: UIViewController {
         datePicker.date = Date()
         datePicker.locale = .current
         datePicker.preferredDatePickerStyle = .wheels
-        datePicker.frame = CGRectMake(15, 0, self.view.frame.width - 30, 200)
-        //        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        datePicker.frame = CGRect(x: 15, y: 0, width: self.view.frame.width - 30, height: 200)
         // Create an alert with a date picker
         let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
         
@@ -195,8 +194,7 @@ class BuyTransactionVC: UIViewController {
         datePicker.date = Date()
         datePicker.locale = .current
         datePicker.preferredDatePickerStyle = .wheels
-        datePicker.frame = CGRectMake(15, 0, self.view.frame.width - 30, 200)
-        //        datePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
+        datePicker.frame = CGRect(x: 15, y: 0, width: self.view.frame.width - 30, height: 200)
         // Create an alert with a date picker
         let alertController = UIAlertController(title: "\n\n\n\n\n\n\n\n\n", message: nil, preferredStyle: .actionSheet)
         
@@ -220,7 +218,7 @@ class BuyTransactionVC: UIViewController {
         }
         let trasaction = TradeHistory(type: .buy, price: price, amount: amount, createAt: Int(timeStamp))
         let tokenInPortfolio = TokenInPortfolio(id: tokenId, name: data?.name ?? "", symbol: data?.symbol?.uppercased() ?? "", urlImage: data?.image ?? "", tradesHistory: [trasaction])
-        FirestoreHelper.shared.addTransaction(tokenInPortfolio, namePortfolio: portfolio?.name ?? "").subscribe(onNext: { [weak self] result , error in
+        FirestoreHelper.shared.addTransaction(tokenInPortfolio, namePortfolio: portfolio?.name ?? "").subscribe(onNext: { [weak self] result, _ in
             guard let self = self else {return}
             if result {
                 self.didEditPortfolio.onNext(())
@@ -229,7 +227,7 @@ class BuyTransactionVC: UIViewController {
         }).disposed(by: disposeBag)
     }
 }
-extension BuyTransactionVC: IndicatorInfoProvider{
+extension BuyTransactionVC: IndicatorInfoProvider {
     func indicatorInfo(for pagerTabStripController: XLPagerTabStrip.PagerTabStripViewController) -> XLPagerTabStrip.IndicatorInfo {
         IndicatorInfo(title: "Buy")
     }
